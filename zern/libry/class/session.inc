@@ -53,26 +53,20 @@ class oSession {
 
 	//START • Start PHP Session
 	public function start($i=''){
-		if(empty($i)){} #@TODO ~ handle error
-		{
-			if($i == 'iGET'){
-				if(headers_sent() === false && !isset($_SESSION)){
-					session_start();
-					if(empty($_SESSION['INIT_SESSION_ID'])){
-						$_SESSION['INIT_SESSION_ID'] = $this->id($i);
-					}
-				}
+		if(empty($i)){
+			if(headers_sent() === false){
+				session_start();
 			}
-			else {
-				$this->id($i);
-				return session_start();
-			}
+		}
+		else {
+			$this->id($i);
+			session_start();
 		}
 	}
 
 
 	//IS • Get/Set SESSION VALUE - $_SESSION['value']
-	public static function Is($i='', $v='', $id=''){
+	public function is($i='', $v='', $id=''){
 		if(!empty($id)){$this->start($id);}
 		if(!empty($i)){
 			if(!empty($v)){$_SESSION[$i] = $v;}
