@@ -35,7 +35,6 @@ class oRedirect {
 	//URL • redirect url using headers
 	public static function URL($link, $time=0, $exit=false){
 		if(!headers_sent($filename, $linenum)){
-			echo $link;
 			if(!empty($time)){
 				header('Refresh:'.$time.';url='.$link);
 			}
