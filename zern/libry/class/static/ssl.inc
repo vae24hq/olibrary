@@ -2,7 +2,7 @@
 /**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
  * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
  * ============================================================================================
- * oSSL ~ Handling SSL • DEPENDENCY» <session|redirect>
+ * oSSL ~ Handling SSL • DEPENDENCY» <redirect> + session
  */
 class oSSL {
 	private static $Instance;
@@ -37,25 +37,42 @@ class oSSL {
 	}
 
 
-	#IMPOSE SSL • IMPOSE SSL on URL ~  also starts session
-	public static function ImposeSSL($url='', $move=false){
-		oSession::Start();
-		if(empty(oSession::Is('oSSL')) || oSession::Is('oSSL') !== 'imposed'){
-			$protocol = self::HTTPs() ? 'https' : 'http';
-			if($protocol !== 'https'){
-				$o = 'https://';
-				if(!empty($url)){$o .= $url;}
-				else {
-					if(!empty($_SERVER['HTTP_HOST'])){$o .= $_SERVER['HTTP_HOST'];}
-					if(!empty($_SERVER['REQUEST_URI'])){$o .= $_SERVER['REQUEST_URI'];}
+	#REDIRECT • redirect URL to use HTTPS
+	public static function Redirect($url='', $permant=false){
+		$protocol = self::HTTPs() ? 'https' : 'http';
+		if($protocol !== 'https'){
+			$o = 'https://';
+			if(!empty($url)){$o .= $url;}
+			else {
+				if(!empty($_SERVER['HTTP_HOST'])){$o .= $_SERVER['HTTP_HOST'];}
+				if(!empty($_SERVER['REQUEST_URI'])){$o .= $_SERVER['REQUEST_URI'];}
+			}
+			if(filter_var($o, FILTER_VALIDATE_URL) !== false){
+				$_SESSION['oSSL'] = 'imposed';
+				if($permant === true){
+					header('HTTP/1.1 301 Moved Permanently');
 				}
-				if(filter_var($o, FILTER_VALIDATE_URL) !== false){
-					oSession::Is('oSSL','imposed');
-					if($move === true){header('HTTP/1.1 301 Moved Permanently');}
-					oRedirect::ExitTo($o);
-				}
+				return oRedirect::ExitTo($o);
 			}
 		}
+	}
+
+
+	#IMPOSE • force URL to use HTTPS
+	public static function Impose($enforce=true, $url='', $permant=false){
+		if($enforce === true){#always attempt redirect
+			return self::Redirect($url, $permant);
+		}
+		else {#ignore after first attempt to redirect
+			if(session_status() !== PHP_SESSION_ACTIVE){
+			#@TODO ~ change below To - trigger HALT error [requiring $session->start() call]
+			#exit('ImposeSSL Requires Session Start');
+			}
+			if(empty($_SESSION['oSSL']) || $_SESSION['oSSL'] !== 'imposed'){
+				return self::Redirect($url, $permant);
+			}
+		}
+		return false;
 	}
 
 
