@@ -25,7 +25,7 @@ class oIP {
 	public static function Remote(){
 		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$o = $_SERVER['HTTP_CLIENT_IP'];} #IP from share Internet
 		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$o = $_SERVER['HTTP_X_FORWARDED_FOR'];} #IP pass from proxy
-		else {$o = $_SERVER['REMOTE_ADDR'];} #IP from remote server
+		else {$o = $_SERVER['REMOTE_ADDR'];} #ip from remote server
 		return $o;
 	}
 
