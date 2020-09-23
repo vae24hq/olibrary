@@ -37,7 +37,7 @@ class oSSL {
 	}
 
 
-	#REDIRECT • redirect URL to use HTTPS
+	//REDIRECT • redirect URL to use HTTPS
 	public static function Redirect($url='', $permant=false){
 		$protocol = self::HTTPs() ? 'https' : 'http';
 		if($protocol !== 'https'){
@@ -58,7 +58,7 @@ class oSSL {
 	}
 
 
-	#IMPOSE • force URL to use HTTPS
+	//IMPOSE • force URL to use HTTPS
 	public static function Impose($enforce=true, $url='', $permant=false){
 		if($enforce === true){#always attempt redirect
 			return self::Redirect($url, $permant);
