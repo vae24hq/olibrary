@@ -48,13 +48,14 @@ oFile::Inc(oSTATIC.'url.inc');
 oFile::Inc(oSTATIC.'currency.inc');
 oFile::Inc(oSTATIC.'format.inc');
 oFile::Inc(oINSTANCE.'database.inc'); #@TODO ~ work on database and related objects
+oFile::Inc(oINSTANCE.'route.inc');
 oFile::Inc(oBOND.'mobile.inc');
-// oFile::Inc(oBJ.'route.inc');
 
 
-// #INITIALIZE PROJECT (based on a specific project)
+
+#INITIALIZE PROJECT (based on a specific project)
 // #oFile::Inc(oRouter::Path('oInitFile', 'oGET', 'isOptional'), 'isOptional');
-// oFile::Inc(oROUT.'routzr.inc');
+oFile::Inc(oROUT.'routzr.inc');
 
 
 #DEVBOX FILE - for development, demo & testing
