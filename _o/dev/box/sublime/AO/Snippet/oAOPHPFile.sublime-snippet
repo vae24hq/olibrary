@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+<?php
+/**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
+ * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
+ * ============================================================================================
+ * ${1:INDEX} ~ ${2:Default File} • DEPENDENCY»
+ */
+${3:}
+]]></content>
+	<tabTrigger>ao</tabTrigger>
+	<description>AO PHP File Block</description>
+</snippet>
