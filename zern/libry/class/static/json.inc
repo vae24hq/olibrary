@@ -1,0 +1,66 @@
+<?php
+/**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
+ * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
+ * ============================================================================================
+ * oJson ~ Summary of Class • DEPENDENCY»
+ */
+class oJson {
+	private static $Instance;
+
+	//CONSTRUCT • Prevents multiple instantiation
+	private function __construct(){return;}
+
+
+	//CLONE • Prevent duplicate
+	private function __clone(){return;}
+
+
+	//INSTANTIATE • Return fresh instance
+	public static function Instantiate(){
+		if(is_null(self::$Instance)){
+			self::$Instance = new self();
+		}
+		return self::$Instance;
+	}
+
+
+	//ERROR • JSON error interpreter
+	public static function Error($e, $i=''){
+		$o['JSON_INPUT'] = $i; $o['JSON_ERROR'] = $e;
+		if($e == 4){$o['JSON_ERROR_MSG'] = 'Syntax error';}
+		elseif($e == 5){$o['JSON_ERROR_MSG'] = 'Malformed UTF-8 characters, possibly incorrectly encoded';}
+		if(!empty($o)){return $o;}
+	}
+
+
+	#RUN • Perform json operations (encode, decode & print)
+	public static function Run($input, $i='iENCODE'){
+		if(!empty($input)){
+			if($i == 'iENCODE'){$o = json_encode($input);}
+			elseif($i == 'iDECODE'){$o = json_decode($input);}
+			$e = json_last_error();
+			if(!empty($e)){return self::Error($e, $input);}
+			elseif($i == 'iENCODE' || $i == 'iDECODE'){return $o;}
+			elseif($i == 'iPRINT'){
+				header('Content-Type: application/json');
+				echo json_encode($input, JSON_PRETTY_PRINT);
+				exit;
+			}
+		}
+		return;
+	}
+
+	public static function Encode($input){
+		return self::Run($input, $i='iENCODE');
+	}
+
+	public static function Decode($input){
+		return self::Run($input, $i='iDECODE');
+	}
+
+	public static function Display($input){
+		return self::Run($input, $i='iPRINT');
+	}
+
+
+} // EndOfClass - oJson
