@@ -25,13 +25,13 @@ class oFile {
 
 
 	//Is • Returns TRUE/FALSE if file or directory is valid & exist
-	public static function Is($path='', $type='iFILE'){
-		if($type === 'iFILE'){
+	public static function Is($path='', $type='iFile'){
+		if($type === 'iFile'){
 			if(is_dir($path)){return false;}
 			elseif(is_file($path) === false){return false;}
 			return true;
 		}
-		elseif($type === 'iDIR'){
+		elseif($type === 'iDir'){
 			if(is_dir($path) === false){return false;}
 			return true;
 		}
@@ -40,7 +40,7 @@ class oFile {
 
 	//InCheck • Check file existence before include/require
 	public static function InCheck($path){
-		if(self::Is($path, 'iFILE') === false){
+		if(self::Is($path, 'iFile') === false){
 			return oExit::E404($path);
 		}
 		return true;
@@ -59,6 +59,38 @@ class oFile {
 				require $path;
 				return;
 			}
+		}
+	}
+
+
+	//INFO • returns file information
+	public static function Info($res='iData', $file='iSelf'){
+		if($file == 'iSelf'){$file = $_SERVER['PHP_SELF'];}
+		$path = pathinfo($file);
+
+		if($res == 'iDir' && !empty($path['dirname'])){$o = $path['dirname'];}
+		elseif($res == 'iBase' && !empty($path['basename'])){$o = $path['basename'];}
+		elseif($res == 'iExt' && !empty($path['extension'])){$o = $path['extension'];}
+		elseif($res == 'iName' && !empty($path['filename'])){$o = $path['filename'];}
+		elseif($res == 'iData'){$o = $path;}
+
+		if(!empty($o)){return $o;}
+		return false;
+	}
+
+
+	//DOWNLOAD • force file download
+	public static function Download($file, $save=''){
+		if(self::Is($file, 'iFile')){
+			$name = self::info('iName', $file);
+			$ext = self::info('iExt', $file);
+			if(!empty($save)){$save = time().mt_rand();}
+			$save = $save.'.'.$ext;
+			header('Content-Description: File Transfer');
+			header('Content-Type: application/octet-stream');
+			header('Content-Disposition: attachment; filename ="'.$save.'"');
+			readfile($file);
+			exit;
 		}
 	}
 
