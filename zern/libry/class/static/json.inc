@@ -50,14 +50,20 @@ class oJson {
 		return;
 	}
 
+
+	#ENCODE • encode json input
 	public static function Encode($input){
 		return self::Run($input, $i='iENCODE');
 	}
 
+
+	#DECODE • decode json input
 	public static function Decode($input){
 		return self::Run($input, $i='iDECODE');
 	}
 
+
+	#DISPLAY • display/run json input
 	public static function Display($input){
 		return self::Run($input, $i='iPRINT');
 	}
