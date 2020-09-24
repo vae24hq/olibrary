@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+<form name="${1:oForm}" id="${2:oForm}" ${3:class="${4:oForm}" }method="${5:POST}" action="${6:}"${7: enctype="multipart/form-data"}>${8:}</form>
+]]></content>
+	<tabTrigger>oform</tabTrigger>
+	<description>oDAO HTML5 Form</description>
+</snippet>

@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+<?php
+/**XENQ™ is an evolving framework for rapid & efficient development of modem responsive applications and APIs using PHP, SQL, HTML, CSS, JS & derived/relative technology
+ * Originator: Osawere™ O. Anthony - @iamodao - www.osawere.com  © March 2020 | Apache License
+ * ============================================================================================
+ * ${1:oClass} ~ Summary of Class • DEPENDENCY»
+ */
+class ${1:oClass} {
+	private static \$instance;
+
+	/***** [PREVENTS MULTIPLE INSTANCES] *****/
+	private function __construct(){return;}
+
+	/***** [PREVENTS DUPLICATES] *****/
+	private function __clone(){return;}
+
+	/***** [RETURNS SINGLE INSTANCE] *****/
+	public static function instantiate(){
+		if(is_null(self::\$instance)){
+			self::\$instance = new self();
+		}
+		return self::\$instance;
+	}
+
+	/***** ${2:METHOD ${3:[${4:DESCRIBE METHOD}]}} *****/
+	public static function ${5:funcName}(${6:}){${7:}}
+}
+?>
+]]></content>
+	<tabTrigger>ophpclass</tabTrigger>
+	<description>oDAO PHP Class (Static) Block</description>
+</snippet>

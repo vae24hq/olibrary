@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[
+<input name="${1:UserID}" id="${2:UserID}"${3: class="${4:form-control}"} type="${5:text}"${6: placeholder="${7:Enter your UserID}"}${8: title="${9:UserID}"} value="${10:}"${11: required}>
+]]></content>
+	<tabTrigger>oinput</tabTrigger>
+	<description>oDAO HTML5 Form Input</description>
+</snippet>
