@@ -2,9 +2,9 @@
 /**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
  * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
  * ============================================================================================
- * oJson ~ Summary of Class • DEPENDENCY»
+ * oJSON ~ Summary of Class • DEPENDENCY»
  */
-class oJson {
+class oJSON {
 	private static $Instance;
 
 	//CONSTRUCT • Prevents multiple instantiation
@@ -69,4 +69,4 @@ class oJson {
 	}
 
 
-} // EndOfClass - oJson
+} // EndOfClass - oJSON
