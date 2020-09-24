@@ -35,7 +35,7 @@ class oExit {
 				$rez['oMESSAGE'] = $msg;
 				$rez['oEXTRA'] = $extra;
 				oPrint::Neat($rez);
-				exit;
+				exit($rez);
 			}
 		}
 		exit($o);
