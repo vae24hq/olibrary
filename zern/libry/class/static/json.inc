@@ -26,9 +26,9 @@ class oJSON {
 
 	//ERROR • JSON error interpreter
 	public static function Error($e, $i=''){
-		$o['JSON_INPUT'] = $i; $o['JSON_ERROR'] = $e;
-		if($e == 4){$o['JSON_ERROR_MSG'] = 'Syntax error';}
-		elseif($e == 5){$o['JSON_ERROR_MSG'] = 'Malformed UTF-8 characters, possibly incorrectly encoded';}
+		$o['oINPUT'] = $i; $o['oERROR'] = $e;
+		if($e == 4){$o['oMSG'] = 'Syntax error';}
+		elseif($e == 5){$o['oMSG'] = 'Malformed UTF-8 characters, possibly incorrectly encoded';}
 		if(!empty($o)){return $o;}
 	}
 
