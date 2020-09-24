@@ -9,6 +9,7 @@ require 'libry/class/static/ssl.inc';
 require 'libry/class/static/json.inc';
 require 'libry/class/static/random.inc';
 require 'libry/class/static/ip.inc';
+require 'libry/class/instance/database.inc';
 
 require '_debug.inc';
 ?>
