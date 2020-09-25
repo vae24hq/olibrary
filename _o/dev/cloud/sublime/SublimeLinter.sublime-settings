@@ -1,0 +1,14 @@
+// SublimeLinter Settings - User
+{
+	"paths": {
+		"windows": ["D:/laragon/bin/php/php-7.4.5-Win32-vc15-x64"]
+	},
+	"linters": {
+		"json": {
+			"strict": false
+		},
+		"htmlhint":{
+			"args":["--config", "D:\\laragon\\www\\.htmlhintrc"],
+		}
+	}
+}

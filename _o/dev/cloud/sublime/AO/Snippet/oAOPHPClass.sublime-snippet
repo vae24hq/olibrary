@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+<?php
+/**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
+ * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
+ * ============================================================================================
+ * ${1:oClass} ~ ${2:Summary of Class} • DEPENDENCY»
+ */
+class ${1:oClass} {
+	${3:private static \$Instance;
+
+
+	//CONSTRUCT • Prevents multiple instantiation
+	private function __construct()\{return;\}
+
+
+	//CLONE • Prevent duplicate
+	private function __clone()\{return;\}
+
+
+	//INSTANTIATE • Return fresh instance
+	public static function Instantiate()\{
+		if(is_null(self::\$Instance))\{
+			self::\$Instance = new self();
+		\}
+		return self::\$Instance;
+	\}}
+
+
+	//${4:METHOD • ${5:Describe method}}
+	public static function ${6:FuncName}(${7:}){${8:}${9:return;}}
+
+
+} // EndOfClass - ${1:oClass}
+]]></content>
+	<tabTrigger>aoclass</tabTrigger>
+	<description>AO PHP Class (Static) Block</description>
+</snippet>

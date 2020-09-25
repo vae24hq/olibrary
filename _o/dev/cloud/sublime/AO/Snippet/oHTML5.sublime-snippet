@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+<!DOCTYPE html>
+<html lang="${1:en}">
+<head>
+	<meta charset="${2:utf-8}">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>${3:oDAO HTML5}</title>
+	<link href="${4:}" type="text/css" rel="${5:stylesheet}" ${6:media="${7:all}}">
+</head>
+<body>
+
+	<script src="${8:}"${9: type="text/javascript"}></script>
+</body>
+</html>
+]]></content>
+	<tabTrigger>ohtml5</tabTrigger>
+	<description>oDAO HTML5 Boiler Plate</description>
+	<!-- <scope>source.html</scope> -->
+</snippet>

@@ -1,0 +1,91 @@
+{
+	"added_words":
+	[
+		"orax",
+		"config",
+		"ao.co"
+	],
+	"alignment_chars":
+	[
+		"=",
+		":"
+	],
+	"always_show_minimap_viewport": true,
+	"bold_folder_labels": true,
+	"caret_extra_bottom": 1,
+	"caret_extra_top": 1,
+	"caret_extra_width": 1,
+	"color_scheme": "Packages/User/AO/Theme/AO.tmTheme",
+	"detect_indentation": false,
+	"dictionary": "Packages/Language - English/en_US.dic",
+	"draw_minimap_border": true,
+	"draw_white_space": true,
+	"fade_fold_buttons": true,
+	"file_exclude_patterns":
+	[
+		"README.md",
+		"LICENSE"
+	],
+	"font_size": 8,
+	"highlight_line": false,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"ignored_words":
+	[
+		"Auth",
+		"Osawere",
+		"api",
+		"app",
+		"auth",
+		"dev",
+		"devbox",
+		"func",
+		"http",
+		"https",
+		"iamodao",
+		"init",
+		"json",
+		"layoutzr",
+		"libry",
+		"mysqli",
+		"organizr",
+		"osawere",
+		"pdo",
+		"php",
+		"pre",
+		"routzr",
+		"ssl",
+		"tt",
+		"url",
+		"www"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"margin": 5,
+	"overlay_scroll_bars": "enabled",
+	"reindent_on_save":
+	[
+		"sublime-settings",
+		"php",
+		"inc",
+		"html",
+		"css",
+		"json",
+		"js"
+	],
+	"scroll_past_end": false,
+	"show_encoding": true,
+	"show_line_endings": true,
+	"spell_check": true,
+	"sublime_enhanced_keybindings": true,
+	"tab_completion": false,
+	"tab_size": 2,
+	"tabs_small": true,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": false,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": true
+}

@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+<?php
+	${1:}
+?>
+]]></content>
+	<tabTrigger>ophp</tabTrigger>
+	<description>AO PHP Block</description>
+</snippet>
