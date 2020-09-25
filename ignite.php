@@ -12,13 +12,24 @@ defined('PS') ? null : define('PS', '/');
 
 #DEFINE DIRECTORY
 defined('oROOT') ? null : define('oROOT', __DIR__.DS);
+
 defined('oLIBRY') ? null : define('oLIBRY', oROOT.'libry'.DS);
 defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
 defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
 defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
 defined('oSTATIC') ? null : define('oSTATIC', oCLASS.'static'.DS);
+
 defined('oSOURCE') ? null : define('oSOURCE', oROOT.'source'.DS);
-defined('oROUTZR') ? null : define('oROUTZR', oSOURCE.'routzr'.DS);
+
+defined('oBITZR') ? null : define('oBITZR', 'bitzr'.DS);
+defined('oLAYOUTZR') ? null : define('oLAYOUTZR', 'layoutzr'.DS);
+defined('oMODELIZR') ? null : define('oMODELIZR', 'modelizr'.DS);
+defined('oRGANIZR') ? null : define('oRGANIZR', 'organizr'.DS);
+defined('oROUTZR') ? null : define('oROUTZR', 'routzr'.DS);
+defined('oUTILIZR') ? null : define('oUTILIZR', 'utilizr'.DS);
+defined('oVIEWZR') ? null : define('oVIEWZR', 'viewzr'.DS);
+
+
 // defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 // defined('oBJ') ? null : define('oBJ', oLIBRY.'object'.DS);
 // defined('oBIT') ? null : define('oBIT', SOURCE.'bitzr'.DS);
