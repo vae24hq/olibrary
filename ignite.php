@@ -55,8 +55,8 @@ oFile::Inc(oBOND.'mobile.inc');
 
 
 #INITIALIZE PROJECT (based on a specific project)
-// #oFile::Inc(oRouter::Path('oInitFile', 'oGET', 'isOptional'), 'isOptional');
-#oFile::Inc(oROUTZR.'harvest.inc');
+// oFile::Inc(oRouter::Path('oInitFile', 'oGET', 'isOptional'), 'isOptional');
+// oFile::Inc(oROUTZR.'oharvest.inc');
 
 
 #DEVBOX FILE - for development, demo & testing
