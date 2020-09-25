@@ -48,3 +48,15 @@ LINKS
 	www.olibrary.co/app/login
 	app.olibrary.co/app/login
 }
+
+
+
+
+HOST
+#olibrary
+127.0.0.1 olibrary.co
+127.0.0.1 www.olibrary.co
+127.0.0.1 api.olibrary.co
+127.0.0.1 app.olibrary.co
+127.0.0.1 demo.olibrary.co
+127.0.0.1 olibrary.host.co
