@@ -18,6 +18,7 @@ defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
 defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
 defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
 defined('oSTATIC') ? null : define('oSTATIC', oCLASS.'static'.DS);
+defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 
 defined('oSOURCE') ? null : define('oSOURCE', oROOT.'source'.DS);
 
@@ -28,17 +29,6 @@ defined('oRGANIZR') ? null : define('oRGANIZR', 'organizr'.DS);
 defined('oROUTZR') ? null : define('oROUTZR', 'routzr'.DS);
 defined('oUTILIZR') ? null : define('oUTILIZR', 'utilizr'.DS);
 defined('oVIEWZR') ? null : define('oVIEWZR', 'viewzr'.DS);
-
-
-// defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
-// defined('oBJ') ? null : define('oBJ', oLIBRY.'object'.DS);
-// defined('oBIT') ? null : define('oBIT', SOURCE.'bitzr'.DS);
-// defined('oLAYOUT') ? null : define('oLAYOUT', SOURCE.'layoutzr'.DS);
-// defined('oMODEL') ? null : define('oMODEL', SOURCE.'modelizr'.DS);
-// defined('oRGANIZR') ? null : define('oRGANIZR', SOURCE.'organizr'.DS);
-// defined('oUTIL') ? null : define('oUTIL', SOURCE.'utilizr'.DS);
-// defined('oVIEW') ? null : define('oVIEW', SOURCE.'viewzr'.DS);
-
 
 
 #REQUIRE LIBRARY
