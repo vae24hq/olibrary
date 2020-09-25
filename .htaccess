@@ -64,13 +64,21 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
 
 
 #Prevent routing/rewriting for request on [PHP & HTML] files/URI
-RewriteCond %{REQUEST_URI} !.*\.php [NC]
-RewriteCond %{REQUEST_URI} !.*\.html [NC]
-RewriteCond %{REQUEST_URI} !.*\.htm [NC]
-RewriteCond %{REQUEST_URI} !.*\.phtml [NC]
+# RewriteCond %{REQUEST_URI} !.*\.php [NC]
+# RewriteCond %{REQUEST_URI} !.*\.html [NC]
+# RewriteCond %{REQUEST_URI} !.*\.htm [NC]
+# RewriteCond %{REQUEST_URI} !.*\.phtml [NC]
 
-RewriteRule ^orax$ orax/ [NC,QSA,END]
+
+#Forbid access to directory
+RedirectMatch 403 ^/_o/?$
+
+
+# REWRITE - for existing directory
+RewriteRule ^o_$ o_/ [NC,QSA,END]
+RewriteRule ^libry$ libry/ [NC,QSA,END]
 RewriteRule ^source$ source/ [NC,QSA,END]
+
 
 RewriteRule ^api\/$ /ignite.php?olink=api&oapi=ping [NC,QSA,END]
 RewriteRule ^api\/(.*)$ /ignite.php?olink=api&oapi=$1 [NC,QSA,END]
