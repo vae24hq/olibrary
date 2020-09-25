@@ -84,9 +84,11 @@ RewriteRule ^api\/$ /ignite.php?olink=api&oapi=ping [NC,QSA,END]
 RewriteRule ^api\/(.*)$ /ignite.php?olink=api&oapi=$1 [NC,QSA,END]
 
 
-#REWRITE - for / (/login → login.php)
-RewriteRule ^((?!api\/.*$)(?!assets\/.*$))$ /ignite.php?olink=index [NC,QSA,END]
-RewriteRule ^((?!api\/.*$)(?!assets\/.*$).*)$ /ignite.php?olink=$1 [NC,QSA,END]
+#REWRITE - for / → ignite.php?olink=index (/login → ignite.php?olink=login)
+RewriteRule ^((?!api\/.*$)(?!asset\/.*$))$ /ignite.php?olink=index [NC,QSA,END]
+
+RewriteRule ^((?!api\/.*$)(?!asset\/.*$).*)$ /ignite.php?olink=$1 [NC,QSA,END]
+
 
 #HTTP ERROR - error documents defined
 ErrorDocument 400 /ignite.php?olink=http&code=400
