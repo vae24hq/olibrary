@@ -1,0 +1,88 @@
+#Turn on Apache rewrite engine
+RewriteEngine on
+
+#Inherit parent directory's rules [BE CAREFUL WITH THIS]
+RewriteOptions inherit
+
+#Enable symbolic link
+Options +FollowSymLinks
+
+#Set default character set
+AddDefaultCharset utf-8
+
+#Preserve bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Process the following file extensions as PHP
+AddType application/x-httpd-php .php .inc .phtml .html .htm .php4 .php3 .shtml
+
+#Alternate default index pages
+DirectoryIndex index.php index.html index.phtml index.htm ignite.php
+
+#Enable GZip compression
+<IfModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file \.(html?|txt|css|js|php)$
+	mod_gzip_item_include mime ^application/x-javascript.*
+	mod_gzip_item_exclude mime ^asset/.*
+	mod_gzip_item_exclude rspheader ^source-Encoding:.*gzip.*
+</IfModule>
+
+#Disable the server signature
+ServerSignature Off
+
+#Set the server timezone
+SetEnv TZ Africa/Lagos
+
+#Set the server administrator email
+SetEnv SERVER_ADMIN admin@vae24.com
+
+#Implement caching
+<FilesMatch "\.(flv|gif|jpg|jpeg|png|ico|js|css|pdf|swf|html|htm|txt)$">
+	Header set Cache-Control "max-age=5"
+	# Header set Cache-Control "max-age=86400"
+</FilesMatch>
+
+#Set the default language
+DefaultLanguage en-US
+
+
+#Define base directory path (*only when base is different from current directory)
+RewriteBase /
+
+#Disable index (directory) listing [*possible GOTCHA when using 'Options All -Indexes']
+# Options -Indexes
+Options All -Indexes
+
+
+#Prevent possible infinite loop
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+
+
+#Prevent routing/rewriting for request on [PHP & HTML] files/URI
+RewriteCond %{REQUEST_URI} !.*\.php [NC]
+RewriteCond %{REQUEST_URI} !.*\.html [NC]
+RewriteCond %{REQUEST_URI} !.*\.htm [NC]
+RewriteCond %{REQUEST_URI} !.*\.phtml [NC]
+
+RewriteRule ^orax$ orax/ [NC,QSA,END]
+RewriteRule ^source$ source/ [NC,QSA,END]
+
+RewriteRule ^api\/$ /ignite.php?olink=api&oapi=ping [NC,QSA,END]
+RewriteRule ^api\/(.*)$ /ignite.php?olink=api&oapi=$1 [NC,QSA,END]
+
+
+#REWRITE - for / (/login → login.php)
+RewriteRule ^((?!api\/.*$)(?!assets\/.*$))$ /ignite.php?olink=index [NC,QSA,END]
+RewriteRule ^((?!api\/.*$)(?!assets\/.*$).*)$ /ignite.php?olink=$1 [NC,QSA,END]
+
+#HTTP ERROR - error documents defined
+ErrorDocument 400 /ignite.php?olink=http&code=400
+ErrorDocument 401 /ignite.php?olink=http&code=401
+ErrorDocument 403 /ignite.php?olink=http&code=403
+ErrorDocument 404 /ignite.php?olink=http&code=404
+ErrorDocument 500 /ignite.php?olink=http&code=500
