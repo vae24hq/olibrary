@@ -13,7 +13,7 @@ defined('PS') ? null : define('PS', '/');
 #DEFINE DIRECTORY
 defined('oROOT') ? null : define('oROOT', __DIR__.DS);
 
-defined('oLIBRY') ? null : define('oLIBRY', oROOT.'libry'.DS);
+defined('oLIBRY') ? null : define('oLIBRY', oROOT.'bry'.DS);
 defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
 defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
 defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
