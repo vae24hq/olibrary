@@ -1,0 +1,12 @@
+# Object file
+*.o
+
+# Ada Library Information
+*.ali
+
+# Ignore Directory
+/_zern/ignore/
+/_zern/www/
+_notes/
+.vscode/
+/_log/
