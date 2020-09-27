@@ -60,5 +60,5 @@ oFile::Inc(oBOND.'mobile.inc');
 
 
 #DEVBOX FILE - for development, demo & testing
-oFile::Inc(oROOT.'_o'.DS.'dev'.DS.'_debug.php', 'isOptional');
+oFile::Inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.php', 'isOptional');
 ?>
