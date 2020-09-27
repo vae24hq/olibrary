@@ -1,0 +1,127 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | large::desktop ~ large screen styles
+ */
+@font-face {
+   font-family: 'Questrial';
+   src: url('font/Questrial.eot');
+   src: url('font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('font/Questrial.woff2') format('woff2'),
+         url('font/Questrial.woff') format('woff'),
+         url('font/Questrial.ttf') format('truetype'),
+         url('font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+mark {background: #1D88BC; color: #DAEFFA; padding: 0 2px;}
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); border: 1px solid rgba(0,0,0, 0.2);}
+::-webkit-scrollbar-track:hover {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1);}
+::-webkit-scrollbar-thumb {
+  background: #166B94; outline: 0; border: 0;
+  background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);
+}
+
+body {font-family: 'Questrial', Helvetica, Arial, Tahoma, sans-serif; line-height: 1.4; min-width: 800px;}
+
+
+/*topbar*/
+#topbar {max-width: 1024px; margin: 0 auto;}
+#topbar .breadcrumb {float: left;}
+#topbar .date {float: right;}
+
+
+/*header*/
+#header {max-width: 1024px; margin: 0 auto;}
+#logo {float: left;}
+#header .contact {float: right; line-height: 1.2;}
+#header .email {display: block;}
+#header .phone {display: block;}
+
+
+/*navigation*/
+#navigation {max-width: 1024px; margin: 0 auto;}
+#navigation li a.menu {
+  display: block; background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%); text-transform: capitalize;
+}
+#navigation li a[class~="active"] {cursor: default;}
+
+@media screen and (min-width: 640px) {
+  .js .nav-collapse {position: relative;}
+  .js .nav-collapse.closed {max-height: none;}
+  .nav-toggle {display: none;}
+
+  #navigation li {float: left;}
+  #navigation li a.menu {padding: 10px 12px; border-right: 1px solid #055285;}
+
+  #navigation li:last-child a.menu {padding-bottom: 10px; border: none;}
+  #navigation li a.menu:hover {padding-bottom: 8px; border-bottom: 2px solid #9CC7E2;}
+
+  @media screen and (max-width: 675px) {
+  #navigation li:nth-child(7) a.menu {display: none;}
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .nav-toggle {
+    color: #B1C7EB; text-shadow: 1px 1px 1px #000000; display: block; padding: 12px 12px 12px 46px;
+    background-repeat: no-repeat; background-position: 10px center; background-color: 244868; background-image: url('../icon/nav.gif');
+  }
+  .nav-toggle:focus {outline: 0;}
+  .nav-toggle:hover, #navigation a[class='nav-toggle active'] {
+    color: #629BD5; background-color: #0C1823; background-image: url('../icon/nav-hover.gif'); border-color: #224462;
+  }
+  #navigation li a.menu {padding: 10px; border-bottom: 1px solid #055285;}
+  #navigation li:last-child a.menu {border-bottom: 0;}
+  #navigation li a.menu:hover {border-color: #9CC7E2;}
+}
+
+
+/*banner*/
+#banner {max-width: 1024px; margin: 0 auto; background-size: cover;}
+#banner .heading {
+  position: absolute; top: 20px; right: 10px; z-index: 10; font-size: 1.2em; text-align: right; padding: 4px 20px;
+}
+#banner .caption {
+  background: rgba(0,0,0, 0.5); left: 20px; bottom: 30px; margin: 0;
+  font-size: 1.1em; padding: 4px 8px; text-align: left; border-radius: 3px; border: 1px solid rgba(255,255,255,0.5);
+}
+.banner_nav {
+  background: transparent url("../banner/slide-arrow.gif") no-repeat left top;
+  top: 45%; height: 61px; width: 38px; margin-top: -45px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px;
+}
+
+
+/*content*/
+#content {max-width: 1024px; margin: 0 auto;}
+#main, #side {display: block; min-height: 250px; padding-bottom: 1000em; margin-bottom: -1000em;}
+#main {width: 75%; float: left;}
+#side {width: 25%; float: right;}
+
+
+/*separator*/
+#separator {max-width: 1024px; margin: 0 auto;}
+
+
+/*secondary*/
+#secondary {max-width: 1004px; margin: 0 auto; background-size: cover; padding: 10px;}
+#secondary .inside {margin: 0 auto;}
+#secondary .wrap {line-height: 1.4;}
+#brief, #contact, #mailing {border: 1px solid rgba(255,255,255, 0.3); width: 32.6%; padding-bottom: 1000em; margin-bottom: -1000em;}
+#brief {float: left;}
+#contact {float: right;}
+#mailing {margin-left: auto; margin-right: auto;}
+#secondary .content {margin: 10px;}
+
+
+/*footer*/
+#bottom {max-width: 1024px; margin: 0 auto;}
+#footer .inside {padding: 0 10px;}
+#footer .copyright {float: left;}
+#footer .powered {float: right;}

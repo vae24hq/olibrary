@@ -1,0 +1,29 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | default::asset ~ general styles
+ */
+
+@font-face {
+   font-family: 'Questrial';
+   src: url('upload/font/Questrial.eot');
+   src: url('upload/font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('upload/font/Questrial.woff2') format('woff2'),
+         url('upload/font/Questrial.woff') format('woff'),
+         url('upload/font/Questrial.ttf') format('truetype'),
+         url('upload/font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+
+body {
+	color: #504545;
+	font-size: 1em;
+	line-height: 1.48;
+	font-family: 'Questrial', Arial, Helvetica, sans-serif;
+	background: #F1EFEF url('../media/bg.gif');
+	position: relative;
+	margin: 0 auto;
+}
+a {color: #1D88BC; text-decoration: none;}
+a:hover {color: #DE1528;} a:active {color: #CC0028;}
+mark {background: #1D88BC; color: #DAEFFA;}

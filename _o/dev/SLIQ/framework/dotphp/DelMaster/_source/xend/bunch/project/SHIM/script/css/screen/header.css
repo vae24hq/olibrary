@@ -1,0 +1,37 @@
+/*begin header CSS*/
+#hedbar {
+	line-height:16px;
+	min-width:900px;
+	padding-top:2px;
+	padding-right:10px;
+	padding-bottom:2px;
+	padding-left:10px;	
+	border: solid 1px #DDDDDD;
+	background-color:#E0E0E0;
+	background-image:url('../../../media/jpg/hedbarBg.jpg');
+	background-repeat:repeat;
+	background-position:top left;
+	position:abosolute;
+	z-index: -9;
+}
+.hedbar greetings { /*begin greetings*/
+	letter-spacing:0.7px;
+	text-shadow: 1px 1px 1px #FFFFFF;
+	display: block;
+	float: left;
+}
+.hedbar greetings user {
+	color: #1783DB;
+	letter-spacing:0px;
+	text-transform:uppercase;
+}
+
+.hedbar date { /*begin date*/
+	color:#535353;
+	font-family: "Palatino Linotype", Verdana, Geneva, sans-serif;
+	letter-spacing:1px;
+	text-shadow: 0px 1px 1px #FFFFFF;
+	text-transform:capitalize;
+	display: block;
+	float: right;
+}/*end header CSS*/

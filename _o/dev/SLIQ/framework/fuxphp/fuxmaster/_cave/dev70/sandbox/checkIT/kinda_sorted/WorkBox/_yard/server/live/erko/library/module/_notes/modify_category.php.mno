@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_dataset" value="name:puid;datatype:int,name:suid;datatype:string,name:buid;datatype:string,name:entryDate;datatype:timestamp,name:entryStamp;datatype:string,name:entryIs;datatype:string,name:entryBy;datatype:string,name:category;datatype:string,name:acronym;datatype:string,name:isSubOf;datatype:string,name:details;datatype:string" />
+</info>

@@ -1,0 +1,31 @@
+/* facil™ ver 0.1 - a cliqcore™ web development framework (HTML/CSS/PHP/MySQL)
+ * SiEMO Inc - iamSiEMO™ [www.siemo.com.ng]
+ * CSS | print.css - css document for print layout
+ * Author(s)	->Crieg A. Siemo ~ www.iamsiemo.com
+ * © July 2014 cliqcore™ - www.cliqcore.com
+ */
+ 
+body {
+	background: none;
+	font-family: Georgia, serif;
+	color: black;
+}
+#page {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	background: none;
+}
+#header, #footer, #sidebar, audio, video, object, embed {
+	display: none;
+}
+article a:after, aside a:after {
+	content: " [" attr(href) "] ";
+}
+img {
+	max-width: 100%;
+}
+#printed {
+	padding: 6px;
+	border: 1px solid #666;
+}

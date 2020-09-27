@@ -1,0 +1,12 @@
+input[type=checkbox].checkbox {
+	position: absolute; overflow: hidden; clip: rect(0 0 0 0); 
+	height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+input[type=checkbox].checkbox + label.checkbox-label {
+	padding-left:20px; height:15px; display:inline-block;
+	line-height:15px; background-repeat:no-repeat;
+	background-position: 0 0; font-size:15px;
+	vertical-align:middle; cursor:pointer;
+}
+input[type=checkbox].checkbox:checked + label.checkbox-label {background-position: 0 -15px;}
+.checkbox-label{background-image:url(../grafix/form/checkbox.png);}

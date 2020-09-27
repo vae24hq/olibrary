@@ -1,0 +1,33 @@
+#Turn on Rewrite Engine
+RewriteEngine on
+
+#Inherit Parent Rules
+RewriteOptions inherit
+
+#Disable Directoy Listing
+Options All -Indexes
+
+#Enable Symbolic Links
+Options +FollowSymLinks
+
+#Parse the default character set
+AddDefaultCharset utf-8
+
+#Preserve Bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Define Basepath
+#RewriteBase /path/
+
+#Prevent Looping
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Rewrite Rules
+RewriteRule ^((?!^page)(?!^redirect)(?!^download).*)$ /index.php?page=$1 [NC,QSA,L]
+
+RewriteRule ^page$|^page/(.*)$ /index.php?page=$1 [NC,QSA,L]
+RewriteRule ^redirect|redirect/(.*)$ /index.php?act=redirect&location=$1 [NC,QSA,L]
+RewriteRule ^download$|download/(.*)$ /index.php?act=download&file=$1 [NC,QSA,L]

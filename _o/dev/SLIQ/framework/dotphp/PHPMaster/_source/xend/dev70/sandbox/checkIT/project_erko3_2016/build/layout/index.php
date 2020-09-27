@@ -1,0 +1,9 @@
+<?php
+erko::piece('topbar');
+erko::piece('header');
+erko::piece('navigation');
+erko::piece('banner');
+erko::piece('separator');
+erko::piece('secondary');
+erko::piece('bottom');
+?>

@@ -1,0 +1,119 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | medium::asset ~ medium screen styles
+ */
+
+@font-face {
+   font-family: 'Questrial';
+   src: url('upload/font/Questrial.eot');
+   src: url('upload/font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('upload/font/Questrial.woff2') format('woff2'),
+         url('upload/font/Questrial.woff') format('woff'),
+         url('upload/font/Questrial.ttf') format('truetype'),
+         url('upload/font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+body {font-family: 'Questrial', Helvetica, Arial, Tahoma, sans-serif; line-height: 1.5; min-width: 600px;}
+
+
+/*Begin HEADER*/
+@media screen and (max-width: 758px){
+	.contactInfo {display: none;}
+}
+
+
+/*Begin NAVIGATION*/
+.mainNav {margin: 0 auto;}
+.mainNav .menu {
+	line-height: 2em; display: block; background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+}
+
+@media screen and (min-width: 640px){
+	.mainNav li {float: left;}
+	.mainNav .menu {padding: 10px 14px; border-right: 1px solid #055285; text-transform: capitalize;}
+	.mainNav li:last-child .menu {border-right: 0;}
+	.mainNav .menu:hover {padding-bottom: 8px; border-bottom: 2px solid #9CC7E2;}
+}
+@media screen and (min-width: 640px) and (max-width: 756px){
+	.mainNav .menu {padding: 14px 11px;}
+	.mainNav .menu:hover {padding-bottom: 12px;}
+}
+@media screen and (min-width: 640px) and (max-width: 714px){
+	.mainNav li:nth-child(7) a.menu {display: none;}
+}
+@media screen and (min-width: 640px) and (max-width: 660px){
+	.mainNav li:nth-child(2) a.menu {display: none;}
+	.mainNav .menu {padding: 14px;}
+}
+
+@media screen and (max-width: 639px) {
+	.nav-toggle {
+		color: #B1C7EB; text-shadow: 1px 1px 1px #000000; display: block; padding: 12px 12px 12px 46px;
+		background: #244868 url('image/nav.gif') no-repeat 10px center;
+	}	
+	.nav-toggle:hover, .mainNav a[class='nav-toggle active']{
+		color: #629BD5; background: #0C1823 url('image/nav-hover.gif') no-repeat 10px center; border-color: #224462;
+	}
+	.mainNav .menu {line-height: 2em; padding: 10px; border-bottom: 1px solid #055285; text-transform: uppercase;}
+	.mainNav li:last-child .menu {border-bottom: 0;}
+	.mainNav .menu:hover {border-color: #9CC7E2;}
+}
+
+
+/*Begin BANNER*/
+.pageBanner {margin: 0 auto;}
+.pageBanner .heading {
+	position: absolute; top: 20px; left: 0; right: 0; z-index: 10; font-size: 1em; text-align: center; font-style: italic; padding: 4px 8px;
+}
+.caption {
+	background: #000; background: rgba(0,0,0, 0.8); left: 0; right: 0; bottom: 0; margin: 0; font-size: 1em; padding: 5px 10px; text-align: center;
+}
+.bannerslides_nav {
+	background: transparent url("slide/slide-arrow-tablet.gif") no-repeat left top; top: 50%; height: 46px; width: 38px; margin-top: -45px;
+}
+
+
+/*Begin SEPERATOR*/
+.separator {font-size: 3px;}
+
+
+/*Begin SECONDARY*/
+.moreInfo {background-size: cover;}
+.contact, .search, .mailing {border: 1px solid #FFFFFF; border: 1px solid rgba(255,255,255, 0.3);}
+.searchForm {margin-bottom: 20px;}
+@media screen and (min-width: 950px){
+	.moreInfo {padding: 10px;}
+	.contact, .search, .mailing {width: 32.6%; padding-bottom: 1000em; margin-bottom: -1000em;}
+	.contact {float: left;}
+	.search {float: right;}
+	.mailing {margin-left: auto; margin-right: auto;}
+	.moreInfo .content {margin: 10px;}
+}
+@media screen and (min-width: 655px) and (max-width: 949px){
+	.moreInfo {padding: 10px;}
+	.contact {margin-bottom: 10px;}
+	.search, .mailing {width: 49%; padding-bottom: 1000em; margin-bottom: -1000em;}
+	.search {float: left;}
+	.mailing {float: right;}
+	.moreInfo .content {margin: 10px;}
+}
+@media screen and (max-width: 654px) {
+	.contact, .search, .mailing {margin: 10px; padding: 10px 10px 20px;}
+}
+
+.socialMedia li {margin-right: 6px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {
+	background: url('image/stripes-sm-tablet.png') no-repeat; height: 44px; width: 44px; background-size: 220px 132px; border-radius: 3px;
+}
+a.facebook {background-position: 0 0;}
+a.twitter {background-position: -44px 0;}
+a.google {background-position: -88px 0;}
+a.youtube {background-position: -132px 0;}
+a.linkedin {background-position: -176px 0;}
+
+a.facebook:hover {background-position: 0 -88px;}
+a.twitter:hover {background-position: -44px -88px;}
+a.google:hover {background-position: -88px -88px;}
+a.youtube:hover {background-position: -132px -88px;}
+a.linkedin:hover {background-position: -176px -88px;}

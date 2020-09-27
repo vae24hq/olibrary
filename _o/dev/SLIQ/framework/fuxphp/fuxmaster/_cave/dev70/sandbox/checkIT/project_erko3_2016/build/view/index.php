@@ -1,0 +1,1 @@
+<p>{view:Home} - This is the default INDEX page!</p>

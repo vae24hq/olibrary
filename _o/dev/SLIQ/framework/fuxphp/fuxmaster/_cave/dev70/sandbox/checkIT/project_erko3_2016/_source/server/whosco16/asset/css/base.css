@@ -1,0 +1,148 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | base::base ~ css global styles
+ */
+body {
+	font-family: Helvetica, Arial, Tahoma, sans-serif;
+	background: #F1EFEF url('../media/bg.gif');
+	color: #504545;
+	margin: 0 auto;
+}
+a {color: #1D88BC; text-decoration: none;}
+a:hover {color: #DE1528;} a:active {color: #CC0028;}
+
+
+/*form*/
+input[type=text], input[type=email], input[type=tel] {
+	background: url( '../media/blank.png') repeat-x top; border: 1px solid #85B1DE; line-height: 1.5; padding: 0 2px;
+}
+input[type=text]:hover, input[type=email]:hover, input[type=tel]:hover,
+input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus {border: 1px solid #629BD5;}
+input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus {
+	outline: 1px solid #DCE9F5; background: #D9E8F4; background-image: none;
+}
+input[type=submit], input[type=reset] {margin: 0 2px; text-align: center; line-height: 1.4; font-size: 0.9em;}
+input[type=submit]{
+	background: #428BCA; color: #CEE1F0; text-shadow: 1px 1px 0 #204A71;
+	background:linear-gradient(#306B9F, #3674AC, #3B7EB8, #3674AC, #306B9F);
+	border: 1px solid #428BCA; padding: 2px 8px;
+}
+input[type=submit]:hover, input[type=submit]:focus {background: #3378B7; border: 1px solid #75A9D9;}
+input[type=reset] {
+	background: #9A001E; color: #CEE1F0; text-shadow: 1px 1px 0 #333333;
+	background:linear-gradient(#9A001E, #BA0024, #CC0028, #BA0024, #9A001E);
+	border: 1px solid #9A001E; padding: 2px 8px;
+}
+input[type=reset]:hover, input[type=reset]:focus {background: #CC0028; border: 1px solid #FF9FB3;}
+
+
+/*topbar*/
+#topbar {
+	text-shadow: 1px 1px 1px #252525;
+	background: #01609E;
+	font-size: 0.9em;
+	color: #EBF1FA;
+	padding: 5px 0;
+	position: relative;
+}
+#topbar a.brand {color: #77C5EA;}
+#topbar a.brand:hover {color: #A3D8F1;}
+
+#topbar .breadcrumb {padding: 0 10px;}
+#topbar .date {padding: 0 10px;}
+
+
+/*header*/
+#header {
+	text-shadow: 1px 1px 1px #252525;
+	background: #0171BC;
+	color: #EBF1FA;
+	padding: 10px 0;
+	position: relative;
+}
+#logo {padding: 0 10px;}
+#header .contact {font-size: 0.9em; padding: 0 10px; text-align: right;}
+#header a.email, #header a.phone {color: #EBF1FA;}
+#header a.email:hover, #header a.phone:hover {color: #D5E1F4;}
+
+
+/*navigation*/
+#navigation {border-top: 2px solid #015389; border-bottom: 1px solid #014069; font-size: 0.938em; background: #01609E; position: relative;}
+#navigation li a.menu {color: #CBE7FA; text-shadow: 0 1px 1px #333333; transition: background 0.2s ease-in-out; background: #013E66;}
+#navigation li a.menu:hover, #navigation li a[class~="active"] {text-shadow: 0 1px 1px #000000;}
+#navigation li a.menu:hover {background: rgba(255,255,255,0.2); color: #8CCBF4;}
+#navigation li a[class~="active"] {background: #0B6DAE;}
+#navigation li a[class~="active"]:hover {background-color: rgba(0,0,0,0.5);}
+
+
+/*banner*/
+#banner {
+	background: #CB002F url('../banner/bg.png') no-repeat top center; 
+	text-shadow: 1px 1px 1px #252525; color: #EBF1FA; position: relative; overflow: hidden;
+}
+#banner .heading {line-height: 1;}
+#banner .caption {
+	font-family: 'Palatino Linotype'; font-style: italic; text-shadow: none; color: #FFFFFF;
+	display: block; position: absolute; z-index: 2; max-width: none; text-align: right;
+}
+.banner_nav {
+	position: absolute; -webkit-tap-highlight-color: rgba(0,0,0,0); left: 0; opacity: 0.7; z-index: 3;
+	overflow: hidden; text-decoration: none; text-indent: -9999px;
+}
+.banner_nav:active {opacity: 1.0;}
+.banner_nav.next {left: auto; background-position: right top; right: 0;}
+
+
+/*content*/
+#content {overflow: hidden; }
+#main {background: #FFFFFF;}
+#side {background: #F4F6F5; color: #77C5EA; line-height: 1.3;}
+#content .inside {padding: 10px;}
+
+
+/*separator*/
+#separator {background: #4C1B52 url('../media/bg-separator.png') no-repeat center; font-size: 1px;}
+
+
+/*secondary*/
+#secondary {background: #D6D4DB url('../media/bg-secondary.png') no-repeat; background-position: top; color: #59585A;}
+#secondary .inside {overflow: hidden; font-size: 0.938em; line-height: 1.3; }
+#secondary .heading {text-transform: uppercase; color: #1D88BC; font-size: 1em; text-shadow: 0 1px 1px #75A9D9;}
+#brief, #contact, #search, #mailing {background: rgba(255,255,255, 0.2);}
+.mailingTable, .searchTable {margin-top: 8px;}
+.mailingTable, .searchTable, input[type=text], input[type=email], input[type=tel] {width: 98%;}
+#secondary th, #secondary td {padding: 2px 4px 2px 0;}
+.searchTable th {width: 20%;}
+#mailing th {text-align: right;}
+#mailing td.btn {padding-top: 10px; vertical-align:bottom;}
+#secondary label {font-weight: bold;}
+#mailing th label {margin-right: 6px;}
+
+
+/*footer*/
+#bottom {
+	background: #2E2E2E url('../media/bg-footer.png') center;
+	text-shadow: 1px 1px 0 #1D1D1D; border-top: 2px solid #CC0028; font-size: 0.9em;
+}
+#footer {background: #000000; background: rgba(0,0,0, 0.3);	color: #848282; padding: 10px 0;}
+#nav-wrap {padding: 10px;}
+#footerNav {text-align: center;}
+#footerNav li {display: inline;}
+#bottom li:after {content: ' |'; padding-left: 0;}
+#bottom li:last-child:after, #bottom li.last:after {content: ''; padding: 0;}
+
+#bottom li a.menu, #bottom li a[class~="active"]:hover{color: #B9B7B7;}
+#bottom li a.menu:hover {color: #CECCCC;}
+#bottom li a[class~="active"] {color: #848282; cursor: text;}
+#bottom li a.menu, #bottom li a[class~="active"] {padding: 0 4px; text-shadow: 1px 1px 1px #000000; text-transform: capitalize;}
+
+#bottom a.brand {color: #DAD1A9;}
+#bottom a.brand:hover {color: #CDC48D;}
+
+
+#main .flex {width: 100%; margin: 5px;}
+#main .left, #main .right, #main .center {width: 33%;}
+#side .flex {width: 100%;}

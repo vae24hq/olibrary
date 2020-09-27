@@ -1,0 +1,27 @@
+/*.navbar-nav .fas {margin-right: 5px;}
+.odao-radio-label {margin-left: 10px; margin-right: 10px;}
+.odao-radio-div{margin-top: 10px; margin-left: 10px;}
+.odao-label {font-weight: bold; color: rgba(0,0,0,.8);}
+
+.odao-navspace {margin: auto 10px;}
+.odao-actbtn {margin-right: 10px;}*/
+body{
+	min-width:1000px;        /* Suppose you want minimum width of 1000px */
+	width: auto !important;  /* Firefox will set width as auto */
+	width:1000px;            /* As IE6 ignores !important it will set width as 1000px; */
+}
+.o-label {padding-right: 10px;}
+.o-pad-top {padding-top: 10px;}
+.o-pad-topbottom {padding-top: 10px; padding-bottom: 10px;}
+.o-bottom-button {margin-top: 40px; margin-bottom: 20px;}
+.o-pad-left {padding-left: 10px;}
+.o-page-title {color: #4E73DF; font-size: 1.12em; text-transform: uppercase; font-weight: normal;}
+.o-login-page {margin-top: 50px;}
+.o-topnav {background-color: #182D6B;}
+.o-btn {margin-left: 5px;}
+select option:first-child {
+	background: grey !important;
+}
+select option[disabled]:first-child {
+	display: none;
+}

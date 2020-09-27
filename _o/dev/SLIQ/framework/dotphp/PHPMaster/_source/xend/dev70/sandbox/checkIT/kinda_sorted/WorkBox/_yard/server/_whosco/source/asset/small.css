@@ -1,0 +1,18 @@
+/* erko3™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology.
+ * © July 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | small::asset ~ small screen styles
+ */
+
+body {line-height: 1.4; min-width: 300px;}
+
+/*Begin HEADER styles*/
+@media screen and (max-width: 470px){
+	/*#translatebox {display: none;}*/
+}
+
+
+/*Begin FOOTER styles*/
+#render {padding: 10px; background: rgba(0,0,0, 0.4);}

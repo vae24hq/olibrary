@@ -1,0 +1,5 @@
+@media screen and (min-width: 37.5em){
+.heroBanner .heroFootnote.flexibleHero {
+    	z-index: 1;
+	}
+}

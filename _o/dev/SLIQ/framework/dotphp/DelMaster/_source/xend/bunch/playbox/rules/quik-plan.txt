@@ -1,0 +1,116 @@
+Quik™ - build quickly with quik framework
+
+
+
+DEBURG VIA
+--------------------------------------------------------------------------------------------------------------------------------
+	http://quik.io/
+	http://www.quik.io/
+	http://framework.io/quik/
+	http://quik.framework.io/
+
+
+
+ACTIONS
+--------------------------------------------------------------------------------------------------------------------------------
+	LAUNCH - launch a specified location on the website [quik.io/bio | quik.io/page/bio ~ quik.io/index.php?action=launch&page=bio]
+	REDIRECT - redirects URL to a specified location [quik.io/redirect/space.html ~ quik.io/index.php?action=redirect=&location=space.html]
+	DOWNLOAD - force a specific content (file) to be downloaded [quik.io/download/0121 ~ quik.io/index.php?action=download&file=0121]
+
+PAGE {URL/POST} ANATOMY
+--------------------------------------------------------------------------------------------------------------------------------
+	http://quik.io/?page=VIEW|&status=STATUS|&action=ACTION 
+	[www.quik.io/?page=login&action=authenticate&status=authenticating]
+	[www.quik.io/?page=login&status=failed]
+
+ ROUTING
+--------------------------------------------------------------------------------------------------------------------------------
+	api - /api/ [cyar.io/api/login] {calls the api organizer}
+	app|site - / [cyar.io/login] {try to load 'login' organizer else load 'page' organizer}
+
+	#EXAMPLE
+	[cyar.io/api/summary] - organizer:api > calls api:summary
+	[cyar.io/register] - organizer:register > calls model:register ~ application
+	[cyar.io/bio] - organizer:page > calls view:bio ~ page
+
+	DEFAULT
+	[cyar.io] - cyar::start() > organizer:index {default landing}
+
+
+	#API
+	A URL is requested e.g http://cris.io/api/status
+	Organizer for 'api' is called, it calls the relevant model, compute and returns out
+
+	#APP
+	A URL is requested e.g http://cris.io/login
+	Organizer for 'login' is called, it determines the layout and loads it
+	Layout has the sections (where necessary), and calls the page-area to its spot on the layout
+	Area has the content, it outputs it.
+
+	#PAGES
+	A URL is requested e.g http://cris.io/about
+	Organizer for 'page' is called, it determines the page-layout and loads it
+	Layout has the sections (where necessary), and calls the page-area to its spot on the layout
+	Area has the content, it outputs it.
+
+
+
+URL SAMPLE (Login Page)
+--------------------------------------------------------------------------------------------------------------------------------
+	www.quik.io/login
+	www.quik.io/?page=login | www.quik.io/index.php?page=login
+	www.quik.io/page/login
+	www.quik.io/index.php?opp=page&page=login
+
+	www.quik.io/login?action=failed
+	www.quik.io/?page=login&status=failed
+
+
+
+SCRIPT COMMENT
+--------------------------------------------------------------------------------------------------------------------------------
+/* quik™ framework is an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built & maintained by Deron Ellse [@deronellse] using PHP, MySQL, HTML, CSS, JS & derived technology. © 2016 OIAVO™ [www.oiavo.net]
+ * ====================================================================================================================================
+ * PHP | root::index ~ default file
+ */
+
+Quik™ framework is an evolving library for developing modem responsive static or dynamic website, database driven web applications, APIs and other web services quickly and efficiently while maintaining a small footprint and respecting the developer’s workflow.
+Quik™ is built and maintained using PHP, MySQL, HTML, CSS, JS and derived technology by OIAVO™, with Deron Ellse [@deronellse] as the project author and lead developer.
+
+
+CSS
+------------------------------------------------------
+	clear
+	default
+	ie
+	large
+	medium
+	small
+
+CORE
+------------------------------------------------------
+	utility {combine class, function & helper - html::Nav() [class.db | func.string | helper.login]}
+	plug-in
+
+
+PIECE
+------------------------------------------------------
+	code
+	layout
+	slice
+
+
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.visuallyhidden { 
+	position: absolute; 
+	overflow: hidden; 
+	clip: rect(0 0 0 0); 
+	height: 1px; width: 1px; 
+	margin: -1px; padding: 0; border: 0; 
+}

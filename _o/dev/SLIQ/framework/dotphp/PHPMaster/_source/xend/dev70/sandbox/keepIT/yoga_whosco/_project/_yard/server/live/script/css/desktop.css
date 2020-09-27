@@ -1,0 +1,95 @@
+/* facil™ ver 0.1 - a cliqcore™ web development framework (HTML/CSS/PHP/MySQL)
+ * SiEMO Inc - iamSiEMO™ [www.siemo.com.ng]
+ * CSS | desktop.css - css document for desktop layout
+ * Author(s)	->Crieg A. Siemo ~ www.iamsiemo.com
+ * © July 2014 cliqcore™
+ */
+
+a[href^="tell:"]{cursor:text;}
+.desktop-view {display:block;}  .desktop-off {display:none;}
+body {line-height: 1.2; font-family:'aftasans', Helvetica, Arial, Geneva, sans-serif;}
+
+/*layout*/
+#page {
+	min-width:994px;
+	max-width: 996px;
+}
+#content #main {float:left; max-width:718px; min-height:400px;}
+#content #sidebar {float:right; width:260px;}
+#sidebar img {display:block; width:98%; max-height:200px; margin: 2px auto 6px;}
+#footer {background-image:url(../../media/bg/dark.png); line-height:40px; padding-bottom:6px;}
+.title { font-size:2em;}
+a.logo {
+	height:65px; width:162px;
+	background:url(../../media/logo.png) no-repeat 0 -1px;
+	border-radius: 32px 32px 60px 60px;
+}
+.slogan {max-width:440px;}
+.marquee {margin:0 0 0 6px; display:block;}
+#nav .search {float:right;}
+#nav .menu {float:left;}
+#toggle {display:none;}
+.pagebottom .content {margin:8px 6px 6px;}
+.subscribe, .brief, .directions,
+#secondary .contact {
+	float:left;
+	border-right:1px solid #313131;
+	min-width:234px;
+	max-width:240px;
+	padding-bottom:1000em;
+	margin-bottom: -1000em;
+}
+.brief {max-width:248px;}
+#secondary .contact {max-width:245px;}
+.subscribe {border-right:none;}
+.socialmedia li { margin: 0 4px;}
+
+section#main {box-shadow: 1px 1px 2px 0 #999;}
+.left-box {float:left; max-width:48%; padding:6px;}
+.right-box {float:right;  max-width:48%; padding:6px;}
+.aside-container {min-height: 286px;}
+.mainnavigation a {display:block; padding:0 14px 1px 7px; line-height:3em; text-transform:capitalize; border-right:1px solid #FFEBAF; font-size: 0.9em; font-family: 'aaargh',Helvetica, Arial, Geneva, sans-serif;	transition:background 0.3s ease-in-out;}
+
+.copyright a.brand, a.footer-link, .anchor a.scrollup {transition:color 0.3s ease-in-out;}
+a.footer-link {text-transform:lowercase;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {height:30px; width:30px; background-size: 150px 90px;}
+
+a.facebook{background-position:0 0;}
+a.twitter{background-position:-30px 0;}
+a.google{background-position:-60px 0;}
+a.youtube{background-position:-90px 0;}
+a.linkedin{background-position:-120px 0;}
+
+a.facebook:hover{background-position:0 -60px;}
+a.twitter:hover{background-position:-30px -60px;}
+a.google:hover{background-position:-60px -60px;}
+a.youtube:hover{background-position:-90px -60px;}
+a.linkedin:hover{background-position:-120px -60px;}
+a.footer-link:hover{text-decoration:underline;}
+.mainnavigation a:hover {border-right:1px solid #FFF;}
+.mainnavigation li a:hover, .mainnavigation li:hover  a {
+	background:#AD1D24;
+	padding-bottom:0;
+	border-bottom: 1px solid #EF9024;
+}
+
+a.facebook:focus{background-position:0 -30px;}
+a.twitter:focus{background-position:-30px -30px;}
+a.google:focus{background-position:-60px -30px;}
+a.youtube:focus{background-position:-90px -30px;}
+a.linkedin:focus{background-position:-120px -30px;}
+.mainnavigation li:last-child a { border-right:none;}
+
+.title:before {content:'whosco ventures limited';}
+.copyright a.brand:before {content:'Whosco Ventures Limited';}
+#footer .navigation li:after { content:'/'; margin: 0 6px;}
+#footer .navigation li:last-child:after {content:' ';}
+
+/*form styles*/
+label {display:none;}
+input[type=text]{width:90%; margin:6px 0;}
+input[type="submit"] {display:block; margin:10px 0;}
+input[name=q], input[type="submit"]  {display:inline-block; width:auto;}
+
+#banner {min-height:250px;}
+#content {margin-bottom:6px; margin-top:6px;}

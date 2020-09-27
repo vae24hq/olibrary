@@ -1,0 +1,132 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | large::desktop ~ large screen styles
+ */
+@font-face {
+   font-family: 'Questrial';
+   src: url('font/Questrial.eot');
+   src: url('font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('font/Questrial.woff2') format('woff2'),
+         url('font/Questrial.woff') format('woff'),
+         url('font/Questrial.ttf') format('truetype'),
+         url('font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+mark {background: #1D88BC; color: #DAEFFA; padding: 0 2px;}
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); border: 1px solid rgba(0,0,0, 0.2);}
+::-webkit-scrollbar-track:hover {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1);}
+::-webkit-scrollbar-thumb {
+  background: #166B94; outline: 0; border: 0;
+  background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);
+}
+
+body {
+	font-family: 'Questrial', Helvetica, Arial, Tahoma, sans-serif; line-height: 1.4;
+	background-image: url('../media/bg-large.jpg');  min-width: 800px;
+}
+@media only screen and (min-device-width: 1024px){
+body{background-size: 100%;}
+}
+
+
+/*topbar*/
+#topbar .inside {padding: 5px 10px; max-width: 970px;}
+#topbar .breadcrumb {float: left;}
+#topbar .date {float: right;}
+
+
+/*header*/
+#header .inside {padding: 10px; max-width: 970px;}
+#logo {display: block; float: left; margin-right: 10px;}
+#header .contact {float: right; display: block; text-align: right; margin-top: 24px;}
+#header .phone, #header .email {font-style: italic; display: block;}
+
+
+/*navgation*/
+@media screen and (min-width: 640px) {
+	#navigation {background: rgba(255, 255, 255, 0.7); border-bottom: 2px solid #015389;}
+	#navigation .inside {margin: 0 auto; max-width: 990px;}
+	#navigation li {float: left;}
+	#navigation li a.menu {
+		display: block; padding: 12px; text-transform: capitalize; text-shadow: 1px 1px 0 #CCCCCC;
+	}
+	#navigation li a.menu:hover,
+	#navigation li a.menu:focus {padding-top: 10px; border-top: 2px solid #9CC7E2; background: rgba(255, 255, 255, 0.3);}
+	#navigation li a[class~="active"]{color: #9CC7E2; padding-top: 10px; border-top: 2px solid #9CC7E2; background: rgba(255, 255, 255, 0.7);}
+	#navigation li a.menu:hover, #navigation li a.menu:focus {color: #005E91;}
+	#navigation li a[class~="active"]:hover{color: #AAA;}
+}
+
+@media screen and (max-width: 639px) {
+	#navigation {background: #01609E; border-bottom: 1px solid #015389; font-size: 0.938em;}
+	.nav-toggle {
+		color: #B1C7EB; text-shadow: 1px 1px 1px #000000; cursor: pointer; display: block; padding: 10px 10px 8px 40px;
+		background-repeat: no-repeat;	background-position: 8px 7px; background-color: #244868; background-image: url('../icon/nav.gif');
+	}
+	.nav-toggle:focus {outline: 0;}
+	#navigation a[class='nav-toggle active'], .nav-toggle:hover {
+		color: #629BD5; background-color: #0C1823; background-image: url('../icon/nav-hover.gif'); border-color: #224462;
+	}
+
+	#navigation li a.menu {
+		color: #CBE7FA; display: block; text-shadow: 0 1px 1px #333333; text-transform: uppercase;
+		transition: background 0.2s ease-in-out; background: #013E66; font-size: 0.9em;
+		background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+		line-height: 2em; padding: 5px 10px; border-bottom: 1px solid #055285;
+	}
+	#navigation li:last-child a.menu, #navigation li.last {border-bottom: 0;}
+	#navigation li a.menu:hover, #navigation li a[class~="active"] {text-shadow: 0 1px 1px #000000;}
+	#navigation li a.menu:hover {background: rgba(255,255,255,0.2); color: #8CCBF4;}
+	#navigation li a[class~="active"] {
+		cursor: text; background: #0B6DAE; background:linear-gradient(#0275C3, #0573BD 6%,	#0D6BA9 48%, #1167A2 96%, #196090 100%);		
+	}
+	#navigation li a[class~="active"]:hover {background-color: rgba(0,0,0,0.5);}
+	#navigation li a.menu:hover {border-color: #9CC7E2;}
+}
+
+
+/*banner*/
+#banner .inside {max-width: 986px; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 8px #333333;}
+#banner .heading {
+	background: #000000; background: rgba(0,0,0, 0.3); color: #FFFFFF; font-size: 1.3em;
+	position: absolute; top: 0; left: 0; right: 0; z-index: 10; text-align: right; padding: 4px 20px; line-height: 1;
+}
+#banner .caption {
+	background: #000000; background: rgba(0,0,0, 0.5); left: 20px; bottom: 50px; margin: 0;
+	font-size: 1.1em; padding: 5px 8px; text-align: left; font-family: 'Palatino Linotype'; font-style: italic;
+}
+.banner_nav {
+	background: transparent url("../banner/slide-arrow.gif") no-repeat left top;
+	top: 48%; height: 61px; width: 38px; margin-top: -45px; border: 1px solid rgba(255,255,255,0.7); border-radius: 3px;
+}
+
+
+/*content*/
+#content .wrapper {overflow: hidden; max-width: 990px; padding-top: 10px;}
+#main {width: 75%; float: left; text-align: justify;}
+#side {width: 25%; float: right; font-size: 0.9em;}
+#content .inside {margin: 0 10px 10px 10px;}
+
+.paraimg {margin: 0 0 0 10px; float: right; max-height: 140px;}
+
+#contact-us .office {float: left; width: 48%;}
+#contact-us .feedback {float: right; width: 50%; border-left: 1px dotted #85B1DE;}
+#contact-us .feedback .wrapper {margin-left: 20px;}
+
+
+/*footer*/
+#footer {text-align: center; margin-top: 10px;}
+.bottom {padding: 10px;}
+#nav-wrap {padding: 10px;}
+#footerNav {text-align: center;}
+#footerNav li {display: inline;}
+#footer li:after {content: ' |'; padding-left: 0;}
+#footer li:last-child:after, #footer li.last:after {content: ''; padding: 0;}

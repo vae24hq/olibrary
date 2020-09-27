@@ -1,0 +1,34 @@
+/* CSS Document */
+.itemMenu a {
+	color:#FFFFFF;
+	 text-decoration: none;
+	 font-family: Helvetica, Arial, Verdana, Tahoma, "Trebuchet MS", sans-serif;
+	 font-weight:bold;
+	 display: inline;
+	 text-align: center;
+	 position: relative;
+	  -moz-border-radius: 3px;
+	 -webkit-border-radius: 3px;
+	 border-radius: 3px;
+	 text-shadow: 1px 1px 1px #333333;	 
+	 -moz-box-shadow: 0 1px 3px black;
+	 -webkit-box-shadow: 0 1px 3px black;
+	 box-shadow: 0 1px 3px black;
+	 border: 1px solid #3E98C8;
+	 border-top: 1px solid #CCDCE3;	 
+	 background-color: #014464;
+	 background: -moz-linear-gradient(top, #0F719F, #0E6189 50%, #01547C 51%, #003E5B);
+	 background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0F719F), color-stop(.5, #0E6189), color-stop(.5, #01547C), to(#003E5B));	 	
+	-webkit-box-shadow:inset 0 1px 2px rgba(255,255,255,.6),inset 0 -5px 15px rgba(0,0,0,.3),1px 1px 1px #ccc;
+	-moz-box-shadow:inset 0 1px 2px rgba(255,255,255,.6),inset 0 -5px 15px rgba(0,0,0,.3),1px 1px 1px #ccc;box-shadow:inset 0 1px 2px rgba(255,255,255,.6),inset 0 -5px 15px rgba(0,0,0,.3),1px 1px 1px #ccc;	
+	padding:5px 12px 5px 12px;
+}
+
+.itemMenu a:hover {
+	background-color: #014464;
+	background: -moz-linear-gradient(top, #0C5F85, #0B5273 50%, #024869 51%, #003853);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0C5F85), color-stop(.5, #0B5273), color-stop(.51, #024869), to(#003853));
+	color:#EAEAEA;
+	cursor:pointer;
+	}
+

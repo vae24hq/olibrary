@@ -1,0 +1,156 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * CSS | base::global ~ universal styles
+ */
+
+body, #page, #topbar, #header, #navigation, #banner, #secondary, #bottom, #nav-wrap, #footer {margin: 0 auto; position: relative;}
+a {color: #1D88BC; text-decoration: none;}
+a:hover {color: #DE1528;} a:active {color: #CC0028;}
+
+img.captcha {border: 1px solid #85B1DE; margin: 5px 2px; border-radius: 3px; height: 50px; width: 150px;}
+img.captcha:hover {cursor: pointer;}
+
+body {
+	font-family: Helvetica, Arial, Tahoma, sans-serif;
+	background: #F1EFEF url('../media/bg.gif');
+	color: #504545;
+}
+
+/*topbar*/
+#topbar {text-shadow: 1px 1px 1px #252525; background: #01609E; font-size: 0.9em; color: #EBF1FA; padding: 10px;}
+#topbar a.brand {color: #77C5EA;}
+#topbar a.brand:hover {color: #A3D8F1;}
+
+#topbar .breadcrumb {float: left; text-align: left; padding-top: 4px;}
+#topbar .date {float: right; text-align: right; padding-top: 4px;}
+#translatebox {float: right; margin: 0 10px;}
+
+
+/*header*/
+#header {text-shadow: 1px 1px 1px #252525; background: #0171BC; color: #EBF1FA; padding: 10px; font-size: 0.9em;}
+#header a.email, #header a.phone {color: #EBF1FA;}
+#header a.email:hover, #header a.phone:hover {color: #D5E1F4;}
+#logo {float: left;}
+#header .contact {float: right; text-align: right; line-height: 1.2; margin-top: 4px;}
+
+
+/*navigation*/
+#navigation {border-top: 2px solid #015389; border-bottom: 1px solid #014069; font-size: 0.938em; background: #01609E;}
+.nav-toggle {text-shadow: 1px 1px 1px #000000; color: #B1C7EB;}
+.nav-toggle:focus {outline: 0;}
+#navigation a[class='nav-toggle active'], .nav-toggle:hover {color: #629BD5;}
+
+#navigation li a.menu {color: #CBE7FA; text-shadow: 0 1px 1px #333333; transition: background 0.2s ease-in-out; background: #013E66;}
+#navigation li a.menu:hover, #navigation li a[class~="active"] {text-shadow: 0 1px 1px #000000;}
+#navigation li a.menu:hover {background: rgba(255,255,255,0.2); color: #8CCBF4;}
+#navigation li a[class~="active"] {background: #0B6DAE;}
+#navigation li a[class~="active"]:hover {background-color: rgba(0,0,0,0.5);}
+
+
+/*banner*/
+#banner {background: #CB002F url('../banner/bg.png') no-repeat center; overflow: hidden;}
+#banner .heading {line-height: 1; color: #DDDDDD;}
+#banner .heading, #banner .caption, .banner_nav {text-shadow: 0 1px 0 #000;}
+#banner .caption, .banner_nav {position: absolute; text-decoration: none; color: #FFFFFF; font-style: italic;}
+#banner .caption {font-family: 'Palatino Linotype', Helvetica, Arial, Tahoma, sans-serif;	display: block; z-index: 2; max-width: none;}
+.banner_nav {-webkit-tap-highlight-color: rgba(0,0,0,0); left: 0; opacity: 0.7; z-index: 3; overflow: hidden; text-indent: -1000em;}
+.banner_nav:active {opacity: 1.0;}
+.banner_nav.next {left: auto; background-position: right top; right: 0;}
+
+
+/*separator*/
+#separator {background: #4C1B52 url('../media/bg-separator.png') no-repeat center; font-size: 1px;}
+
+
+/*secondary*/
+#secondary {background: #D6D4DB url('../media/bg-secondary.png') no-repeat top; background-size: cover; color: #59585A; padding: 10px;}
+#secondary .group {overflow: hidden; font-size: 0.9em; margin: 0 auto;}
+#secondary .content {background: rgba(255,255,255, 0.2); border: 1px solid rgba(255,255,255,0.3); padding: 10px;}
+
+#secondary .heading {color: #1D88BC; font-size: 1em; text-shadow: 0 1px 1px #75A9D9; text-transform: uppercase; margin-bottom: 5px;}
+.formTable {width: 100%;}
+.formTable th, .formTable td {padding-top: 3px; padding-bottom: 3px;}
+#mailingTable .label {min-width: 20%; text-align: right;}
+#mailingTable .btn  {padding-top: 10px; padding-bottom: 10px;}
+#captcha {width: 88%; max-width: 140px;}
+
+ul.socialmedia {margin-top: 10px; margin-bottom: 10px;}
+.socialmedia li {float: left;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {
+	display: inline-block; border: 1px solid #FFFFFF; font-size:0.1em; overflow: hidden;
+	background: url('../icon/stripes-sm.png') no-repeat; transition: background 0.7s ease-in-out;
+}
+a.facebook:hover {border: 1px solid #3A589B;}
+a.twitter:hover {border: 1px solid #20B8FF;}
+a.google:hover {border: 1px solid #D6492F;}
+a.youtube:hover {border: 1px solid #CF3427;}
+a.linkedin:hover {border: 1px solid #007AB9;}
+
+
+/*bottom*/
+#bottom {
+	background: #2E2E2E url('../media/bg-footer.png') center;
+	text-shadow: 1px 1px 0 #1D1D1D; border-top: 2px solid #CC0028; font-size: 0.9em;
+}
+
+
+/*footer navigation*/
+#nav-wrap {padding: 10px;}
+ul#footerNav {text-align: center;}
+ul#footerNav li{display: inline;}
+
+#footerNav li:after {content: ' |'; padding-left: 0;}
+#footerNav li:last-child:after, #footerNav li.last:after {content: ''; padding: 0;}
+
+#footerNav li a.menu {padding: 0 5px; color: #B9B7B7; text-shadow: 1px 1px 1px #000000; text-transform: capitalize;}
+#footerNav li a.menu:hover {color: #CECCCC;}
+#footerNav li a[class~="active"], #footerNav li a[class~="active"]:hover {color: #848282;}
+
+
+/*footer*/
+#footer {background: rgba(0,0,0, 0.3);	color: #848282; padding: 10px;}
+	#footer .copyright {float: left;}
+	#footer .powered {float: right;}
+
+	#footer a.brand {color: #DAD1A9;}
+	#footer a.brand:hover {color: #CDC48D;}
+
+
+/*render navigation*/
+#render {padding: 10px; background: rgba(0,0,0, 0.4);}
+ul#renderNav {text-align: center;}
+ul#renderNav li{display: inline; color: #1D88BC}
+
+#renderNav li:after {content: ' -'; padding-left: 0;}
+#renderNav li:last-child:after, #renderNav li.last:after {content: ''; padding: 0;}
+
+#renderNav li a.renderlink {padding: 0 5px; text-transform: capitalize;}
+#renderNav li a.renderlink:hover {text-decoration: none;}
+#renderNav li a[class~="active"], #renderNav li a[class~="active"]:hover {color: #848282;}
+
+
+
+/*form*/
+form {margin: 10px 0;}
+
+input[type=submit], input[type=reset], textarea, input[type=text], input[type=email], input[type=password], input[type=tel]{margin: 0 2px;}
+
+textarea, input[type=text], input[type=email], input[type=password],
+input[type=tel]{background: rgba(255,255,255, 0.6) url( '../media/blank.png') repeat-x top; border: 1px solid #85B1DE; padding: 5px; border-radius: 3px; }
+textarea:hover, input[type=text]:hover, input[type=password]:hover, input[type=email]:hover, input[type=tel]:hover,
+textarea:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=tel]:focus {
+	border: 1px solid #629BD5; outline: 0; background-color: #D9E8F4;
+}
+
+input[type=submit],
+input[type=reset] {text-align: center; color: #CEE1F0; text-shadow: 1px 1px 0 #333; padding: 5px 10px; border-radius: 3px;}
+input[type=submit]{background: #428BCA; border: 1px solid #428BCA; background: linear-gradient(#306B9F, #3674AC, #3B7EB8, #3674AC, #306B9F);}
+input[type=reset] {background: #9A001E; border: 1px solid #9A001E; background: linear-gradient(#9A001E, #BA0024, #CC0028, #BA0024, #9A001E);}
+input[type=submit]:hover, input[type=submit]:focus {background: #3378B7; border: 1px solid #75A9D9;}
+input[type=reset]:hover, input[type=reset]:focus {background: #CC0028; border: 1px solid #FF9FB3;}
+
+label {font-weight: bold; padding: 0 8px;}
+input[type=text], input[type=password], input[type=email], input[type=tel], textarea {width: 88%;}
+input[type=submit], input[type=reset]{font-size: 1em;}

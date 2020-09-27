@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Center Navigation</title>
+	<style type="text/css">
+	#centeredmenu,
+	#centeredmenu ul,
+	#centeredmenu ul li {
+		float:left;		
+		position:relative;
+	}
+
+	#centeredmenu ul,
+	#centeredmenu ul li {
+		list-style:none;
+		margin:0;
+		padding:0;
+	}
+
+	#centeredmenu {
+		width:100%;
+		background:#fff;
+		border-bottom:4px solid #000;
+		overflow:hidden;
+	}
+	#centeredmenu ul {
+	   clear:left;	 
+	   left:50%;
+	   text-align:center;
+	}
+	#centeredmenu ul li {
+		display:block;
+		right:50%;
+	}
+
+
+	#centeredmenu ul li a {
+		display:block;
+		margin:0 0 0 1px;
+		padding:3px 10px;
+		background:#ddd;
+		color:#000;
+		text-decoration:none;
+		line-height:1.3em;
+	}
+	#centeredmenu ul li a:hover {
+	   background:#369;
+	   color:#fff;
+	}
+	</style>
+</head>
+<body>
+
+<div id="centeredmenu">
+   <ul>
+      <li><a href="#">Tab one</a></li>
+      <li><a href="#" class="active">Tab two</a></li>
+      <li><a href="#">Tab three</a></li>
+      <li><a href="#">Tab four</a></li>
+   </ul>
+</div>
+
+</body>
+</html>

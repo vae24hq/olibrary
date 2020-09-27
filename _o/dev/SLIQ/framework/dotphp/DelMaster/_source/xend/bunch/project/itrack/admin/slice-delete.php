@@ -1,0 +1,3 @@
+
+	<p>Are you sure you want to delete tracking record <span class="text-info"><strong><?php echo $trackRecord['track_id'];?></strong></span> for <span class="text-info"><strong><?php echo $trackRecord['receiver_name'];?></strong></span> to <span class="text-info"><strong><?php echo $trackRecord['receiver_address'];?></strong></span>?</p>
+	<a href="?link=success&action=delete&id=<?php echo $trackRecord['bind'];?>" class="btn btn-danger">Yes, delete record now</a>

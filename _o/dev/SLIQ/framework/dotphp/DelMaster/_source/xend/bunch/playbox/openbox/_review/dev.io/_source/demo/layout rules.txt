@@ -1,0 +1,25 @@
+LAYOUT
+1. Avoid padding on internal layout boxes.
+2. Don't apply margin to floated boxes
+3. Use height in place of min-height for IE7 & below
+4. Use rgba() fallback for IE8 & below
+5. Set hasLayout (height:1%) on IE6 & IE7.
+6. hasLayout can be essential to make inline element eg link into a block
+
+Ensure all floated elements use display:inline;
+
+
+
+
+
+HIDE TEXT
+h1 {
+    background-image: url(/the_img.png);  /* shows image */
+    height: 100px;                        /* be sure to set height & width */
+    width:  600px;
+
+    /* Hide the text. */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}

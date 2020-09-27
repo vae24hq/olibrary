@@ -1,0 +1,89 @@
+.heroBanner .itemInner.lazyLoad,.itemInner.lazyLoad{
+	background-image: none !important;
+}
+
+.heroBanner .customImage-1,.customImage-1{
+		background-image: url('/~/media/MainSite/images/home-exit/2017/01/mobile-app-linkup/brand-hub-banking-app-4-480.jpg?h=560&w=480');
+		background-position: center center;
+			display: block;
+}
+@media screen and (min-width: 37.5em){
+	.heroBanner .customImage-1,.customImage-1{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/mobile-app-linkup/brand-hub-banking-app-4-800.jpg?h=670&w=800');
+					}
+	}
+@media screen and (min-width: 64em) {
+	.heroBanner .customImage-1,.customImage-1{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/mobile-app-linkup/brand-hub-banking-app-4-1024.jpg?h=683&w=1024');
+					}
+	}
+@media screen and (min-width: 75em){
+	.heroBanner .customImage-1,.customImage-1{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/mobile-app-linkup/brand-hub-banking-app-4-1200.jpg?h=690&w=1200');
+					}
+	}
+
+.heroBanner .customImage-2,.customImage-2{
+		background-image: url('/~/media/MainSite/images/home-exit/2017/09/Flexplus-3708/brand-hub-description-480.jpg?h=560&w=480');
+		background-position: center 90%;
+			display: block;
+}
+@media screen and (min-width: 37.5em){
+	.heroBanner .customImage-2,.customImage-2{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/09/Flexplus-3708/brand-hub-description-800.jpg?h=670&w=800');
+					}
+	}
+@media screen and (min-width: 64em) {
+	.heroBanner .customImage-2,.customImage-2{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/09/Flexplus-3708/brand-hub-description-1024.jpg?h=683&w=1024');
+					}
+	}
+@media screen and (min-width: 75em){
+	.heroBanner .customImage-2,.customImage-2{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/09/Flexplus-3708/brand-hub-description-1200.jpg?h=690&w=1200');
+					}
+	}
+
+.heroBanner .customImage-3,.customImage-3{
+		background-image: url('/~/media/MainSite/images/home-exit/2016/01/couple-eating-breakfast-with-ipad/brand_hub_couple_eating_breakfast_withipad_hero_480.jpg?h=560&w=480');
+		background-position: center center;
+			display: block;
+}
+@media screen and (min-width: 37.5em){
+	.heroBanner .customImage-3,.customImage-3{
+				background-image: url('/~/media/MainSite/images/home-exit/2016/01/couple-eating-breakfast-with-ipad/brand_hub_couple_eating_breakfast_withipad_hero_800.jpg?h=670&w=800');
+					}
+	}
+@media screen and (min-width: 64em) {
+	.heroBanner .customImage-3,.customImage-3{
+				background-image: url('/~/media/MainSite/images/home-exit/2016/01/couple-eating-breakfast-with-ipad/brand_hub_couple_eating_breakfast_withipad_hero_1024.jpg?h=683&w=1024');
+				background-position: center bottom;
+					}
+	}
+@media screen and (min-width: 75em){
+	.heroBanner .customImage-3,.customImage-3{
+				background-image: url('/~/media/MainSite/images/home-exit/2016/01/couple-eating-breakfast-with-ipad/brand_hub_couple_eating_breakfast_withipad_hero_1200.jpg?h=690&w=1200');
+				background-position: center center;
+					}
+	}
+
+.heroBanner .customImage-4,.customImage-4{
+		background-image: url('/~/media/MainSite/images/home-exit/2017/01/set-of-books-on-table/article-hub-heritage-tv-ad-c-cooper-480.jpg?h=560&w=480');
+		background-position: center center;
+			display: block;
+}
+@media screen and (min-width: 37.5em){
+	.heroBanner .customImage-4,.customImage-4{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/set-of-books-on-table/article-hub-heritage-tv-ad-c-cooper-800.jpg?h=670&w=800');
+					}
+	}
+@media screen and (min-width: 64em) {
+	.heroBanner .customImage-4,.customImage-4{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/set-of-books-on-table/article-hub-heritage-tv-ad-c-cooper-1024.jpg?h=683&w=1024');
+					}
+	}
+@media screen and (min-width: 75em){
+	.heroBanner .customImage-4,.customImage-4{
+				background-image: url('/~/media/MainSite/images/home-exit/2017/01/set-of-books-on-table/article-hub-heritage-tv-ad-c-cooper-1200.jpg?h=690&w=1200');
+					}
+	}

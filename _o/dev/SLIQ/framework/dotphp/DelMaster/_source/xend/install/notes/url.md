@@ -1,0 +1,12 @@
+# DotCa
+127.0.0.1	dot.ca
+127.0.0.1	go.dot.ca
+127.0.0.1	ng.dot.ca
+127.0.0.1	en.dot.ca
+127.0.0.1	app.dot.ca
+127.0.0.1	api.dot.ca
+127.0.0.1	www.dot.ca
+127.0.0.1	data.dot.ca
+127.0.0.1	asset.dot.ca
+127.0.0.1	download.dot.ca
+127.0.0.1	redirect.dot.ca

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CSS RESET | FORM</title>
+
+<style type="text/css" media="screen">
+optgroup, input, select, textarea, button {color: inherit; font: inherit; margin: 0;}
+button, select {text-transform: none;}
+button {overflow: visible;}
+input, button, select {font-family: Verdana, Arial, sans-serif;}
+button, html input[type="button"], input[type="reset"], input[type="submit"]{-webkit-appearance: button; -moz-appearance: button; cursor: pointer;}
+button[disabled], html input[disabled]{cursor: default;}
+button::-moz-focus-inner, input::-moz-focus-inner {border: 0; padding: 0;} input {line-height: normal;}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {height: auto;}
+input[type="search"]{-webkit-appearance: textfield; -moz-appearance: textfield;}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {-webkit-appearance: none; -moz-appearance: none;}
+fieldset {margin: 0 2px; padding: 0.35em 0.625em 0.75em;}
+legend {border: 0; padding: 0;} textarea {overflow: auto;} optgroup {font-weight: bold;}
+input, select, textarea, button {padding: 3px 4px 3px 4px;}
+fieldset, input, select, textarea, button {border: 1px solid #ABADB3;}
+input:hover, select:hover, textarea:hover, button:hover {border: 1px solid #73767D;}
+input:focus, select:focus, textarea:focus, button:focus {border: 1px solid #26A0DA; outline: 0;}
+
+
+
+
+</style>	
+</head>
+<body>
+	<form method="post">
+		<fieldset>
+  		<legend>Legend</legend>
+		<div>Checkbox:
+		<input id="food-rice" class="checkbox" type="checkbox" checked>
+		<label for="food-rice" name="food-rice" class="checkbox-label">Rice</label>
+		<input id="food-beans" class="checkbox" type="checkbox">
+		<label for="food-beans" name="food-beans" class="checkbox-label">Beans</label>
+		</div>
+		<hr>
+		<div>Radio:
+			<input type="radio" name="sex" id="sex-male" class="radio" checked="checked">
+			<label for="sex-male" class="radio-label">Male</label>
+			<input type="radio" name="sex" id="sex-female" class="radio">
+			<label for="sex-female" class="radio-label">Female</label>
+		</div>
+		<hr>
+		<label for="dropdownone">Drop Down One:</label>
+	      <span class="dropdown">
+	        <select name="one" class="dropdown-select" id="dropdownone">
+	        	<option value="">Select…</option>
+			    <optgroup label="Group A">
+		         	<option value="1">Option One</option>
+		          	<option value="2">Option Two</option>
+		          	<option value="3">Option Three</option>
+	      		</optgroup>
+	        </select>
+	      </span>
+	      <hr>
+	   <label for="text_field">Text Field:</label>
+      <input type="text" id="text_field" class="textfield">
+      <hr>
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="textfield">
+      <hr>
+      <label for="url">URL:</label>
+      <input type="url" id="url" class="textfield">
+      <hr>
+      <label for="number">Number:</label>
+      <input type="number" id="number" class="textfield">
+      <hr>
+      <label for="text_area">Text Area:</label>
+      <textarea id="text_area"></textarea>
+      <hr>
+      <label for="search">Search:</label>
+      <input type="search" class="textfield">
+      <hr>
+      <label for="password">Password:</label>
+      <input type="password" id="password" class="textfield">
+      <hr>
+      <input type="reset" value="Clear" class="reset">
+      <input type="submit" value="Send" class="send">
+      <button>button</button>
+  	</fieldset>
+  <small><a href="#top">&raquo; Go Up</a></small>
+</form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | small::asset ~ small screen styles
+ */
+
+body {line-height: 1.4; min-width: 300px;}
+
+	.topbar, .footnote {font-size: 0.938em;}
+
+/*Begin HEADER*/
+@media screen and (max-width: 470px){
+	.translatebox {display: none;}
+}
+
+
+/*Begin NAVIGATION*/
+.mainNav {margin: 0 auto; background: #01609E;}
+.nav-toggle {
+	color: #B1C7EB; text-shadow: 1px 1px 1px #000000; display: block; padding: 10px 10px 10px 40px; background: #244868 url('image/nav.gif') no-repeat 8px center;
+}
+.mainNav a[class='nav-toggle active'], .nav-toggle:hover {
+	color: #629BD5; background: #0C1823 url('image/nav-hover.gif') no-repeat 8px center; border-color: #224462;
+}
+.mainNav .menu {
+	line-height: 2em; padding: 8px 10px; border-bottom: 1px solid #055285; display: block; text-transform: capitalize;
+	background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+}
+.mainNav li:last-child .menu, .mainNav .last{border-bottom: 0;}
+.mainNav li .active{background:linear-gradient(#0275C3, #0573BD 6%, #0D6BA9 48%, #1167A2 96%, #196090 100%);}
+.mainNav .menu:hover {border-color: #9CC7E2;}
+
+
+/*Begin BANNER*/
+.pageBanner {margin: 0 auto;}
+.pageBanner .heading {
+	position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 8px 10px; font-size: 0.9em;
+	text-align: center; font-style: italic; background: #000; background: rgba(0,0,0, 0.6);
+}
+.pageBanner .caption {display: none;}
+
+
+/*Begin SEPERATOR*/
+.separator {font-size: 4px;}
+
+
+/*Begin SECONDARY*/
+.moreInfo {background-size: cover;}
+.search, .mailing {margin: 10px; padding: 10px 10px 20px; border: 1px solid #FFFFFF; border: 1px solid rgba(255,255,255, 0.3);}
+input[type=text], input[type=search], input[type=email], input[type=tel], textarea {width: 90%;}
+
+
+
+/*Begin FOOTER*/
+.render {padding: 10px; background-color:#191919; background-color: rgba(0,0,0, 0.4);}

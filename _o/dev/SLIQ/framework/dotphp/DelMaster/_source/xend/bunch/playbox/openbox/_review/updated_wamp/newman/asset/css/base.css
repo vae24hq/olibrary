@@ -1,0 +1,115 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | base::base ~ css global styles
+ */
+body {
+	font-family: Helvetica, Arial, Tahoma, sans-serif;
+	background-color: #F1EFEF;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-image: url('../media/bg.jpg');
+	color: #504545;
+}
+a {color: #1D88BC; text-decoration: none;}
+a:hover {color: #DE1528;} a:active {color: #CC0028;}
+.inside {margin: 0 auto;}
+
+
+/*form*/
+textarea, input[type=text], input[type=email], input[type=tel] {
+	background: url( '../media/blank.png') repeat-x top; border: 1px solid #85B1DE; line-height: 1.5; padding: 0 2px;
+}
+textarea:hover, textarea:focus,
+input[type=text]:hover, input[type=email]:hover, input[type=tel]:hover,
+input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus {border: 1px solid #629BD5;}
+textarea:focus, input[type=text]:focus, input[type=email]:focus, input[type=tel]:focus {
+	outline: 1px solid #DCE9F5; background: #D9E8F4; background-image: none;
+}
+input[type=submit], input[type=reset] {margin: 0 2px; text-align: center; line-height: 1.4; font-size: 0.9em;}
+input[type=submit]{
+	background: #428BCA; color: #CEE1F0; text-shadow: 1px 1px 0 #204A71;
+	background:linear-gradient(#306B9F, #3674AC, #3B7EB8, #3674AC, #306B9F);
+	border: 1px solid #428BCA; padding: 2px 8px;
+}
+input[type=submit]:hover, input[type=submit]:focus {background: #3378B7; border: 1px solid #75A9D9;}
+input[type=reset] {
+	background: #9A001E; color: #CEE1F0; text-shadow: 1px 1px 0 #333333;
+	background:linear-gradient(#9A001E, #BA0024, #CC0028, #BA0024, #9A001E);
+	border: 1px solid #9A001E; padding: 2px 8px;
+}
+input[type=reset]:hover, input[type=reset]:focus {background: #CC0028; border: 1px solid #FF9FB3;}
+label {font-style: italic;}
+
+
+/*topbar*/
+#topbar {background: #07222D; color: #DDF1FB; font-size: 0.9em;}
+	#topbar a.brand {color: #77C5EA;}
+	#topbar a.brand:hover {color: #A3D8F1;}
+
+
+/*header*/
+#header {background: rgba(255, 255, 255, 0.9); line-height: 1;}
+	#header a.email, #header a.phone {color: #005E91;}
+	#header a.email:hover, #header a.phone:hover {color: #003D5E;}
+
+
+/*navigation*/
+#navigation .inside {margin: 0 auto;}
+	#navigation li a[class~="active"] {cursor: text;}
+
+
+/*banner*/
+#banner {background: rgba(255, 255, 255, 0.7); position: relative; overflow: hidden;}
+#banner .inside {background: #FFFFFF; position: relative; overflow: hidden; margin-bottom: 1px;}
+.caption {display: block; position: absolute; z-index: 2; max-width: none; text-align: right; text-shadow: none; color: #FFFFFF;}
+.banner_nav {
+	position: absolute; -webkit-tap-highlight-color: rgba(0,0,0,0); left: 0; opacity: 0.7; z-index: 3;
+	overflow: hidden; text-decoration: none; text-indent: -9999px;
+}
+.banner_nav:active {opacity: 1.0;}
+.banner_nav.next {left: auto; background-position: right top; right: 0;}
+
+
+/*content*/
+#content {background: #F1EFEF;}
+#content .wrapper {background: #FFFFFF; font-size: 0.9em; margin: 0 auto 20px;}
+#content .inside {padding: 10px;}
+#side .inside {background: #004489; color: #FFFFFF;}
+#main .heading {
+	color: #77C5EA; text-shadow: 0 1px 1px #000000;
+	font-size: 1.2em; font-weight: bold; margin-bottom: 5px; text-transform: uppercase;
+}
+#main .sub-heading {color: #01609E; font-size: 1em; margin-top: 12px; margin-bottom: 2px;}
+#main .sub-heading, #main .title {text-transform: capitalize; font-weight: bold;}
+#main .title {margin-top: 10px;}
+#main .sub-title {color: #E50006; font-style: italic;}
+#side .heading {font-weight: bold; margin-bottom: 0; margin-top: 0; text-decoration: underline; font-size: 0.85em; text-transform: uppercase;}
+ul.square {margin-bottom: 10px; margin-top: 2px; list-style: square;}
+
+.pagebanner {margin-bottom: 10px; border: 2px solid #77C5EA;}
+.pagebanner .flex {width: 100%;}
+
+#contact-us .email, #contact-us .phone {display: block;}
+
+.feedbackTable {margin-top: 8px;}
+	.feedbackTable, input[type=text], input[type=email], input[type=tel], textarea {width: 98%;}
+	.feedbackTable th, .feedbackTable td {padding: 2px 4px 2px 0;}
+	.feedbackTable th {width: 20%;}
+	.feedbackTable th {text-align: right;}
+	.feedbackTable .btn td {padding-top: 10px; vertical-align:bottom;}
+	label {font-weight: bold;}
+	.feedbackTable th label {margin-right: 6px;}
+
+/*footer*/
+#footer {background: #000000 url('../media/bg-footer.png'); text-shadow: 1px 1px 0 #1D1D1D; border-top: 2px solid #77C5EA; font-size: 0.9em;}
+.footer {color: #FFFFFF; text-align: center;}
+.bottom {background: rgba(0,0,0,0.4);}
+	#footer li a.menu, #footer li a[class~="active"]:hover{color: #B9B7B7;}
+	#footer li a.menu:hover {color: #CECCCC; text-decoration: underline;}
+	#footer li a[class~="active"]{color: #848282; cursor: text;}
+	#footer li a.menu, #footer li a[class~="active"]{text-shadow: 1px 1px 1px #000000; text-transform: capitalize;}
+	#footer a.brand {color: #DAD1A9;}
+	#footer a.brand:hover {color: #CDC48D;}

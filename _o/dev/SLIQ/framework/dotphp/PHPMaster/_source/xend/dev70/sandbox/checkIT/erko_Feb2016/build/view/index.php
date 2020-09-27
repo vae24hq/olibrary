@@ -1,0 +1,1 @@
+<p>{view:Home} - You know you shouldn't be here. Go home!</p>

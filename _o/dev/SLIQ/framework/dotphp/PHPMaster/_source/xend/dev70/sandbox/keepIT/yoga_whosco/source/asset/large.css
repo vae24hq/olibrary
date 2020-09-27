@@ -1,0 +1,101 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | large::asset ~ large screen devices except IE8-6
+ */
+
+@font-face {
+   font-family: 'Questrial';
+   src: url('upload/font/Questrial.eot');
+   src: url('upload/font/Questrial.eot?#iefix') format('embedded-opentype'),
+		url('upload/font/Questrial.woff2') format('woff2'),
+		url('upload/font/Questrial.woff') format('woff'),
+		url('upload/font/Questrial.ttf') format('truetype'),
+		url('upload/font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {
+	-moz-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); -webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4);
+	border-width: 1px; border-style: solid; border-color: #FFF; border-color: rgba(0,0,0, 0.2);
+}
+::-webkit-scrollbar-track:hover {
+	-moz-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1); -webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1); box-shadow: inset 1px 0 6px rgba(0,0,0, 0.1);}
+::-webkit-scrollbar-thumb {
+	border: 0; background: #166B94; background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);}
+	
+body {font-family: 'Questrial', Arial, Helvetica, sans-serif; min-width: 1024px; max-width: 1280px;}
+
+
+
+/*Begin COMMON*/
+
+
+/*Begin TOP*/
+
+
+/*Begin HEADER*/
+
+
+/*Begin NAVIGATION*/
+.navbar {padding-right: 10px;}
+	.mainNav {float: left;}
+		.mainNav li {float: left;}
+		.mainNav .navlink {
+			border-right: 1px solid #055285; padding: 10px 11px 10px 12px; text-transform: capitalize;
+			background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+		}
+		.mainNav li:last-child .navlink {border-right: 0; padding-right: 12px;}
+		.mainNav .navlink:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+@media screen and (max-width: 1069px){
+		.mainNav .navlink {padding: 10px 10px 10px 11px;}
+		.mainNav li:last-child .navlink {padding-right: 11px;}
+}
+@media screen and (max-width: 1045px){
+		.mainNav .navlink {font-size: 0.938em;}
+}
+	.searchForm {float: right; padding-top: 6px;}
+		.navbar .actBtn {margin-left: 5px;}
+
+
+/*Begin BANNER*/
+
+
+/*Begin SEPERATOR*/
+
+
+/*Begin SECONDARY*/
+
+
+/*Begin FOOTER*/
+
+
+/*Begin FORM*/
+/*textarea, .textfield {padding: 4px 5px;}*/
+
+/*textarea, input {font-size: 1em;}
+.actBtn {padding: 4px 10px;}
+*/
+/*
+.searchForm .textfield {width: 100%;}*/
+
+@media screen and (min-width: 1149px){
+/*.searchForm .textfield {min-width: 245px;}*/
+}
+
+
+/*.textfield {padding: 5px; font-size: 1em;}
+.actBtn {padding: 5px 9px; font-size: 1em;}*/
+
+
+/* IE10+ specific styles go here */  
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+/*.textfield {padding: 5px 4px; margin-top: 1px;}
+.actBtn {padding: 4px 8px 3px;}*/
+}
+
+textarea, .textfield {padding: 5px;}
+.actBtn {padding: 5px 10px;}

@@ -1,0 +1,155 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | large::desktop ~ large screen styles
+ */
+
+@font-face {
+   font-family: 'Questrial';
+   src: url('font/Questrial.eot');
+   src: url('font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('font/Questrial.woff2') format('woff2'),
+         url('font/Questrial.woff') format('woff'),
+         url('font/Questrial.ttf') format('truetype'),
+         url('font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+mark {background: #1D88BC; color: #DAEFFA; padding: 0 2px;}
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); border: 1px solid rgba(0,0,0, 0.2);}
+::-webkit-scrollbar-track:hover {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1);}
+::-webkit-scrollbar-thumb {
+  background: #166B94; outline: 0; border: 0;
+  background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);
+}
+
+body {font-family: 'Questrial', Helvetica, Arial, Tahoma, sans-serif; line-height: 1.4; min-width: 980px;}
+
+#page {max-width: 1200px;}
+
+
+/*TopBar*/
+#topbar {padding: 10px;}
+
+
+/*Header*/
+#header {padding: 15px 10px;}
+
+
+/*Navigation*/
+#navibar {font-size: 0.938em;}
+#navigation {float: left;}
+
+/*@media screen and (min-width: 900px) {
+  #navigation li:nth-child(2) a.menu {display: none;}
+}
+*/
+#navigation li a.menu {background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);}
+  .js .nav-collapse {position: relative;}
+  .js .nav-collapse.closed {max-height: none;}
+  .nav-toggle {display: none;}
+
+  #navigation li {float: left;}
+  #navigation li a.menu {border-right: 1px solid #055285; text-transform: capitalize; padding: 10px 10px 10px 11px;}
+  #navigation li:last-child a.menu {border-right: none; padding-right: 12px;}
+  #navigation li a.menu:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+
+#search {float: right; margin: 7px 10px; width: 310px;}
+#search .formTable {text-align: right;}
+#search input[type=text]{border-radius: 3px 0 0 3px; margin: 0;}
+#search input[type=submit]{border-radius: 0 3px 3px 0; margin: 0;}
+
+
+
+
+/*Banner*/
+#banner .heading {position: absolute; top: 20px; right: 10px; z-index: 10; padding: 5px 10px; font-size: 1.1em; text-align: center;}
+.caption {
+  left: 20px; bottom: 20px;
+  padding: 5px 10px; font-size: 1.1em; background: rgba(0,0,0, 0.5); text-align: left;
+  border: 1px solid rgba(255,255,255, 0.4); border-radius: 3px;
+}
+.banner_nav {
+  top: 45%; height: 60px; width: 38px; margin-top: -45px;
+  background: transparent url("../banner/slide-arrow.gif") no-repeat left top;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 3px;
+}
+
+
+/*Content*/
+#content .inside {padding: 10px;}
+#main {float: left; width: 74%;}
+#side {float: right; width: 25%;}
+#main, #side {min-height: 500px;}
+
+
+/*Content::Home*/
+#content .aboutus, #content .services {width: 49%;}
+#content .aboutus {float: left;}
+#content .services {float: right;}
+#content .aboutus .inside, #content .services .inside {border: 1px solid #DDDDDD; border-top: 0;}
+#content img.flex {margin-bottom: 5px;}
+
+
+.landing_1_wrapper, .landing_2_wrapper, .landing_3_wrapper, .landing_4_wrapper, .landing_5_wrapper {width: 20%;}
+.landing_1_wrapper, .landing_2_wrapper, .landing_3_wrapper, .landing_4_wrapper, .landing_5_wrapper {float: left;}
+#landing .more {text-align: right; padding: 0 10px 5px 0;}
+
+
+
+.arrival_1_wrapper, .arrival_2_wrapper, .arrival_3_wrapper, .arrival_4_wrapper, .arrival_5_wrapper {width: 20%;}
+.arrival_1_wrapper, .arrival_2_wrapper, .arrival_3_wrapper, .arrival_4_wrapper, .arrival_5_wrapper {float: left;}
+#newarrival .inside {height: 300px; max-height: 300px;}
+#newarrival .newtag {padding: 5px 26px 10px 10px; text-transform: capitalize;}
+#newarrival .more {text-align: right; padding: 0 10px 5px 0;}
+
+
+/*Separator*/
+#separator {font-size: 2px;}
+
+
+/*Secondary*/
+#brief, #contact, #mailing {width: 33.33%;}
+#brief {float: left;}
+#brief .content {margin-right: 10px;}
+#contact {float: right;}
+#contact .content {margin-left: 10px;}
+#mailing {margin-left: auto; margin-right: auto;}
+#secondary .content {padding-bottom: 1000em; margin-bottom: -1000em;}
+
+.socialmedia li {margin: 0 2px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {height: 30px; width: 30px; background-size: 150px 90px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {background: url('../icon/stripes-sm-large.png') no-repeat;}
+a.facebook{background-position: 0 0;}
+a.twitter{background-position: -30px 0;}
+a.google{background-position: -60px 0;}
+a.youtube{background-position: -90px 0;}
+a.linkedin{background-position: -120px 0;}
+
+a.facebook:hover {background-position: 0 -60px;}
+a.twitter:hover {background-position: -30px -60px;}
+a.google:hover {background-position: -60px -60px;}
+a.youtube:hover {background-position: -90px -60px;}
+a.linkedin:hover {background-position: -120px -60px;}
+a.footer-link:hover {text-decoration:underline;}
+
+a.facebook:focus {background-position: 0 -30px;}
+a.twitter:focus {background-position: -30px -30px;}
+a.google:focus {background-position: -60px -30px;}
+a.youtube:focus {background-position: -90px -30px;}
+a.linkedin:focus {background-position: -120px -30px;}
+
+/*Footer*/
+#footer {background: rgba(0,0,0, 0.3);  color: #848282; padding: 10px;}
+  #footer .copyright, #footer .powered, #footer #render {width: 33%;}
+  #footer #render {margin-right: auto; margin-left: auto;}
+
+
+/*Form*/
+input[type=submit], input[type=reset]{font-size: 1em;}

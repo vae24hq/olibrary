@@ -1,0 +1,70 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | ie8::internet explorer ~ targets IE 8 and below up to 6
+ */
+
+body {line-height: 1.5; width: 1024px;}
+.page {text-align: center;}
+
+
+/*Begin HEADER*/
+
+
+/*Begin NAVIGATION*/
+.navbar {font-size: 0.938em;}
+  .mainNav {float: left;}
+
+  .mainNav li {float: left;}
+  .mainNav .menu {border-right: 1px solid #055285; text-transform: capitalize; padding: 10px 10px 10px 11px;}
+  .mainNav li:last-child a.menu {border-right: none; padding-right: 12px;}
+  .mainNav .menu:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+
+
+/*Begin BANNER*/
+.pageBanner {width: 1024px; margin: 0 auto; background-size: cover;}
+.pageBanner .heading {
+  position: absolute; top: 20px; left: 0; right: 0; z-index: 10; font-size: 1.2em; text-align: right; padding: 4px 20px;
+}
+.pageBanner .caption {
+  background: #000; background: rgba(0,0,0, 0.5); left: 20px; bottom: 30px; margin: 0;
+  font-size: 1.1em; padding: 4px 8px; text-align: left; border-radius: 3px; border: 1px solid rgba(255,255,255,0.5);
+}
+.bannerslides_nav {
+  background: transparent url("slide/slide-arrow.gif") no-repeat left top;
+  top: 45%; height: 61px; width: 38px; margin-top: -45px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px;
+}
+
+
+
+
+/*Begin SECONDARY*/
+.moreInfo {background-position: bottom; text-align: left;}
+.moreInfo .inside {background: #FFF;}
+.moreInfo .heading {font-weight: bold;}
+.moreInfo .content {padding: 10px;}
+.brief, .contact, .mailing {width: 33%;}
+.brief {float: left;}
+.contact {float: right;}
+.mailing {margin-left: auto; margin-right: auto;}
+
+.socialMedia li {margin: 0 3px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {
+  height: 30px; width: 30px; background-size: 150px 90px; background: url('image/stripes-sm-ie.png') no-repeat;
+}
+a.facebook{background-position: 0 0;}
+a.twitter{background-position: -30px 0;}
+a.google{background-position: -60px 0;}
+a.youtube{background-position: -90px 0;}
+a.linkedin{background-position: -120px 0;}
+
+a.facebook:hover {background-position: 0 -30px;}
+a.twitter:hover {background-position: -30px -30px;}
+a.google:hover {background-position: -60px -30px;}
+a.youtube:hover {background-position: -90px -30px;}
+a.linkedin:hover {background-position: -120px -30px;}
+
+
+
+/*Begin FOOTER*/
+.navwrap {border-bottom: 1px solid #504545;}

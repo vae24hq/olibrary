@@ -1,0 +1,126 @@
+/*begin footer CSS*/
+#futabar {
+	min-width:900px;
+	height:60px;
+	padding-top:1px;
+	padding-right:10px;
+	padding-bottom:1px;
+	padding-left:10px;	
+	border-top: solid 1px #DDDDDD;
+	background-color:#ECF0FC;
+	background-image:url('../../../media/jpg/futabarBg.jpg');
+	background-repeat:repeat;
+	background-position:top left;
+	position: fixed;
+	bottom:0px;
+	z-index:-1;	
+	}
+.futabar product { /*begin product*/
+	text-shadow: -1px 1px 1px #F9F9F9;
+	display: block;
+	float:left;		
+	padding-top:4px;
+	padding-right:2px;
+	padding-bottom:0px;
+	padding-left:2px;
+}
+.futabar product copyright {
+	font-size:10px;
+}
+.futabar product brand {
+	font-family:"Trebuchet MS",  Verdana, Geneva, sans-serif;
+	font-weight:bold;
+	letter-spacing:1px;
+}
+.futabar product name {
+	font-size:11px;
+	letter-spacing:1px;
+}
+
+.futabar product license {
+	padding-left:10px;
+}
+
+.futabar product license brand {
+	color:#063;
+	font-weight:bold;
+	letter-spacing:0px;
+}
+.futabar product license a {
+	color:#373737;
+}
+.futabar product license a:hover {
+	color:#CE0000;
+	text-decoration:none;
+}
+
+.futabar pow { /*begin powered*/
+	text-shadow: 1px 1px 1px #BCBCBC;
+	display: block;
+	float:left;
+	padding-top:2px;
+	padding-right:6px;
+	padding-bottom:2px;
+	padding-left:6px;
+	border: solid 1px #DDDDDD;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	background-color:#FFFFFF;
+}
+.futabar pow:hover {
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	opacity: 0.7;
+}
+.futabar pow brand, .futabar pow brand a {
+	color:#C11800;
+	font-weight:bold;
+	text-transform:none;
+	text-decoration:none;
+}
+.futabar pow brand a {
+	background-color:transparent;
+	background-image:url('../../../media/icon/dynat.ico');
+	background-size: 16px;
+	background-repeat:no-repeat;
+	background-position:0px -1px;
+	padding-left:18px;
+}
+.futabar pow brand {
+	font-weight:normal;		
+}
+.futabar pow brand:hover, .futabar pow brand a:hover {
+	color:#C11800;
+}
+
+
+.futabar dev { /*begin developed*/
+	text-shadow: 1px 1px 1px #FFFFFF;
+	display: block;
+	float:right;	
+	padding-top:3px;
+	padding-right:2px;
+	padding-bottom:3px;
+	padding-left:2px;
+}
+.futabar dev:hover {
+	filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	opacity: 0.8;
+}
+.futabar dev brand, .futabar dev brand a {
+	color:#D6B654;
+	font-weight:bold;
+	text-transform:none;
+	text-decoration:none;
+	}
+.futabar dev brand {
+	font-weight:normal;		
+}
+.futabar dev brand:hover, .futabar dev brand a:hover {
+	color:#B1912C;
+}
+.futabar dev brand a:hover {
+	text-decoration:blink;
+}

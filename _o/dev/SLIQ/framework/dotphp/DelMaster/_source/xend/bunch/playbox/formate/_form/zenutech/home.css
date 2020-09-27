@@ -1,0 +1,89 @@
+#choose_client {
+	margin: 0;
+	padding: 0;
+}
+
+#intro {
+	clear: both;
+	background: #fafafa;
+	border: 1px solid #ccc;
+	margin: 0 auto 0 auto;
+	padding: 1em;
+	text-align: center;
+}
+
+#webmail_clients {
+	margin: 0;
+	padding: 0;
+}
+
+#webmail_clients input.radio {
+	position: relative;
+	left: 68px;
+}
+
+#webmail_clients li {
+	position: relative;
+	list-style: none;
+	float: left;
+	top: 1px;
+	padding: 10px;
+	z-index: 100;
+	border: 1px solid #fff;
+	border-bottom: 0;
+}
+
+#webmail_clients li.active {
+	border: 1px solid #999;
+	border-bottom: 1px solid #fafafa;
+	background-color: #fafafa;
+}
+
+#webmail_clients li label {
+	display: block;
+	width: 172px;
+	height: 50px;
+}
+
+#webmail_clients li.squirrelmail {
+	width: 176px;
+}
+
+#recommended {
+	position: absolute;
+	width: 86px;
+	height: 87px;
+	top: -8px;
+	left: -9px;
+	background: url(recommended.png) top left no-repeat;
+}
+
+#webmail_form {
+	clear: both;
+	border: 1px solid #999;
+	background: #fafafa;
+	margin: 0;
+}
+
+#webmail_form form {
+	width: 21em;
+	margin: 0 auto 0 auto;
+	padding: 50px 0 50px 0;
+	border: 0;
+}
+
+#webmail_form div.field,
+#webmail_form div.field-option {
+	clear: both;
+	color: #666;
+	margin-bottom: 7px;
+}
+
+#webmail_form div.field-option label {
+	margin-right: 2em;
+}
+
+#webmail_form div.field label {
+	display: block;
+	width: 20em;
+}

@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="../script/css/screen.css"/>
+<form action="" method="POST" name="CreateForm" id="CreateForm">
+<table  border="0" cellspacing="0" cellpadding="0" class="moduleboxHolder">
+    <tr>
+      <td align="center" valign="middle">
+        <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0" class="inputTab">
+          <tr>
+            <td colspan="2" align="left" valign="middle" scope="row">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="2" align="left" valign="middle" scope="row">Please complete the form below with correct information</td>
+          </tr>
+          <tr>
+            <td height="14" colspan="2" class="spacer" scope="row">P</td>
+          </tr>
+          <tr>
+    <th align="right" valign="middle" scope="row"><label for="Title">Title:</label></th>
+    <td style="min-width:440px;" align="left" valign="middle">
+      <input name="Title" type="text" id="Title" tabindex="1" size="34">
+      </td>
+    </tr>
+          
+          <tr>
+            <th align="right" valign="middle" scope="row">
+            <label for="Acronym">Acronym:</label></th>
+            <td align="left" valign="middle">
+              <input name="Acronym" type="text" id="Acronym" tabindex="2" size="20">
+</td>
+          </tr>
+          
+          <tr>
+            <th align="right" valign="middle" scope="row"><label for="UnitPrice">Unit Price:</label></th>
+            <td align="left" valign="middle">
+              
+              <input name="UnitPrice" type="text" id="UnitPrice" size="10" tabindex="3">
+            </td>
+          </tr>
+          <tr>
+            <th align="right" valign="middle" scope="row">
+            <label for="Description">Description:</label>
+            </th>
+            <td align="left" valign="middle">
+              
+              <textarea name="Description" id="Description" cols="30" tabindex="8"></textarea>
+</td>
+          </tr>
+          
+          <tr>
+            <td colspan="2" class="spacer" height="8">
+              <input name="Suid" type="hidden" id="Suid" value="<?php echo do_rand('s'); ?>">
+              <input name="Tuid" type="hidden" id="Tuid" value="<?php echo do_rand('t'); ?>">
+              <input name="Fuid" type="hidden" id="Fuid" value="<?php echo do_rand('f'); ?>">
+            <input name="run_process" type="hidden" id="run_process" value="go" />
+            <input name="Period" type="hidden" id="Period" value="<?php echo unix_time(); ?>" /></td>
+          </tr>
+          <tr>
+            <th align="right" valign="middle" scope="row">
+            <input name="InvStore" type="hidden" id="InvStore" value="0330783"> 
+            <input name="InvCat" type="hidden" id="InvCat" value="UP8185332608557GD1362938623TZ">
+            <input name="ItemType" type="hidden" id="ItemType" value="service">
+            <input name="QtyInStore" type="hidden" id="QtyInStore" value="0">
+            </th>
+            <td class="buttonCell">
+              <input type="submit" name="SaveBtn" id="SaveBtn" value="Save" tabindex="9">
+            <input type="reset" name="ResetBtn" id="ResetBtn" value="Clear" tabindex="10"></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</form>

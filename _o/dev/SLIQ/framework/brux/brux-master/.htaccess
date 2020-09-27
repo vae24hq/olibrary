@@ -1,0 +1,66 @@
+#Turn on rewrite engine
+RewriteEngine on
+
+#Inherit rules from parent directory
+RewriteOptions inherit
+
+#Enable symbolic links
+Options +FollowSymLinks
+
+#Define Charset
+AddDefaultCharset utf-8
+
+#Optimize bandwidth consumption for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Process .inc|.htm|.html as PHP
+AddType application/x-httpd-php .inc .htm .html
+
+#Enable GZip Comprehension
+<IfModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file \.(html?|txt|css|js|php)$
+	mod_gzip_item_include mime ^application/x-javascript.*
+	mod_gzip_item_exclude mime ^source/media/image/.*
+	mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+#Define basepath (*only if different from current directory)
+#RewriteBase /
+
+#Disable index listing for directories (*possible GOTCHA when using 'Options All -Indexes')
+Options -Indexes
+
+#Define error documents
+ErrorDocument 404 /index.php?route=ohttp_404
+ErrorDocument 403 /index.php?route=ohttp_403
+
+#Prevent infinite looping
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Prevent rewrite request for files ending with PHP|HTML (file.php)
+RewriteCond %{REQUEST_URI} !.*\.php
+RewriteCond %{REQUEST_URI} !.*\.html
+
+#Rewrite every other request but DOWNLOAD|SCRIPT|FONT|STYLE|AUDIO|VIDEO|IMAGE|DOCUMENT|FORM|API to index.php?route=request
+RewriteRule ^((?!download\/.*$)(?!script\/.*$)(?!font\/.*$)(?!style\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!image\/.*$)(?!document\/.*$)(?!o\_.*$)(?!api\/.*$).*)$ index.php?route=$1 [NC,QSA,END]
+
+#Rewrite (FORM) 'o_VAR' request to index.php?form=VAR
+RewriteRule ^o\_(.*)$ index.php?form=$1 [NC,QSA,END]
+
+#Rewrite (API) 'api/VAR' request to index.php?api=VAR
+RewriteRule ^api\/(.*)$ index.php?api=$1 [NC,QSA,END]
+
+#Define Rewrite request for DOWNLOAD|SCRIPT|FONT|STYLE|AUDIO|VIDEO|IMAGE|DOCUMENT
+RewriteRule ^download\/(.*)$ app/asset/upload/$1 [NC,QSA,END]
+RewriteRule ^script\/(.*)$ app/asset/script/$1 [NC,QSA,END]
+RewriteRule ^font\/(.*)$ app/asset/font/$1 [NC,QSA,END]
+RewriteRule ^style\/(.*)$ app/asset/css/$1 [NC,QSA,END]
+RewriteRule ^audio\/(.*)$ app/asset/media/audio/$1 [NC,QSA,END]
+RewriteRule ^video\/(.*)$ app/asset/media/video/$1 [NC,QSA,END]
+RewriteRule ^image\/(.*)$ app/asset/media/image/$1 [NC,QSA,END]
+RewriteRule ^document\/(.*)$ app/asset/media/document/$1 [NC,QSA,END]

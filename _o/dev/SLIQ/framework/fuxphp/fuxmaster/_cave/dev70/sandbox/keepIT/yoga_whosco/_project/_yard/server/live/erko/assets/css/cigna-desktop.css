@@ -1,0 +1,28 @@
+/* Cigna™ - a micro web framework by QuickOne™
+ * SiEMO™ Nigeria [www.siemo.com.ng]
+ * Author(s) -> Crieg A. Siemo [www.iamsiemo.com] ~ crieg@siemo.com.ng
+ * © August 2014 | version 1.0 beta
+ * CSS | desktop - desktop screen styles
+ * Application » erko™
+ */
+a[href^="tell:"] {cursor: text;} 
+.desktop-view {display:block;}
+.desktop-view-off {display:none;}
+#header, #page-single {min-width:960px;}
+#page-single {max-width: 996px;}
+.page-content {min-height: 360px;}
+#page {float:left; margin-left:170px; margin-right:10px; min-width:790px; width:82%;}
+#page, #page-single {margin-top:40px;}
+
+#header{line-height:1.5; position:fixed; width:100%;}
+.greeting {float:left;}
+.date {float:right;}
+#footer {line-height:1.5;}
+
+
+#nav {float:left; margin-left:10px; margin-top: 70px; position:fixed;}
+#menu li {border-bottom:1px dotted rgba(0,0,0, 0.2);}
+#menu li:hover {border-bottom:1px dotted rgba(255,255,255, 0.7);}
+#menu li:last-child {border-bottom:none;}
+#menu li.heading { padding:2px 10px; line-height:1.3em;}
+#menu a {font-size: 0.94em; padding:6px 10px; line-height:1.3em;}

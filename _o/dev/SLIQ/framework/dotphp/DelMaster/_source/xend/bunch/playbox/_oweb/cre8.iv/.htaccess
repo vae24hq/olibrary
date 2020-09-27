@@ -1,0 +1,14 @@
+RewriteEngine on
+#RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+ErrorDocument 404 /404.php
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+AddDefaultCharset utf-8
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>

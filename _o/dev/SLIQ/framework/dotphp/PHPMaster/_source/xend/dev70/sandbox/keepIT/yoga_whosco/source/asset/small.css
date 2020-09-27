@@ -1,0 +1,65 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | small::asset ~ smart phones
+ */
+
+body {font-family: Helvetica, Arial, sans-serif; min-width: 300px;}
+
+
+/*Begin COMMON*/
+.top, .footnote {font-size: 0.875em;}
+
+
+/*Begin HEADER*/
+.logoImg {width: 100%;}
+
+
+/*Begin NAVIGATION*/
+.mainNav {background: #01609E; margin: 0 auto;}
+	.mainNav a[class='nav-toggle active'], .mainNav a[class='nav-toggle active']:hover,
+	.nav-toggle, .nav-toggle:hover {background-position: 8px center; background-repeat: no-repeat;}
+	.nav-toggle:hover, .mainNav a[class='nav-toggle active']:hover {border-color: #244868;}
+	.nav-toggle {
+		display: block; padding: 10px 10px 10px 40px;
+		background-color: #244868; background-image: url('image/nav.gif'); border-bottom: 2px solid #0C1823;
+	}
+	.nav-toggle:hover {color: #629BD5; background-color: #0C1823; background-image: url('image/nav-hover.gif');}
+	.mainNav a[class='nav-toggle active'] {background-color: #070E14; background-image: url('image/nav-active.gif');}
+	.mainNav a[class='nav-toggle active']:hover {background-color: #0C1823; background-image: url('image/nav-active-hover.gif');}
+	.mainNav .navlink {
+		line-height: 2em; padding: 8px 10px; border-bottom: 1px solid #055285; text-transform: capitalize;
+		background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+	}
+	.mainNav li:last-child .navlink, .mainNav .last{border-bottom: 0;}
+	.mainNav li .active{background: linear-gradient(#0275C3, #0573BD 6%, #0D6BA9 48%, #1167A2 96%, #196090 100%);}
+	.mainNav .navlink:hover {border-color: #9CC7E2;}
+
+
+/*Begin BANNER*/
+.banner {margin: 0 auto;}
+.banner .heading {
+	position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 8px 10px; font-size: 0.9em;
+	text-align: center; font-style: italic; background-color: #000; background-color: rgba(0,0,0, 0.6);
+}
+.banner .caption {display: none;}
+
+
+/*Begin SEPERATOR*/
+.separator {font-size: 4px;}
+
+
+/*Begin SECONDARY*/
+.moreinfo {background-size: cover;}
+.moreinfo .heading {font-weight: normal;}
+.search, .newsletter {margin: 10px; padding: 10px 10px 20px; border: 1px solid #FFFFFF; border: 1px solid rgba(255,255,255, 0.3);}
+.moreinfo .btn {padding-left: 5px;}
+
+
+/*Begin FOOTER*/
+.rendition {padding: 10px; background-color:#191919; background-color: rgba(0,0,0, 0.4);}
+
+
+/*Begin FORM*/
+textarea, .textfield {padding: 5px;}
+.actBtn {padding: 5px 10px;}

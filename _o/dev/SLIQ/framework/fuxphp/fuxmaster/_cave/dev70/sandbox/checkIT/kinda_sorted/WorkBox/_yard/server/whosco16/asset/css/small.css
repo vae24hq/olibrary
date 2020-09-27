@@ -1,0 +1,99 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | small::phone ~ small screen styles
+ */
+body {line-height: 1.4; min-width: 300px;}
+
+/*TopBar*/
+#topbar {padding: 10px;}
+@media screen and (max-width: 470px){
+	#translatebox {display: none;}
+}
+
+
+/*Header*/
+#header {padding: 15px 10px;}
+
+
+/*Navigation*/
+#navigation {border-top: 2px solid #015389; border-bottom: 1px solid #014069; font-size: 0.938em; background: #01609E;}
+.nav-toggle {display: block; padding: 10px 10px 10px 40px; background: #244868 url('../icon/nav.gif') no-repeat 10px center;}
+#navigation a[class='nav-toggle active'], .nav-toggle:hover {background: #0C1823 url('../icon/nav-hover.gif') no-repeat 10px center;}
+
+#navigation li a.menu {
+	line-height: 2em; padding: 8px 10px 7px; border-bottom: 1px solid #055285; display: block; text-transform: capitalize;
+	background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+}
+#navigation li:last-child a.menu, #navigation li.last {border-bottom: 0; padding-bottom: 8px;}
+#navigation li a[class~="active"] {background:linear-gradient(#0275C3, #0573BD 6%,	#0D6BA9 48%, #1167A2 96%, #196090 100%);}
+#navigation li a.menu:hover {border-color: #9CC7E2;}
+
+
+/*Banner*/
+#banner .heading {position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 8px 10px; font-size: 0.9em; background: rgba(0,0,0, 0.6); text-align: center;}
+#banner .caption {display: none;}
+
+
+/*Content*/
+#side {margin-top: 20px;}
+#side .inside {padding: 10px;}
+
+#landing .inside {min-height: 100px;}
+#landing .more {text-align: center; padding: 0 10px 5px 0;}
+
+#newarrival .inside {min-height: 100px;}
+#newarrival .newtag {padding: 5px 26px 12px 10px; text-transform: capitalize;}
+#newarrival .more {text-align: center; padding: 0 10px 5px 0;}
+
+@media screen and (min-width: 500px){
+	.landing_1_wrapper, .landing_2_wrapper,.landing_3_wrapper, .landing_4_wrapper {width: 49%;}
+	.landing_1_wrapper, .landing_3_wrapper {float: left;}
+	.landing_2_wrapper, .landing_4_wrapper {float: left;}
+
+	#side .inside {padding: 0; border: 0;}
+	#side .group {background: #F9F9F9; border: 1px solid #EEEEEE; padding: 10px;}
+	#featured_2, #featured_3, .arrival_1_wrapper, .arrival_2_wrapper, .arrival_3_wrapper, .arrival_4_wrapper {width: 49%;}
+	#featured_2, .arrival_1_wrapper, .arrival_3_wrapper {float: left;}
+	#featured_3, .arrival_2_wrapper, .arrival_4_wrapper {float: right;}
+}
+
+
+/*Separator*/
+#separator {height; font-size: 4px;}
+
+
+/*Secondary*/
+#mailing .content {margin-top: 10px;}
+#mailingTable th {width: 20%;}
+#secondary input[type=submit],
+#secondary input[type=reset],
+#secondary textarea,
+#secondary input[type=text],
+#secondary input[type=email], 
+#secondary input[type=password], 
+#secondary input[type=tel] {line-height: 1.5; font-size: 1.2em;}
+
+.socialmedia li {margin: 3px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {height: 45px; width: 45px; background-size: 225px 135px; border-radius: 3px;}
+a.facebook {background-position:0 0;}
+a.twitter {background-position:-45px 0;}
+a.google {background-position:-90px 0;}
+a.youtube {background-position:-135px 0;}
+a.linkedin {background-position:-180px 0;}
+
+a.facebook:hover {background-position:0 -90px;}
+a.twitter:hover {background-position:-45px -90px;}
+a.google:hover {background-position:-90px -90px;}
+a.youtube:hover {background-position:-135px -90px;}
+a.linkedin:hover {background-position:-180px -90px;}
+
+
+/*Footer*/
+#footer {font-size: 0.938em;}
+
+
+/*Render navigation*/
+#render {padding: 10px; background: rgba(0,0,0, 0.4);}

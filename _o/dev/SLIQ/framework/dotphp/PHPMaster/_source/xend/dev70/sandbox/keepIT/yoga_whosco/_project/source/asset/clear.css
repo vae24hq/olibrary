@@ -1,0 +1,88 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | clear::asset ~ css reset
+ */
+
+html {font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, address, em, img, strong, sub, sup, tt, b, u, i, dl, dt, dd,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, section, audio, video, marquee, progress, time, mark {border: 0; vertical-align: baseline;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display: block;}
+audio, canvas, progress, video, img {display: inline-block;}
+audio:not([controls]) {display: none; height: 0;}
+a {background-color: transparent;}
+p {margin-top: 1em; margin-bottom: 1em;}
+big {font-size: 1.17em;} sub, sup {font-size: 0.83em;} sup {top: -0.5em;} sub {bottom: -0.25em;}
+sub, sup {line-height: 0; position: relative;}
+img, a img {border: 0; vertical-align: middle;}
+pre {overflow: auto;}
+code, kbd, pre, samp {font-family: monospace, monospace; font-size: 1em;}
+table {border-collapse: collapse; border-spacing: 0;} td, th {padding: 0;}
+blockquote, q {quotes: none;} blockquote:before, blockquote:after{content:none;}
+q:before, q:after {content:'~';} del {text-decoration: line-through;}
+.group:after {content: " "; display: block; clear:both; overflow:hidden;}
+.none {position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;}
+.flex {width: 100%; max-width: 100%;}
+.invisible {visibility: hidden;}
+.visible {visibility: visible;}
+.center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+
+/*Navigation list*/
+nav ol, nav ul, nav li, ul.navigation, .navigation li {margin: 0; padding: 0; list-style: none; border: 0; vertical-align: baseline;}
+
+/*Form*/
+optgroup, input, select, textarea, button {color: inherit; font: inherit; margin: 0;}
+button, select {text-transform: none;}
+button {overflow: visible;}
+input, button, select {font-family: Verdana, Arial, sans-serif;}
+button, input[type="button"], input[type="reset"], input[type="submit"]{
+  -webkit-appearance: button; -moz-appearance: button; cursor: pointer; text-align: center;
+}
+button[disabled], input[disabled]{cursor: default;}
+button::-moz-focus-inner, input::-moz-focus-inner {border: 0; padding: 0;} input {line-height: normal;}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {height: auto;}
+input[type="search"]{-webkit-appearance: textfield; -moz-appearance: textfield;}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {-webkit-appearance: none; -moz-appearance: none;}
+fieldset {margin: 0 2px; padding: 0.35em 0.625em 0.75em;}
+legend {border: 0; padding: 0;} textarea {overflow: auto;} optgroup {font-weight: bold;}
+input, select, textarea, button {padding: 3px 4px 3px 4px;}
+fieldset, input, select, textarea, button {border: 1px solid #ABADB3;}
+input:hover, select:hover, textarea:hover, button:hover {border: 1px solid #73767D;}
+input:focus, select:focus, textarea:focus, button:focus {border: 1px solid #26A0DA; outline: 0;}
+
+/*Notice | Error | Success*/
+.notice, .error, .success, .redirect {border: 1px dotted #000000;}
+.notice {color: #269ED2; background: #B1DEF1; border-color: #8ECEEB;}
+.error {color: #FF9F9F; background: #FFF2F2; border-color: #FFD2D2;}
+.success {color: #488437 ; background: #D2EACC; border-color: #A8D59B;}
+div.notice, div.error, div.success, div.redirect {margin: 5px; padding: 5px; border-radius: 3px;}
+
+/*Responsive Nav (plugin)*/
+.js .nav-collapse {clip: rect(0 0 0 0); max-height: 0; position: absolute; display: block; overflow: hidden; zoom: 1;}
+.nav-collapse.opened {max-height: 9999px;}
+.nav-toggle {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.nav-toggle:focus {outline: 0;}
+
+@media screen and (min-width: 40em) {
+  .js .nav-collapse {position: relative;}
+  .js .nav-collapse.closed {max-height: none;}
+  .nav-toggle {display: none;}
+}
+
+/*Responsive Slides (plugin)*/
+.bannerslides {position: relative; list-style: none; overflow: hidden; width: 100%; padding: 0; margin: 0;}
+.bannerslides li {-webkit-backface-visibility: hidden; position: absolute; left: 0; top: 0; display: none; width: 100%;}
+.bannerslides li:first-child {position: relative; display: block; float: left;}
+.bannerslides img {display: block; float: left; height: auto; width: 100%; border: 0;}

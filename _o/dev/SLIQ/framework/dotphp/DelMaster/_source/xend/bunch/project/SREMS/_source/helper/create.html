@@ -1,0 +1,44 @@
+<?php 
+$isRecord = getRecord('isRecord',$_GET['id'], 'person');
+if($isRecord){
+  $url = 'update_personal-data&id='.$_SESSION['StudentPersonBindID'];
+  $msg = 'This person already has a profile<br>';
+  $msg .= 'You may want to '.markupURL($url,'update profile','update profile').' information instead';
+  $isNotify = isNotify($msg,'error');
+  $showForm = FALSE;
+}
+else {
+  if(empty($_POST['CreateBtn'])){
+    $msg = 'Please complete the field with valid entries';
+    $isNotify = isNotify($msg,'info');
+    $showForm = TRUE;
+  }
+  else {
+    #PREP FORM INPUT
+    $FirstName = SQLSafe($_POST['FirstName']);
+    $OtherName = SQLSafe($_POST['OtherName']);
+    $LastName = SQLSafe($_POST['LastName']);
+    $OriginLGA = SQLSafe($_POST['OriginLGA']);
+    $OriginState = SQLSafe($_POST['OriginState']);
+    $OriginCountry = SQLSafe($_POST['OriginCountry']);
+    $BirthDate = SQLSafe($_POST['BirthDate']);
+    $EmailAddress = SQLSafe($_POST['EmailAddress']);
+    $PhoneNumber = SQLSafe($_POST['PhoneNumber']);
+    $Sex = SQLSafe($_POST['Sex']);
+    $ContactAddress = SQLSafe($_POST['ContactAddress']);
+    $BindID = $_GET['id'];
+
+    $Status = 'active';
+    $insertData = array('FirstName'=>$FirstName,'OtherName'=>$OtherName,'LastName'=>$LastName,
+      'OriginLGA'=>$OriginLGA,'OriginState'=>$OriginState,'OriginCountry'=>$OriginCountry,
+      'BirthDate'=>$BirthDate,'EmailAddress'=>$EmailAddress,'PhoneNumber'=>$PhoneNumber,
+      'Sex'=>$Sex,'ContactAddress'=>$ContactAddress,
+      'Status'=>$Status,'BindID'=>$BindID);    
+    $insert = InsertRecord($insertData,'person');
+
+    $msg = 'The record has been created successfully';
+    $isNotify = isNotify($msg,'success');
+    $showForm = FALSE;
+  }
+}
+?>

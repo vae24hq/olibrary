@@ -1,0 +1,279 @@
+<style type="text/css" media="screen">
+  /* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | clear::asset ~ css reset
+ */
+
+html {font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, address, em, strong, sub, sup, tt, b, u, i, dl, dt, dd,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, section, audio, video, marquee, progress, time, mark {margin: 0; padding: 0; border: 0; vertical-align: baseline;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {display: block;}
+audio, canvas, progress, video, img {display: inline-block;}
+audio:not([controls]) {display: none; height: 0;}
+a {background-color: transparent;}
+big {font-size: 1.17em;} sub, sup {font-size: 0.83em;} sup {top: -0.5em;} sub {bottom: -0.25em;}
+sub, sup {line-height: 0; position: relative;}
+img {margin: 0; padding: 0; border: 0; vertical-align: middle;}
+pre {overflow: auto;}
+code, kbd, pre, samp {font-family: monospace, monospace; font-size: 1em;}
+table {border-collapse: collapse; border-spacing: 0;}
+blockquote, q {quotes: none;} blockquote:before, blockquote:after{content:none;}
+q:before, q:after {content:'~';} del {text-decoration: line-through;}
+.group:after {content: " "; display: block; clear:both; overflow:hidden;}
+.none {position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;}
+.flex {width: 100%; max-width: 100%;}
+.invisible {visibility: hidden;}
+.visible {visibility: visible;}
+.center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+
+/*Navigation*/
+nav ol, nav ul, nav li, ul.navigation, .navigation li {margin: 0; padding: 0; list-style: none; border: 0; vertical-align: baseline;}
+
+/*Form*/
+input, button {line-height: 1;}
+optgroup, input, select, textarea, button {color: inherit; font: inherit; margin: 0;}
+button, select {text-transform: none;}
+button {overflow: visible;}
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button; -moz-appearance: button; cursor: pointer; text-align: center;}
+button[disabled], input[disabled]{cursor: default;}
+button::-moz-focus-inner, input::-moz-focus-inner {border: 0; padding: 0;}
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {height: auto;}
+input[type="search"] {-webkit-appearance: textfield; -moz-appearance: textfield;}
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {-webkit-appearance: none; -moz-appearance: none;}
+fieldset {margin: 0 2px; padding: 0.35em 0.625em 0.75em;}
+textarea {overflow: auto;} optgroup {font-weight: bold;}
+fieldset, input, select, textarea, button {border: 1px solid #ABADB3;}
+input:hover, select:hover, textarea:hover, button:hover {border: 1px solid #73767D;}
+input:focus, select:focus, textarea:focus, button:focus {border: 1px solid #26A0DA; outline: 0;}
+
+/*Notice | Error | Success*/
+.notice, .error, .success, .redirect {border: 1px dotted #000000;}
+.notice {color: #269ED2; background: #B1DEF1; border-color: #8ECEEB;}
+.error {color: #FF9F9F; background: #FFF2F2; border-color: #FFD2D2;}
+.success {color: #488437 ; background: #D2EACC; border-color: #A8D59B;}
+div.notice, div.error, div.success, div.redirect {margin: 5px; padding: 5px; border-radius: 3px;}
+
+/*Responsive Nav (plugin)*/
+.js .nav-collapse {clip: rect(0 0 0 0); max-height: 0; position: absolute; display: block; overflow: hidden; zoom: 1;}
+.nav-collapse.opened {max-height: 9999px;}
+.nav-toggle {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.nav-toggle:focus {outline: 0;}
+
+
+@media screen and (min-width: 640px) {
+  .js .nav-collapse {position: relative;}
+  .js .nav-collapse.closed {max-height: none;}
+  .nav-toggle {display: none;}
+}
+
+/*Responsive Slides (plugin)*/
+.bannerslides {position: relative; list-style: none; overflow: hidden; width: 100%; padding: 0; margin: 0;}
+.bannerslides li {-webkit-backface-visibility: hidden; position: absolute; left: 0; top: 0; display: none; width: 100%;}
+.bannerslides li:first-child {position: relative; display: block; float: left;}
+.bannerslides img {display: block; float: left; height: auto; width: 100%; border: 0;}
+</style>        <section id="forms">
+          <header><h1>Form elements</h1></header>
+          <form>
+            <fieldset id="forms__input">
+              <legend>Input fields</legend>
+              <p>
+                <label for="input__text">Text Input</label>
+                <input id="input__text" type="text" placeholder="Text Input">
+              </p>
+              <p>
+                <label for="input__password">Password</label>
+                <input id="input__password" type="password" placeholder="Type your Password">
+              </p>
+              <p>
+                <label for="input__webaddress">Web Address</label>
+                <input id="input__webaddress" type="url" placeholder="http://yoursite.com">
+              </p>
+              <p>
+                <label for="input__emailaddress">Email Address</label>
+                <input id="input__emailaddress" type="email" placeholder="name@email.com">
+              </p>
+              <p>
+                <label for="input__phone">Phone Number</label>
+                <input id="input__phone" type="tel" placeholder="(999) 999-9999">
+              </p>
+              <p>
+                <label for="input__search">Search</label>
+                <input id="input__search" type="search" placeholder="Enter Search Term">
+              </p>
+              <p>
+                <label for="input__text2">Number Input</label>
+                <input id="input__text2" type="number" placeholder="Enter a Number">
+              </p>
+              <p>
+                <label for="input__text3" class="error">Error</label>
+                <input id="input__text3" class="is-error" type="text" placeholder="Text Input">
+              </p>
+              <p>
+                <label for="input__text4" class="valid">Valid</label>
+                <input id="input__text4" class="is-valid" type="text" placeholder="Text Input">
+              </p>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__select">
+              <legend>Select menus</legend>
+              <p>
+                <label for="select">Select</label>
+                <select id="select">
+                  <optgroup label="Option Group">
+                    <option>Option One</option>
+                    <option>Option Two</option>
+                    <option>Option Three</option>
+                  </optgroup>
+                </select>
+              </p>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__checkbox">
+              <legend>Checkboxes</legend>
+              <ul class="list list--bare">
+                <li><label for="checkbox1"><input id="checkbox1" name="checkbox" type="checkbox" checked="checked"> Choice A</label></li>
+                <li><label for="checkbox2"><input id="checkbox2" name="checkbox" type="checkbox"> Choice B</label></li>
+                <li><label for="checkbox3"><input id="checkbox3" name="checkbox" type="checkbox"> Choice C</label></li>
+              </ul>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__radio">
+              <legend>Radio buttons</legend>
+              <ul class="list list--bare">
+                <li><label for="radio1"><input id="radio1" name="radio" type="radio" class="radio" checked="checked"> Option 1</label></li>
+                <li><label for="radio2"><input id="radio2" name="radio" type="radio" class="radio"> Option 2</label></li>
+                <li><label for="radio3"><input id="radio3" name="radio" type="radio" class="radio"> Option 3</label></li>
+              </ul>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__textareas">
+              <legend>Textareas</legend>
+              <p>
+                <label for="textarea">Textarea</label>
+                <textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
+              </p>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__html5">
+              <legend>HTML5 inputs</legend>
+              <p>
+                <label for="ic">Color input</label>
+                <input type="color" id="ic" value="#000000">
+              </p>
+              <p>
+                <label for="in">Number input</label>
+                <input type="number" id="in" min="0" max="10" value="5">
+              </p>
+              <p>
+                <label for="ir">Range input</label>
+                <input type="range" id="ir" value="10">
+              </p>
+              <p>
+                <label for="idd">Date input</label>
+                <input type="date" id="idd" value="1970-01-01">
+              </p>
+              <p>
+                <label for="idm">Month input</label>
+                <input type="month" id="idm" value="1970-01">
+              </p>
+              <p>
+                <label for="idw">Week input</label>
+                <input type="week" id="idw" value="1970-W01">
+              </p>
+              <p>
+                <label for="idt">Datetime input</label>
+                <input type="datetime" id="idt" value="1970-01-01T00:00:00Z">
+              </p>
+              <p>
+                <label for="idtl">Datetime-local input</label>
+                <input type="datetime-local" id="idtl" value="1970-01-01T00:00">
+              </p>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+            <fieldset id="forms__action">
+              <legend>Action buttons</legend>
+              <p>
+                <input type="submit" value="Input">
+                <button type="submit">Button</button>
+                <input type="reset" value="Reset">
+                <input type="submit" value="Disabled" disabled>
+              </p>
+            </fieldset>
+            <p><a href="#top">[Top]</a></p>
+          </form>
+        </section>
+
+
+
+
+<h1 id="forms">Form Elements</h1>
+  <form method="post">
+    <fieldset>
+      <legend>Legend</legend>
+      <h2>Form elements</h2>
+    <div>Checkbox:
+    <input id="food-rice" class="checkbox" type="checkbox" checked>
+    <label for="food-rice" name="food-rice" class="checkbox-label">Rice</label>
+    <input id="food-beans" class="checkbox" type="checkbox">
+    <label for="food-beans" name="food-beans" class="checkbox-label">Beans</label>
+    </div>
+    <hr>
+    <div>Radio:
+      <input type="radio" name="sex" id="sex-male" class="radio" checked="checked">
+      <label for="sex-male" class="radio-label">Male</label>
+      <input type="radio" name="sex" id="sex-female" class="radio">
+      <label for="sex-female" class="radio-label">Female</label>
+    </div>
+    <hr>
+    <label for="dropdownone">Drop Down One:</label>
+        <span class="dropdown">
+          <select name="one" class="dropdown-select" id="dropdownone">
+            <option value="">Select…</option>
+          <optgroup label="Group A">
+              <option value="1">Option One</option>
+                <option value="2">Option Two</option>
+                <option value="3">Option Three</option>
+            </optgroup>
+          </select>
+        </span>
+        <hr>
+     <label for="text_field">Text Field:</label>
+      <input type="text" id="text_field" class="textfield">
+      <hr>
+      <label for="email">Email:</label>
+      <input type="email" id="email" class="textfield">
+      <hr>
+      <label for="url">URL:</label>
+      <input type="url" id="url" class="textfield">
+      <hr>
+      <label for="number">Number:</label>
+      <input type="number" id="number" class="textfield">
+      <hr>
+      <label for="text_area">Text Area:</label>
+      <textarea id="text_area"></textarea>
+      <hr>
+      <label for="search">Search:</label>
+      <input type="search" class="textfield">
+      <hr>
+      <label for="password">Password:</label>
+      <input type="password" id="password" class="textfield">
+      <hr>
+      <input type="reset" value="Clear" class="reset">
+      <input type="submit" value="Send" class="send">
+      <button>button</button>
+    </fieldset>
+  <small><a href="#top">&raquo; Go Up</a></small>
+</form>

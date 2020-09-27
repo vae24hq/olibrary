@@ -1,0 +1,13 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | ie8::internet explorer ~ targets IE 8 and below up to 6
+ */
+body {font-family: Arial, Helvetica, Tahoma, sans-serif; line-height: 1.5;}
+#page {text-align: center;}
+
+
+/*topbar*/
+#topbar {width: 990px; margin: 0;}

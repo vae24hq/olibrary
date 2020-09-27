@@ -1,0 +1,69 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | ie::asset ~ targets IE 8 and below up to 6
+ */
+
+body {width: 1280px;}
+
+
+/*Begin FORM*/
+textarea, input {font-size: 1em;}
+textarea, input {padding-right: 5px\0/; padding-left: 5px\0/; padding-bottom: 5px\0/;} /*IE8 only*/
+*+html .searchBtn {padding: 1px 1px 2px 1px;} /*IE7 only*/
+* html .searchBtn {padding: 1px 1px 2px 1px;} /*IE6 only*/
+
+
+/*Begin NAVIGATION*/
+.navbar {padding-right: 10px;}
+	.mainNav {float: left;}
+		.mainNav li {float: left;}
+		.mainNav .navlink {border-right: 1px solid #055285; padding: 10px 11px 10px 12px; text-transform: capitalize;}
+		.mainNav li:last-child .navlink, .mainNav .last .navlink {border-right: none; padding-right: 12px;}
+		.mainNav .navlink:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+
+	.searchForm {float: right; padding-top: 6px;}
+	.navbar .btn {padding-left: 5px;}
+
+
+/*Begin BANNER*/
+.pageBanner {max-width: 1280px; min-height: 440px; margin: 0 auto; background-size: cover;}
+.bannerHeading {
+  position: absolute; top: 20px; left: 0; right: 0; z-index: 10; font-size: 1.2em; text-align: right; padding: 4px 20px;
+}
+.pageBanner .caption {
+  background-color: #000; background-color: rgba(0,0,0, 0.5); left: 20px; bottom: 30px; margin: 0; font-size: 1.1em; padding: 4px 8px;
+  text-align: left; border-width: 1px; border-style: solid; border-color: #FFF; border-color: rgba(255,255,255,0.5); border-radius: 3px;
+}
+
+
+/*Begin SECONDARY*/
+.moreInfo {background-position: bottom; text-align: left;}
+.moreInfo .inside {background: #FFF;}
+.moreInfo .heading {font-weight: bold;}
+.moreInfo .content {padding: 10px;}
+.brief, .quickcontact, .newsletter {width: 33%;}
+.brief {float: left;}
+.quickcontact {float: right;}
+.newsletter {margin-left: auto; margin-right: auto;}
+
+.socialMedia li {margin: 0 3px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {
+  height: 30px; width: 30px; background-size: 150px 90px; background: url('image/stripes-sm-ie.png') no-repeat;
+}
+a.facebook{background-position: 0 0;}
+a.twitter{background-position: -30px 0;}
+a.google{background-position: -60px 0;}
+a.youtube{background-position: -90px 0;}
+a.linkedin{background-position: -120px 0;}
+
+a.facebook:hover {background-position: 0 -30px;}
+a.twitter:hover {background-position: -30px -30px;}
+a.google:hover {background-position: -60px -30px;}
+a.youtube:hover {background-position: -90px -30px;}
+a.linkedin:hover {background-position: -120px -30px;}
+
+
+
+/*Begin FOOTER*/
+.navwrap {border-bottom: 1px solid #504545;}

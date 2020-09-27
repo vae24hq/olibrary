@@ -1,0 +1,154 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | medium::tablet ~ medium screen styles
+ */
+@font-face {
+   font-family: 'Questrial';
+   src: url('font/Questrial.eot');
+   src: url('font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('font/Questrial.woff2') format('woff2'),
+         url('font/Questrial.woff') format('woff'),
+         url('font/Questrial.ttf') format('truetype'),
+         url('font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+mark {background: #1D88BC; color: #DAEFFA; padding: 0 2px;}
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); border: 1px solid rgba(0,0,0, 0.2);}
+::-webkit-scrollbar-track:hover {-webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1);}
+::-webkit-scrollbar-thumb {
+  background: #166B94; outline: 0; border: 0;
+  background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);
+}
+
+body {font-family: 'Questrial', Helvetica, Arial, Tahoma, sans-serif; line-height: 1.5; min-width: 600px;}
+
+
+/*TopBar*/
+#topbar {padding: 5px 10px;}
+
+
+/*Header*/
+#header {padding: 15px 10px;}
+
+@media only screen and (max-device-width: 639px){
+#header .contact {display: none;}
+}
+
+
+/*Navigation*/
+#navibar {font-size: 1em;}
+#navigation {border-top: 2px solid #015389; border-bottom: 1px solid #014069; font-size: 0.938em; background: #01609E;}
+#navigation li a.menu {background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);}
+
+@media screen and (min-width: 640px) {
+  .js .nav-collapse {position: relative;}
+  .js .nav-collapse.closed {max-height: none;}
+  .nav-toggle {display: none;}
+
+  #navigation li {float: left;}
+  #navigation li a.menu {border-right: 1px solid #055285; text-transform: capitalize; padding: 10px 13px 10px 14px;}
+  #navigation li:last-child a.menu {border-right: none; padding-right: 14px;}
+  #navigation li a.menu:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+}
+
+@media screen and (max-width: 639px) {
+  .nav-toggle {background: #244868 url('../icon/nav.gif') no-repeat 10px center; padding: 12px 12px 12px 46px; display: block;}
+  #navigation a[class='nav-toggle active'], .nav-toggle:hover {background: #0C1823 url('../icon/nav-hover.gif') no-repeat 10px center;}
+
+  #navigation li a.menu {line-height: 1.8em; border-bottom: 1px solid #055285; text-transform: uppercase; padding: 10px 10px 9px;}
+  #navigation li:last-child a.menu, #navigation li.last {border-bottom: 0; padding-bottom: 10px;}
+  #navigation li a.menu:hover {border-color: #9CC7E2;}
+}
+
+
+/*Banner*/
+#banner .heading {position: absolute; top: 20px; left: 10px; z-index: 10; padding: 5px 10px; font-size: 1em; text-align: center;}
+.caption {left: 0; right: 0; bottom: 0; padding: 5px 10px; font-size: 1em; background: rgba(0,0,0, 0.8); text-align: center;}
+.banner_nav {
+  top: 50%; height: 46px; width: 38px; margin-top: -45px;
+  background: transparent url("../banner/slide-tablet-arrow.gif") no-repeat left top;
+  border: 1px solid rgba(255,255,255,0.3); border-radius: 3px;
+}
+
+
+/*Content*/
+#content .inside {padding: 10px;}
+#main {float: left; width: 70%;}
+#side {float: right; width: 29%;}
+#main, #side {min-height: 400px;}
+
+
+/*Content::Home*/
+#content .aboutus, #content .services {width: 49%; line-height: 1.2;}
+#content .aboutus {float: left;}
+#content .services {float: right;}
+#content .aboutus .inside, #content .services .inside {border: 1px solid #DDDDDD; border-top: 0;}
+
+.landing_1_wrapper, .landing_2_wrapper, .landing_3_wrapper, .landing_4_wrapper {width: 25%;}
+.landing_1_wrapper, .landing_2_wrapper, .landing_3_wrapper, .landing_4_wrapper {float: left;}
+#landing .more {text-align: right; padding: 0 10px 5px 0;}
+
+
+.arrival_1_wrapper, .arrival_2_wrapper, .arrival_3_wrapper, .arrival_4_wrapper {width: 25%;}
+.arrival_1_wrapper, .arrival_2_wrapper, .arrival_3_wrapper, .arrival_4_wrapper {float: left;}
+#newarrival .newtag {padding: 5px 26px 10px 10px; text-transform: capitalize;}
+#newarrival .more {text-align: right; padding: 0 10px 5px 0;}
+
+
+
+/*Separator*/
+#separator {font-size: 3px;}
+
+
+/*secondary*/
+#mailingTable th {max-width: 20%;}
+#secondary input[type=submit],
+#secondary input[type=reset],
+#secondary textarea,
+#secondary input[type=text],
+#secondary input[type=email],
+#secondary input[type=password], 
+#secondary input[type=tel] {line-height: 1.5;}
+
+@media screen and (min-width: 640px){
+  #contact, #search, #mailing {width: 33.33%;}
+  #contact {float: left;}
+  #contact .content {margin-right: 8px;}
+  #search {float: right;}
+  #search .content {margin-left: 8px;}
+  #mailing {margin-left: auto; margin-right: auto;}
+  #secondary .content {padding-bottom: 1000em; margin-bottom: -1000em;}
+}
+
+@media screen and (max-width: 639px) {
+  #search .content {margin-top: 10px;}
+  #mailing .content {margin-top: 10px;}
+}
+
+#mailingTable .label {text-align: left;}
+
+.socialmedia li {margin-right: 4px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {height: 36px; width: 36px; background-size: 180px 108px; border-radius: 3px;}
+a.facebook {background-position: 0 0;}
+a.twitter {background-position: -36px 0;}
+a.google {background-position: -72px 0;}
+a.youtube {background-position: -108px 0;}
+a.linkedin {background-position: -144px 0;}
+
+a.facebook:hover {background-position: 0 -72px;}
+a.twitter:hover {background-position: -36px -72px;}
+a.google:hover {background-position: -72px -72px;}
+a.youtube:hover {background-position: -108px -72px;}
+a.linkedin:hover {background-position: -144px -72px;}
+
+
+/*Render Navigation*/
+#render {margin-right: auto; margin-left: auto;}

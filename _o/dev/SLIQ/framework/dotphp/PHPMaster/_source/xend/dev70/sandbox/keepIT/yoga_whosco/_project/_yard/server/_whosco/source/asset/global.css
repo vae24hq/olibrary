@@ -1,0 +1,65 @@
+/* erko3™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology.
+ * © July 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | base::asset ~ global styles
+ */
+
+a {color: #1D88BC; text-decoration: none;}
+a:hover {color: #DE1528;}
+a:active {color: #CC0028;}
+
+body, #page, #footer {
+	margin: 0 auto;
+	position: relative;
+}
+
+body {
+	font-family: Helvetica, Arial, Tahoma, sans-serif;
+	background: #F1EFEF url('bg.gif');
+	color: #504545;
+}
+
+	.top, #footer {font-size: 0.938em;}
+	.breadcrumb, .bottom .copyright {float: left; text-align: left;}
+	.date, .bottom .powered {float: right; text-align: right;}
+
+/*Begin HEADER styles*/
+.top, .firm,
+.firm a.email, .firm a.phone {color: #EBF1FA; text-shadow: 1px 1px 1px #252525;}
+
+.top {background: #01609E; padding: 10px;}
+		.breadcrumb a.brand {color: #77C5EA;}
+		.breadcrumb a.brand:hover {color: #A3D8F1;}
+
+.firm {background: #0171BC; padding: 20px 10px;}
+	.firm a.email:hover, .firm a.phone:hover {color: #D5E1F4;}
+	#logo {float: left;}
+	.firm .contact {float: right; text-align: right;}
+
+	.contact .email, .contact .phone, .contact .address {display: block;}
+
+
+/*Begin FOOTER styles*/
+#footer {background: #2E2E2E url('bg-footer.png') center; text-shadow: 1px 1px 0 #1D1D1D; border-top: 2px solid #CC0028;}
+	#footer li a[class~="active"], #footer li a[class~="active"]:hover {color: #848282;}
+
+.navwrap {padding: 10px;}
+	ul#footerNav {text-align: center;}
+	ul#footerNav li{display: inline;}
+	#footerNav li:after {content: ' |'; padding-left: 0;}
+	#footerNav li:last-child:after, #footerNav li.last:after {content: ''; padding: 0;}
+	#footerNav li a.menu {padding: 0 5px; color: #B9B7B7; text-shadow: 1px 1px 1px #000000; text-transform: capitalize;}
+	#footerNav li a.menu:hover {color: #CECCCC;}
+
+.bottom {background: rgba(0,0,0, 0.3);	color: #848282; padding: 10px;}
+	.bottom a.brand {color: #DAD1A9;}
+	.bottom a.brand:hover {color: #CDC48D;}
+
+#render {text-align: center;}
+	ul#renderNav li {display: inline; color: #1D88BC}
+	#renderNav li:after {content: ' -'; padding-left: 0;}
+	#renderNav li:last-child:after, #renderNav li.last:after {content: ''; padding: 0;}
+	#renderNav li a.renderlink {padding: 0 5px; text-transform: capitalize;}
+	#renderNav li a.renderlink:hover {text-decoration: none;}

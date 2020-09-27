@@ -1,0 +1,19 @@
+﻿.pager {
+    @extend .padding-0;
+    list-style: none;
+    
+    li {
+
+        > a {
+            @include border-radius(0);
+            border: none;
+            background-color: transparent;
+            font-weight: $font-weight-700;
+        }
+
+        a:focus,
+        a:active {
+            background-color: transparent;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | large::asset ~ large screen devices except IE8-6
+ */
+
+::selection {background: #28A4DF; color: #DAEFFA;}
+::-webkit-scrollbar {width: 0.6em; height: 0.6em;}
+::-webkit-scrollbar-track {
+  -moz-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); -webkit-box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4); box-shadow: inset 1px 0 6px rgba(0,0,0, 0.4);
+  border-width: 1px; border-style: solid; border-color: #FFF; border-color: rgba(0,0,0, 0.2);
+}
+::-webkit-scrollbar-track:hover {
+  -moz-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1); -webkit-box-shadow: inset 1px 0 6px rgba(0,0,0 0.1); box-shadow: inset 1px 0 6px rgba(0,0,0, 0.1);}
+::-webkit-scrollbar-thumb {
+  border: 0; background: #166B94;
+  background: linear-gradient(to right, #0F4B67 4%, #115271 10%, #166B94, #166B94, #115271 86%, #0F4B67);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #1D88BC; background: linear-gradient(to right, #156389 4%, #17719B 10%, #1D88BC, #1D88BC, #17719B 86%, #156389);
+}
+body {min-width: 980px; /*max-width: 1280px;*/}

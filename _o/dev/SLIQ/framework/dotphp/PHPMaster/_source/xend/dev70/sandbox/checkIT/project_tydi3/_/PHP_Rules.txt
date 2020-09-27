@@ -1,0 +1,176 @@
+=PHP========================================================
+VARIABLES:
+All variables must be lowercase with underscore for "space"
+	$a = 'something';
+	$another_var = 49;
+	$yet_another_long_var = 48;
+
+ARRAYS and LOOPS:
+Arrays follow the same rule for variables, except data from database should be named $data, and in loops should always have $key => $row pairs
+	foreach ($data as $key => $row){
+		echo $row['something'];
+	}
+
+FUNCTIONS
+-Functions must follow camelCaseConvention, which means no spaces and no underscores, lowercase with first letter of each word - uppercase (except the first word).
+-All names should be descriptiove and explain what function does or returns.
+	function fetch(){
+		...
+	}
+
+	function anotherFunction(){
+		...
+	}
+
+	function yetAnotherLongFunction(){
+		...
+	}
+
+-All function variables must be
+	Required variables first
+	Varibables with default values last
+
+-Try to avoid more than 4-5 function parameters, but if you absolutely need it, then separate in several lines
+
+
+CLASSES
+Class names are lowercase with each first letter uppercase and underscore ("_") for space. At the end of each class add comment: // end of class
+	class Database {
+		...
+	}
+
+	class Mysql_Database {
+		...
+	}
+
+	class My_Other_Class_Name {
+		...
+	}
+
+	class User extends Object{
+		...
+	} // end of class
+
+FILES
+Classes should be saved as {$class_name}.php
+	require_once "Database.php";
+	require_once "My_Other_Class_Name.php";
+
+COMMON VARIABLES
+All counters must be named as $i. If you have more than one counter, use the next letter: $j, $k, $l...
+	for ($i = 0; $i < 100; $i++)
+
+All temporary variables must be called $temp or $tmp;
+	for ($i = 0; $i < 100; $i++){
+		$temp  = $a[$i];
+		$a[$i] = $b[$i];
+		$b[$i] = $temp;
+	}
+
+FUNCTION NAMES
+Try to use as descriptive names as possible, but avoid to many words or to long names.
+If you have class User and function to validate if this user is valid or not, instead of this
+	if (User::isValidUser())
+Or even worse
+	if (User::checkIfThisUserIsValidAndActivated())
+Use this
+	if(User::isValid())
+
+[Becauses there's no need to reapeat word "User" since it's already in the class name]
+
+FUNCTION PREFIX
+All functions that return some $variable should be prefixed with "get".
+	$username = getUsername();
+	$data = $object->getLastItem();
+	$user = Class_Name::getUserById($id);
+
+All functions that set object variable should be prefixed with "set"
+	setUsername ($username);
+	$object->setLastItem($item);
+	Class_Name::setUserId($id);
+
+GLOBAL CONSTANT
+All global constants (constants that are used everywhere in application, not just single class) must be uppercase
+	define ('USER_TIMEOUT', '3000');
+	define ('LIMIT_POSTS', 15);
+
+CLASS CONSTANTS
+Constants that are used in a single class should be defined as class constants, not global constants. Uppercase but without prefix, and must be defined first before any other class variable
+	class User {
+		const LIMIT   = 2;
+		const ANOTHER = 'test';
+	}
+echo User::LIMIT;
+
+
+
+
+
+
+
+REQUIREMENT
+-PHP 5 code is required.
+
+-All code must be E_STRICT-compatible. This means that it must not produce any warnings or errors when PHP's error reporting level is set to E_ALL | E_STRICT.
+
+-ARRAY KEYS: array keys myst be quoted with single quote (')
+	echo $row['something'];
+
+-STRINGS: strings can be with single or double quote
+	$s = "This is 1st example";
+	$s = 'This is 1st example';
+
+-VARIABLE IN STRING: must be in brackets
+	Use this: $s = "This is {$variable} example";
+	Or: $s = 'This is '.$variable.' example';
+
+-COMMENT: comment code as much as possbile and as long as it makes sense.
+	/**
+	 * This is what function does
+	 * 
+	 * @access public
+	 * @param $var1 (string) - username
+	 * @param $var2 (int) - user id
+	 * @return bool
+	 */
+
+	public function getUser($var1, $var2 = 0){
+		// do something
+		return true;
+	}
+
+	Also use one line comments when needed but no need to comment obvious things
+	$activated = User::isValid(); // check if user activated account
+
+
+
+
+
+
+EQUAL SIGN (=) must have at least one space before and one after
+	$a = 'something';
+-If you have more assignments one after another, try to align =
+	$a       = 'something';
+	$another = 45;
+
+COMPARE SIGN (==, =>, >, <, <=, !=) also need minimum one space before and after
+	if($condition == 'I know')
+
+-Always use brackets { } even for simple if () statement
+
+MULTIPLE CONDITION: if you have if statements with long multiple conditions try to separate in different lines and split more complex conditions in 2 lines
+
+CONDITION ORDER: if you have multiple conditions put the most common condition first. So the second condition never checks if the first one is false
+
+OPERATORS: allways use space between operators
+	$a = $something * $b + $i;
+
+INCLUDE() and REQUIRE(): Include and require are statements not functions therefore use it like this:
+	include "/path/to/file/some.php";
+	require "/path/to/file/some.php";
+-Prefered methods are require_once and include_once
+	include_once "/path/to/file/some.php";
+	require_once "/path/to/file/some.php";
+
+
+ISSET() vs EMPTY(): allways use !empty() instead of isset(), except in case whare allowed values is '' or 0

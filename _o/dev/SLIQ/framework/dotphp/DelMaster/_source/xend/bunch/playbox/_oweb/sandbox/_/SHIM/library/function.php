@@ -1,0 +1,9 @@
+<?php
+require_once('func_print.php');
+require_once('func_session.php');
+require_once("func_randomize.php");
+require_once('func_utility.php');
+require_once('func_clean.php');
+require_once('func_crypt.php');
+require_once('func_time.php');
+?>

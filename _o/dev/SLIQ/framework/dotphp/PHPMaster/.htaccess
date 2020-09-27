@@ -1,0 +1,110 @@
+#Turn on Apache rewrite engine
+RewriteEngine on
+
+#Inherit parent directory's rules
+RewriteOptions inherit
+
+#Enable symbolic link
+Options +FollowSymLinks
+
+#Set default character set
+AddDefaultCharset utf-8
+
+#Preserve bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Process the following file extensions as PHP
+AddType application/x-httpd-php .php .php4 .php3 .phtml .html .htm .shtml .inc
+
+#Alternate default index pages
+DirectoryIndex index.php index.html index.htm index.shtml
+
+#Enable gzip compression
+<IfModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_dechunk Yes
+	mod_gzip_item_include file \.(html?|txt|css|js|php)$
+	mod_gzip_item_include mime ^application/x-javascript.*
+	mod_gzip_item_exclude mime ^app/asset/.*
+	mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+#Define base directory path (*only when base is different from current directory)
+RewriteBase /
+
+#Disable index (directory) listing [*possible GOTCHA when using 'Options All -Indexes']
+Options -Indexes
+
+#Prevent possible infinite loop
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
+
+
+#Prevent routing/rewriting for request on PHP & HTML files (that exist)
+RewriteCond %{REQUEST_URI} !.*\.php [NC]
+RewriteCond %{REQUEST_URI} !.*\.html [NC]
+
+#Basic clean up for URL on existing directory
+RewriteRule ^app$ app/ [NC,QSA,END]
+RewriteRule ^odao$ odao/ [NC,QSA,END]
+RewriteRule ^odao\/(.*)$ _source/$1 [NC,QSA,END]
+
+#Route (API) 'api/VAR' request to index.php?route=api&uri=VAR
+RewriteRule ^api\/(.*)$ index.php?route=api&uri=$1 [NC,QSA,END]
+#Route api.domain.com/VAR to /index.php?route=api&uri=VAR;
+RewriteCond %{HTTP_HOST} ^(api\.)(.+)$
+RewriteRule ^(.*)$ index.php?route=api&uri=$1 [NC,QSA,END]
+
+
+#Define rewrite request for ASSET|CSS|JS|FONT|IMAGE|ICON|DOCUMENT|PLUGIN|AUDIO|VIDEO|CLOUD|UPLOAD
+
+RewriteRule ^asset\/(.*)$ app/asset/$1 [NC,QSA,END]
+RewriteRule ^css\/(.*)$ app/asset/css/$1 [NC,QSA,END]
+RewriteRule ^js\/(.*)$ app/asset/js/$1 [NC,QSA,END]
+RewriteRule ^font\/(.*)$ app/asset/plugin/$1 [NC,QSA,END]
+RewriteRule ^image\/(.*)$ app/asset/media/image/$1 [NC,QSA,END]
+RewriteRule ^icon\/(.*)$ app/asset/media/image/$1 [NC,QSA,END]
+RewriteRule ^document\/(.*)$ app/asset/media/document/$1 [NC,QSA,END]
+RewriteRule ^plugin\/(.*)$ app/asset/plugin/$1 [NC,QSA,END]
+RewriteRule ^audio\/(.*)$ app/asset/media/audio/$1 [NC,QSA,END]
+RewriteRule ^video\/(.*)$ app/asset/media/video/$1 [NC,QSA,END]
+RewriteRule ^cloud\/(.*)$ app/cloud/$1 [NC,QSA,END]
+RewriteRule ^upload\/(.*)$ app/cloud/$1 [NC,QSA,END]
+
+RewriteRule ^http\/(.*)$ http.php?e=$1 [NC,QSA,END]
+RewriteRule ^data\/(.*)$ data.php?json=$1 [NC,QSA,END]
+
+
+#Route (APP) 'app/VAR' request to index.php?route=app&uri=VAR
+RewriteRule ^app\/(.*)$ index.php?route=app&uri=$1 [NC,QSA,END]
+#Route app.domain.com/VAR to /index.php?route=app&uri=VAR;
+RewriteCond %{HTTP_HOST} ^(app\.)(.+)$
+RewriteRule ^(.*)$ index.php?route=app&uri=$1 [NC,QSA,END]
+
+#Route (REDIRECT) 'redirect/VAR' request to index.php?route=redirect&uri=VAR
+RewriteRule ^redirect\/(.*)$ index.php?route=redirect&uri=$1 [NC,QSA,END]
+#Route redirect.domain.com/VAR to /index.php?route=redirect&uri=VAR;
+RewriteCond %{HTTP_HOST} ^(redirect\.)(.+)$
+RewriteRule ^(.*)$ index.php?route=redirect&uri=$1 [NC,QSA,END]
+
+#Route (GO) 'go/VAR' request to index.php?route=go&uri=VAR
+RewriteRule ^go\/(.*)$ index.php?route=go&uri=$1 [NC,QSA,END]
+#Route go.domain.com/VAR to /index.php?route=go&uri=VAR;
+RewriteCond %{HTTP_HOST} ^(go\.)(.+)$
+RewriteRule ^(.*)$ index.php?route=go&uri=$1 [NC,QSA,END]
+
+#Rewrite sub.domain.com/VAR to /index.php?route=sub&uri=VAR;
+#RewriteCond %{HTTP_HOST} ^(.+)\.dot\.ca$
+RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
+RewriteRule ^(.*)$ index.php?route=%1&uri=$1 [NC,QSA,END]
+
+
+#Rewrite every other request (but some) to index.php?route=request
+RewriteRule ^((?!_source\/.*$)(?!odao\/.*$)(?!favicon\.ico$)(?!asset\/.*$)(?!css\/.*$)(?!js\/.*$)(?!font\/.*$)(?!image\/.*$)(?!icon\/.*$)(?!document\/.*$)(?!plugin\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!cloud\/.*$)(?!upload\/.*$)(?!api\/.*$)(?!app\/.*$)(?!redirect\/.*$)(?!go\/.*$)(?!http.php\/.*$)(?!http.php$)(?!data.php\/.*$)(?!data.php$).*)$ index.php?uri=$1 [NC,QSA,END]
+
+
+#Define error documents
+ErrorDocument 404 /http/?e=404
+ErrorDocument 403 /http/?e=403

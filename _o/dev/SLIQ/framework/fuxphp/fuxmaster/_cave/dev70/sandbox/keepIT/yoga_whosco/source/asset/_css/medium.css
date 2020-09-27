@@ -1,0 +1,132 @@
+/* erko3™ framework - an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website.
+ * Built by SlimEdge™ [@officialSEID - www.seid.com.ng] using PHP, HTML, CSS, JS & derived technology. © July 2016 | version 1.0
+ * ================================================================================================================================
+ * CSS | medium::asset ~ tablet device
+ */
+
+@font-face {
+   font-family: 'Questrial';
+   src: url('upload/font/Questrial.eot');
+   src: url('upload/font/Questrial.eot?#iefix') format('embedded-opentype'),
+         url('upload/font/Questrial.woff2') format('woff2'),
+         url('upload/font/Questrial.woff') format('woff'),
+         url('upload/font/Questrial.ttf') format('truetype'),
+         url('upload/font/Questrial.svg#questrialregular') format('svg');
+   font-weight: normal; font-style: normal;
+}
+body {font-family: 'Questrial', Arial, Helvetica, sans-serif; min-width: 600px;}
+table {width: 100%;}
+
+
+/*Begin FORM*/
+textarea, input {padding: 6px 8px 6px; font-size: 1em;}
+
+
+/*Begin HEADER*/
+@media screen and (max-width: 704px){
+	.contact {display: none;}
+}
+
+
+/*Begin NAVIGATION*/
+.mainNav {margin: 0 auto;}
+	.mainNav .navlink {line-height: 2em; background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);}
+
+@media screen and (max-width: 640px) {
+	.mainNav a[class='nav-toggle active'], .mainNav a[class='nav-toggle active']:hover,
+	.nav-toggle, .nav-toggle:hover {background-position: 8px center; background-repeat: no-repeat;}
+	.nav-toggle:hover, .mainNav a[class='nav-toggle active']:hover {border-color: #244868;}
+	.nav-toggle {
+		display: block; padding: 12px 12px 12px 46px;
+		background-color: #244868; background-image: url('image/nav.gif'); border-bottom: 2px solid #0C1823;
+	}
+	.nav-toggle:hover {color: #629BD5; background-color: #0C1823; background-image: url('image/nav-hover.gif');}
+	.mainNav a[class='nav-toggle active'] {background-color: #070E14; background-image: url('image/nav-active.gif');}
+	.mainNav a[class='nav-toggle active']:hover {background-color: #0C1823; background-image: url('image/nav-active-hover.gif');}
+	.mainNav .navlink {
+		line-height: 2em; padding: 10px; border-bottom: 1px solid #055285; text-transform: uppercase;
+		background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+	}
+	.mainNav li:last-child .navlink, .mainNav .last{border-bottom: 0;}
+	.mainNav li .active{background: linear-gradient(#0275C3, #0573BD 6%, #0D6BA9 48%, #1167A2 96%, #196090 100%);}
+	.mainNav .navlink:hover {border-color: #9CC7E2;}
+}
+
+@media screen and (min-width: 641px){
+	.mainNav li {float: left;}
+	.mainNav .navlink {
+		border-right: 1px solid #055285; padding: 10px 14px 10px 15px; text-transform: capitalize;
+		background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+	}
+	.mainNav li:last-child .navlink {border-right: 0; padding-right: 15px;}
+	.mainNav .navlink:hover {border-bottom: 2px solid #9CC7E2; padding-bottom: 8px;}
+}
+@media screen and (min-width: 641px) and (max-width: 700px){
+	.mainNav .navlink {padding: 12px 13px 12px 14px;}
+	.mainNav .navlink:hover {padding-bottom: 10px;}
+}
+@media screen and (min-width: 641px) and (max-width: 675px){
+	.mainNav .navlink {padding: 12px 11px 12px 12px;}
+}
+@media screen and (min-width: 640px) and (max-width: 645px){
+	.mainNav .navlink {padding: 12px 10px 12px 11px;}
+}
+
+
+/*Begin BANNER*/
+.pageBanner {margin: 0 auto;}
+.bannerHeading {
+	position: absolute; top: 20px; left: 0; right: 0; z-index: 10; font-size: 1em; text-align: center; font-style: italic; padding: 4px 8px;
+}
+.pageBanner .caption {
+	background-color: #000; background-color: rgba(0,0,0, 0.8);
+	left: 0; right: 0; bottom: 0; margin: 0; font-size: 1em; padding: 5px 10px; text-align: center;
+}
+.bannerslides_nav {
+	background: transparent url("image/slide/arrow-tablet.gif") no-repeat left top; top: 50%; height: 46px; width: 38px; margin-top: -45px;
+}
+
+
+/*Begin SEPERATOR*/
+.separator {font-size: 3px;}
+
+
+/*Begin SECONDARY*/
+.moreInfo {background-size: cover;}
+.quickcontact, .search, .newsletter {border: 1px solid #FFFFFF; border: 1px solid rgba(255,255,255, 0.3);}
+.searchForm {margin-bottom: 20px;}
+@media screen and (min-width: 950px){
+	.moreInfo {padding: 10px;}
+	.quickcontact, .search, .newsletter {width: 32.6%; padding-bottom: 1000em; margin-bottom: -1000em;}
+	.quickcontact {float: left;}
+	.search {float: right;}
+	.newsletter {margin-left: auto; margin-right: auto;}
+	.moreInfo .content {margin: 10px;}
+}
+@media screen and (min-width: 655px) and (max-width: 949px){
+	.moreInfo {padding: 10px;}
+	.quickcontact {margin-bottom: 10px;}
+	.search, .newsletter {width: 49%; padding-bottom: 1000em; margin-bottom: -1000em;}
+	.search {float: left;}
+	.newsletter {float: right;}
+	.moreInfo .content {margin: 10px;}
+}
+@media screen and (max-width: 654px) {
+	.quickcontact, .search, .newsletter {margin: 10px; padding: 10px 10px 20px;}
+}
+
+.socialMedia li {margin-right: 6px;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {
+	background: url('image/stripes-sm-tablet.png') no-repeat; height: 44px; width: 44px; background-size: 220px 132px; border-radius: 3px;
+}
+a.facebook {background-position: 0 0;}
+a.twitter {background-position: -44px 0;}
+a.google {background-position: -88px 0;}
+a.youtube {background-position: -132px 0;}
+a.linkedin {background-position: -176px 0;}
+
+a.facebook:hover {background-position: 0 -88px;}
+a.twitter:hover {background-position: -44px -88px;}
+a.google:hover {background-position: -88px -88px;}
+a.youtube:hover {background-position: -132px -88px;}
+a.linkedin:hover {background-position: -176px -88px;}

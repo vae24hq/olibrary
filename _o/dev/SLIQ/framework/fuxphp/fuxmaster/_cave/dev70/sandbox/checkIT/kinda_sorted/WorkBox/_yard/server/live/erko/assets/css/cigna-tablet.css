@@ -1,0 +1,11 @@
+/* Cigna™ - a micro web framework by QuickOne™
+ * SiEMO™ Nigeria [www.siemo.com.ng]
+ * Author(s) -> Crieg A. Siemo [www.iamsiemo.com] ~ crieg@siemo.com.ng
+ * © August 2014 | version 1.0 beta
+ * CSS | tablet - tablet screen styles
+ * Application » erko®
+ */
+a[href^="tell:"] {cursor:default;} 
+.tablet-view {display:block;}
+.tablet-view-off {display:none;}
+#page {min-width:560px;}

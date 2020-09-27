@@ -1,0 +1,5 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+_source/odrive/
+_source/xend/quikuse/ignore/
+_source/log/
+*.log

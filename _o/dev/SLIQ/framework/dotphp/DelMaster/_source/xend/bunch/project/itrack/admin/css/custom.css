@@ -1,0 +1,13 @@
+.msgbox {
+	padding: 3px 8px;
+	margin: 2px auto 12px;
+	border-radius: 3px;
+}
+.fa{padding-right: 16px;}
+.branded thead th {background: #30A5FF; font-size: 0.84em;}
+.th-inner {color: #D3FFFF; text-transform: uppercase; font-weight: bold;}
+.spacer {display:block; line-height:1.8; font-size:0.5em;}
+.tiny {font-size: 0.7em; line-height: 1; display: block; color: #FFFFFF; font-weight: bold; text-transform: uppercase;}
+.medium {font-size: 1.5em;}
+.space-top {margin-top: 20px; padding-top: 20px; border-top: 1px dashed #EFEFEF;}
+label {color: tan;}

@@ -1,0 +1,6 @@
+<h4 class="heading">About Whosco</h4>
+    <article class="container"> <h4 class="hide">About Whosco Ventures Nigeria Limited</h4>
+      <p>whosco ventures Nigeria limited was founded and registered as a business enterprise in 1989.  The company became a limited liability company in October 31st, 2000 with registration certificate No 394,566.  The company has a head office at No 69, Sapele Road, Benin City, Edo State, Nigeria, West-Africa with current branches in Warri, Port Harcourt, Lagos and London.</p>
+      <p class="spaced">Whosco Ventures Nigeria Limited is involved in civil works, construction, Electrical and mechanical engineering works, expertise technical supplies of medical and science laboratory equipment and services; as well as capacity building trainings. </p>
+      <p>At Whosco Ventures Nigeria Limited, we make our business to understand your business; carry out our contracts with the highest quality equipment, spares and services.  We are also agents to leading Western Europe and Asian manufacturers, providing you with total technical support, continuity of supply together with competitive prices. At Whosco, we give you peace of mind in whatever we do for you, we understand your budget plan and help you work with it to your maximum satisfaction.</p>
+    </article>

@@ -1,0 +1,48 @@
+<?php
+$isRecord = getRecord('isRecord',$_GET['id'], 'student');
+if(!$isRecord){
+  $msg = 'This student does not have a record';
+  $isNotify = isNotify($msg,'error');
+  $showForm = FALSE;
+}
+else {
+  $BindID = $_GET['id'];
+  $RecordSameCondtion = 'WHERE BindID = '."'".$BindID."'".' LIMIT 1';
+  $RecordSame = Select('*','student', $RecordSameCondtion);
+  $RecordSameRow = $RecordSame['row'];
+
+  if(empty($_POST['UpdateBtn'])){
+    $msg = 'Please update the field below';
+    $isNotify = isNotify($msg,'info');
+    $showForm = TRUE;
+  }
+  else {
+    #CHECK IF RECORD EXIST
+    $MatNo = SQLSafe($_POST['MatNo']);
+    $RecordExistCondtion = 'WHERE MatNo = '."'".$MatNo."'".' LIMIT 1';
+    $RecordExist = Select('*','student', $RecordExistCondtion);
+    if($RecordExist && $RecordExist['row']['TUID'] != $RecordSameRow['TUID']){
+      $msg = 'There is a student with this MAT Number!<br>';
+      $msg .='Please generate a different MAT Number';
+      $isNotify = isNotify($msg,'error');
+      $showForm = TRUE;
+
+    }
+    else {
+      //UPDATE MAT NUMBER
+      $updateCondtion = 'WHERE BindID = '."'".$BindID."'".' LIMIT 1';
+      $updateData = array('MatNo' =>$MatNo);
+      $update = Update($updateData,'student',$updateCondtion);    
+
+      $msg = 'The record has been updated successfully';
+      $isNotify = isNotify($msg,'success');
+      $showForm = FALSE;
+
+    }
+  }
+}
+?>
+<form id="UpdateForm" name="UpdateForm" method="POST" action="">
+ <?php echo $isNotify;?>
+
+  <?php if(!empty($showForm)){?>

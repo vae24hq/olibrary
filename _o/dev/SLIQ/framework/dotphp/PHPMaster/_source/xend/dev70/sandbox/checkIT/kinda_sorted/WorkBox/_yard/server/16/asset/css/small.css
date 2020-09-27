@@ -1,0 +1,88 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | small::phone ~ small screen styles
+ */
+body {line-height: 1.6; min-width: 300px;}
+
+/*topbar*/
+#topbar {margin: 0 auto;}
+#topbar .breadcrumb {float: left;}
+#topbar .date {float: right;}
+@media only screen and (max-device-width: 319px){
+	.date {display: none;}
+}
+
+/*header*/
+#header {margin: 0 auto;}
+#logo {}
+#header .contact {}
+
+
+/*navigation*/
+#navigation {margin: 0 auto;}
+.nav-toggle {
+	color: #B1C7EB; text-shadow: 1px 1px 1px #000000; display: block; padding: 10px 10px 10px 40px;
+	background-repeat: no-repeat;	background-position: 8px center; background-color: 244868; background-image: url('../icon/nav.gif');
+}
+.nav-toggle:focus {outline: 0;}
+#navigation a[class='nav-toggle active'], .nav-toggle:hover {
+	color: #629BD5; background-color: #0C1823; background-image: url('../icon/nav-hover.gif'); border-color: #224462;
+}
+
+#navigation li a.menu {
+	line-height: 2em; padding: 8px 10px; border-bottom: 1px solid #055285; display: block; text-transform: capitalize;
+	background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+}
+#navigation li:last-child a.menu, #navigation li.last {border-bottom: 0;}
+#navigation li a[class~="active"] {background:linear-gradient(#0275C3, #0573BD 6%,	#0D6BA9 48%, #1167A2 96%, #196090 100%);}
+#navigation li a.menu:hover {border-color: #9CC7E2;}
+
+
+/*banner*/
+#banner {margin: 0 auto;}
+#banner .heading {
+	position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 7px 10px; font-size: 0.9em;
+	text-align: center; font-style: italic; background: rgba(0,0,0, 0.6);
+}
+#banner .caption {display: none;}
+
+
+/*content*/
+#content {margin: 0 auto;}
+#main, #side {display: block; min-height: 150px;}
+#main {margin: 10px;}
+#side {border: 1px solid rgba(0,0,0, 0.1); margin: 20px 10px;}
+
+
+/*separator*/
+#separator {margin: 0 auto; height: 10px;}
+
+
+/*secondary*/
+#secondary {margin: 0 auto; background-size: cover;}
+#search, #mailing {margin: 10px; padding: 10px 10px 20px; border: 1px solid rgba(255,255,255, 0.3);}
+
+
+/*footer*/
+#bottom {margin: 0 auto;}
+#footer .inside {padding: 0 10px;}
+#footer .copyright {float: left;}
+#footer .powered {float: right;}
+
+@media only screen and (max-device-width: 380px){
+	#bottom li:nth-child(6n){display: none;}
+	#footer li:nth-child(5n):after {content: ''; padding-left: 0;}
+}
+
+@media only screen and (max-device-width: 320px){
+	#bottom li:nth-child(5n){display: none;}
+	#bottom li:nth-child(4n):after {content: ""; padding-left: 0;}
+
+@media only screen and (max-device-width: 319px){
+	.powered {display: none;}
+}
+
+#main .left, #main .right, #main .center {float: none; clear: both; width: 98%; margin: auto;}

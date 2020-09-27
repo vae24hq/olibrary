@@ -1,0 +1,41 @@
+/* facil™ ver 0.1 - a cliqcore™ web development framework (HTML/CSS/PHP/MySQL)
+ * SiEMO Inc - iamSiEMO™ [www.siemo.com.ng]
+ * CSS | facefont.css - css document for @fontface
+ * Author(s)	->Crieg A. Siemo ~ www.iamsiemo.com // 
+ * © July 2014 cliqcore™ - www.cliqcore.com
+ */
+ 
+ @font-face {
+	font-family: 'aftasans';
+	src: url('aftasansthin-regular-webfont.eot');
+	src: url('aftasansthin-regular-webfont.eot?#iefix') format('embedded-opentype'), url('aftasansthin-regular-webfont.woff') format('woff'), url('aftasansthin-regular-webfont.ttf') format('truetype'), url('aftasansthin-regular-webfont.svg#afta_sansregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'aftasansitalic';
+	src: url('aftasansthin-italic-webfont.eot');
+	src: url('aftasansthin-italic-webfont.eot?#iefix') format('embedded-opentype'), url('aftasansthin-italic-webfont.woff') format('woff'), url('aftasansthin-italic-webfont.ttf') format('truetype'), url('aftasansthin-italic-webfont.svg#afta_sansitalic') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'aaargh';
+	src: url('Aaargh-webfont.eot');
+	src: url('Aaargh-webfont.eot?#iefix') format('embedded-opentype'),  url('Aaargh-webfont.woff') format('woff'),  url('Aaargh-webfont.ttf') format('truetype'),  url('Aaargh-webfont.svg#aaarghnormal') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'abeezee';
+	src: url('ABeeZee-Regular.eot?') format('eot'),  url('ABeeZee-Regular.otf') format('opentype'),  url('ABeeZee-Regular.woff') format('woff'),  url('ABeeZee-Regular.ttf') format('truetype'),  url('ABeeZee-Regular.svg#ABeeZee-Regular') format('svg');
+}
+
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('fontawesome-webfont.eot?v=4.1.0');
+  src: url('fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('fontawesome-webfont.woff?v=4.1.0') format('woff'), url('fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

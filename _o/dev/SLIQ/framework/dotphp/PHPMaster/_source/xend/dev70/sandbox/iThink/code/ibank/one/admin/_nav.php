@@ -1,0 +1,1 @@
+<a href="panel.php">Panel</a> - <a href="message.php?page=messages">Messages</a> - <a href="clients.php">Clients</a> - <a href="<?php echo $logoutAction ?>">Logout</a>

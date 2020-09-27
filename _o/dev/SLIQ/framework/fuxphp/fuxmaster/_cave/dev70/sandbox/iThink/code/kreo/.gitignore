@@ -1,0 +1,14 @@
+# Ignore file named README.md
+README.md
+
+# Ignore folder .setting
+.settings/
+
+# Ignore folder -_workbox
+_workbox/
+
+# Ignore file named .project
+.project
+
+# Ignore all .txt files
+*.txt

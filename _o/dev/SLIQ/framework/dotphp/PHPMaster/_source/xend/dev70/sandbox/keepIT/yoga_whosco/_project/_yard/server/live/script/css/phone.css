@@ -1,0 +1,105 @@
+/* facil™ ver 0.1 - a cliqcore™ web development framework (HTML/CSS/PHP/MySQL)
+ * SiEMO Inc - iamSiEMO™ [www.siemo.com.ng]
+ * CSS | phone.css - css document for mobile phone layout
+ * Author(s)	->Crieg A. Siemo ~ www.iamsiemo.com
+ * © July 2014 cliqcore™ - www.cliqcore.com
+ */
+
+a[href^="tell:"]{cursor:pointer;}
+.phone-view {display:block;}  .phone-off {display:none;}
+body {line-height: 1.4; font-family:Helvetica, Arial, Geneva, sans-serif;}
+
+/*layout*/
+
+#page {
+	min-width:320px;
+	max-width:480px;
+	border:none;
+}
+#header .contact, #change-languages, .date, #footer .navigation, .subscribe, .directions, .brief {display:none;}
+#nav {padding:0;}
+#toggle {margin:2px 10px 0; float:right; display:block;}
+.search {float:left; margin-top:4px; margin-left:10px;}
+#menu {display:none;}
+#footer {background-image:url(../../media/bg/dark-phone.png);}
+.socialmedia li {margin: 0 4px;}
+#secondary .heading {
+	border-bottom:1px dotted #313131;
+}
+.copyright{padding:7px 5px 7px 0;}
+
+.title {font-variant:normal; text-transform:uppercase; font-size:2.7em;}
+.title, .slogan {line-height:1;}
+.slogan {font-size:0.82em; text-align:center; max-width:200px;}
+.marquee {margin:0 1px 0 6px; display:block;}
+
+a.logo {
+	height:52px; width:162px;
+	background:#FE003C url(../../media/logo-phone.png) no-repeat;
+	border-radius: 18px/24px;
+}
+
+
+
+ .mainnavigation li {float:none;}
+#toggle:before { content:"\f0c9"; color:#FFF;}
+#toggle:hover:before{color:#F4F1E8;}
+#toggle {	
+	text-decoration:none;
+	text-shadow:#000 1px 1px 1px;
+	cursor:pointer;
+	min-width:80px;
+	border: 1px solid #A61D23;
+	background:#CB242B; 
+	border-bottom:none;
+	color: #F4F1E8; padding:7px 10px 8px 5px; border-radius: 3px 3px 0 0;
+}
+#toggle:hover {
+	text-shadow:#17B00 1px 1px 1px;	
+	background: #E04149;
+	color:#FFF;
+}
+.plus:after {content:"+"; padding-left:5px;}
+.minus:after {content:"-"; padding-left:5px;}
+
+
+.mainnavigation a {display:block; padding:4px 8px; line-height:2em; text-transform:capitalize; border-bottom:1px solid #FFEBAF; font-size: 0.9em; transition:background 0.2s ease-in-out;}
+a.facebook, a.twitter, a.google, a.youtube, a.linkedin {height:45px; width:45px; background-size: 225px 135px; transition:background 0.5s ease-in-out; border-radius:3px;}
+a.facebook{background-position:0 0;}
+a.twitter{background-position:-45px 0;}
+a.google{background-position:-90px 0;}
+a.youtube{background-position:-135px 0;}
+a.linkedin{background-position:-180px 0;}
+
+.anchor a.scrollup {transition:background 0.3s ease-in-out;}
+.copyright a.brand {padding:10px 5px; text-transform:uppercase; font-weight:bold;}
+.anchor a.scrollup {padding:10px; text-transform:uppercase;}
+
+.mainnavigation li a:hover, .mainnavigation li:hover  a {
+	background:#6F1317;
+}
+a.facebook:hover{background-position:0 -90px;}
+a.twitter:hover{background-position:-45px -90px;}
+a.google:hover{background-position:-90px -90px;}
+a.youtube:hover{background-position:-135px -90px;}
+a.linkedin:hover{background-position:-180px -90px;}
+.anchor a.scrollup:hover {background: rgba(0,0,0,0.4);  border:1px solid #59504F; padding:9px;}
+
+.mainnavigation li:last-child a { border-bottom:none;}
+
+.title:before {content:'whosco';}
+.copyright a.brand:before {content:'Whosco Ventures Ltd';}
+
+input[name=q] {max-width:120px; background:#FFC; border:1px solid #09F; margin-bottom:1px;}
+input[name=q]:focus { background:#FFC!important; color:#D8B679;  border:1px solid #D8B679 !important; text-shadow:none !important;}
+
+
+
+#banner {min-height:120px;}
+#content {margin-bottom:6px; margin-top:6px;}
+#content #main, #content #sidebar {min-height:200px; margin:0 6px 6px;}
+
+
+
+
+#toggle:before, .anchor a.scrollup:after, #nav a[title*="home"]:before, #nav a[title*="about"]:before, #nav a[title*="services"]:before, #nav a[title*="products"]:before, #nav a[title*="gallery"]:before, #nav a[title*="contact"]:before  {content:'';}

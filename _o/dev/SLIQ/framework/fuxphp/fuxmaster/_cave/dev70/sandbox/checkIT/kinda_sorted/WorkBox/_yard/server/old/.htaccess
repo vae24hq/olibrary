@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteOptions inherit
+
+#RewriteBase /dev.io/
+
+#Prevent looping
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Rewrite rules
+RewriteRule ^api(.*?)/?$ index.php?api=$1 [NC,QSA,L]
+RewriteRule ^link(.*?)/?$ index.php?link=$1 [NC,QSA,L]
+RewriteRule ^page(.*?)/?$ index.php?page=$1 [NC,QSA,L]
+RewriteRule ^download(.*?)/?$ index.php?action=download&file=$1 [NC,QSA,L]
+RewriteRule ^redirect/(.*?)/?$ index.php?action=redirect&location=$1 [NC,QSA,L]

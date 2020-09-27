@@ -1,0 +1,80 @@
+/* erko™ framework ~ an evolving, robust platform for rapid & efficient development of modem responsive static or dynamic website;
+ * Built by DeronEllse™ [@deronellse - www.deronellse.com/about] using PHP, MySQL, HTML, CSS, JS & derived technology.
+ * © February 2016 | version 1.0
+ * ===================================================================================================================
+ * Dependency »
+ * CSS | small::phone ~ small screen styles
+ */
+body {line-height: 1.5; background-image: url('../media/bg-small.jpg');  min-width: 300px;}
+@media only screen and (min-device-width: 900px){
+body{background-size: 100%;}
+}
+
+
+/*topbar*/
+#topbar .inside {padding: 5px 10px; }
+#topbar .breadcrumb {float: left;}
+#topbar .date {float: right;}
+@media only screen and (max-device-width: 319px){
+	.date  {display: none;}
+}
+
+/*header*/
+#header .inside {padding: 10px; text-align: center;}
+#logo {display: block;}
+#header .contact {display: none;}
+#header .phone {font-size: 0.9em;}
+
+@media only screen and (min-device-width: 460px){
+#logo {float: left; margin-right: 10px;}
+#header .contact {float: right; display: block; text-align: right; margin-top: 20px;}
+#header .phone {font-style: italic;}
+}
+@media only screen and (max-device-width: 350px){
+	#logo .flex {width: 180px;}
+}
+
+/*navgation*/
+#navigation {background: #01609E; border-bottom: 1px solid #015389; font-size: 0.938em;}
+.nav-toggle {
+	color: #B1C7EB; text-shadow: 1px 1px 1px #000000; cursor: pointer; display: block; padding: 10px 10px 8px 40px;
+	background-repeat: no-repeat;	background-position: 8px 7px; background-color: #244868; background-image: url('../icon/nav.gif');
+}
+.nav-toggle:focus {outline: 0;}
+#navigation a[class='nav-toggle active'], .nav-toggle:hover {
+	color: #629BD5; background-color: #0C1823; background-image: url('../icon/nav-hover.gif'); border-color: #224462;
+}
+
+#navigation li a.menu {
+	color: #CBE7FA; display: block; text-shadow: 0 1px 1px #333333; text-transform: capitalize;
+	transition: background 0.2s ease-in-out; background: #013E66;
+	background: linear-gradient(#015F9C, #06568A 6%, #0B4B75 48%, #104162 96%, #14384F 100%);
+	line-height: 2em; padding: 5px 10px; border-bottom: 1px solid #055285;
+}
+#navigation li:last-child a.menu, #navigation li.last {border-bottom: 0;}
+#navigation li a.menu:hover, #navigation li a[class~="active"] {text-shadow: 0 1px 1px #000000;}
+#navigation li a.menu:hover {background: rgba(255,255,255,0.2); color: #8CCBF4;}
+#navigation li a[class~="active"] {
+	cursor: text; background: #0B6DAE; background:linear-gradient(#0275C3, #0573BD 6%,	#0D6BA9 48%, #1167A2 96%, #196090 100%);		
+}
+#navigation li a[class~="active"]:hover {background-color: rgba(0,0,0,0.5);}
+#navigation li a.menu:hover {border-color: #9CC7E2;}
+
+
+/*banner*/
+#banner .heading {display: none;}
+#banner .caption {
+	position: absolute; bottom: 0; left: 0; right: 0; z-index: 10; padding: 5px 10px;
+	font-size: 0.9em; text-align: center; font-style: italic; background: #000000; background: rgba(0,0,0, 0.5);
+}
+
+
+/*content*/
+#main li {margin-left: 2px;}
+#side {padding: 10px;}
+#side aside {margin: 0 6px;}
+#feedback {margin-top: 10px;}
+
+/*footer*/
+#footer {text-align: center;}
+.bottom {padding: 10px;}

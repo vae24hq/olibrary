@@ -1,0 +1,134 @@
+================================================DERON's WORKFLOW====================================================
+
+BUILDING WEBSITE
+	1. SETTINGS
+	2. CREATE PAGE[s] (primary)
+	3. CODING HTML
+		1. Add content [text|images|etc] (or placeholder)
+		2. Wrap content with HTML, creating inner section structure
+		3. Create containing layout
+		4. Page layout
+		5. Create slices (if needed)
+
+	4. CODING CSS (Clear > Default > Print > Phone > Tablet > Desktop > [IE])
+		1. Content
+		2. Layout
+		3. Assets (images)
+
+	5. MEDIA/DOC
+	6. PROGRAMING
+
+
+
+
+================================================DERON's RULES====================================================
+GENERAL
+	1. Use ID for unique sections and outline/layout
+	2. Use Class for content and others styling
+	3. Maintain valid HTML formating of content
+
+CSS LAYOUT RULES
+1. Avoid padding on external layout boxes
+2. Don't apply margin to floated boxes (EVER)
+3. Use height in place of min-height for IE7 & below
+4. Use rgba() fallback for IE8 & below
+5. Set hasLayout (height:1%) on IE6 & IE7
+6. hasLayout can be essential to make inline element e.g link into a block
+7. Try to make floated elements use display - inline
+
+
+CSS OPTIMIZATION RULES
+1. Organize Your CSS
+2. Use proper CSS Reset & Print Stylesheet
+3. Avoid Over-Qualifying Selectors
+4. Use Shorthand Properties
+5. Use 0 instead of 0px
+6. Use Hexadecimal Instead of Color Names
+7. Avoid Redundant Selectors & Properties (DRY)
+8. Provide Fallback Fonts
+9. Remove Unnecessary Whitespace
+
+TYPOGRAPHY RULES
+1. Headings - Georgia [1.96em]
+2. SubHeading/Important - Verdana
+3. Navigation/List - Tahoma
+4. Body -  Arial | Helvetica  [13 - 16px]
+5. Line height - 1.48
+
+
+CSS QUICK UTILITY
+HIDE TEXT
+h1 {
+	background-image: url(/the_img.png);  /* shows image */
+	height: 100px;                        /* be sure to set height & width */
+	width:  600px;
+
+	/* Hide the text. */
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+.background {
+  background-color: transparent;
+  background-image: none;
+  background-repeat: repeat;
+  background-position: top left;
+  background-attachment: scroll;
+}
+
+.font {
+  font-style: normal;
+  font-variant:normal;
+  font-weight: normal;
+  font-size: inherit;
+  line-height: normal;
+  font-family:inherit;
+}
+.font_eg {font:bold 1em/1.2em georgia,"times new roman",serif;}
+
+.outline {
+  outline-width: number+unit;
+  outline-style: (numerous);
+  outline-color: color || #hex || (rgb / % || 0-255);
+}
+
+.list {
+  list-style-type:disc;
+  list-style-position:outside;
+  list-style-image:none;
+}
+
+
+
+															RESPONSIVE LAYOUT TABLE
+==PHONE===============================================================================================(320px by 480px)
+	320px | 1 column {320px}		|		2 columns {160px}*		|					-					|				-
+	480px | 2 columns {240px}		|		3 columns {160px}*		|					-					|				-
+
+
+==TABLET (small)======================================================================================(600px by 800px)
+	600px | 2 columns {300px}		|		3 columns {200px}			|		4 columns {150px}*
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	640px | 2 columns {320px}		|		3 columns {213.3px}		|		4 columns {160px}*		|				-
+	800px | 3 columns {266.6px}	|		4 columns {200px}			|		5 columns {160px}*		|				-
+
+
+==TABLET (large)=====================================================================================(768px by 1024px)
+	768px | 2 columns {384px}		|		3 columns {256px}			|		4 columns {192px}			|				-
+	1024px| 3 columns {341.3px}	|		4 columns {256px}			|		5 columns {204.8px}		|				-
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	960px | 3 columns {320px}		|		4 columns {240px}			|		5 columns {192px}			|				-
+
+
+==DESKTOP============================================================================================(1024px & beyond)
+	980px | 3 columns {326.6px}	|		4 columns {245px}			|		5 columns {196px}			|				-
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	1024px| 3 columns {341.3px}	|		4 columns {256px}			|		5 columns {204.8px}		|				-
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	1120px| 3 columns {373.3px}	|		4 columns {280px}			|		5 columns {224px}			|		6 columns {186.6px}
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	1200px| 3 columns {400px}		|		4 columns {300px}			|		5 columns {240px}			|		6 columns {200px}
+	------------------------------|-----------------------------|-----------------------------|------------------------
+	1280px| 4 columns {320px}		|		5 columns {256px}			|		6 columns {213.3px}		|		7 columns {182px}*

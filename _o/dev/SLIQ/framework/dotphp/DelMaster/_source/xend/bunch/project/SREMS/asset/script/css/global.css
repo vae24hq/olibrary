@@ -1,0 +1,124 @@
+/* PYPE™ - web development framework [HTML/CSS/PHP/SQL/JS/MORE]
+ * CSS | global
+ * Dependency »
+ */
+@charset "utf-8";
+@import url("../../webfont/fontface.css");
+mark {background: #82026D; color:#F2F2F2;}
+::selection {background: #A8028B; color:#FFF;}
+::-moz-selection {background: #A8028B; color:#FFF;}
+a {color: #1E6DA1;}
+a:hover {color: #BC0328;}
+::-webkit-scrollbar{width:0.5em; height: 0.5em;}
+::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);}
+::-webkit-scrollbar-thumb {
+	outline:1px solid #4D183F;
+	border-top:1px solid #A8028B;
+	border-bottom:1px solid #A8028B;
+	border-left:1px solid #A8028B;
+	background: #8D2C73;
+}
+::-webkit-scrollbar-thumb:hover {
+	outline:1px solid #720278;
+	border-top:1px solid #720278;
+	border-bottom:1px solid #720278;
+	border-left:1px solid #720278;
+    background-color: #820288;
+	background: linear-gradient(left to right, #910299, #8A0292,  #720278, #59015E, #520156);
+}
+nav a {
+	text-decoration: none;
+}
+body, #initialize, #page {margin:0 auto; padding:0; position:relative;}
+body {
+	font-family: "Carrois Gothic", "Century Gothic", Helvetica, Arial, sans-serif;
+	background: #EFEFEF url('../../bg/page.jpg');
+	font-size: 1em;
+}
+.info, .notice, .error, .success {
+	margin-bottom: 14px;
+	font-size: 0.9em;
+	border-radius: 3px;
+	padding: 3px 5px 2px;
+}
+.info {
+	border-bottom: 1px dotted #1E6DA1;
+	color: #1E6DA1;
+	border-radius: 0;
+}
+
+.notice {
+	border-bottom: 1px dotted #2486C5;
+	color: #1E6DA1;
+	background: #C7E2F1;
+}
+.error {
+	border-bottom: 1px dotted #FF91CD;
+	color: #A70324;
+	background: #FFDFF1;
+}
+.success {
+	border-bottom: 1px dotted #9AC45B;
+	color: #6BAA17;
+	background: #E9F2DB;
+}
+
+
+#pageHeader, #pageFooter {
+	color: #FEEAFF;
+	font-size: 0.9em;
+}
+
+/*****PAGE HEADER*****/
+#pageHeader {
+	border-bottom: 1px solid #2B012E;
+	background-color: #820288;
+	background: linear-gradient(#910299, #8A0292, #720278, #59015E, #520156);
+}
+.greetings strong, .username {
+	text-shadow: 0 1px 1px #460149;
+}
+.username {
+	color: #FDB7FF;
+	text-transform: uppercase;
+}
+
+#navigation .heading {
+	font-family: "Lane", Helvetica, Arial, sans-serif;
+}
+
+
+
+
+/*****PAGE FOOTER*****/
+#pageFooter {
+	border-top: 1px solid rgba(132,0,136,0.9);
+	background: rgba(132,0,136,0.7);
+}
+.brand, .developed {
+	margin: 2px 10px;
+}
+.supervised{margin: auto;}
+.school {	
+	letter-spacing: 2px;
+	font-size: 1.2em;
+}
+.faculty {
+	letter-spacing: 2px;
+	font-size: 0.9em;
+}
+.developer {
+	text-shadow: 0 1px 1px #460149;
+	color: #D8AFA7;
+	text-transform: uppercase;
+}
+.developer:hover, .supervisor:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+.supervisor {
+	text-shadow: 0 1px 1px #460149;
+	color: #FFF;
+	text-transform: uppercase;
+}

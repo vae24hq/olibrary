@@ -1,0 +1,74 @@
+#skiplink, #brandbar, #missionbar, #navigation, .top, .banner {
+	display: none !important;
+}
+
+body {
+	font: normal 1em "Times New Roman", Times, serif; 
+	background-image: none;
+	background-color: #fff;
+}
+
+#main {
+	background: none;
+}
+
+#content {
+	background-color: #fff;
+	border: none;
+	background-image: none;
+	background-color: #fff;
+	margin: 0;
+	padding: 0;
+	width: 99%;
+}
+
+#text {
+	width: 99% !important;
+}
+
+#banner {
+	background-image: none !important;
+}
+
+h1 {
+	font-size: 1.6em;
+	margin: 1.2em 0 0;
+}
+
+h1 span {
+	font-size: .9em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.2em;
+}
+
+h4 {
+	font-size: 1.1em;
+}
+
+#visual, #visual #picture, #visual #caption, #visual #caption #credit {
+	background: none;
+	color: #002f5e;
+}
+
+#visual {
+	border: 1px solid #22688e;
+}
+
+#visual #caption, #visual #caption #cpt_cnt {
+	width: 40%;
+	font-family: Arial, Helvetica, sans-serif
+}
+#visual #caption #cpt_cnt {
+	width: 90%;
+}
+
+#footer {
+	background: none;
+	border-top: 1px solid #333;
+}

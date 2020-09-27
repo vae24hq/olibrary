@@ -1,0 +1,172 @@
+/*CSS RESET*/
+@font-face {
+  font-family: 'Sanchez';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sanchez'), local('Sanchez-Regular'), url(sanchez.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('MontserratAlternates-Regular'), url(montserrat.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+html {font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;}
+html, body, div, span, object, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, address, em, img, strong, sub, sup, tt, b, u, i, dl, dt, dd,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, embed, figure, figcaption, footer, header, hgroup, 
+menu, nav, section, audio, video, marquee, progress, time, mark {
+	margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; font-weight: normal; font-style: normal; vertical-align: baseline;}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav,
+section, summary, h1, h2, h3, h4, h5, h6 {display: block;}
+audio, canvas, progress, video {display: inline-block;}
+audio:not([controls]) {display: none; height: 0;}
+a {background-color: transparent;}
+a:active, a:hover {outline: 0;}
+b {font-weight: bold;} i {font-style: italic;}
+h1 {font-size: 2em;} h2 {font-size: 1.5em;} h3 {font-size: 1.17em;}
+h4{font-size: 1em;} h5 {font-size: 0.83em;} h6 {font-size: 0.67em;}
+small {font-size: 94%;}
+sub, sup {font-size: 75%; line-height: 0; position: relative; vertical-align: baseline;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+img, a img {border: 0; vertical-align: middle;}
+hr {-moz-box-sizing: content-box; box-sizing: content-box; height: 0;}
+pre {overflow: auto;}
+code, kbd, pre, samp {font-family: monospace, monospace; font-size: 1em;}
+button, input, optgroup, select, textarea {color: inherit; font: inherit; margin: 0;}
+button {overflow: visible;}
+button, select {text-transform: none;}
+button, html input[type="button"], input[type="reset"], input[type="submit"]{-webkit-appearance: button; cursor: pointer;}
+button[disabled], html input[disabled] {cursor: default;}
+button::-moz-focus-inner, input::-moz-focus-inner {border: 0; padding: 0;}
+input {line-height: normal;}
+input[type="checkbox"], input[type="radio"] {box-sizing: border-box; padding: 0;}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {height: auto;}
+input[type="search"] {-webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box;}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {-webkit-appearance: none;}
+fieldset {border: 1px solid #C0C0C0; margin: 0 2px; padding: 0.35em 0.625em 0.75em;}
+legend {border: 0; padding: 0;}
+textarea {overflow: auto;}
+optgroup {font-weight: bold;}
+table {border-collapse: collapse; border-spacing: 0;}
+td, th {padding: 0;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after{content:none;}
+q:before, q:after {content:'~';}
+del, .del {text-decoration: line-through !important;}
+nav ol, nav ul, nav li,
+ul.nav, ul.nav li,
+ul.navigation, ul.navigation li,
+ul.menu, ul.menu li,
+ul.socialmedia, ul.socialmedia li {margin: 0; padding: 0; border: 0; list-style: none; vertical-align: baseline;}
+.group:before, .group:after {content: " "; display: table;}
+.group:after {clear: both;}
+.alignLeft {float: left;}
+.alignRight {float: right;}
+.alignCenter {margin-left: auto !important; margin-right: auto !important;}
+.none {position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px; width: 1px; margin: -1px; padding: 0; border: 0;}
+.invisible {visibility: hidden;}
+.visible {visibility: visible;}
+.center {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+.centerAbsolute {margin: 0 auto; position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
+.flex {max-width: 100%;}
+.space {margin-top: 0.6em; margin-bottom: 0.6em;}
+.spaceTop {margin-top: 0.6em;}
+.strong {font-weight: bold;}
+
+/*Responsive Slides (plugin)*/
+.bannerslides {position: relative; list-style: none; overflow: hidden; width: 100%; padding: 0; margin: 0;}
+.bannerslides li {-webkit-backface-visibility: hidden; position: absolute; left: 0; top: 0; display: none; width: 100%;}
+.bannerslides li:first-child {position: relative; display: block; float: left;}
+.bannerslides img {display: block; float: left; height: auto; width: 100%; border: 0;}
+
+.banner {
+	background: #CB002F url('image/slide-inn_2046') no-repeat top center;
+	text-shadow: 1px 1px 1px #252525; color: #EBF1FA; position: relative; overflow: hidden; background-size: cover;
+}
+	.banner .heading {line-height: 1;}
+	.banner .caption {
+		font-family: 'Palatino Linotype'; font-style: italic; text-shadow: none; color: #FFFFFF;
+		display: block; position: absolute; z-index: 2; max-width: none; text-align: right;
+	}
+	.bannerslides_nav {
+		z-index: 3; -webkit-tap-highlight-color: rgba(0,0,0,0); opacity: 0.7; position: absolute;  left: 0;
+		text-decoration: none; text-indent: 100%; white-space: nowrap; overflow: hidden;
+		background: transparent url("slide-arrow.gif") no-repeat left top; top: 45%; height: 61px; width: 38px; margin-top: -45px;
+		border-width: 1px; border-style: solid; border-color: #FFFFFF; border-color: rgba(255,255,255,0.3); border-radius: 3px;
+	}
+	.bannerslides_nav:active {opacity: 1.0;}
+	.slideshow_container .next {left: auto; background-position: right top; right: 0;}
+
+
+/*CUSTOM GLOBAL STYLES*/
+body {
+	font-family: 'Sanchez', Helvetica, Arial, Sans-serif;
+	background: #F7F3EA;
+}
+.banner {max-width: 980px; max-height: 320px; margin: 0 auto; overflow: hidden;}
+
+#header {border-bottom: 3px solid #008558;}
+	#header .content {margin: 0 auto; padding: 20px 10px; line-height: 1.5; max-width: 960px; position: relative;}
+
+#header .brand {float: left; margin-right: 10px;}
+
+#nav {float: right; font-family: 'Montserrat', Helvetica, Arial, Sans-serif; font-size: 0.937em;}
+	#nav .navigation {padding: 23px 0;}
+	#nav .navigation li {float: left; margin: 0 10px;}
+
+	#nav a {color: #008752; display: block; padding: 5px 0; text-decoration: none;}
+	#nav a:hover {color: #008752; padding-bottom: 3px; border-bottom: 2px solid #008752;}	
+	#nav .active a {color: #F58507; padding-bottom: 3px; border-bottom: 2px solid #F8982B;}
+
+
+
+#page {margin: 0 auto; padding: 10px 15px 30px; max-width: 950px; text-shadow:0 1px 0 #E0DEDE; background: #FAF8F1; border: 1px solid #F5F1E7;}
+#page .header {
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif; margin: 10px 0 20px; 
+	line-height: 1.5; font-size: 1.8em; color: #363839; border-bottom: 1px solid #E0DEDE;
+}
+#page .content {color: #333333; font-size: 0.94em; line-height: 1.3; padding: 0 5px 20px 5px;}
+#page p {margin-bottom: 1.2em;}
+#page strong {font-weight: bold;}
+#page ul.checklist {margin: 5px 0 20px; line-height: 1.5;}
+#page .checklist li {background: url(checklist.png) no-repeat left center; padding-left: 28px; margin: 6px 0; list-style: none;}
+
+#page h3 {font-size: 1.3em;}
+#page h3, a.heading  {color: #008558; line-height: 1.7; margin-bottom: 10px; text-decoration: none;}
+a.heading:hover  {color: #F58507;}
+#page h4 {font-family: 'Montserrat', Helvetica, Arial, Sans-serif; font-size: 1em; line-height: 1.1; margin-bottom: 10px; font-weight: bold; color: #F58507;}
+#page h4 span {display: block; font-family: Helvetica, Arial, Sans-serif; color: #008558; font-size: 0.9em;}
+
+.home .alignLeft, .home .alignRight {width: 30%;}
+.home .alignCenter {width: 38%;}
+
+.residential ul.checklist {background: url(residential-house.jpg) no-repeat right center;}
+.masonry ul.checklist {background: url(masonary-eyecenter.jpg) no-repeat right center;}
+
+#page img.alignLeft {margin-right: 20px; max-height: 180px;}
+
+#page .project {margin-bottom: 10px;}
+
+.about .project p {text-align: justify;}
+
+#footer {background: #363839;}
+	#footer .content {text-align: center; margin: 0 auto; line-height: 1.5; max-width: 980px; font-size: 0.875em; text-shadow: 1px 0 1px #000000;}
+	#footer a {color: #BFBFB9; text-decoration: none;}
+	#footer a:hover {color: #A9A9A0;}
+
+#footer .secondary {color: #7E8989; padding: 20px 10px 14px;}
+	#footer .navigation li {display: inline-block;}
+	#footer .navigation li:after {content: ' | '; margin: 0 5px;}
+	#footer .navigation li:last-child:after {content: ''; margin: 0;}
+
+#footer .footnote {color: #7D857E; background: #282A2B; border-top: 1px solid #4B4C4D; padding: 18px 10px;}
+
+	#footer .active a {color: #A0A096;}

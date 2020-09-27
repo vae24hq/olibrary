@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin-bottom: 6px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+.space {
+	font-size: 1px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+}
+.ifsty1n {
+	font-size: 12px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	color: #000000;
+}
+.ifsty1b {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	color: #000000;
+}
+a.ifsty1b:link {
+	color: #036;
+	text-decoration: none;
+}
+a.ifsty1b:active {
+	color: #036;
+	text-decoration: none;
+}
+a.ifsty1b:visited {
+	color: #036;
+	text-decoration: none;
+}
+a.ifsty1b:hover {
+	color: #000;
+	text-decoration: none;
+}
+.ifsty1br {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	color: #C00;
+}
+.ifsty2n {
+	font-size: 12px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	color: #8A4A48;
+}
+.ifsty2b {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, sans-serif;
+	color: #8A4A48;
+}
+.ifhr {
+	font-size: 1px;
+	font-weight: normal;
+	font-family: Arial, sans-serif;
+	color: #8A4A48;
+}
+.fs01 {
+	border-right: #8A4A48 1px solid;
+	border-top: #8A4A48 1px solid;
+	font-size: 12px;
+	border-left: #8A4A48 1px solid;
+	border-bottom: #8A4A48 1px solid;
+	font-family: Tahoma;
+	color: #22578C;
+	background-color: #FFFFFF;
+	padding-left: 3px;
+	padding-right: 3px;
+	font-weight: normal;
+}
+.fs02 {
+	border--radius: 4px;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: bold;
+	text-shadow: #333333 1px 1px 1px;
+	border: 1px solid #8A4A48;
+	padding: 6px 12px;
+	background: #B97D7D url(bgtopline.jpg) no-repeat bottom;
+}
+.fs02:hover {
+	background: url(bgtop.jpg) repeat;
+	cursor: pointer;
+}

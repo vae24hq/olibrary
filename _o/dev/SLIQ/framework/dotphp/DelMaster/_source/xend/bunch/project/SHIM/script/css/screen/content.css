@@ -1,0 +1,54 @@
+/*begin content CSS*/
+
+.box-scroll-spacer {
+	padding:6px 0px 6px 0px;
+}
+
+#contentbar {
+	min-width:900px;
+	min-height:340px;
+	padding-top:10px;
+	padding-right:8px;
+	padding-bottom:2px;
+	padding-left:8px;
+	background-image:url('../../../media/jpg/bodyBg.jpg');
+	background-repeat:repeat;
+	background-position:top left;
+}
+
+#contentbar #mainarea {
+	min-width:500px;
+	min-height:280px;
+	padding:0px 0px 0px 10px;
+	overflow:auto;
+}
+
+#contentbar #mainarea .header {
+	padding:1px 8px 1px 8px;
+	height:22px;
+	border:solid 1px #E1E1E1;
+	background-color:#F7F7F7;
+	background: -moz-linear-gradient(#FFFFFF, #F6F6F6);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFFF), to (#F6F6F6));
+	background: -webkit-linear-gradient(#FFFFFF, #F6F6F6);
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	color:#3A6A7E;
+	text-shadow: 1px 1px 1px #D7E6EC;
+	font-weight:bold;
+}
+
+#contentbar #mainarea .area {
+background-color:#FDFDFD;
+padding:6px 0px 6px 0px;
+border:solid 1px #E1E1E1;
+border-right:solid 0px #E1E1E1;
+}
+
+#contentbar #mainarea .content {
+	height:530px;
+	padding:0px 10px 0px 10px;
+	background-color:#FDFDFD;
+	overflow:auto;
+}

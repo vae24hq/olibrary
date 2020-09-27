@@ -1,0 +1,40 @@
+#Turn on rewrite engine
+RewriteEngine on
+
+#Inherit parent directory rules
+RewriteOptions inherit
+
+#Enable symbolic links
+Options +FollowSymLinks
+
+#Parse the default character set
+AddDefaultCharset utf-8
+
+#Preserve bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Define base path (if different from current directory)
+#RewriteBase /
+
+#Define error documents
+ErrorDocument 404 /_kreo.404.php
+ErrorDocument 403 /_kreo.403.php
+
+#Disable index listing for all directories and sub-directories
+Options All -Indexes
+
+#Prevent looping
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Rewrite URL rules (route every request but for redirect|download to index.php)
+RewriteRule ^((?!action$)(?!action/)(?!redirect$)(?!redirect/)(?!download$)(?!download/).*$)$ index.php?page=$1 [NC,QSA,END]
+
+#Rewrite URL rules (route request for action to action.php)
+RewriteRule ^action$|action/(.*)$ _kreo.action.php [NC,QSA,END]
+
+#Rewrite URL rules (route request for redirect|download to do.php)
+RewriteRule ^redirect$|redirect/(.*)$ _kreo.action.php?redirect&location=$1 [NC,QSA,END]
+RewriteRule ^download$|download/(.*)$ _kreo.action.php?download&file=$1 [NC,QSA,END]

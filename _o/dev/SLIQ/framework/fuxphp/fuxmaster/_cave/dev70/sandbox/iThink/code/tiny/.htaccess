@@ -1,0 +1,33 @@
+#Turn on rewrite engine
+RewriteEngine on
+
+#Inherit parent directory rules
+RewriteOptions inherit
+
+#Enable symbolic links
+Options +FollowSymLinks
+
+#Parse the default character set
+AddDefaultCharset utf-8
+
+#Preserve bandwidth for PHP enabled servers
+<ifmodule mod_php4.c>
+	php_value zlib.output_compression 16386
+</ifmodule>
+
+#Define base path (if different from current directory)
+#RewriteBase /
+
+#Define error documents
+ErrorDocument 404 /index.php?o_error=404
+ErrorDocument 403 /index.php?o_error=403
+
+#Disable index listing for all directories and sub-directories
+Options All -Indexes
+
+#Prevent looping
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#Rewrite URL rules (route every request to index.php?page=request)
+RewriteRule ^(.*)$ /index.php?page=$1 [NC,QSA,L]

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_RecentProduct" value="name:puid;datatype:int,name:suid;datatype:string,name:buid;datatype:string,name:entryDate;datatype:timestamp,name:entryStamp;datatype:string,name:entryIs;datatype:string,name:entryBy;datatype:string,name:product;datatype:string,name:acronym;datatype:string,name:category;datatype:string,name:details;datatype:string,name:photo;datatype:string" />
+</info>

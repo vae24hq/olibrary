@@ -1,0 +1,6 @@
+# Directory to Ignore
+/_source/project/
+
+# File to Ignore
+/-demo.php
+/_source/about/big.sql

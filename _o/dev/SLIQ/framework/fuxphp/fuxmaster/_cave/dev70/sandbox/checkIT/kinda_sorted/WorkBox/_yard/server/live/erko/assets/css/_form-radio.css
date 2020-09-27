@@ -1,0 +1,16 @@
+input[type=radio].radio {display:none;}
+input[type=radio].radio + label.radio-label {
+	padding-left:20px; height:15px; display:inline-block;
+	line-height:15px; background-repeat:no-repeat; background-position: 0 0;
+	font-size:15px; vertical-align:middle; cursor:pointer;
+}
+input[type=radio].radio:checked + label.radio-label {background-position: 0 -15px;}
+label.radio-label {
+	background-image:url(../grafix/form/radio.png);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}

@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/Roboto-Regular-webfont.eot');
+    src: url('../font/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Regular-webfont.woff') format('woff'),
+         url('../font/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('../font/Roboto-Light-webfont.eot');
+    src: url('../font/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/Roboto-Light-webfont.woff') format('woff'),
+         url('../font/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../font/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+	width:100%;
+	height:100%;
+	color: #333333;
+	font-family: "RobotoLight", sans-serif;
+}
+
+body {line-height: 1.5; font-family: "RobotoLight", "Roboto", sans-serif;}
+.odao-checkbox-label {margin: auto 10px;}
+.odao-bottom-button {margin-top: 20px; margin-bottom: 20px;}
+
+.odao-login-card {padding-top: 100px;}
+.odao-notify {padding-top: 10px; padding-bottom: 10px;}
+.odao-content {padding: 0 10px; margin:0 10px;}
+.odao-label {font-family: "Roboto", sans-serif;}
+.card-header {font-weight: bold; text-transform: uppercase; font-size: 0.9em;}
+.dropdown-item {font-family: "Roboto", sans-serif; font-size: 0.9em;}
+.navbar-nav .fas {margin-right: 5px;}
+.odao-topbar {background: #183995; border-bottom: 1px solid #005BB9;}
+.odao-sidebar {background: #0060CA; border: 1px sold #0060CA; border-right: 1px solid #005BB9;}
+.odao-nav-item {border-top: 1px solid #3796FF; color: #BFDEFF;}
+.odao-submenu {margin: 10px 0;}
+.odao-nav-link-active {background:#00336C;}
+.sidebar .nav-item .nav-link {color: rgba(255, 255, 255, 0.9);}
+.sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
+	background: rgba(0, 0, 0, 0.35);
+}
+.sidebar .nav-item .nav-link:active,.sidebar .nav-item .nav-link:focus {font-family: "Roboto", sans-serif;}
