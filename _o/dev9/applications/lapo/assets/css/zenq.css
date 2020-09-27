@@ -1,0 +1,14 @@
+.app-footer {
+	background: #FFFFFF;
+	padding: 10px;
+}
+.fas, .fab {padding-right: 10px;}
+
+div.onotify{padding: 10px; margin: 5px auto;}
+.form-control:focus {
+	box-shadow: 0 0 0 0.1 rgba(78, 115, 223, 0.25);
+}
+.otable th {color: #FFFFFF;	background-color: #343A40; border-color: #454D55; font-size: 0.9em;}
+.orow .control-label {margin-bottom: -2px; margin-top: 4px;}
+.oform .control-label {color: #454D55; font-weight: bold;}
+.obtnRow {padding-top: 30px;}
