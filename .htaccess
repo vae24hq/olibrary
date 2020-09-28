@@ -147,8 +147,8 @@ RewriteRule ^((?!_o\/.*$)(?!_o\/www\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$
 
 
 #HTTP ERROR - error documents defined
-# ErrorDocument 400 /ignite.php?olink=http&code=400
-# ErrorDocument 401 /ignite.php?olink=http&code=401
-# ErrorDocument 403 /ignite.php?olink=http&code=403
-# ErrorDocument 404 /ignite.php?olink=http&code=404
-# ErrorDocument 500 /ignite.php?olink=http&code=500
+ErrorDocument 400 /ignite.php?olink=http&code=400
+ErrorDocument 401 /ignite.php?olink=http&code=401
+ErrorDocument 403 /ignite.php?olink=http&code=403
+ErrorDocument 404 /ignite.php?olink=http&code=404
+ErrorDocument 500 /ignite.php?olink=http&code=500
