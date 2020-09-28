@@ -22,13 +22,19 @@ defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 
 defined('oSOURCE') ? null : define('oSOURCE', oROOT.'source'.DS);
 
-defined('oBITZR') ? null : define('oBITZR', 'bitzr'.DS);
-defined('oLAYOUTZR') ? null : define('oLAYOUTZR', 'layoutzr'.DS);
-defined('oMODELIZR') ? null : define('oMODELIZR', 'modelizr'.DS);
-defined('oRGANIZR') ? null : define('oRGANIZR', 'organizr'.DS);
+defined('oLAYOUT') ? null : define('oLAYOUT', 'layoutzr'.DS);
+defined('oBITZR') ? null : define('oBITZR', oLAYOUT.'bitzr'.DS);
+defined('oFORMZR') ? null : define('oFORMZR', oLAYOUT.'formzr'.DS);
+defined('oTHEMEZR') ? null : define('oTHEMEZR', oLAYOUT.'themezr'.DS);
+defined('oVIEWZR') ? null : define('oVIEWZR', oLAYOUT.'viewzr'.DS);
+
 defined('oROUTZR') ? null : define('oROUTZR', 'routzr'.DS);
-defined('oUTILIZR') ? null : define('oUTILIZR', 'utilizr'.DS);
-defined('oVIEWZR') ? null : define('oVIEWZR', 'viewzr'.DS);
+
+defined('oSUITE') ? null : define('oSUITE', 'suite'.DS);
+defined('oMODELIZR') ? null : define('oMODELIZR', oSUITE.'modelizr'.DS);
+defined('oRGANIZR') ? null : define('oRGANIZR', oSUITE.'organizr'.DS);
+defined('oUTILIZR') ? null : define('oUTILIZR', oSUITE.'utilizr'.DS);
+
 
 
 #REQUIRE LIBRARY
