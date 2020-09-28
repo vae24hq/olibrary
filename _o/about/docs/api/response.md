@@ -14,3 +14,10 @@ API RESPONSE
 	---------------------------------------
 		::record → *{no of records in recordset}
 		::recordset → *{array of records}
+
+
+
+
+API TOKEN
+================================================
+[test | live] per platform
