@@ -36,6 +36,21 @@ defined('oRGANIZR') ? null : define('oRGANIZR', oSUITE.'organizr'.DS);
 defined('oUTILIZR') ? null : define('oUTILIZR', oSUITE.'utilizr'.DS);
 
 
+#Using HTACCESS for PATH
+defined('CLOUD') ? null : define('CLOUD', 'cloud'.PS);
+defined('ASSET') ? null : define('ASSET', 'asset'.PS);
+defined('CSS') ? null : define('CSS', 'css'.PS);
+defined('ICON') ? null : define('ICON', 'icon'.PS);
+defined('JS') ? null : define('JS', 'js'.PS);
+defined('MEDIA') ? null : define('MEDIA', 'media'.PS);
+defined('PLUGIN') ? null : define('PLUGIN', 'plugin' . PS);
+defined('AUDIO') ? null : define('AUDIO', 'audio'.PS);
+defined('DOCUMENT') ? null : define('DOCUMENT', 'document'.PS);
+defined('GRAFIX') ? null : define('GRAFIX', 'grafix'.PS);
+defined('IMAGE') ? null : define('IMAGE', 'image'.PS);
+defined('VIDEO') ? null : define('VIDEO', 'video'.PS);
+defined('FONT') ? null : define('FONT', 'font' . PS);
+
 
 #REQUIRE LIBRARY
 require oSTATIC.'print.inc';
