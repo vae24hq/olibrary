@@ -69,6 +69,7 @@ oFile::Inc(oSTATIC.'ip.inc');
 oFile::Inc(oSTATIC.'url.inc');
 oFile::Inc(oSTATIC.'currency.inc');
 oFile::Inc(oSTATIC.'format.inc');
+oFile::Inc(oSTATIC.'input.inc');
 oFile::Inc(oINSTANCE.'database.inc');
 oFile::Inc(oINSTANCE.'route.inc');
 oFile::Inc(oBOND.'mobile.inc');
