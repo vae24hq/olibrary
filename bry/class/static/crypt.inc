@@ -42,13 +42,13 @@ class oCrypt {
 	}
 
 
-
+	//PREPARE • Prepare Cipher
 	protected static function iv_bytes(){
 		return openssl_cipher_iv_length(self::$method);
 	}
 
 
-	//PREPARE • Password Verification
+	//PREPARE • Prepare Encryption
 	public static function Prepare($key=false, $method=false){
 		if(!$key || empty($key)){$key = php_uname();} #default encryption key if none supplied
 		if(ctype_print($key)){self::$key = openssl_digest($key, 'SHA256', TRUE);} #convert ASCII keys to binary format
@@ -63,7 +63,7 @@ class oCrypt {
 	}
 
 
-
+	//EN • Encryption
 	public static function En($input='', $key=false, $method=false){
 		if(!empty($input)){
 			self::Prepare($key, $method);
@@ -74,6 +74,7 @@ class oCrypt {
 	}
 
 
+	//DE • Decryption
 	public static function De($input='', $key=false, $method=false){
 		if(!empty($input)){
 			self::Prepare($key, $method);
@@ -89,7 +90,7 @@ class oCrypt {
 	}
 
 
-	//DO • Do Encryption
+	//DO • Run Encryption
 	public static function Do($input='', $type = 'iCrypt', $key=false, $method=false){
 		if(!empty($input)){
 			if($type == 'iCrypt'){
