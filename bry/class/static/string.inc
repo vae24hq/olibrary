@@ -52,26 +52,82 @@ class oString {
 
 
 	//To • Substitute a character|string in a string and vice-versa
-	public static function To($string, $search, $substitute , $occurence='oALL', $case_sensitive=false){
+	public static function To($string, $search, $substitute , $occurence='iAll', $case_sensitive=false){
 		if(self::In($string, $search, $case_sensitive) === false){#return STRING if search NOT found
 			return $string;
 		}
 		else {#when SEARCH is found in STRING
-			if($occurence == 'oALL'){
+			if($occurence == 'iAll'){
 				if($case_sensitive === true){#when case IS sensitive
 					return str_replace($search, $substitute, $string);
 				}
 				return str_ireplace($search, $substitute, $string); #only when case is NOT sensitive
 			}
 			else {
-				if($occurence == 'oFIRST'){$pos = strpos($string, $search);}
-				if($occurence == 'oLAST'){$pos = strrpos($string, $search);}
+				if($occurence == 'oiFirst'){$pos = strpos($string, $search);}
+				if($occurence == 'iLast'){$pos = strrpos($string, $search);}
 				if($pos !== false){
 					return substr_replace($string, $substitute, $pos, strlen($search));
 				}
 				return $string;
 			}
 		}
+	}
+
+
+	//CLEAN • Clean string/array
+	public static function Clean($i, $tags=''){
+		if(empty($tags)){
+		#To strip out javascript | HTML tags | style tags | multi-line comments
+			$tags = array(
+				'@<script[^>]*?>.*?</script>@si',
+				'@<[\/\!]*?[^<>]*?>@si',
+				'@<style[^>]*?>.*?</style>@siU',
+				'@<![\s\S]*?--[ \t\n\r]*>@'
+			);
+		}
+
+		if(!is_array($i)){
+			$o = '';
+			$o = preg_replace($tags, '', $i);
+			$o = strip_tags($o);
+		}
+		else {
+			$o = array();
+			foreach ($i as $key => $v){
+				$clean = preg_replace($tags, '', $v);
+				$clean = strip_tags($clean);
+				$o[$key] = $clean;
+			}
+		}
+
+		return trim($o);
+	}
+
+
+	//SLASH • Remove or add slash to string/array
+	public static function Slash($input, $r='iTrim'){
+		if($r == 'iTrim'){
+			if(!is_array($input)){
+				$o = '';
+				$o = stripslashes($input);
+			}
+			else {
+				$o = array();
+				foreach ($input as $key => $value){$o[$key] = stripslashes($value);}
+			}
+		}
+		elseif($r == 'iAdd'){
+			if(!is_array($input)){
+				$o = '';
+				$o = addslashes($input);
+			}
+			else {
+				$o = array();
+				foreach ($input as $key => $value){$o[$key] = addslashes($value);}
+			}
+		}
+		return $o;
 	}
 
 
