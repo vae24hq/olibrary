@@ -79,7 +79,8 @@ class oRandom {
 			$rez = mt_rand(1000000000, 9999999999);
 		}
 
-		elseif($res == 'iMG'){
+		#file name
+		elseif($res == 'iFile'){
 			$i = array_merge(range('A', 'Z'), range('a', 'z'));
 			shuffle($i);
 			$input = '';
