@@ -8,10 +8,10 @@ class oInput {
 	//METHOD • Returns data from post/get/request
 	public static function Method($i='iPost', $v=''){
 		if(!empty($i)){
-			if($i == 'iRequest' && !empty($_REQUEST)){$o = $_REQUEST;}
-			elseif($i == 'iGet' && !empty($_GET)){$o = $_GET;}
-			elseif($i == 'iPost' && !empty($_POST)){$o = $_POST;}
-			elseif($i == 'iSession' && !empty($_SESSION)){$o = $_SESSION;}
+			if($i == 'iRequest' && oString::IsEmpty($_REQUEST)  === false){$o = $_REQUEST;}
+			elseif($i == 'iGet' && oString::IsEmpty($_GET)  === false){$o = $_GET;}
+			elseif($i == 'iPost' && oString::IsEmpty($_POST)  === false){$o = $_POST;}
+			elseif($i == 'iSession' && oString::IsEmpty($_SESSION)  === false){$o = $_SESSION;}
 		}
 		if(!empty($o)){
 			if(oString::IsEmpty($v) === false && oString::IsEmpty($o[$v]) === false){
