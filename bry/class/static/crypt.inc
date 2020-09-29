@@ -19,5 +19,34 @@ class oCrypt {
 		return false;
 	}
 
+	public static function Do($input='', $type = 'iCrypt'){
+		if(!empty($input)){
+			if($type == 'iCrypt'){
+				$o = hash("md5", $input);
+				$o = sha1($o);
+				$o = md5($o);
+			}
+
+			if(!empty($o)){return $o;}
+		}
+
+		return false;
+	}
+
+
+	public static function Password($input, $cost=9){
+		if(!empty($cost) && is_int($cost) && $cost > 4){
+			return password_hash($input, PASSWORD_BCRYPT, array('cost' => $cost));
+		}
+		elseif ($cost == 'iDefault'){
+			return password_hash($input, PASSWORD_BCRYPT);
+		}
+		return password_hash($input, PASSWORD_BCRYPT);
+	}
+
+	public static function PasswordIs($password, $hash){
+		return password_verify($password, $hash);
+	}
+
 
 } // EndOfClass - oCrypt
