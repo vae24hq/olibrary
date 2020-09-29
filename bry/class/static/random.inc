@@ -58,9 +58,40 @@ class oRandom {
 
 
 	//CREATE • generate & return values
-	public static function Create($res, $length = 'iAuto', $input=''){
+	public static function Create($res='iRandomiz', $length = 'iAuto', $input=''){
+		#randomize
+		if($res == 'iRandomiz'){
+			$i = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
+			shuffle($i);
+			$inlength = count($i);
+			$max = $inlength - 2;
+			$min = mt_rand(1,9);
+			if($min > $max-1){$min = 1;}
+			$loop = mt_rand($min, $max);
+			$rez = '';
+			for ($c=0; $c < $loop; $c++){
+				$rez .= $i[$c];
+			}
+		}
+
+		#account number
+		elseif ($res == 'iAccountNo') {
+			$rez = mt_rand(1000000000, 9999999999);
+		}
+
+		elseif($res == 'iMG'){
+			$i = array_merge(range('A', 'Z'), range('a', 'z'));
+			shuffle($i);
+			$input = '';
+			$loop = mt_rand(3, 20);
+			for ($c=0; $c < $loop; $c++){
+				$input .= $i[$c];
+			}
+			$rez = $i[1].$i[2].mt_rand(10, 99999).$input;
+		}
+
 		#special character
-		if($res == 'iChar'){
+		elseif($res == 'iChar'){
 			$char = '(=@#$[%{&*?)}';
 			$rez = self::Prepare($char, $length);
 		}
