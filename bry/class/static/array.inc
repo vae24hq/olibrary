@@ -2,13 +2,17 @@
 /**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
  * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
  * ============================================================================================
- * oURL ~ URL utility • DEPENDENCY»
+ * oArray ~ Summary of Class • DEPENDENCY»
  */
-class oURL {
-	//METHOD • Returns URL referrer
-	public static function ref(){
-		if(!empty($_SERVER['HTTP_REFERER'])){return strtolower($_SERVER['HTTP_REFERER']);}
+class oArray {
+	//METHOD • Describe method
+	public static function isMulti($array){
+		if(is_array($array)){
+			$rez = array_filter($array, 'is_array');
+			if(count($rez) > 0){return true;}
+		}
 		return false;
 	}
 
-} // EndOfClass - oURL
+
+} // EndOfClass - oArray

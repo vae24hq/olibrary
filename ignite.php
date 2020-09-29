@@ -60,6 +60,7 @@ if(!file_exists(oSTATIC.'file.inc')){
 }
 require oSTATIC.'file.inc';
 oFile::Inc(oSTATIC.'string.inc');
+oFile::Inc(oSTATIC.'array.inc');
 oFile::Inc(oINSTANCE.'session.inc');
 oFile::Inc(oSTATIC.'redirect.inc');
 oFile::Inc(oSTATIC.'ssl.inc');
@@ -72,6 +73,7 @@ oFile::Inc(oSTATIC.'format.inc');
 oFile::Inc(oSTATIC.'input.inc');
 oFile::Inc(oINSTANCE.'database.inc');
 oFile::Inc(oINSTANCE.'route.inc');
+oFile::Inc(oINSTANCE.'server.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 

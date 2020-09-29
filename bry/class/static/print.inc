@@ -5,25 +5,6 @@
  * oPrint ~ Variable PRINT & DUMP • DEPENDENCY»
  */
 class oPrint {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//EXPORT • var_export
 	public static function Export($i, $capture=true){
 		return '<pre><tt>'.var_export($i, $capture).'</tt></pre>';

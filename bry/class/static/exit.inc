@@ -5,25 +5,6 @@
  * oExit ~ Exit with message • DEPENDENCY» <print>
  */
 class oExit {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//RUN • exit with message
 	public static function Run($obj, $msg, $extra=''){
 		$o = strtoupper($obj).'::';

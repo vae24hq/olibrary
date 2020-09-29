@@ -5,7 +5,6 @@
  * oString ~ String Handling • DEPENDENCY»
  */
 class oString {
-
 	//Is • Returns TRUE/FALSE if variable is string
 	public static function Is($i){
 		return is_string($i);

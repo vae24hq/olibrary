@@ -5,25 +5,6 @@
  * oRedirect ~ Redirect Handling • DEPENDENCY»
  */
 class oRedirect {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//META • redirect URL using http-equiv
 	public static function Meta($link, $time=0, $exit=false){
 		$o = '<meta http-equiv="refresh" content="'.$time.'; url='.$link.'">';

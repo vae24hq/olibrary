@@ -5,25 +5,6 @@
  * oFile ~ File & Directory Utility • DEPENDENCY» <exit>
  */
 class oFile {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//Is • Returns TRUE/FALSE if file or directory is valid & exist
 	public static function Is($path='', $type='iFile'){
 		if($type === 'iFile'){

@@ -5,25 +5,6 @@
  * oSSL ~ Handling SSL • DEPENDENCY» <redirect> + session
  */
 class oSSL {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//HTTPs • Returns boolean on HTTPs check
 	public static function HTTPs(){
 		$o = false; $https = 'inactive'; $port = 'default';

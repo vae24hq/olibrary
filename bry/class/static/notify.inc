@@ -5,26 +5,6 @@
  * oNotify ~ Notification Utility • DEPENDENCY»
  */
 class oNotify {
-	private static $Instance;
-
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//EMAIL • send email via PHP Mail [returns true/false]
 	public static	function Email($data, $type = 'iHTML'){
 		if($type == 'iDEFAULT'){

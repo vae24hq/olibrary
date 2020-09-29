@@ -5,25 +5,6 @@
  * oJSON ~ JSON Utility • DEPENDENCY»
  */
 class oJSON {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-
 	//ERROR • JSON error interpreter
 	public static function Error($e, $i=''){
 		$o['oINPUT'] = $i; $o['oERROR'] = $e;
