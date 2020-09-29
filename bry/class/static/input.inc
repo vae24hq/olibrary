@@ -13,10 +13,8 @@ class oInput {
 			elseif($i == 'iPost' && oString::IsEmpty($_POST)  === false){$o = $_POST;}
 			elseif($i == 'iSession' && oString::IsEmpty($_SESSION)  === false){$o = $_SESSION;}
 		}
+
 		if(!empty($o)){
-			// if(oString::IsEmpty($v) === false && isset($o[$v])){
-			// 	$o = $o[$v];
-			// }
 			if(oString::IsEmpty($v) === false){
 				if(isset($o[$v])){return $o[$v];}
 				return false;
