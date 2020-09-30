@@ -5,7 +5,7 @@
  * oString ~ String Handling • DEPENDENCY»
  */
 class oString {
-	//Is • Returns TRUE/FALSE if variable is string
+	//IS • Returns TRUE/FALSE if input is a string
 	public static function Is($i){
 		return is_string($i);
 	}
@@ -27,9 +27,9 @@ class oString {
 	}
 
 
-	//In • Returns TRUE/FALSE if needle is found in string
-	public static function In($string, $needle, $case_sensitive=false){
-		if($case_sensitive === true){#case IS sensitive
+	//IN • Returns TRUE/FALSE if needle is found in string
+	public static function In($string, $needle, $case=false){
+		if($case === true){#case is sensitive
 			if(strpos($string, $needle) !== false){
 				return true;
 			}
@@ -43,7 +43,7 @@ class oString {
 	}
 
 
-	//SpaceTo • Substitute space with value(s) in a string and vice-versa
+	//SPACE TO • Substitute space with value(s) in a string and vice-versa
 	public static function SpaceTo($string, $value, $inverse=false){
 		if($inverse === true){return str_replace($value, ' ', $string);}
 		return preg_replace('/\s+/', $value, $string);
@@ -51,19 +51,19 @@ class oString {
 
 
 	//To • Substitute a character|string in a string and vice-versa
-	public static function To($string, $search, $substitute , $occurence='iAll', $case_sensitive=false){
-		if(self::In($string, $search, $case_sensitive) === false){#return STRING if search NOT found
+	public static function To($string, $search, $substitute , $occurence='iAll', $case=false){
+		if(self::In($string, $search, $case) === false){#return STRING if search NOT found
 			return $string;
 		}
 		else {#when SEARCH is found in STRING
 			if($occurence == 'iAll'){
-				if($case_sensitive === true){#when case IS sensitive
+				if($case === true){#when case IS sensitive
 					return str_replace($search, $substitute, $string);
 				}
 				return str_ireplace($search, $substitute, $string); #only when case is NOT sensitive
 			}
 			else {
-				if($occurence == 'oiFirst'){$pos = strpos($string, $search);}
+				if($occurence == 'iFirst'){$pos = strpos($string, $search);}
 				if($occurence == 'iLast'){$pos = strrpos($string, $search);}
 				if($pos !== false){
 					return substr_replace($string, $substitute, $pos, strlen($search));
@@ -74,10 +74,10 @@ class oString {
 	}
 
 
-	//CLEAN • Clean string/array
+	//CLEAN • Clean up STRING/ARRAY
 	public static function Clean($i, $tags=''){
 		if(empty($tags)){
-		#To strip out javascript | HTML tags | style tags | multi-line comments
+		#To strip out javascript | HTML tags | Style tags | multi-line comments
 			$tags = array(
 				'@<script[^>]*?>.*?</script>@si',
 				'@<[\/\!]*?[^<>]*?>@si',
@@ -132,23 +132,24 @@ class oString {
 
 
 	//Blur • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
-	public static function Blur($string, $library, $symbol = ', ', $blur='***', $case_sensitive=false){
+	public static function Blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
 		$o = $string;
 		$words = explode(" ", $string);
-		if(!is_array($library)){
-			$library = explode($symbol, $library);
+		if(!is_array($lib)){
+			$lib = explode($symbol, $lib);
 		}
 
+		#TODO ~ check for words with special characters - [fuck. fuck_ fuck/]
 		foreach ($words as $word){
-			if(in_array(strtolower($word), array_map('strtolower', $library))){
-				$o = self::To($o, $word, $blur , 'oALL', $case_sensitive);
+			if(in_array(strtolower($word), array_map('strtolower', $lib))){
+				$o = self::To($o, $word, $blur , 'iAll', $case);
 			}
 		}
 		return $o;
 	}
 
 
-		//-------------- Return false OR value before first occurrence character|string if found ---------------
+	//-------------- Return false OR value before first occurrence character|string if found ---------------
 	public static function before($string, $search, $strip='oYEAH'){
 		$pos = strpos($string, $search);
 		if($pos && $pos != 0){$result = substr($string, 0, $pos);}
