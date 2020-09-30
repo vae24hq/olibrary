@@ -140,7 +140,7 @@ class oString {
 			$lib = explode($symbol, $lib);
 		}
 
-		#TODO ~ check for words with special characters - [fuck. fuck_ fuck/]
+		#TODO ~ check for words with special characters - [fuck. fuck_ fuck* fuck/]
 		foreach ($words as $word){
 			if(in_array(strtolower($word), array_map('strtolower', $lib))){
 				$o = self::To($o, $word, $blur , 'iAll', $case);
