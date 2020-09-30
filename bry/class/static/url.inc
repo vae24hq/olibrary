@@ -13,10 +13,9 @@ class oURL {
 
 
 	//TO DOMAIN • Convert url to domain
-	public static function ToDomain($url=''){
+	public static function ToDomain($url='', $lib=''){
 		if(empty($url)){
-
-#prepare & return result
+			if(empty($lib)){$lib = array('https://', 'http://', 'www.', 'api.', 'app.');}
 			$task = $url;
 			$task = stringSwap($task, 'https://', '', 'first');
 			$task = stringSwap($task, 'http://', '', 'first');
