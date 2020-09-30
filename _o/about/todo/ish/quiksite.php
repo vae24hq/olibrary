@@ -222,19 +222,7 @@ function getRD(){
 
 /** Begin DOMAIN & URL functions **/
 
-// convert url to domain
-function url2domain($url=''){
-	#perform validation
-	if(empty($url)){return FALSE;}
 
-	#prepare & return result
-	$task = $url;
-	$task = stringSwap($task, 'https://', '', 'first');
-	$task = stringSwap($task, 'http://', '', 'first');
-	$task = stringSwap($task, 'www.', '', 'first');
-	$task = stringSwap($task, '/', '', 'last');
-	return $task;
-}
 
 // return baseurl
 function getBaseURL(){
