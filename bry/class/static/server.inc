@@ -14,4 +14,13 @@ class oServer {
 	}
 
 
+	//REMOTE • Get user IP
+	public static function RemoteIP(){
+		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$o = $_SERVER['HTTP_CLIENT_IP'];} #IP from share Internet
+		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$o = $_SERVER['HTTP_X_FORWARDED_FOR'];} #IP pass from proxy
+		else {$o = $_SERVER['REMOTE_ADDR'];} #IP from remote server
+		return $o;
+	}
+
+
 } // EndOfClass - oServer
