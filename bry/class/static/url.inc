@@ -5,8 +5,8 @@
  * oURL ~ URL utility • DEPENDENCY» string
  */
 class oURL {
-	//METHOD • Returns URL referrer
-	public static function ref(){
+	//REF • Returns URL referrer
+	public static function Ref(){
 		if(!empty($_SERVER['HTTP_REFERER'])){return strtolower($_SERVER['HTTP_REFERER']);}
 		return false;
 	}
@@ -19,18 +19,14 @@ class oURL {
 				$lib = array('https://', 'http://', 'www.', 'api.', 'app.');
 			}
 
-			foreach($lib as $value) {
-				echo $value;
+			foreach($lib as $value){
+				$url = oString::To($url, $value, '', 'iFirst');
 			}
-
-			$task = $url;
-			$task = stringSwap($task, 'https://', '', 'first');
-			$task = stringSwap($task, 'http://', '', 'first');
-			$task = stringSwap($task, 'www.', '', 'first');
-			$task = stringSwap($task, '/', '', 'last');
-			return $task;
+			$url = oString::To($url, '/', '', 'iLast');
+			return $url;
 		}
 		return false;
 	}
+
 
 } // EndOfClass - oURL
