@@ -11,4 +11,20 @@ class oURL {
 		return false;
 	}
 
+
+	//TO DOMAIN • Convert url to domain
+	public static function ToDomain($url=''){
+		if(empty($url)){
+
+#prepare & return result
+			$task = $url;
+			$task = stringSwap($task, 'https://', '', 'first');
+			$task = stringSwap($task, 'http://', '', 'first');
+			$task = stringSwap($task, 'www.', '', 'first');
+			$task = stringSwap($task, '/', '', 'last');
+			return $task;
+		}
+		return false;
+	}
+
 } // EndOfClass - oURL
