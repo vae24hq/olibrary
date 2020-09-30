@@ -5,11 +5,17 @@
  * oArray ~ Summary of Class • DEPENDENCY»
  */
 class oArray {
-	//METHOD • Describe method
-	public static function isMulti($array){
-		if(is_array($array)){
-			$rez = array_filter($array, 'is_array');
-			if(count($rez) > 0){return true;}
+	//IS • Returns TRUE/FALSE if input is array
+	public static function Is($i){
+		return is_array($i);
+	}
+
+
+	//IS MULTI • Returns TRUE/FALSE if input is multi-array
+	public static function IsMulti($i){
+		if(is_array($i)){
+			$o = array_filter($i, 'is_array');
+			if(count($o) > 0){return true;}
 		}
 		return false;
 	}
