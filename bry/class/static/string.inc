@@ -132,7 +132,7 @@ class oString {
 
 
 
-	//Blur • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
+	//BLUR • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
 	public static function Blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
 		$o = $string;
 		$words = explode(" ", $string);
@@ -150,26 +150,57 @@ class oString {
 	}
 
 
-	//-------------- Return false OR value before first occurrence character|string if found ---------------
-	public static function before($string, $search, $strip='oYEAH'){
-		$pos = strpos($string, $search);
-		if($pos && $pos != 0){$result = substr($string, 0, $pos);}
-		if($strip != 'oYEAH'){$result = $result.$search;}
-		if(isset($result)){return $result;}
+
+	//TRIM EDGE • Trim edges or character(s) from string
+	public static function TrimEdge($string='', $v=''){
+		if(!empty($string)){
+			$o = trim($string);
+			$o = preg_replace('/\s+/', '', $o);
+			if(self::IsEmpty($v) === false){
+				$o = trim($o, $v);
+			}
+			return $o;
+		}
 		return false;
 	}
 
 
-	//-------------- Return false OR value after first character|string if found ---------------
-	public static function after($string, $search, $strip='oYEAH'){
-		$found = strstr($string, $search);
-		if($found){
-			$result = $found;
-			if($strip == 'oYEAH'){
-				$result = oString::swap($result, $search, '', 'oFIRST');
+
+	//NTH • Trim edges or character(s) from string
+	public static function Nth($string='', $nth=''){ #nth is position IE value has to be numeric
+		if(self::IsEmpty($string) === false && self::IsEmpty($nth) === false){
+			$length = strlen($string);
+			if($nth<=$length){
+				$nth = (int)$nth -1;
+				return $string[$nth];
 			}
 		}
-		if(!empty($result)){return $result;}
+		return false;
+	}
+
+
+
+	//BEFORE • Return false OR value before first occurrence character|string if found
+	public static function Before($string, $search, $strip=true){
+		$pos = strpos($string, $search);
+		if($pos && $pos != 0){$o = substr($string, 0, $pos);}
+		if($strip !== true){$o = $o.$search;}
+		if(isset($o)){return $o;}
+		return false;
+	}
+
+
+
+	//AFTER • Return false OR value after first character|string if found
+	public static function After($string, $search, $strip=true){
+		$found = strstr($string, $search);
+		if($found){
+			$o = $found;
+			if($strip === true){
+				$o = self::To($o, $search, '', 'iFirst');
+			}
+		}
+		if(!empty($o)){return $o;}
 		return false;
 	}
 
