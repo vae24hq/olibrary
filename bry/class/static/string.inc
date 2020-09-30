@@ -50,7 +50,8 @@ class oString {
 	}
 
 
-	//To • Substitute a character|string in a string and vice-versa
+
+	//TO • Substitute a character|string in a string and vice-versa
 	public static function To($string, $search, $substitute , $occurence='iAll', $case=false){
 		if(self::In($string, $search, $case) === false){#return STRING if search NOT found
 			return $string;
