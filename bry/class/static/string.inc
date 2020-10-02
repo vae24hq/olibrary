@@ -205,52 +205,19 @@ class oString {
 	}
 
 
-	public static function match($string='', $comparison='', $rule='iDEFAULT'){
-		if($rule == 'iABSOLUTE' && $string === $comparison){return true;}
-		elseif($rule != 'iABSOLUTE' && $string == $comparison){return true;}
-		return false;
+	//MATCH •
+	public static function Match($string='', $comparison='', $absolute=false){
+		if(!self::IsEmpty($string)  && !self::IsEmpty($comparison)){
+			if($absolute === true){
+				if($string === $comparison){return true;}
+			}
+			else {
+				if($string == $comparison){return true;}
+			}
+			return false;
+		}
 	}
 
-	public static function domainUtility($o, $to){
-		#Returns domain from URL
-		if($to == 'oDOMAIN'){
-			$o = oString::swap($o, 'https://', '', 'oFIRST');
-			$o = oString::swap($o, 'http://', '', 'oFIRST');
-
-			#Remove sub-directory if found
-			if(self::in($o, '/')){
-				$o = self::stringBefore($o, '/', 'oYEAH');
-			}
-
-			#Remove [known] sub-domain  TODO  ~ use library
-			$subs = array('www','en', 'ng');
-			$o_stripped = '';
-			foreach ($subs as $sub){
-				if(self::in($o, $sub)){
-					$o = oString::swap($o, 'www.', '', 'oFIRST');
-				}
-			}
-		}
-
-		#Returns page title from string
-		if($to == 'oTITLE'){
-			$o = oString::swap($o, '-', ' ');
-			$o = oString::swap($o, '_', ' ');
-			$o = ucwords($o);
-		}
-
-
-		#Returns method-clean name from string
-		if($to == 'oMETHOD'){
-			$o = oString::swap($o, '-', ' ');
-			$o = oString::swap($o, '_', ' ');
-			$o = ucwords($o);
-			$o = lcfirst($o);
-			$o = self::spaceTo($o, '');
-		}
-
-		return $o;
-	}
 
 
 } // EndOfClass - oString
