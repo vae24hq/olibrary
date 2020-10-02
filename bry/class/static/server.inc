@@ -71,10 +71,6 @@ class oServer {
 
 
 
-
-
-
-
 	//INFO •
 	public static function Info($i='', $r='DomainIP'){
 		if(!empty($i)){
