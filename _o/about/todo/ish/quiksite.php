@@ -174,23 +174,7 @@ if(inString(getBaseURL(), 'www.')){$protocol .='www.';}
 return strtolower($protocol.$task);
 }
 
-// return domain name with protocol
-function getDomainBase($subdomain=''){
-	#collect required data
-	$domain = getDomain();
 
-	#prepare
-	if(!empty($subdomain)){$domainbase = stringSwap($domain, $subdomain.'.', '', 'first');}
-	else {
-		$domainbase = stringSwap($domain, 'en.', '', 'first');
-		$domainbase = stringSwap($domainbase, 'us.', '', 'first');
-		$domainbase = stringSwap($domainbase, 'uk.', '', 'first');
-		$domainbase = stringSwap($domainbase, 'ib.', '', 'first');
-	}
-
-	#return result
-	return strtolower($domainbase);
-}
 
 // return site url
 function getSiteURL(){
