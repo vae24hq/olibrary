@@ -5,16 +5,6 @@
  * oServer ~ Summary of Class • DEPENDENCY»
  */
 class oServer {
-	//REMOTE • Get user IP
-	public static function RemoteIP(){
-		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$o = $_SERVER['HTTP_CLIENT_IP'];} #IP from share Internet
-		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$o = $_SERVER['HTTP_X_FORWARDED_FOR'];} #IP pass from proxy
-		else {$o = $_SERVER['REMOTE_ADDR'];} #IP from remote server
-		return $o;
-	}
-
-
-
 	//IP VALIDATION • Get user IP
 	public static function IsIP($i=''){
 		if(!empty($i)){
@@ -34,6 +24,54 @@ class oServer {
 		}
 		return false;
 	}
+
+
+
+	//REMOTE • Get user IP
+	public static function RemoteIP(){
+		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$o = $_SERVER['HTTP_CLIENT_IP'];} #IP from share Internet
+		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$o = $_SERVER['HTTP_X_FORWARDED_FOR'];} #IP pass from proxy
+		else {$o = $_SERVER['REMOTE_ADDR'];} #IP from remote server
+		return $o;
+	}
+
+	public static function RemoteIP2(){
+		if(!empty($_SERVER['HTTP_CLIENT_IP']) && Self::IsIP($_SERVER['HTTP_CLIENT_IP'])){
+			return $_SERVER['HTTP_CLIENT_IP'];
+		}
+
+		if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			if(strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') !== FALSE){
+				$IPs = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
+				foreach($IPs as $IP){
+					if(Self::IsIP($IP)){return $IP;}
+				}
+			} else {
+				if(Self::IsIP($_SERVER['HTTP_X_FORWARDED_FOR'])){
+					return $_SERVER['HTTP_X_FORWARDED_FOR'];
+				}
+			}
+		}
+
+		if(!empty($_SERVER['HTTP_X_FORWARDED']) && Self::IsIP($_SERVER['HTTP_X_FORWARDED'])){
+			return $_SERVER['HTTP_X_FORWARDED'];
+		}
+		if(!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && Self::IsIP($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'])){
+			return $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
+		}
+		if(!empty($_SERVER['HTTP_FORWARDED_FOR']) && Self::IsIP($_SERVER['HTTP_FORWARDED_FOR'])){
+			return $_SERVER['HTTP_FORWARDED_FOR'];
+		}
+		if(!empty($_SERVER['HTTP_FORWARDED']) && Self::IsIP($_SERVER['HTTP_FORWARDED'])){
+			return $_SERVER['HTTP_FORWARDED'];
+		}
+
+		return $_SERVER['REMOTE_ADDR'];
+	}
+
+
+
+
 
 
 
