@@ -39,7 +39,7 @@ class oRandom {
 
 
 	//CREATE • generate & return values
-	public static function Create($res='iRandomiz', $length = 'iAuto', $input=''){
+	public static function Create($res='iRand', $length = 'iAuto', $input=''){
 		#randomize
 		if($res == 'iRandomiz'){
 			$i = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
@@ -55,7 +55,15 @@ class oRandom {
 			}
 		}
 
-		#account number
+
+		#Simple Randomization
+		elseif($res == 'iRand'){
+			$alpha = chr(rand() > 0.5 ? rand(65, 90) : rand(97, 122));
+			return $alpha.mt_rand(100, 999).date('sdm').mt_rand(10, 99);
+		}
+
+
+		#Account Number
 		elseif ($res == 'iAccountNo') {
 			$rez = mt_rand(1000000000, 9999999999);
 		}
