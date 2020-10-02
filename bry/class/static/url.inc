@@ -16,7 +16,7 @@ class oURL {
 	public static function ToDomain($url='', $lib=''){
 		if(!empty($url)){
 			if(empty($lib)){
-				$lib = array('https://', 'http://', 'www.', 'api.', 'app.');
+				$lib = array('https://', 'http://', 'www.', 'api.', 'app.', 'en.', 'uk.', 'us.', 'ng.');
 			}
 
 			foreach($lib as $value){
