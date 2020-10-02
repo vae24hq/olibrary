@@ -74,10 +74,7 @@ class oData {
 		}
 	}
 
-	public static function oRand(){
-		$alpha = chr(rand() > 0.5 ? rand(65, 90) : rand(97,122));
-		return $alpha.mt_rand(100, 999).date('sdm').mt_rand(10, 99);
-	}
+
 
 	public static function oActiveClient($input){
 		global $oActiveClient;
