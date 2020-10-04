@@ -1,10 +1,5 @@
 <?php
 
-
-
-
-
-
 	//-------------- Calculate & Returns time difference ---------------
 public static function difference($past='', $future='', $yield='string', $unitAs='long'){
 	if(empty($past) || empty($future) || empty($yield) || empty($unitAs)){
@@ -153,44 +148,6 @@ public static function spent($unixTime=''){
 
 
 
-	//-------------- Return time in micro floats ---------------
-	public static	function doMicro(){
-		list($usec, $sec) = explode(" ", microtime());
-		return ((float)$usec + (float)$sec);
-	}
-
-
-	//****** CREATE DATE & TIME, RETURN [formated] ******//
-	public static	function create($period='oNOW', $type='oDATE'){
-		if($period == 'oNOW' || $period == 'oTODAY'){$period = time();}
-		if(!self::isTimestamp($period)){$period = strtotime($period);}
-
-		#Format
-		if($type == 'oDATE'){$format = 'd-M-Y';}
-		elseif($type == 'oDATED1'){$format = 'd/m/Y';}
-		elseif($type == 'oDATED2'){$format = 'd-m-Y';}
-		elseif($type == 'oDATED3'){$format = 'F d, Y';}
-		elseif($type == 'oDATED4'){$format = 'l, F d, Y';}
-
-		elseif($type == 'oTIME'){$format = 'h:i:s A';}
-
-		elseif($type == 'oDATETIME'){$format = 'l, F d, Y h:i:s A';}
-
-		elseif($type == 'oMYSQLDATETIME'){$format = 'Y-m-d H:i:s';}
-		elseif($type == 'oMYSQLDATE'){$format = 'Y-m-d';}
-		elseif($type == 'oMYSQLTIME'){$format = 'H:i:s';}
-
-		elseif($type == 'oREPORT'){$format = 'd/m/Y h:i:s A';}
-
-		elseif($type == 'oLETTER1'){return date('j').'<sup>'.date('S').'</sup> '.date('F, Y');}
-		elseif($type == 'oLETTER2'){return date('M j').'<sup>'.date('S').'</sup> '.date('Y');}
-		elseif($type == 'oLETTER3'){return date('F j').'<sup>'.date('S').'</sup> '.date('Y');}
-		elseif($type == 'oUNIX'){return $period;}
-		else {$format = $type;}
-
-		return date($format, $period);
-	} //****** END ******//
-
 
 	//****** COMPUTE TIME DIFFERENCE, RETURN SECONDS ******//
 	public static function secondsApart($past, $future='oNOW')
@@ -288,13 +245,7 @@ public static function spent($unixTime=''){
 
 
 
-//Calculate time diffrence - TODO - upgrade and add features
-	function getTimeDifference($past='', $future=''){
-		$past = new DateTime($past);
-		$future = new DateTime($future);
-		$interval = $past->diff($future);
-		return $interval->format('%a total days');
-	}
+
 
 
 
