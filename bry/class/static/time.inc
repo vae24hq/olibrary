@@ -35,6 +35,14 @@ class oTime {
 
 
 
+
+	public static function StampValid($timestamp){
+		$check = (is_int($timestamp) OR is_float($timestamp)) ? $timestamp : (string) (int) $timestamp;
+		return  ($check === $timestamp) AND ( (int) $timestamp <=  PHP_INT_MAX) AND ( (int) $timestamp >= ~PHP_INT_MAX);
+	}
+
+
+
 	//STAMP • Create timestamp from string
 	public static function Stamp($time='now'){
 		if(!empty($time)){
@@ -66,7 +74,7 @@ class oTime {
 
 
 	//DATE • Create date [Returns formated date]
-	public static function Date($fmt='iSQLDateTime', $date='today'){
+	public static function Date($fmt='iDate', $date='today'){
 		if(!empty($fmt) && !empty($date)){
 			if($date == 'today' || $date == 'now'){$date = time();}
 			elseif(!is_int($date) && !is_numeric($date)){$date = self::Stamp($date);}
@@ -87,6 +95,85 @@ class oTime {
 		}
 		return false;
 	}
+
+
+
+	//AGE • Returns age from date of birth in years
+	public static function Age($i=''){
+		if(!empty($i)){
+			#@TODO ~ make sure input match format (YYYY-MM-DD)
+			$time = time(); $day = date("d", $time); $month = date("m", $time); $year = date("Y", $time);
+			$birthDay = substr($i, 8, 2); $birthMonth = substr($i, 5, 2); $birthYear = substr($i, 0, 4);
+			if($month < $birthMonth){$subtract = 1;}
+			elseif($month==$birthMonth){
+				if($day < $birthDay){$subtract = 1;}
+				else {$subtract = 0;}
+			}
+			else {$subtract = 0;}
+			return ($year-$birthYear-$subtract);
+		}
+		return false;
+	}
+
+
+
+	//SECOND TO • Convert seconds to min, hour & day
+	public static function SecondsTo($sec, $to='iMinute'){
+		if(!empty($sec) && !empty($to)){
+			if($to == 'iMinute'){$o = ($sec / 60);}
+			if($to == 'iHour'){$o = ($sec / 60) / 60;}
+			if($to == 'iDay'){$o = (($sec / 60) / 60) / 24;}
+			return $o;
+		}
+		return false;
+	}
+
+
+
+	//MINUTE TO • Convert minutes to seconds, hour & day
+	public static function MinutesTo($min, $to='iSecond'){
+		if(!empty($min) && !empty($to)){
+			if($to == 'iSecond'){$o = ($min * 60);}
+			if($to == 'iHour'){$o = ($min / 60);}
+			if($to == 'iDay'){$o = ($min / 60) / 24;}
+			return $o;
+		}
+		return false;
+	}
+
+
+
+	//HOUR TO • Convert hours to sec, min & day
+	public static function HoursTo($hr, $to='iDay'){
+		if(!empty($hr) && !empty($to)){
+			if($to == 'iSecond'){$o = ($hr * 60) * 60;}
+			if($to == 'iMinute'){$o = $hr * 60;}
+			if($to == 'iDay'){$o = $hr / 24;}
+			return $o;
+		}
+		return false;
+	}
+
+
+
+	//DAY TO • Convert days to sec, min & hours
+	public static function DaysTo($day, $to='iHour'){
+		if(!empty($day) && !empty($to)){
+			if($to == 'iSecond'){$o = (($day * 24) * 60) * 60;}
+			if($to == 'iMinute'){$o = ($day * 24) * 60;}
+			if($to == 'iHour'){$o = $day * 24;}
+			return $o;
+		}
+		return false;
+	}
+
+
+
+
+
+
+
+
 
 
 } // EndOfClass - oTime
