@@ -36,7 +36,7 @@ class oFile {
 			return;
 		}
 		else {
-			if(self::Is($path, 'iFILE') !== false){
+			if(self::Is($path, 'iFile') !== false){
 				require $path;
 				return;
 			}
