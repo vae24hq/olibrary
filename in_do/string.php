@@ -10,32 +10,6 @@
 
 
 
-function string_before($subject='', $needle='', $strip='yeah'){
-	if(is_null($needle) || is_empty($subject) || is_empty($strip)){
-		$msg = 'One or more errors occured with the argument on '.__FUNCTION__.'()';
-		return printMsg($msg);
-	}
-	$pos = strpos($subject, $needle);
-	$chore = '';
-	if($pos && $pos!=0){$chore = substr($subject, 0, $pos);}
-	if($strip !='yeah'){$chore = $chore.$needle;}
-	return $chore;
-}
-
-function string_after($subject='', $needle='', $strip='yeah'){
-	if(is_null($needle) || is_empty($subject) || is_empty($strip)){
-		$msg = 'One or more errors occured with the argument on '.__FUNCTION__.'()';
-		return printMsg($msg);
-	}
-	$chore = strstr($subject, $needle);
-	if($chore){
-		if($strip =='yeah'){
-			$chore = str_replace($needle, '', $chore);
-		}
-	}
-	return $chore;
-}
-
 function capitalize_words($string='', $words='library'){
 	if(is_empty($string) || is_empty($words) || ($words!='library' && !is_array($words))){
 		$msg = 'One or more errors occured with the argument on '.__FUNCTION__.'()';
@@ -124,17 +98,6 @@ function clean_cap($string){
 	$string = ucwords($string);
 	return $string;
 }
-
-function url2domain($url=''){
-	if(is_empty($url)){return FALSE;}
-	$domain = $url;
-	$domain = string_swap($domain, 'https://', '', 'first');
-	$domain = string_swap($domain, 'http://', '', 'first');
-	$domain = string_swap($domain, 'www.', '', 'first');
-	$domain = string_swap($domain, '/', '', 'last');
-	return $domain;
-}
-
 
 
 
@@ -263,26 +226,6 @@ function cleanUp($string=''){
 
 
 function domainUtility($o, $to){
-		#Returns domain from URL
-	if($to == 'oDOMAIN'){
-		$o = oString::swap($o, 'https://', '', 'oFIRST');
-		$o = oString::swap($o, 'http://', '', 'oFIRST');
-
-			#Remove sub-directory if found
-		if(self::in($o, '/')){
-			$o = self::stringBefore($o, '/', 'oYEAH');
-		}
-
-			#Remove [known] sub-domain  TODO  ~ use library
-		$subs = array('www','en', 'ng');
-		$o_stripped = '';
-		foreach ($subs as $sub){
-			if(self::in($o, $sub)){
-				$o = oString::swap($o, 'www.', '', 'oFIRST');
-			}
-		}
-	}
-
 		#Returns page title from string
 	if($to == 'oTITLE'){
 		$o = oString::swap($o, '-', ' ');
