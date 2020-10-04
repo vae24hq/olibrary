@@ -35,7 +35,7 @@ class oTime {
 
 
 
-	//STAMP • Create timestamp
+	//STAMP • Create time stamp from string
 	public static function Stamp($time='now'){
 		if(!empty($time)){
 			$o = strtotime($time);
@@ -45,6 +45,31 @@ class oTime {
 			return $o;
 		}
 		return false;
+	}
+
+
+
+	//STAMP • Create time
+	public static function Create($fmt='iTime', $time='now'){
+		if(!empty($fmt) && !empty($time)){
+			if($time == 'now'){$t = time();}
+			else {
+				if(is_int($time) || is_numeric($time)){$t = $time;}
+				else {
+					$t = self::Stamp($time);
+					if(!$t){
+						if(is_numeric($time)){$t = $time;}
+						else {
+							return oExit::Run(__METHOD__, 'invalid time', $time);
+						}
+					}
+				}
+			}
+
+			if($fmt == 'iTime'){$fmt = 'h:i:s A';}
+			elseif($fmt = 'iUnix'){return $t;}
+			return date($fmt, $t);
+		}
 	}
 
 
