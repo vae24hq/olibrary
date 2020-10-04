@@ -169,6 +169,16 @@ class oTime {
 
 
 
+	//DIFFERENCE • Calculate time difference - TODO - upgrade and add features
+	public static function Difference($past='', $future='', $fmt='%a days'){
+		$past = new DateTime($past);
+		$future = new DateTime($future);
+		$date = $past->diff($future);
+		return $date->format($fmt);
+	}
+
+
+
 
 
 
