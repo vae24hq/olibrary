@@ -32,12 +32,12 @@ class HarvestPad {
 		if(empty($data['user'])){$data['user'] = NULL;}
 		if(empty($data['action'])){$data['action'] = NULL;}
 		if(empty($data['platform'])){$data['platform'] = NULL;}
-		if(empty($data['status'])){$data['status'] = 'initiated';}
+		if(empty($data['report'])){$data['report'] = 'initiated';}
 		if(empty($data['ip'])){$data['ip'] = oServer::RemoteIP();}
 		if(empty($data['platform'])){$data['platform'] = 'Unknown';}
 
-		$query = "INSERT INTO `logso`(`user`, `action`, `status`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
-		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['status']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
+		$query = "INSERT INTO `logso`(`user`, `action`, `report`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
+		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['report']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
 		return $this->SQL->Handler($query, false);
 	}
 
@@ -59,6 +59,8 @@ class HarvestPad {
 				if($email_exist === true){return $this->SQL->Response('error', $input['email'].' already exists');}
 			}
 
+			if(!empty($input['password'])){$input['password'] = oCrypt::Password($input['password']);}
+
 			$input['surname'] = ucwords(strtolower($input['surname']));
 			$input['firstname'] = ucwords(strtolower($input['firstname']));
 			$puid = oRandom::Create('iPuid');
@@ -76,7 +78,7 @@ class HarvestPad {
 			$o = $this->SQL->Handler($query, false);
 			if(!empty($o)){
 				if($o['status'] == 'success'){
-					$query = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `status`, `stage`, `parisho`.`name` AS `parish` FROM `usero` AS `User`, `parisho` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `parisho`.`suid` LIMIT 1;";
+					$query = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `User`.`standing`, `User`.`stage`, `parisho`.`name` AS `parish` FROM `usero` AS `User`, `parisho` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `parisho`.`suid` LIMIT 1;";
 					$o = $this->SQL->Handler($query, false);
 
 					#Log Data
@@ -110,8 +112,23 @@ class HarvestPad {
 				return $this->SQL->Response('error', 'No account for '.$data['userid']);
 			}
 			else {
-				$query = "SELECT `euid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname` FROM `usero` WHERE '{$data['userid']}' IN (`username`, `phone`, `email`) AND `password` = '{$data['password']}' LIMIT 1;";
+				$query = "SELECT `User`.`suid` AS `bind`, `password`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `User`.`standing`, `User`.`stage`, `parisho`.`name` AS `parish` FROM `usero` AS `User`, `parisho` WHERE  '{$data['userid']}' IN (`username`, `phone`, `email`)  AND  `User`.`parisho` = `parisho`.`suid` LIMIT 1;";
 				$o = $this->SQL->Handler($query, false);
+				if(!empty($o['recordset'][0]['password'])){
+					$password = $o['recordset'][0]['password'];
+					if(oCrypt::IsPassword($data['password'], $password) === false){
+						$p['status'] = 'failed';
+						$p['reason'] = 'Incorrect password';
+						$logdata = array(
+							'user' => $user_bind,
+							'action' => 'signin',
+							'status' => 'success',
+							'platform' => $data['platform'],
+						);
+						$this->Logs($logdata);
+						return $p;
+					}
+				}
 
 				#Log Data
 				if(!empty($o['response']['recordset'][0])){
@@ -137,7 +154,7 @@ class HarvestPad {
 
 
 	public function ParishList(){
-		$sql = 'SELECT `suid` AS `ID`, CONCAT(`name`, " - ",`suburb`, ", ",`city`) AS `Title` FROM `parisho` WHERE `status` = 2;';
+		$sql = 'SELECT `suid` AS `id`, CONCAT(`name`, " - ",`suburb`, ", ",`city`) AS `title` FROM `parisho` WHERE `standing` = 2;';
 		return $this->SQL->Handler($sql, false);
 	}
 
