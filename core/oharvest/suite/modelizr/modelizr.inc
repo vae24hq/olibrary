@@ -32,7 +32,7 @@ class HarvestPad {
 		if(empty($data['action'])){$data['action'] = NULL;}
 		if(empty($data['platform'])){$data['platform'] = NULL;}
 		if(empty($data['status'])){$data['status'] = 'initiated';}
-		if(empty($data['ip'])){$data['ip'] = oIP::Remote();}
+		if(empty($data['ip'])){$data['ip'] = oServer::RemoteIP();}
 		if(empty($data['platform'])){$data['platform'] = 'Unknown';}
 
 		$query = "INSERT INTO `logso`(`user`, `action`, `status`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
