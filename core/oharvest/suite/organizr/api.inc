@@ -18,6 +18,12 @@ if($uri == 'ping-failed'){
 }
 
 
+#REGISTER
+if($uri == 'register'){
+	$omodel = $harvestpad->Register($_REQUEST);
+}
+
+
 #PARISH LIST
 if($uri == 'parish-list'){
 	$omodel = $harvestpad->ParishList();
