@@ -1,13 +1,21 @@
 <?php
 class HarvestPad {
-	public $dbo;
+	public $SQL;
 	public $project;
 
 	function __construct($config){
 		if(!empty($config['project'])){$this->project = $config['project'];}
-		$db = new oDatabase($config['database']);
-		$this->dbo = $db->connect();
+		$this->SQL = new oSQL($config['database']);
 	}
 
+
+
+
+
+
+	public function ParishList(){
+		$sql = 'SELECT `suid` AS `ID`, CONCAT(`name`, " - ",`suburb`, ", ",`city`) AS `Title` FROM `parisho` WHERE `status` = 2;';
+		return $this->SQL->Handler($sql, false);
+	}
 
 }
