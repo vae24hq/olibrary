@@ -33,11 +33,12 @@ class HarvestPad {
 		if(empty($data['action'])){$data['action'] = NULL;}
 		if(empty($data['platform'])){$data['platform'] = NULL;}
 		if(empty($data['report'])){$data['report'] = 'initiated';}
+		if(empty($data['summary'])){$data['summary'] = 'No Summary';}
 		if(empty($data['ip'])){$data['ip'] = oServer::RemoteIP();}
 		if(empty($data['platform'])){$data['platform'] = 'Unknown';}
 
-		$query = "INSERT INTO `logso`(`user`, `action`, `report`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
-		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['report']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
+		$query = "INSERT INTO `logso`(`user`, `action`, `report`, `summary`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
+		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['report']}', '{$data['summary']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
 		return $this->SQL->Handler($query, false);
 	}
 
@@ -123,6 +124,7 @@ class HarvestPad {
 							'user' => $o['recordset'][0]['bind'],
 							'action' => 'login',
 							'report' => 'failed',
+							'summary' => $p['reason'],
 							'platform' => $data['platform'],
 						);
 						$this->Logs($logdata);
