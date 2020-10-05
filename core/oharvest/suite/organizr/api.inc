@@ -5,16 +5,16 @@ if($uri == 'index'){
 
 #PING
 if($uri == 'ping'){
-	$oresponse['status'] = 'success';
-	$oresponse['record'] = 1;
-	$oresponse['recordset'] = $harvestpad->project;
+	$creo['status'] = 'success';
+	$creo['record'] = 1;
+	$creo['recordset'] = $harvestpad->project;
 }
 
 #PING-FAIL
 if($uri == 'ping-failed'){
-	$oresponse['status'] = 'failure';
-	$oresponse['reason'] = 'fail was triggered';
-	$oresponse['message'] = 'This is a test to returned failed response';
+	$creo['status'] = 'failure';
+	$creo['reason'] = 'fail was triggered';
+	$creo['message'] = 'This is a test to returned failed response';
 }
 
 
