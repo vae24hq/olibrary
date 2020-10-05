@@ -12,8 +12,12 @@ WIPE DATABASE * careful, do not keep this in production
 
 
 LOGIN
-	/api/login?userid=ao@vae24.co&password=oDev20&platform=APITEST&oa [URL ENCODED '#']
+	/api/login?userid=ao@vae24.co&password=oDev20&platform=APITEST&ao [URL ENCODED '#']
 
 
 REGISTER
-	/api/register?phone=09026636728&email=ao@vae24.co&password=oDev20&firstname=Anthony&surname=Osawere&platform=oAPITEST&oa
+	/api/register?phone=09026636728&email=ao@vae24.co&password=oDev20&firstname=Anthony&surname=Osawere&platform=oAPITEST&ao
+
+
+PARISH LIST
+	/api/parish-list?platform=oAPITEST&ao
