@@ -18,6 +18,12 @@ if($uri == 'ping-failed'){
 }
 
 
+#LOGIN
+if($uri == 'login'){
+	$omodel = $harvestpad->Login($_REQUEST);
+}
+
+
 #REGISTER
 if($uri == 'register'){
 	$omodel = $harvestpad->Register($_REQUEST);
