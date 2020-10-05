@@ -16,4 +16,4 @@ LOGIN
 
 
 REGISTER
-	/api/register?phone=09026636728&email=ao@vae24.co&password=oDev20&firstname=Anthony&surname=Osawere&platform=API_TEST&o_debug=print
+	/api/register?phone=09026636728&email=ao@vae24.co&password=oDev20&firstname=Anthony&surname=Osawere&platform=API_TEST&oa
