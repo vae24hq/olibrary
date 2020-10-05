@@ -132,12 +132,12 @@ class HarvestPad {
 					}
 				}
 
-				// #Log Data
-				// if(!empty($o['response']['recordset'][0])){
-				// 	$user_bind = $o['response']['recordset'][0]['bind'];
-				// } else {
-				// 	$user_bind = '';
-				// }
+				#Log Data
+				if(!empty($o['response']['recordset'][0])){
+					$user_bind = $o['response']['recordset'][0]['bind'];
+				} else {
+					$user_bind = '';
+				}
 
 				// $logdata = array(
 				// 	'user' => $user_bind,
