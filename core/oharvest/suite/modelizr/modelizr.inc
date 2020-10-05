@@ -23,7 +23,8 @@ class HarvestPad {
 	}
 
 
-	function Logs($data){
+
+	public function Logs($data){
 		$puid = oRandom::Create('iPuid');
 		$suid = oRandom::Create('iSuid');
 		$euid = oRandom::Create('iEuid');
@@ -39,8 +40,6 @@ class HarvestPad {
 		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['status']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
 		return $this->SQL->Handler($query, false);
 	}
-
-
 
 
 
@@ -77,7 +76,7 @@ class HarvestPad {
 			$o = $this->SQL->Handler($query, false);
 			if(!empty($o)){
 				if($o['status'] == 'success'){
-					$query = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `parisho`.`name` AS `parish` FROM `usero` AS `User`, `parisho` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `parisho`.`suid` LIMIT 1;";
+					$query = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `status`, `stage`, `parisho`.`name` AS `parish` FROM `usero` AS `User`, `parisho` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `parisho`.`suid` LIMIT 1;";
 					$o = $this->SQL->Handler($query, false);
 
 					#Log Data
@@ -94,6 +93,44 @@ class HarvestPad {
 		}
 	}
 
+
+
+	public function Login($data){
+		$fields = array('userid', 'password', 'platform');
+		$e = $this->Required($data, $fields);
+		if(!empty($e)){
+			return $this->SQL->Response('error', $e);
+		}
+		else {
+			// check if user exists
+			$user_exist['phone'] = $this->SQL->HasRecord('phone', $data['userid'], 'usero', '=');
+			$user_exist['email'] = $this->SQL->HasRecord('email', $data['userid'], 'usero', '=');
+			$user_exist['username'] = $this->SQL->HasRecord('username', $data['userid'], 'usero', '=');
+			if($user_exist['phone'] === false && $user_exist['email'] === false && $user_exist['username'] === false){
+				return $this->SQL->Response('error', 'No account for '.$data['userid']);
+			}
+			else {
+				$query = "SELECT `euid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname` FROM `usero` WHERE '{$data['userid']}' IN (`username`, `phone`, `email`) AND `password` = '{$data['password']}' LIMIT 1;";
+				$o = $this->SQL->Handler($query, false);
+
+				#Log Data
+				if(!empty($o['response']['recordset'][0])){
+					$user_bind = $o['response']['recordset'][0]['bind'];
+				} else {
+					$user_bind = '';
+				}
+
+				$logdata = array(
+					'user' => $user_bind,
+					'action' => 'signin',
+					'status' => 'success',
+					'platform' => $data['platform'],
+				);
+				$this->Logs($logdata);
+				return $o;
+			}
+		}
+	}
 
 
 
