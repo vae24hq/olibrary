@@ -25,7 +25,7 @@ class oCrypt {
 
 
 	//PASSWORD • Password Encryption
-	public static function Password($input, $cost=9){
+	public static function Password($input, $cost=''){
 		if(!empty($cost) && is_int($cost) && $cost > 4){
 			return password_hash($input, PASSWORD_BCRYPT, array('cost' => $cost));
 		}
