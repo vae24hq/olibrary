@@ -21,7 +21,7 @@ class oRoute {
 	public function api($i='oGET'){
 		if($this->uri() == 'api'){
 			if(!empty($_GET['oapi'])){$o = $_GET['oapi'];}
-			else {$o = 'ping';}
+			else {$o = 'index';}
 		}
 		if(!empty($o)){return strtolower($o);}
 		return false;
