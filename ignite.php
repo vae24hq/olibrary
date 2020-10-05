@@ -20,8 +20,9 @@ defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
 defined('oSTATIC') ? null : define('oSTATIC', oCLASS.'static'.DS);
 defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 
-defined('oSOURCE') ? null : define('oSOURCE', oROOT.'source'.DS);
+defined('oCORE') ? null : define('oCORE', oROOT.'core'.DS);
 
+defined('oCONFIG') ? null : define('oCONFIG', 'config'.DS);
 defined('oLAYOUT') ? null : define('oLAYOUT', 'layoutzr'.DS);
 defined('oBITZR') ? null : define('oBITZR', oLAYOUT.'bitzr'.DS);
 defined('oFORMZR') ? null : define('oFORMZR', oLAYOUT.'formzr'.DS);
@@ -83,7 +84,7 @@ oFile::Inc(oBOND.'mobile.inc');
 
 #INITIALIZE PROJECT (based on a specific project)
 // oFile::Inc(oRouter::Path('oInitFile', 'oGET', 'isOptional'), 'isOptional');
-// oFile::Inc(oROUTZR.'oharvest.inc');
+oFile::Inc(oCORE.'oharvest'.DS.oROUTZR.'init.inc');
 
 
 #DEVBOX FILE - for development, demo & testing
