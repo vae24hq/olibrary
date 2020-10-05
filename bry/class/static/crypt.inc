@@ -37,7 +37,7 @@ class oCrypt {
 
 
 	//PASSWORD • Password Verification
-	public static function PasswordIs($password, $hash){
+	public static function IsPassword($password, $hash){
 		return password_verify($password, $hash);
 	}
 
