@@ -23,26 +23,23 @@ if($oroute->api()){
 	}
 	else {
 		echo oPrint::Neat($creo);
-		return;
+		// return;
 	}
 }
-
 else {
 	$uri = $oroute->uri();
 	require(oCORE.'oharvest'.DS.oRGANIZR.'app.inc');
+}
 
 
-// if(isset($_REQUEST['ao'])){
-// #DEBUGING
-// 	function RandIT(){
-// 		$o['puid'] = oRandom::Create('iPuid');
-// 		$o['euid'] = oRandom::Create('iEuid');
-// 		$o['suid'] = oRandom::Create('iSuid');
-// 		echo oPrint::Neat($o);
-// 		return;
-// 	}
-
-// 	RandIT();
-// }
-//
+if(isset($_REQUEST['ao'])){
+#DEBUGING
+	function RandIT(){
+		$o['puid'] = oRandom::Create('iPuid');
+		$o['euid'] = oRandom::Create('iEuid');
+		$o['suid'] = oRandom::Create('iSuid');
+		echo oPrint::Neat($o);
+		return;
+	}
+	RandIT();
 }
