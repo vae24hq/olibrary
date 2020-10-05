@@ -84,8 +84,8 @@ class HarvestPad {
 					#Log Data
 					$logdata = array(
 						'user' => $suid,
-						'action' => 'signup',
-						'status' => 'success',
+						'action' => 'register',
+						'report' => 'success',
 						'platform' => $data['platform'],
 					);
 					$this->Logs($logdata);
@@ -120,9 +120,9 @@ class HarvestPad {
 						$p['status'] = 'failed';
 						$p['reason'] = 'Incorrect password';
 						$logdata = array(
-							'user' => $user_bind,
-							'action' => 'signin',
-							'status' => 'success',
+							'user' => $o['recordset'][0]['bind'],
+							'action' => 'login',
+							'report' => 'failed',
 							'platform' => $data['platform'],
 						);
 						$this->Logs($logdata);
@@ -130,21 +130,21 @@ class HarvestPad {
 					}
 				}
 
-				#Log Data
-				if(!empty($o['response']['recordset'][0])){
-					$user_bind = $o['response']['recordset'][0]['bind'];
-				} else {
-					$user_bind = '';
-				}
+				// #Log Data
+				// if(!empty($o['response']['recordset'][0])){
+				// 	$user_bind = $o['response']['recordset'][0]['bind'];
+				// } else {
+				// 	$user_bind = '';
+				// }
 
-				$logdata = array(
-					'user' => $user_bind,
-					'action' => 'signin',
-					'status' => 'success',
-					'platform' => $data['platform'],
-				);
-				$this->Logs($logdata);
-				return $o;
+				// $logdata = array(
+				// 	'user' => $user_bind,
+				// 	'action' => 'signin',
+				// 	'status' => 'success',
+				// 	'platform' => $data['platform'],
+				// );
+				// $this->Logs($logdata);
+				// return $o;
 			}
 		}
 	}
