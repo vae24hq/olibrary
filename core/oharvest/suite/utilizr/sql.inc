@@ -33,6 +33,15 @@ class oSQL {
 	}
 
 
+	function HasRecord($column, $value, $table, $symbol='='){
+		$query = "SELECT `{$column}` FROM `{$table}` WHERE `{$column}` {$symbol} '".$value."';";
+		$o = $this->SQL($query, false);
+		if(!empty($o) && $o['executed'] === true && $o['record'] > 0){
+			return true;
+		}
+		return false;
+	}
+
 
 	function Report($type, $v){
 		$report = array();
