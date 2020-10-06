@@ -33,9 +33,63 @@ class oRoute {
 			if(!empty($_GET['olink'])){$o = $_GET['olink'];}
 			else {$o = 'index';}
 		}
-		if(!empty($o)){return strtolower($o);}
+		if(!empty($o)){return strtolower(trim($o));}
 		return false;
 	}
+
+
+
+
+	//STATE •
+	public static function State(){
+		$uri = self::URI(); $o = '';
+		if(!oString::IsEmpty($uri) && $uri != 'index'){
+			$o = oString::After($uri, '-', true, 'iLast');
+		}
+		if(!oString::IsEmpty($o)){return $o;}
+		return 'default';
+	}
+
+
+
+	//ACTION •
+	public static function Action(){
+		$uri = self::URI(); $o = '';
+		if(!oString::IsEmpty($uri) && $uri != 'index'){
+			$o = oString::After($uri, '/', true, 'iLast');
+			#Get state, then remove value from $o
+			$state = self::State();
+			if(!oString::IsEmpty($state) && $state != 'default'){
+				$o = oString::To($o, '-'.$state, '', 'iLast');
+			}
+		}
+		if(!oString::IsEmpty($o)){return $o;}
+		return 'default';
+	}
+
+
+
+	//MODEL •
+	public static function Model(){
+		$uri = self::URI(); $o = $uri;
+		if(!oString::IsEmpty($uri) && $uri != 'index'){
+			#Get state, then remove value from $o
+			$state = self::State();
+			if(!oString::IsEmpty($state) && $state != 'default'){
+				$o = oString::To($o, '-'.$state, '', 'iLast');
+			}
+
+			#Get action, then remove value from $o
+			$action = self::Action();
+			if(!oString::IsEmpty($action) && $action != 'default'){
+				$o = oString::To($o, '/'.$action, '', 'iLast');
+			}
+		}
+		if(!oString::IsEmpty($o)){return $o;}
+		return false;
+	}
+
+
 
 
 
