@@ -1,7 +1,12 @@
 <?php
 //========== PROJECT SETTINGS ==========
-$oconfig['project'] = array('name' => "HarvestPad", 'version' => "Alpha-0.0.4");
+$setting['project'] = array('name' => "HarvestPad", 'version' => "Alpha-0.0.4");
 
 
 //========== DATABASE SETTINGS ==========
-$oconfig['database'] = array('name' => "aodb", 'user' => "ao", 'password' => "AO20", 'host' => "ao.co");
+$setting['database'] = array('name' => "aodb", 'user' => "ao", 'password' => "AO20", 'host' => "ao.co", 'driver' => 'iPDO');
+
+
+#DEFINING CONSTANTS
+defined('SETTING_PROJECT') ? null : define('SETTING_PROJECT', $setting['project']);
+defined('SETTING_DATABASE') ? null : define('SETTING_DATABASE', $setting['database']);
