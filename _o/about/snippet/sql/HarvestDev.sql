@@ -1,7 +1,7 @@
-
 -- UPDATE PUID, EUID & SUID
+USE `aodb`;
 SET FOREIGN_KEY_CHECKS = 0;
-ALTER TABLE `parisho`
+ALTER TABLE `_sample`
 	CHANGE COLUMN `author` `author` VARCHAR(80) NULL DEFAULT NULL AFTER `stamp`,
 	ADD COLUMN `puid` CHAR(20) NULL DEFAULT NULL AFTER `author`,
 	CHANGE COLUMN `euid` `euid` CHAR(40) NULL DEFAULT NULL AFTER `puid`,
@@ -19,9 +19,10 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 
 -- RESET & RENUMBER PRIMARY KEY
+USE `aodb`;
 SET FOREIGN_KEY_CHECKS = 0;
 SET @NewID = 0;
-UPDATE `parisho` SET `auid`=(@NewID := @NewID +1) ORDER BY `auid`;
-SELECT MAX(`auid`) AS `IDMax` FROM `parisho`;
-ALTER TABLE `parisho` AUTO_INCREMENT = 1;
+UPDATE `_sample` SET `auid`=(@NewID := @NewID +1) ORDER BY `auid`;
+SELECT MAX(`auid`) AS `IDMax` FROM `_sample`;
+ALTER TABLE `_sample` AUTO_INCREMENT = 1;
 SET FOREIGN_KEY_CHECKS = 1;
