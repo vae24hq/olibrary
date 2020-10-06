@@ -76,8 +76,8 @@ oFile::Inc(oSTATIC.'format.inc');
 oFile::Inc(oSTATIC.'input.inc');
 oFile::Inc(oSTATIC.'crypt.inc');
 oFile::Inc(oSTATIC.'time.inc');
+oFile::Inc(oSTATIC.'route.inc');
 oFile::Inc(oINSTANCE.'database.inc');
-oFile::Inc(oINSTANCE.'route.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 
