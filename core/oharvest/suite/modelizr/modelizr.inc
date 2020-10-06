@@ -45,7 +45,7 @@ class HarvestPad {
 
 
 	public function Register($data){
-		$fields = array('phone', 'password', 'surname', 'firstname', 'platform');
+		$fields = array('phone', 'password', 'surname', 'firstname');
 		$e = $this->Required($data, $fields);
 
 		if(!empty($e)){
