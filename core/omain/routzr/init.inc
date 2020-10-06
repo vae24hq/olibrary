@@ -4,6 +4,10 @@ $session->start();
 oSSL::Impose(true);
 oFile::Inc(oRoute::Path('config'));
 
+#Database connection
+$db = new oDatabase(SETTING_DATABASE, 'iPDO'); #$db = new oDatabase(SETTING_DATABASE, 'iMySQLi');
+$dbo =  $db->connection;
+
 #For *site
 if(oRoute::Site()){
 }
@@ -19,5 +23,6 @@ elseif(oRoute::APP()){
 
 
 #DEV
-$database = new oDatabase(SETTING_DATABASE, 'iMySQLi');
-$database2 = new oDatabase(SETTING_DATABASE);
+$sql = 'SELECT * FROM `parisho`';
+foreach($dbo->query($sql) as $row){echo $row['name'];}
+echo oPrint::Neat($qry['name']);
