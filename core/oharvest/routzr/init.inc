@@ -32,7 +32,7 @@ else {
 }
 
 
-if(isset($_REQUEST['ao'])){
+if(isset($_REQUEST['uid'])){
 #DEBUGING
 	function RandIT(){
 		$o['puid'] = oRandom::Create('iPuid');
