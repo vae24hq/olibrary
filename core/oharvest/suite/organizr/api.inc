@@ -34,3 +34,11 @@ if($uri == 'register'){
 if($uri == 'parish-list'){
 	$omodel = $harvestpad->ParishList();
 }
+
+
+#UPDATE USER ~parish/role
+#UPDATE PARISH
+#CREATE HARVEST
+#CREATE TARGET
+#CREATE USER
+#POST USER's TARGET
