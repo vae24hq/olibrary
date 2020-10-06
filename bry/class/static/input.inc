@@ -25,4 +25,22 @@ class oInput {
 	}
 
 
+
+	public static function EncodeHTML($i=''){
+		if(!empty($i)){
+			// return htmlentities($i, ENT_COMPAT|ENT_QUOTES,'ISO-8859-1', true);
+			return htmlentities($i);
+		}
+		return false;
+	}
+
+
+	public static function DecodeHTML($i=''){
+		if(!empty($i)){
+			return html_entity_decode($i);
+		}
+		return false;
+	}
+
+
 } // EndOfClass - oInput
