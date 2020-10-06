@@ -61,6 +61,17 @@ class oRoute {
 
 
 
+	//SITE •
+	public static function Site($i='iGet'){
+		if(!oRoute::API() && !oRoute::APP()){
+			if($i == 'iGet'){$o = self::Source();}
+		}
+		if(!empty($o)){return strtolower($o);}
+		return false;
+	}
+
+
+
 	//ROUTE • Get & Return Route
 	public static function Route(){
 		$api = self::API();
@@ -138,14 +149,33 @@ class oRoute {
 
 
 
+	//PAGE • [page or view for site ONLY ~ to be used where not api/app]
+	public static function Page($i='iGet'){
+		if(!empty($i)){
+			if($i == 'iGet'){$o = self::Route();}
+			$o = oString::To($o, '/', '-');
+			if(!oString::IsEmpty($o)){return $o;}
+		}
+		return false;
+	}
+
+
+
+
 	//PATH • return path
-	public static function Path($i='init'){
-		echo self::Source();
+	public static function Path($i='init', $flex=false){
 		$o = oCORE.'o'.self::Source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
 		if($i == 'config'){$o .= oCONFIG.'config.inc';}
 
-		if(!empty($o)){return strtolower($o);}
+		if(!empty($o)){
+			$o = strtolower($o);
+			#Default to main when file (resource) is unavailable
+			if($flex == true){
+				if(!oFile::Is($o)){$o = oString::To($o, 'o'.self::Source(), 'omain');}
+			}
+			return $o;
+		}
 		return false;
 	}
 
