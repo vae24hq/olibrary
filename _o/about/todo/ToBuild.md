@@ -27,7 +27,6 @@ BRAND
  * Dependency » plugin:mobile-detect | func:session
  */
 
-
 /* facil™ ver 0.1 (beta) - a cliqcore™ [iamSiEMO™] framework ~ {simplicity works!}
  * PHP :: class » Device - return information about the device accessing this app
  * Dependency » mobile-detect [library] | Session, isError [class]
