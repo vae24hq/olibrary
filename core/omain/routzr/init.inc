@@ -15,3 +15,9 @@ elseif(oRoute::API()){
 #For *app
 elseif(oRoute::APP()){
 }
+
+
+
+#DEV
+$database = new oDatabase(SETTING_DATABASE, 'iMySQLi');
+$database2 = new oDatabase(SETTING_DATABASE);
