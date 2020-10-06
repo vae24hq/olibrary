@@ -87,7 +87,7 @@ class oRoute {
 	//PATH • return path
 	public static function Path($i='init'){
 		$o = oCORE;
-		if(self::Source() != 'default'){$o .= self::Source().DS;}
+		if(self::Source() != 'default'){$o .= 'o'.self::Source().DS;}
 		else {$o .= 'omain'.DS;}
 
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
