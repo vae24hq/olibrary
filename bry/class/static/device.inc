@@ -15,8 +15,31 @@ class oDevice {
 	}
 
 
-	//METHOD • Describe method
-	public static function FuncName(){return;}
+	//IDENTIFY • Identify the device
+	public static function Identify(){
+		$device = new Mobile_Detect;
+		return ($device->isMobile() ? ($device->isTablet() ? 'iTablet' : 'iPhone') : 'iDesktop');
+	}
+
+
+	//AS • Set device type
+	public static function As($to='iRequest'){
+		if($to=='iRequest'){
+			if(isset($_REQUEST['v']) && !empty($_REQUEST['v'])){
+				if(self::IsValid($_REQUEST['v'])){return $_SESSION['DeviceIsA'] = $_REQUEST['v'];}
+				elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
+				else {return $_SESSION['DeviceIsA'] = self::Identify();}
+			}
+			elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
+			else {return $_SESSION['DeviceIsA'] = self::Identify();}
+		}
+		elseif(self::IsValid($to)){return $_SESSION['DeviceIsA'] = $to;}
+		else {return false;}
+	}
+
+
+	//IS • Get device type
+	public static function Is(){return self::As();}
 
 
 } // EndOfClass - oDevice
