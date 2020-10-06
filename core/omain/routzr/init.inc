@@ -23,6 +23,11 @@ elseif(oRoute::APP()){
 
 
 #DEV
-$sql = 'SELECT * FROM `parisho`';
-foreach($dbo->query($sql) as $row){echo $row['name'];}
-echo oPrint::Neat($qry['name']);
+// $sql = 'SELECT * FROM `parisho`';
+// foreach($dbo->query($sql) as $row){echo $row['name'];}
+// echo oPrint::Neat($qry['name']);
+
+$v['Ra'] = oRandom::Create('iSuid');
+$v['Pass'] = 'Toni';
+$v['Passw'] = oCrypt::Password($v['Pass']);
+echo oPrint::Neat($v);
