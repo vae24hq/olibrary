@@ -29,8 +29,8 @@ class oFile {
 
 
 	//In • RETURNS required -file when its valid & exist
-	public static function Inc($path, $i='isRequired'){
-		if($i == 'isRequired'){
+	public static function Inc($path, $i='iRequired'){
+		if($i == 'iRequired'){
 			self::InCheck($path);
 			require $path;
 			return;
