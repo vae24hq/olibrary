@@ -65,7 +65,7 @@ class oDatabase {
 		if($driver == 'iMySQLi'){
 			@$mysqli = new mysqli($config['host'], $config['user'], $config['password'], $config['name']);
 			if ($mysqli->connect_error){
-				oExit::Run('Database', 'Connection Failed', '['.$mysqli->connect_errno.'] '.$mysqli->connect_error);
+				oExit::Run('Database', 'connection failed', '['.$mysqli->connect_errno.'] '.$mysqli->connect_error);
 			}
 			return $mysqli;
 		}
