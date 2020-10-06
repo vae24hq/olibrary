@@ -8,7 +8,7 @@ class oExit {
 	//RUN • exit with message
 	public static function Run($obj, $msg, $extra=''){
 		$o = strtoupper($obj).'::';
-		if(!empty($msg)){$o .=' <strong>'.ucwords($msg).'</strong>';}
+		if(!empty($msg)){$o .=' <strong>'.$msg.'</strong>';}
 		if(!empty($extra)){
 			if(is_string($extra)){$o .= ' <small><em>('.$extra.')</em></small>';}
 			else {
