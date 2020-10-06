@@ -52,7 +52,7 @@ class oString {
 
 
 	//TO • Substitute a character|string in a string and vice-versa
-	public static function To($string, $search, $substitute , $occurence='iAll', $case=false){
+	public static function To($string, $search, $substitute, $occurence='iAll', $case=false){
 		if(self::In($string, $search, $case) === false){#return STRING if search NOT found
 			return $string;
 		}
@@ -192,12 +192,12 @@ class oString {
 
 
 	//AFTER • Return false OR value after first character|string if found
-	public static function After($string, $search, $strip=true){
+	public static function After($string, $search, $strip=true, $occurence='iFirst'){
 		$found = strstr($string, $search);
 		if($found){
 			$o = $found;
 			if($strip === true){
-				$o = self::To($o, $search, '', 'iFirst');
+				$o = self::To($o, $search, '', $occurence);
 			}
 		}
 		if(!empty($o)){return $o;}
