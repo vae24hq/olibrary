@@ -18,7 +18,7 @@ class oRoute {
 			}
 			if(!empty($o)){
 				$o = strtolower($o);
-				if($o == 'api' || $o == 'app' || $o == 'www'){$o = 'main';}
+				if($o == 'api' || $o == 'app' || $o == 'www' || $o == 'default'){$o = 'main';}
 				return $o;
 			}
 		}
@@ -140,6 +140,7 @@ class oRoute {
 
 	//PATH • return path
 	public static function Path($i='init'){
+		echo self::Source();
 		$o = oCORE.'o'.self::Source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
 		if($i == 'config'){$o .= oCONFIG.'config.inc';}
