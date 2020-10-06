@@ -87,5 +87,5 @@ oFile::Inc(oRoute::Path('init'), 'iRequired');
 
 
 #DEVBOX FILE - for development, demo & testing
-oFile::Inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.php', 'isOptional');
+oFile::Inc(oROOT.'_o'.DS.'_debug.php', 'isOptional');
 ?>
