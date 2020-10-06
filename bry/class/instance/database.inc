@@ -5,20 +5,13 @@
  * oDatabase ~ Database Handling • DEPENDENCY»
  */
 class oDatabase {
-	private $_connection;
-	private $_driver;
+	public $driver;
+	public $connection;
 
 	//CONSTRUCT • Database connection
 	public function __construct($config='',  $driver=''){
 		$i = $this->check($config, $driver);
-		$connect = $this->_connect($i, $i['driver']);
-
-		echo oPrint::Neat($connect);
-
-
-
-
-
+		return $this->_connect($i, $i['driver']);
 	}
 
 
@@ -58,7 +51,7 @@ class oDatabase {
 			} catch (PDOException $e){
 				oExit::Run('Database', 'connection failed', $e->getMessage());
 			}
-			return $pdo;
+			$this->connection = $pdo;
 		}
 
 		#Using MySQLi
@@ -67,16 +60,17 @@ class oDatabase {
 			if ($mysqli->connect_error){
 				oExit::Run('Database', 'connection failed', '['.$mysqli->connect_errno.'] '.$mysqli->connect_error);
 			}
-			return $mysqli;
+			$this->connection = $mysqli;
 		}
 
+		$this->driver = $driver;
 	}
 
 
 
-	//CONNECT • return database object ~ connection
-	public function connect2(){
-		if(!empty($this->_connection)){return $this->_connection;}
+	//CONNECTION • return database object ~ connection
+	public function connection(){
+		if(!empty($this->connection)){return $this->connection;}
 		return false;
 	}
 
