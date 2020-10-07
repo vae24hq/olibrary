@@ -78,6 +78,7 @@ oFile::Inc(oSTATIC.'crypt.inc');
 oFile::Inc(oSTATIC.'time.inc');
 oFile::Inc(oSTATIC.'route.inc');
 oFile::Inc(oINSTANCE.'database.inc');
+oFile::Inc(oINSTANCE.'sql.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 
