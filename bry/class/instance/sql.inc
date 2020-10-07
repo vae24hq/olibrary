@@ -5,9 +5,14 @@
  * oSQL ~ SQL Utility • DEPENDENCY»
  */
 class oSQL {
+	public $dbo;
 
-	//METHOD • Describe method
-	public static function FuncName(){return;}
+	//CONSTRUCT • Initiate DB Connection
+	public function __construct($config='', $driver='iPDO'){
+		$db = new oDatabase($config, $driver);
+		$this->dbo = $db->connection();
+		return;
+	}
 
 
 } // EndOfClass - oSQL
