@@ -9,9 +9,9 @@ class oDatabase {
 	public $connection;
 
 	//CONSTRUCT • Database connection
-	public function __construct($config='',  $driver=''){
+	public function __construct($config='',  $driver='', $persist=false){
 		$i = $this->check($config, $driver);
-		return $this->_connect($i, $i['driver']);
+		return $this->_connect($i, $i['driver'], $persist);
 	}
 
 
@@ -43,11 +43,12 @@ class oDatabase {
 
 
 	//CONNECT • Run database connection
-	private function _connect($config, $driver){
+	private function _connect($config, $driver, $persist){
 		#Using PDO
 		if($driver == 'iPDO'){
 			try {
-				$pdo = new PDO('mysql:dbname='.$config['name'].';host='.$config['host'], $config['user'], $config['password']);
+				if($persist){$pdo = new PDO('mysql:dbname='.$config['name'].';host='.$config['host'], $config['user'], $config['password']);}
+				else {$pdo = new PDO('mysql:dbname='.$config['name'].';host='.$config['host'], $config['user'], $config['password'], array(PDO::ATTR_PERSISTENT => true));}
 			} catch (PDOException $e){
 				oExit::Run('Database', 'connection failed', $e->getMessage());
 			}
