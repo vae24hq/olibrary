@@ -179,4 +179,12 @@ class oRoute {
 		return false;
 	}
 
+
+
+	//REDIRECT • @TODO ~
+	public static function Redirect(){
+
+	}
+
+
 } // EndOfClass - oRoute
