@@ -77,6 +77,7 @@ oFile::Inc(oSTATIC.'input.inc');
 oFile::Inc(oSTATIC.'crypt.inc');
 oFile::Inc(oSTATIC.'time.inc');
 oFile::Inc(oSTATIC.'route.inc');
+oFile::Inc(oSTATIC.'browser.inc');
 oFile::Inc(oINSTANCE.'database.inc');
 oFile::Inc(oINSTANCE.'sql.inc');
 oFile::Inc(oBOND.'mobile.inc');
@@ -85,6 +86,22 @@ oFile::Inc(oBOND.'mobile.inc');
 #INITIALIZE PROJECT (based on a specific project)
 // oFile::Inc(oRoute::Path('init', true), 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
 oFile::Inc(oRoute::Path('init'), 'iRequired');
+
+
+#REDIRECT URL ~ @TODO
+// if((!empty($_REQUEST['action'])) && $_REQUEST['action'] == 'redirect'){
+// 	$destination = quin::site_url();
+// 	$location = $_GET['location'];
+// 	if(!empty($location)){
+// 		if(in_string($location,'www.')){
+// 			redirect('http://'.$location);
+// 		}
+// 		else {
+// 			$destination .= PS.$location;
+// 			redirect($destination);
+// 		}
+// 	}
+// }
 
 
 #DEVBOX FILE - for development, demo & testing
