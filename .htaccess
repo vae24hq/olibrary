@@ -75,7 +75,7 @@ RedirectMatch 403 ^/_o/?$
 
 
 # REWRITE - for existing directory
-RewriteRule ^o_$ o_/ [NC,QSA,END]
+RewriteRule ^_o$ o_/ [NC,QSA,END]
 RewriteRule ^bry$ bry/ [NC,QSA,END]
 RewriteRule ^core$ core/ [NC,QSA,END]
 
