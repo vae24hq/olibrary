@@ -3,10 +3,11 @@ $session = new oSession;
 $session->start();
 oSSL::Impose(true);
 oFile::Inc(oRoute::Path('config'));
+oFile::Inc(oHELPER.'mysqli.inc');
 
 #Database connection
-$db = new oDatabase(SETTING_DATABASE, 'iPDO'); #$db = new oDatabase(SETTING_DATABASE, 'iMySQLi');
-$dbo =  $db->connection;
+$db = new oSQLi(SETTING_DATABASE); #$db = new oDatabase(SETTING_DATABASE, 'iMySQLi');
+
 
 #For *site
 if(oRoute::Site()){
@@ -23,11 +24,14 @@ elseif(oRoute::APP()){
 
 
 #DEV
-// $sql = 'SELECT * FROM `parisho`';
-// foreach($dbo->query($sql) as $row){echo $row['name'];}
-// echo oPrint::Neat($qry['name']);
+// $db->transaction();
 
-// $v['Ra'] = oRandom::Create('iSuid');
-// $v['Pass'] = 'Toni';
-// $v['Passw'] = oCrypt::Password($v['Pass']);
-// echo oPrint::Neat($v);
+// $sql = "INSERT INTO `_sample` (`stage`) VALUES ('".mt_rand()."');";
+// $sql .= "INSERT INTO `_sample` (`stage`) VALUES ('".mt_rand()."');";
+// $db->queries($sql);
+
+// echo $db->error();
+// foreach($db->query($sql) as $row){echo $row['name'].'<br>';}
+// echo oPrint::Neat($db->error('iMsg'));
+// $v = true;
+// $db->commit('commit');
