@@ -9,7 +9,7 @@ class oDatabase {
 	public $connection;
 
 	//CONSTRUCT • Database connection
-	public function __construct($config='',  $driver='', $persist=false){
+	public function __construct($config='',  $driver='iPDO', $persist=false){
 		$i = $this->check($config, $driver);
 		return $this->_connect($i, $i['driver'], $persist);
 	}
