@@ -17,6 +17,7 @@ defined('oLIBRY') ? null : define('oLIBRY', oROOT.'bry'.DS);
 defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
 defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
 defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
+defined('oHELPER') ? null : define('oHELPER', oCLASS.'helper'.DS);
 defined('oSTATIC') ? null : define('oSTATIC', oCLASS.'static'.DS);
 defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 
@@ -79,7 +80,6 @@ oFile::Inc(oSTATIC.'time.inc');
 oFile::Inc(oSTATIC.'route.inc');
 oFile::Inc(oSTATIC.'browser.inc');
 oFile::Inc(oINSTANCE.'database.inc');
-oFile::Inc(oINSTANCE.'sql.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 
