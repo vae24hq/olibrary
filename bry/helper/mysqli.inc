@@ -30,7 +30,7 @@ class oSQLi {
 	//TRANSACTION •
 	public function transaction($flag=''){
 		$flags = array(MYSQLI_TRANS_START_READ_ONLY, MYSQLI_TRANS_START_READ_WRITE, MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
-		if(!in_array($flag, $flags)){oExit::Run('oSQL', 'flag invalid for begin_transaction', $flag);}
+		if(!in_array($flag, $flags)){oExit::Run('oSQLi', 'flag invalid for begin_transaction', $flag);}
 		return $this->dbo->begin_transaction($flag);
 	}
 
