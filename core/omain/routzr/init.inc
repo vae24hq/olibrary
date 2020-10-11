@@ -9,15 +9,15 @@ oFile::Inc(oHELPER.'mysqli.inc');
 $db = new oSQLi(SETTING_DATABASE); #$db = new oDatabase(SETTING_DATABASE, 'iMySQLi');
 
 
-#For *site
+#For *Site
 if(oRoute::Site()){
 }
 
-#For *api
+#For *API
 elseif(oRoute::API()){
 }
 
-#For *app
+#For *APP
 elseif(oRoute::APP()){
 }
 
