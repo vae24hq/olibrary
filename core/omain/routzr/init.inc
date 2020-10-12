@@ -15,6 +15,19 @@ if(oRoute::Site()){
 
 #For *API
 elseif(oRoute::API()){
+	$terminus = oRoute::Model();
+	$organizr = oRoute::Path('source').oRGANIZR.$terminus.'.inc';
+
+
+
+	// #Output
+	// if(!isset($_REQUEST['ao'])){
+	// 	return oJson::Display($harv);
+	// }
+	// else {
+	// 	echo oPrint::Neat($harv);
+	// 	return;
+	// }
 }
 
 #For *APP
