@@ -309,7 +309,7 @@ function showBreadcrumb(){
 	return $task;
 }
 
-// return reponsive date
+// return responsive date
 function showDate(){
 	#prepare & return result
 	$device = Device::is();
