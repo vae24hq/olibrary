@@ -326,15 +326,7 @@ class CRUD {
 		return self::$instance;
 	}
 
-	//-------------- Auto populate dataset with puid|suid|bind ---------------
-	public static function guid($dataset){
-		$data = array();
-		if(empty($dataset)){$dataset = array();}
-		if(!array_key_exists('bind', $dataset)){$data['bind'] = Helper::randomize('bind');}
-		if(!array_key_exists('puid', $dataset)){$data['puid'] = Helper::randomize('puid');}
-		if(!array_key_exists('suid', $dataset)){$data['suid'] = Helper::randomize('suid');}
-		return array_merge($data, $dataset);
-	}
+
 
 	//--------------Return single row from recordset  ---------------
 	public static function row($recordset){
