@@ -6,10 +6,10 @@
  */
 class oDatabase {
 	public $driver;
-	public $connection;
+	public $dbo;
 
 	//CONSTRUCT • Database connection
-	public function __construct($config='',  $driver='iPDO', $persist=false){
+	public function __construct($config='',  $driver='', $persist=false){
 		$i = $this->check($config, $driver);
 		return $this->_connect($i, $i['driver'], $persist);
 	}
@@ -30,15 +30,19 @@ class oDatabase {
 			oExit::Run('Database', 'configuration required');
 		}
 
+		if(empty($driver) && !empty($config['driver'])){$driver = $config['driver'];}
+
 		if(!empty($driver)){
 			$drivers = array('iPDO', 'iMySQLi', 'iMySQL');
 			if(!in_array($driver, $drivers)){oExit::Run('Database', 'driver not available', $driver);}
 			$o['driver'] = $driver;
 		}
+		else {
+			oExit::Run('Database', 'driver required', $driver);
+		}
 
 		return $o;
 	}
-
 
 
 
@@ -52,7 +56,7 @@ class oDatabase {
 			} catch (PDOException $e){
 				oExit::Run('Database', 'connection failed', $e->getMessage());
 			}
-			$this->connection = $pdo;
+			$this->dbo = $pdo;
 		}
 
 		#Using MySQLi
@@ -61,7 +65,7 @@ class oDatabase {
 			if ($mysqli->connect_error){
 				oExit::Run('Database', 'connection failed', '['.$mysqli->connect_errno.'] '.$mysqli->connect_error);
 			}
-			$this->connection = $mysqli;
+			$this->dbo = $mysqli;
 		}
 
 		$this->driver = $driver;
@@ -70,8 +74,8 @@ class oDatabase {
 
 
 	//CONNECTION • return database object ~ connection
-	public function connection(){
-		if(!empty($this->connection)){return $this->connection;}
+	public function dbo(){
+		if(!empty($this->dbo)){return $this->dbo;}
 		return false;
 	}
 
