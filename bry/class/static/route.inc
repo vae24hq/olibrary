@@ -167,6 +167,7 @@ class oRoute {
 		$o = oCORE.'o'.self::Source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
 		if($i == 'config'){$o .= oCONFIG.'config.inc';}
+		if($i == 'utilizr'){$o .= oUTILIZR;}
 
 		if(!empty($o)){
 			$o = strtolower($o);
