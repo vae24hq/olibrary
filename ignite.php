@@ -80,12 +80,15 @@ oFile::Inc(oSTATIC.'time.inc');
 oFile::Inc(oSTATIC.'route.inc');
 oFile::Inc(oSTATIC.'browser.inc');
 oFile::Inc(oINSTANCE.'database.inc');
+oFile::Inc(oHELPER.'data.inc');
+oFile::Inc(oHELPER.'pdo.inc');
+oFile::Inc(oHELPER.'mysqli.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 
 #INITIALIZE PROJECT (based on a specific project)
 // oFile::Inc(oRoute::Path('init', true), 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
-oFile::Inc(oRoute::Path('init'), 'iRequired');
+#oFile::Inc(oRoute::Path('init'), 'iRequired');
 
 
 #REDIRECT URL ~ @TODO
