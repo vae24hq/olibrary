@@ -3,11 +3,6 @@ class HarvestPad {
 	public $SQL;
 	public $project;
 
-	function __construct($config){
-		if(!empty($config['project'])){$this->project = $config['project'];}
-		$this->SQL = new oSQL($config['database']);
-	}
-
 
 	function Required($input, $fields){
 		if(is_array($fields)){
@@ -24,23 +19,7 @@ class HarvestPad {
 
 
 
-	public function Logs($data){
-		$puid = oRandom::Create('iPuid');
-		$suid = oRandom::Create('iSuid');
-		$euid = oRandom::Create('iEuid');
-		if(empty($data['logid'])){$data['logid'] = NULL;}
-		if(empty($data['user'])){$data['user'] = NULL;}
-		if(empty($data['action'])){$data['action'] = NULL;}
-		if(empty($data['platform'])){$data['platform'] = NULL;}
-		if(empty($data['report'])){$data['report'] = 'initiated';}
-		if(empty($data['summary'])){$data['summary'] = 'No Summary';}
-		if(empty($data['ip'])){$data['ip'] = oServer::RemoteIP();}
-		if(empty($data['platform'])){$data['platform'] = 'Unknown';}
 
-		$query = "INSERT INTO `logso`(`user`, `action`, `report`, `summary`, `ip`, `platform`, `logid`, `puid`, `suid`, `euid`) ";
-		$query .= "VALUES ('{$data['user']}', '{$data['action']}', '{$data['report']}', '{$data['summary']}', '{$data['ip']}', '{$data['platform']}', '{$data['logid']}', '{$puid}', '{$suid}', '{$euid}');";
-		return $this->SQL->Handler($query, false);
-	}
 
 
 
