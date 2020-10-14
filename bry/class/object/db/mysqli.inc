@@ -32,11 +32,6 @@ class oSQLi {
 
 
 
-	//ERROR • Return Database Error
-	public function error($i='iCode'){return;}
-
-
-
 	//CONFIG • Database Configuration
 	public function config($i=''){
 		if(!empty($i) && is_array($i)){
@@ -77,11 +72,69 @@ class oSQLi {
 
 
 
+	//ERROR • Return FALSE or MySQLi Error
+	public function error($i='iMessage'){
+		if(!empty($i)){
+			if($i == 'iCode'){return $this->dbo->errno;}
+			elseif($i == 'iMessage'){return $this->dbo->error;}
+		}
+		return false;
+	}
+
+
+
+	//COMMIT • [auto commit & commit]
+	public function commit($v='iAuto', $i=false){
+		if(!empty($v)){
+			if($v == 'iAuto'){return $this->dbo->autocommit($i);}
+			return $this->dbo->commit();
+		}
+	}
+
+
+
+	//TRANSACT • Returns $mysqli->begin_transaction()
+	public function transact($flag=''){
+		$flags = array(MYSQLI_TRANS_START_READ_ONLY, MYSQLI_TRANS_START_READ_WRITE, MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
+		if(!in_array($flag, $flags)){$this->oExit('invalid flag for transact', $flag);}
+		return $this->dbo->begin_transaction($flag);
+	}
+
+
+
+	//ROLLBACK • Returns $mysqli->rollback()
+	public function rollback(){
+		return $this->dbo->rollback();
+	}
+
+
+
+	//QUERY • Returns $mysqli->query()
+	public function query($sql=''){
+		if(!empty($sql)){
+			return $this->dbo->query($sql);
+		}
+		return false;
+	}
+
+
+
+	//QUERIES • Returns $mysqli->muli_query()
+	public function queries($sql=''){
+		if(!empty($sql)){
+			return $this->dbo->multi_query($sql);
+		}
+		return false;
+	}
+
+
+
 	//DISCONNECT • @TODO ~ Close & Disconnect Database Connection
 	public function disconnect(){
 		$this->cleanup();
 		$this->dbo->close();
 		return;
 	}
+
 
 } // EndOfClass - oMySQLi
