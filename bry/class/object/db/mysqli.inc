@@ -112,7 +112,7 @@ class oSQLi {
 
 
 	//QUERY • Returns $mysqli->query()
-	public function query4($sql=''){
+	public function query($sql=''){
 		if(!empty($sql)){
 			return $this->dbo->query($sql);
 		}
@@ -125,6 +125,51 @@ class oSQLi {
 	public function queries($sql=''){
 		if(!empty($sql)){
 			return $this->dbo->multi_query($sql);
+		}
+		return false;
+	}
+
+
+	//QUERIES • Run SQL query with [custom response]
+	public function run($sql='', $return='iBool'){
+		if(!empty($sql)){
+			$query['syntax'] = $sql;
+			$stmt = $this->dbo->prepare($sql);
+			if($stmt === false){
+				$query['executed'] = false;
+				$query['message'] = $this->error($i='iMessage');
+				$query['code'] = $this->error($i='iCode');
+			}
+			else {
+				$exec = $stmt->execute();
+				if($exec === true){
+					$query['executed'] = true;
+					if($return == 'iBool'){return true;}
+					elseif($return == 'iAffected'){return $stmt->affected_rows;}
+					else {
+
+
+						// $o['record'] = $stmt->affected_rows;
+						// $o['record'] = $stmt->num_rows;
+				// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+				// if($result != false && !empty($result)){
+				// 	$o['recordset'] = $result;
+				// }
+				// else {
+				// 	$o['recordset'] = false;
+				// }
+					}
+				}
+				else {
+					$query['executed'] = false;
+					$query['message'] = error($i='iMsg');
+					$query['code'] = error($i='iCode');
+				}
+			}
+
+			if(!empty($query) && is_array($query)){$o['query'] = $query;}
+
+			return $o;
 		}
 		return false;
 	}
