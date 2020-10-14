@@ -67,6 +67,7 @@ else {
 				}
 				elseif(in_array($model, $models)){
 					$organizr = $path.oRGANIZR.'api'.DS.$model.'.inc';
+					if(!file_exists($organizr)){oExit::E404($organizr, 'Missing File');}
 					require $organizr;
 					// $omethod = 'o'.ucfirst($model);
 					// $omodel = $harvest->{$omethod}();
