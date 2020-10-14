@@ -71,7 +71,7 @@ else {
 					require $organizr;
 					// $omethod = 'o'.ucfirst($model);
 					// $omodel = $harvest->{$omethod}();
-					// if(!empty($omodel)){$response = array_merge($response, $omodel);}
+					if(!empty($omodel)){$response = array_merge($response, $omodel);}
 
 				}
 				else {
