@@ -112,7 +112,7 @@ class oSQLi {
 
 
 	//QUERY • Returns $mysqli->query()
-	public function query($sql=''){
+	public function query4($sql=''){
 		if(!empty($sql)){
 			return $this->dbo->query($sql);
 		}
