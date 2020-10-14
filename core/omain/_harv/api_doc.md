@@ -1,1 +1,0 @@
-/ping-success?okey=40zqD0deYpGQIHumiXsn&platform=webapi&ojson
