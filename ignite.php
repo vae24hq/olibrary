@@ -80,12 +80,7 @@ oFile::Inc(oSTATIC.'crypt.inc');
 oFile::Inc(oSTATIC.'time.inc');
 oFile::Inc(oSTATIC.'route.inc');
 oFile::Inc(oBJCT.'db'.DS.'database.inc');
-
 // oFile::Inc(oSTATIC.'browser.inc');
-// oFile::Inc(oINSTANCE.'database.inc');
-// oFile::Inc(oHELPER.'data.inc');
-// oFile::Inc(oHELPER.'pdo.inc');
-// oFile::Inc(oHELPER.'mysqli.inc');
 oFile::Inc(oBOND.'mobile.inc');
 
 
