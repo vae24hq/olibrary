@@ -3,6 +3,7 @@ $session = new oSession;
 $session->start();
 oSSL::Impose(true);
 oFile::Inc(oRoute::Path('setting'));
+oFile::Inc(oRoute::Path('utilizr').'required.inc');
 
 #CONTROLS
 $model = oRoute::Model();
@@ -39,7 +40,7 @@ else {
 			}
 			else {
 				$log['platform'] = $_REQUEST['platform'];
-				$models = array('ping');
+				$models = array('ping', 'register');
 
 				if($model == 'index'){
 					$response['status'] = 'F9';
@@ -64,7 +65,12 @@ else {
 					}
 					$harvest->CreateLog($log);
 				}
-				elseif (in_array($model, $models)) {
+				elseif(in_array($model, $models)){
+					#$organizr = $path.oRGANIZR.'api'.DS.$model.'.inc';
+					#require $organizr;
+					$omethod = 'o'.ucfirst($model);
+					$omodel = $harvest->{$omethod}();
+					if(!empty($omodel)){$response = array_merge($response, $omodel);}
 
 				}
 				else {
@@ -85,39 +91,8 @@ else {
 		}
 	}
 
+	#APLICATION
+	elseif(oRoute::APP()){
+	}
+
 }
-
-
-// #For *API
-// elseif(oRoute::API()){
-//
-//
-// 	else {
-//
-// 			$organizr = $source.oRGANIZR.'api'.DS.$model.'.inc';
-// 			require $organizr;
-// 		}
-// 	}
-
-
-//
-// }
-
-
-// #For *APP
-// elseif(oRoute::APP()){
-// }
-
-
-#DEV
-// $db->transaction();
-
-// $sql = "INSERT INTO `_sample` (`stage`) VALUES ('".mt_rand()."');";
-// $sql .= "INSERT INTO `_sample` (`stage`) VALUES ('".mt_rand()."');";
-// $db->queries($sql);
-
-// echo $db->error();
-// foreach($db->query($sql) as $row){echo $row['name'].'<br>';}
-// echo oPrint::Neat($db->error('iMsg'));
-// $v = true;
-// $db->commit('commit');
