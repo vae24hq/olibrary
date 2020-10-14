@@ -166,7 +166,7 @@ class oRoute {
 	public static function Path($i='init', $flex=false){
 		$o = oCORE.'o'.self::Source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
-		if($i == 'config'){$o .= oCONFIG.'config.inc';}
+		if($i == 'setting'){$o .= oCONFIG.'setting.inc';}
 		if($i == 'utilizr'){$o .= oUTILIZR;}
 		if($i == 'modelizr'){$o .= oMODELIZR;}
 
