@@ -66,11 +66,11 @@ else {
 					$harvest->CreateLog($log);
 				}
 				elseif(in_array($model, $models)){
-					#$organizr = $path.oRGANIZR.'api'.DS.$model.'.inc';
-					#require $organizr;
-					$omethod = 'o'.ucfirst($model);
-					$omodel = $harvest->{$omethod}();
-					if(!empty($omodel)){$response = array_merge($response, $omodel);}
+					$organizr = $path.oRGANIZR.'api'.DS.$model.'.inc';
+					require $organizr;
+					// $omethod = 'o'.ucfirst($model);
+					// $omodel = $harvest->{$omethod}();
+					// if(!empty($omodel)){$response = array_merge($response, $omodel);}
 
 				}
 				else {
