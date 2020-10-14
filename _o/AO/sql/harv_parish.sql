@@ -35,3 +35,10 @@ CREATE TABLE IF NOT EXISTS `harv_parish` (
   KEY `stage` (`stage`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+REPLACE INTO `harv_parish` (`auid`, `euid`, `suid`, `puid`, `stamp`, `author`, `status`, `logid`, `stage`, `name`, `country`, `state`, `city`, `suburb`, `address`, `summary`, `cover`, `emblem`, `bank`, `holder`, `account`, `revenue`, `payout`) VALUES
+	(1, 'G2ntgVqbKW6SAr80d1HCJkI7MZTRfa17veiNUOQ4', 'VwQBYjAH92600gRSkaZL7OU7N5G4lC75301892461602702408BPg0XKNc2Sa3OMY9bLiG', 'dmZKhslPe7SQn39jvoEq', '2020-10-14 20:06:48', 'oHarvest', NULL, NULL, 'unverified', 'No Parish', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+SET FOREIGN_KEY_CHECKS = 1;
