@@ -347,27 +347,7 @@ public static function module(){
 	}
 
 
-	// IN-HEAD OPERATION SECTION
-	public static function charset(){
-		if(device::is()=='desktop' && validate_ie('<', 9)){
-			$chore ='<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-		} else {$chore ='<meta charset="utf-8">';}
-		echo $chore."\n";
-	}
 
-	public static function xua_compatible(){
-		$chore ='';
-		if(DEVELOPMENT_STAGE !='yeah'){$chore ='<meta http-eqbaseuiv="X-UA-Compatible" content="IE=edge,chrome=1">'."\n";}
-		echo $chore;
-	}
-
-	public static function viewport(){
-		$chore ='';
-		if(device::is() !='desktop'){
-			$chore ='<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">'."\n";
-		}
-		echo $chore;
-	}
 
 	public static function title($title='', $use='quin', $return='html'){
 
