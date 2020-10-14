@@ -14,6 +14,7 @@ Every API request must include the flowing required fields
 | okey | API key | ✓ |  [key value]
 | platform | request platform | ✓|  [ios/andriod/webapi]
 | ojson | return json response | • | •
+
 **EXAMPLE:**
 /?**okey**=40zqD0deYpGQIHumiXsn&**platform**=webapi&**ojson**
 
