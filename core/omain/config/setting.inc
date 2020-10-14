@@ -4,7 +4,7 @@ $setting['project'] = array('name' => "HarvestPad", 'version' => "Alpha-0.0.4");
 
 
 //========== DATABASE SETTINGS ==========
-$setting['database'] = array('name' => "aodb", 'user' => "ao", 'password' => "AO20", 'host' => "ao.co", 'driver' => 'iPDO');
+$setting['database'] = array('name' => "aodb", 'user' => "ao", 'password' => "AO20", 'host' => "ao.co", 'driver' => 'iMySQLi');
 
 
 #DEFINING CONSTANTS
