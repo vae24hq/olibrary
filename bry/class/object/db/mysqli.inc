@@ -162,8 +162,8 @@ class oSQLi {
 				}
 				else {
 					$query['executed'] = false;
-					$query['message'] = error($i='iMsg');
-					$query['code'] = error($i='iCode');
+					$query['message'] = $this->error($i='iMsg');
+					$query['code'] = $this->error($i='iCode');
 				}
 			}
 
