@@ -18,8 +18,7 @@
 if($state == 'create'){
 	$input = array();
 	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
-	// $fields = array('name', 'country', 'state', 'city', 'suburb');
-	$fields = array('name');
+	$fields = array('name', 'country', 'state', 'city', 'suburb');
 	$e = IsRequired($input, $fields);
 	if(!empty($e)){
 		$omodel = $harvest->SQL_Response('error', $e);
@@ -31,8 +30,8 @@ if($state == 'create'){
 		$suid = oRandom::Create('iSuid');
 		$puid = oRandom::Create('iPuid');
 
-		$sql = "INSERT INTO `harv_parish` (`euid`, `suid`, `puid`, `name`)
-		VALUES ('{$euid}', '{$suid}', '{$puid}', '{$input['name']}')";
+		$sql = "INSERT INTO `harv_parish` (`euid`, `suid`, `puid`, `name`, `country`, `state`, `city`, `suburb`)
+		VALUES ('{$euid}', '{$suid}', '{$puid}', '{$input['name']}', '{$input['country']}', '{$input['state']}', '{$input['city']}', '{$input['suburb']}')";
 		if($harvest->dbc->run($sql, 'iAffected') == 1){
 			$v['record'] = 1;
 			$v['recordset']['bind'] = $suid;
