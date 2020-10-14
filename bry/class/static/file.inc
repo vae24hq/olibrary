@@ -29,15 +29,15 @@ class oFile {
 
 
 	//In • RETURNS required -file when its valid & exist
-	public static function Inc($path, $i='iRequired'){
+	public static function Inc($path, $i='iRequired', $single=true){
 		if($i == 'iRequired'){
 			self::InCheck($path);
-			require $path;
+			if($single === true){require_once $path;} else {require $path;}
 			return;
 		}
 		else {
 			if(self::Is($path, 'iFile') !== false){
-				require $path;
+				if($single === true){require_once $path;} else {require $path;}
 				return;
 			}
 		}
