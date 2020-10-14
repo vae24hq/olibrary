@@ -10,6 +10,7 @@ class oSQLi {
 	private $user;
 	private $password;
 	private $name;
+	private $persist;
 
 
 	//CONSTRUCT •
@@ -49,6 +50,7 @@ class oSQLi {
 		unset($this->user);
 		unset($this->password);
 		unset($this->name);
+		unset($this->persist);
 		return;
 	}
 
