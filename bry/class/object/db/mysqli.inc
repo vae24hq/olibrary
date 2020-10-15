@@ -146,6 +146,10 @@ class oSQLi {
 					$query['executed'] = true;
 					if($return == 'iBool'){return true;}
 					elseif($return == 'iAffected'){return $stmt->affected_rows;}
+					elseif($return == 'iFetch' || $return == 'iFetchAll'){
+
+						return $exec->fetch_all(MYSQLI_ASSOC);
+					}
 					else {
 
 
