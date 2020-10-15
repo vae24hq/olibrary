@@ -1,10 +1,9 @@
 <?php
-#SIMPLE REGISTRATION
+# REGISTRATION
 if($state == 'default'){
 	$input = array();
 	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
 	$fields = array('phone', 'password', 'surname', 'firstname');
-
 	$e = IsRequired($input, $fields);
 	if(!empty($e)){
 		$omodel = $harvest->SQL_Response('error', $e);
@@ -46,6 +45,27 @@ if($state == 'default'){
 					}
 				}
 			}
+		}
+	}
+}
+
+
+#UPDATE [parish, role]
+if($state == 'update'){
+	$input = array();
+	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
+	$fields = array('usero', 'parisho', 'role');
+	$e = IsRequired($input, $fields);
+	if(!empty($e)){
+		$omodel = $harvest->SQL_Response('error', $e);
+	}
+	else {
+		$db = $harvest->dbo;
+		$qry = "UPDATE `harv_user` SET `parisho`= '{$input['parisho']}', `role`= '{$input['role']}' WHERE  `suid`= '{$input['usero']}'";
+		$tsk = $db->query($qry);
+		if($tsk !== false){
+			$v['record'] = 1;
+			$omodel = $harvest->SQL_Report('success', $v);
 		}
 	}
 }
