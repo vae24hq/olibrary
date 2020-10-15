@@ -24,21 +24,12 @@ class Harvest {
 
 
 	public function SQL_IsRecord($column, $value, $table, $symbol='='){
-		$sql = "SELECT `{$column}` FROM `{$table}` WHERE `{$column}` {$symbol} '".$value."';";
-		$o = $this->dbc->run($sql, 'iAffected');
-
-		#@TODO ~ clean up & get details
-		// if(!empty($o['query']) || ){
-		// 	$zz = $this->SQL_Report('error', $o['query']['message']);
-
-		// }
-		echo oPrint::Neat($o);
-
-		// if(!empty($o) && $o['executed'] === true && $o['record'] > 0){
-		// 	return true;
-		// }
-		// return false;
+		$sql = "SELECT `{$column}` FROM `{$table}` WHERE `{$column}` {$symbol} '".$value."' LIMIT 1";
+		$o = $this->dbc->query($sql);
+		if(!empty($o) && $o !== false && !empty($o->num_rows)){return true;}
+		return false;
 	}
+
 
 
 	public function SQL_Report($type, $v){
