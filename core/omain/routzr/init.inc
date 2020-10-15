@@ -40,7 +40,7 @@ else {
 			}
 			else {
 				$log['platform'] = $_REQUEST['platform'];
-				$models = array('ping', 'register', 'auth', 'parish', 'harvest', 'target');
+				$models = array('ping', 'register', 'auth', 'user', 'parish', 'harvest', 'target');
 
 				if($model == 'index'){
 					$response['status'] = 'F9';
