@@ -1,21 +1,6 @@
 <?php
-// // if($state == 'failed'){
-// // 	$response['status'] = 'F9';
-// // 	$response['reason'] = 'ping failed';
-// // 	$response['message'] = 'A failure response was initiated';
-// // }
-// // elseif($state == 'success'){
-// // 	$response['status'] = 'OK';
-// // 	$response['record'] = 1;
-// // 	$response['recordset'] = array('project' => $harvest->project['name'], 'version' => $harvest->project['version']);
-// // }
-
-// if($state == 'default'){
-
-// }
-
 #CREATE
-if($state == 'create'){
+if($action == 'create'){
 	$input = array();
 	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
 	$fields = array('name', 'country', 'state', 'city', 'suburb');
@@ -34,8 +19,21 @@ if($state == 'create'){
 		VALUES ('{$euid}', '{$suid}', '{$puid}', '{$input['name']}', '{$input['country']}', '{$input['state']}', '{$input['city']}', '{$input['suburb']}')";
 		if($harvest->dbc->run($sql, 'iAffected') == 1){
 			$v['record'] = 1;
-			$v['recordset']['bind'] = $suid;
+			$v['recordset']['id'] = $suid;
 			$omodel = $harvest->SQL_Report('success', $v);
 		}
+	}
+}
+
+
+#LIST
+if($action == 'list'){
+	$db = $harvest->dbo;
+	$sql = "SELECT `suid` AS `id`, CONCAT(`name`, ' - ', `suburb`, ', ',`city`) AS `title` FROM `harv_parish` WHERE `status` = 'active' ORDER BY `name` ASC";
+	$tsk = $db->query($sql);
+	if($tsk !== false){
+		$v['record'] = $tsk->num_rows;
+		$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);
+		$omodel = $harvest->SQL_Report('success', $v);
 	}
 }
