@@ -44,10 +44,7 @@ if($state == 'default'){
 						$v['recordset'][] = $tsk->fetch_array(MYSQLI_ASSOC);
 						$omodel = $harvest->SQL_Report('success', $v);
 					}
-
 				}
-
-
 			}
 		}
 	}
