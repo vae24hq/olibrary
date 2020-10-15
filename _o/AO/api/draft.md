@@ -25,6 +25,8 @@ TARGET
 REGISTER
 	/register?phone=09026636728&email=ao@vae24.co&password=oDev20&firstname=Anthony&surname=Osawere&okey=40zqD0deYpGQIHumiXsn&platform=webapi
 
+	/register-update?usero=pXxomi0TzUGVjE6KveduIYnB6875C36907854231160277315151G0QzhRj16cmqC4WiVE&parisho=3Lzp4UugR1w6yv57FjlBnJeqcK2NhG706845321916027031844uMmZh60w2XJgG49BT2s&role=manager&okey=40zqD0deYpGQIHumiXsn&platform=webapi
+
 
 LOGIN
  /auth/login?userid=ao@vae24.co&password=oDev20&okey=40zqD0deYpGQIHumiXsn&platform=webapi
