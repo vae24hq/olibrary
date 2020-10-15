@@ -1,6 +1,6 @@
 <?php
 #CREATE
-if($state == 'create'){
+if($action == 'create'){
 	$input = array();
 	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
 	$fields = array('title', 'parisho');
@@ -20,6 +20,30 @@ if($state == 'create'){
 		if($harvest->dbc->run($sql, 'iAffected') == 1){
 			$v['record'] = 1;
 			$v['recordset']['bind'] = $suid;
+			$omodel = $harvest->SQL_Report('success', $v);
+		}
+	}
+}
+
+
+
+
+#LIST
+if($action == 'list'){
+	$input = array();
+	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
+	$fields = array('parisho');
+	$e = IsRequired($input, $fields);
+	if(!empty($e)){
+		$omodel = $harvest->SQL_Response('error', $e);
+	}
+	else {
+		$db = $harvest->dbo;
+		$sql = "SELECT `suid` AS `id`, CONCAT(`title`) AS `title` FROM `harv_harvest` WHERE `parisho` = '{$input['parisho']}' ORDER BY `auid` ASC";
+		$tsk = $db->query($sql);
+		if($tsk !== false){
+			$v['record'] = $tsk->num_rows;
+			$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);
 			$omodel = $harvest->SQL_Report('success', $v);
 		}
 	}
