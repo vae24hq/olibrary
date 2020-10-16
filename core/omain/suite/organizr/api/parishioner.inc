@@ -40,11 +40,35 @@ if($action == 'create'){
 					$tsk = $db->query($qry);
 					if($tsk !== false){
 						$v['record'] = $tsk->num_rows;
-						$v['recordset'][] = $tsk->fetch_array(MYSQLI_ASSOC);
+						if($v['record'] > 0){$v['recordset'][] = $tsk->fetch_array(MYSQLI_ASSOC);}
 						$omodel = $harvest->SQL_Report('success', $v);
 					}
 				}
 			}
+		}
+	}
+}
+
+
+
+#LIST
+if($action == 'list'){
+	$input = array();
+	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
+	$fields = array('parisho');
+	$e = IsRequired($input, $fields);
+	if(!empty($e)){
+		$omodel = $harvest->SQL_Response('error', $e);
+	}
+	else {
+		$db = $harvest->dbo;
+		$qry = "SELECT `suid` AS `parishonerid`, CONCAT(`surname`, ' ',`firstname`) AS `name` FROM `harv_user` WHERE `parisho` = '{$input['parisho']}'";
+		$tsk = $db->query($qry);
+		if($tsk !== false){
+			$v['record'] = $tsk->num_rows;
+			if($v['record'] == 1){$v['recordset'][] = $tsk->fetch_array(MYSQLI_ASSOC);}
+			elseif($v['record'] > 1){$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);}
+			$omodel = $harvest->SQL_Report('success', $v);
 		}
 	}
 }
