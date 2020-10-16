@@ -41,7 +41,7 @@ class Harvest {
 		}
 		elseif($type == 'success'){
 			$report['status'] = 'OK';
-			if(!empty($v['record'])){$report['record'] = $v['record'];}
+			if(!oString::IsEmpty($v['record'])){$report['record'] = $v['record'];}
 			if(!empty($v['recordset'])){$report['recordset'] = $v['recordset'];}
 			return $report;
 		}
