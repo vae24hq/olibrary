@@ -3,7 +3,7 @@
 if($action == 'create'){
 	$input = array();
 	if(!empty($_REQUEST)){$input = $_REQUEST;} #@TODO - change to $_POST & use DATA
-	$fields = array('phone', 'surname', 'firstname', 'parishid');
+	$fields = array('phone', 'surname', 'firstname', 'parisho');
 	$e = IsRequired($input, $fields);
 	if(!empty($e)){
 		$omodel = $harvest->SQL_Response('error', $e);
@@ -31,7 +31,7 @@ if($action == 'create'){
 				if(!empty($input['email'])){$sql .= "`email`, ";}
 				$sql .= "`euid`, `suid`, `puid`, `phone`, `password`, `surname`, `firstname`, `parisho`) VALUES (";
 				if(!empty($input['email'])){$sql .= "'{$input['email']}', ";}
-				$sql .= "'{$euid}', '{$suid}', '{$puid}', '{$input['phone']}', '{$input['password']}', '{$input['surname']}', '{$input['firstname']}', '{$input['parishid']}')";
+				$sql .= "'{$euid}', '{$suid}', '{$puid}', '{$input['phone']}', '{$input['password']}', '{$input['surname']}', '{$input['firstname']}', '{$input['parisho']}')";
 				$o = $harvest->dbc->run($sql, 'iAffected');
 
 				if($o == 1){
