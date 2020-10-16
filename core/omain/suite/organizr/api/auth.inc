@@ -18,7 +18,7 @@ if($action == 'login'){
 		}
 		else {
 			$db = $harvest->dbo;
-			$qry = "SELECT `User`.`suid` AS `bind`, `password`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `User`.`status`, `User`.`stage`, `harv_parish`.`name` AS `parish` FROM `harv_user` AS `User`, `harv_parish` WHERE  '{$input['userid']}' IN (`username`, `phone`, `email`) AND  `User`.`parisho` = `harv_parish`.`suid` LIMIT 1;";
+			$qry = "SELECT `User`.`suid` AS `bind`, `password`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `othername`, `User`.`status`, `User`.`stage`, `harv_parish`.`name` AS `parish`, `harv_parish`.`suid` AS `parishid`FROM `harv_user` AS `User`, `harv_parish` WHERE  '{$input['userid']}' IN (`username`, `phone`, `email`) AND  `User`.`parisho` = `harv_parish`.`suid` LIMIT 1;";
 			$tsk = $db->query($qry);
 			if($tsk !== false){
 				$v['record'] = $tsk->num_rows;
