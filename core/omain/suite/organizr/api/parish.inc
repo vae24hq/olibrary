@@ -30,10 +30,5 @@ if($action == 'create'){
 if($action == 'list'){
 	$db = $harvest->dbo;
 	$sql = "SELECT `suid` AS `id`, CONCAT(`name`, ' - ', `suburb`, ', ',`city`) AS `title` FROM `harv_parish` WHERE `status` = 'active' ORDER BY `name` ASC";
-	$tsk = $db->query($sql);
-	if($tsk !== false){
-		$v['record'] = $tsk->num_rows;
-		$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);
-		$omodel = $harvest->SQL_Report('success', $v);
-	}
+	$omodel = $harvest->SQL($sql);
 }
