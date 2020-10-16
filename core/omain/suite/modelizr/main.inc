@@ -101,5 +101,15 @@ class Harvest {
 	}
 
 
+	public function SQL($sql){
+		$o = $this->dbo->query($sql);
+		if($o !== false){
+			$v['record'] = $o->num_rows;
+			if($v['record'] == 1){$v['recordset'][] = $o->fetch_array(MYSQLI_ASSOC);}
+			elseif($v['record'] > 1){$v['recordset'] = $o->fetch_all(MYSQLI_ASSOC);}
+			return $this->SQL_Report('success', $v);
+		}
+		//return $this->SQL_Report('error', $o); #@TODO ~ error
+	}
 
 }
