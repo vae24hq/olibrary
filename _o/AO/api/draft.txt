@@ -36,3 +36,10 @@ PARISHIONER
 	/parishioner/create?phone=09097996048&email=odao@vae24.co&parisho=3Lzp4UugR1w6yv57FjlBnJeqcK2NhG706845321916027031844uMmZh60w2XJgG49BT2s&firstname=A&surname=O&okey=40zqD0deYpGQIHumiXsn&platform=webapi
 
 	/parishioner/list?parisho=3Lzp4UugR1w6yv57FjlBnJeqcK2NhG706845321916027031844uMmZh60w2XJgG49BT2s&okey=40zqD0deYpGQIHumiXsn&platform=webapi
+
+
+
+
+
+PARISH
+ LIST []
