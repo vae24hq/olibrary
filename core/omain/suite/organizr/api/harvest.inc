@@ -38,13 +38,7 @@ if($action == 'list'){
 		$omodel = $harvest->SQL_Response('error', $e);
 	}
 	else {
-		$db = $harvest->dbo;
 		$sql = "SELECT `suid` AS `id`, CONCAT(DATE_FORMAT(`stamp`, '%Y'),' ',`title`,' Harvest') AS `title`, `tagline` FROM `harv_harvest` WHERE `parisho` = '{$input['parisho']}' ORDER BY `auid` ASC";
-		$tsk = $db->query($sql);
-		if($tsk !== false){
-			$v['record'] = $tsk->num_rows;
-			$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);
-			$omodel = $harvest->SQL_Report('success', $v);
-		}
+		$omodel = $harvest->SQL($sql);
 	}
 }
