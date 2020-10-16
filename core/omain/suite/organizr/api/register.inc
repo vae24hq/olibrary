@@ -36,7 +36,7 @@ if($state == 'default'){
 
 				if($o == 1){
 					$db = $harvest->dbo;
-					$qry = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `User`.`status`, `User`.`stage`, `harv_parish`.`name` AS `parish` FROM `harv_user` AS `User`, `harv_parish` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `harv_parish`.`suid` LIMIT 1;";
+					$qry = "SELECT `User`.`suid` AS `bind`, `email`, `phone`, `username`, `role`, `surname`, `firstname`, `othername`, `User`.`status`, `User`.`stage`, `harv_parish`.`name` AS `parish`, `harv_parish`.`suid` AS `parishid` FROM `harv_user` AS `User`, `harv_parish` WHERE  User.`suid` = '{$suid}' AND  `User`.`parisho` = `harv_parish`.`suid` LIMIT 1;";
 					$tsk = $db->query($qry);
 					if($tsk !== false){
 						$v['record'] = $tsk->num_rows;
