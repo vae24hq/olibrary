@@ -46,6 +46,5 @@ if($action == 'list'){
 			$v['recordset'] = $tsk->fetch_all(MYSQLI_ASSOC);
 			$omodel = $harvest->SQL_Report('success', $v);
 		}
-		echo oPrint::Neat($tsk);
 	}
 }
