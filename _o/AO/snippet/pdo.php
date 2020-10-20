@@ -1,5 +1,5 @@
 <?php
-// connect dabase with UTF-8
+// connect database with UTF-8
 $connect = new PDO(
 	"mysql:host=$host;dbname=$db;charset=utf8",
 	$user,
