@@ -5,17 +5,22 @@
  * oSQLi ~ MySQLi Utility • DEPENDENCY»
  */
 class oSQLi {
-	protected $dbo;
+	public $dbo; #connection object (mysqli)
 	private $host;
 	private $user;
-	private $password;
+	private $pw;
 	private $name;
 	private $persist;
 
 
-	//CONSTRUCT •
+
+
+
+	//CONSTRUCT • MySQLi Connection
 	public function __construct($i=''){
-		$this->config($i);
+		if(isset($i['name']) && $i['name'] == 'oNONE'){unset($i['name']);}
+		if(isset($i['driver'])){unset($i['driver']);}
+		$this->init($i);
 		$this->connect();
 		$this->cleanup();
 		return;
@@ -23,18 +28,20 @@ class oSQLi {
 
 
 
-	//oEXIT • Report Error & Terminate Program
-	public function oExit($i='', $v=''){
-		if(!empty($i)){
-			oExit::Run('DB-MySQLi', $i, $v);
-		}
+
+
+	//oEXIT • Report Error & Exit Program
+	private function oExit($i='', $v=''){
+		if(!empty($i)){return oExit::Run('oMySQLi', $i, $v);}
 		return false;
 	}
 
 
 
-	//CONFIG • Database Configuration
-	public function config($i=''){
+
+
+	//INIT • Initialize Configuration
+	protected function init($i=''){
 		if(!empty($i) && is_array($i)){
 			foreach($i as $k => $v){$this->{$k} = $v;}
 			return true;
@@ -44,11 +51,13 @@ class oSQLi {
 
 
 
-	//CLEANUP • Clean up Database Configuration
+
+
+	//CLEANUP • Clean Configuration
 	public function cleanup(){
 		unset($this->host);
 		unset($this->user);
-		unset($this->password);
+		unset($this->pw);
 		unset($this->name);
 		unset($this->persist);
 		return;
@@ -56,21 +65,39 @@ class oSQLi {
 
 
 
-	//CONNECT • Initiate Database Connection
+
+
+	//CONNECT • Initiate Connection
 	public function connect(){
-		@$dbc = new mysqli($this->host, $this->user, $this->password, $this->name);
-		if($dbc->connect_error){$this->oExit('connection failed - '.$dbc->connect_errno, $dbc->connect_error);}
-		$this->dbo = $dbc;
+		if($this->persist === true){@$mysqli = new mysqli('p:'.$this->host, $this->user, $this->pw, $this->name);}
+		else {@$mysqli = new mysqli($this->host, $this->user, $this->pw, $this->name);}
+		if($mysqli->connect_error){$this->oExit('connection failed - '.$mysqli->connect_errno, $mysqli->connect_error);}
+		$this->dbo = $mysqli;
 		return;
 	}
 
 
 
-	//DBO • Return Database Object [Connection]
-	public function dbo(){
-		if(!empty($this->dbo)){return $this->dbo;}
-		return false;
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -112,7 +139,7 @@ class oSQLi {
 
 
 	//QUERY • Returns $mysqli->query()
-	public function query($sql=''){
+	public function queryx($sql=''){
 		if(!empty($sql)){
 			return $this->dbo->query($sql);
 		}
