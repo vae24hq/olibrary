@@ -5,75 +5,93 @@
  * oDatabase ~ Database & SQL Utility • DEPENDENCY»
  */
 class oDatabase {
+	public $dbo; #connection object (from driver extension)
 
-	//CONSTRUCT • Database connection
+
+
+
+
+	//CONSTRUCT • Database Connection
 	public function __construct($config='',  $driver=''){
-		if(!empty($config)){
-			$o = $this->check($config, $driver);
-			$v = $o['driver'];
-			unset($o['driver']);
-			return $this->connect($o, $v);
-		}
-		return;
+		$o = $this->check($config, $driver);
+		$v = $o['driver'];
+		unset($o['driver']);
+		$this->connect($o, $v);
+		return true;
 	}
 
 
 
-	//CONNECT • Initiate Database Connection
-	public function connect($config='',  $driver=''){
-		if($driver == 'iPDO'){
-			oFile::Inc(oBJCT.'db'.DS.'pdo.inc');
-			$this->connect = new oPDO($config);
-		}
-		elseif($driver == 'iMySQLi'){
-			oFile::Inc(oBJCT.'db'.DS.'mysqli.inc');
-			$this->connect = new oSQLi($config);
-		}
-		return $this->connect;
-	}
 
 
-
-	//DBO • Return Database Object [Connection]
-	public function dbo(){
-		if(!empty($this->connect)){
-			return $this->connect->dbo();
-		}
+	//oEXIT • Report Error & Exit Program
+	private function oExit($i='', $v=''){
+		if(!empty($i)){return oExit::Run('oDatabase', $i, $v);}
 		return false;
 	}
 
 
 
-	//CHECK • Check database configuration @TODO ~ set $persist
+
+
+	//DRIVER • Check, Validate & Set Driver
+	public function driver($i=''){
+		if(!empty($i)){
+			if(is_array($i) && !empty($i['driver'])){$o = $i['driver'];}
+			else {$o = $i;}
+			$drivers = array('iPDO', 'iMySQLi', 'iMySQL');
+			if(!in_array($o, $drivers)){
+				return $this->oExit('driver unavailable', $o);
+			}
+			return $o;
+		}
+		return $this->oExit('driver required');
+	}
+
+
+
+
+
+	//CHECK • Check Configuration @TODO ~ Set $persist
 	public function check($i='', $driver=''){
 		$o = array();
 		if(!empty($driver)){$o['driver'] = $this->driver($driver);}
 		elseif(!empty($i) && is_array($i)){
 			if(!empty($i['driver'])){$o['driver'] = $this->driver($i['driver']);}
 			if(empty($o['driver']) || $o['driver'] === false){$o['driver'] = 'iPDO';}
-			if(!isset($i['name'])){oExit::Run('Database', 'name required');} else {$o['name'] = $i['name'];}
-			if(!isset($i['user'])){oExit::Run('Database', 'user required');} else {$o['user'] = $i['user'];}
-			if(!isset($i['password'])){oExit::Run('Database', 'password required');} else {$o['password'] = $i['password'];}
+			if(!isset($i['name'])){return $this->oExit('name required');} else {$o['name'] = $i['name'];}
+			if(!isset($i['user'])){return $this->oExit('username required');} else {$o['user'] = $i['user'];}
+			if(!isset($i['pw'])){return $this->oExit('password required');} else {$o['pw'] = $i['pw'];}
 			if(empty($i['host'])){$o['host'] = 'localhost';} else {$o['host'] = $i['host'];}
 			return $o;
 		}
 		else {
-			oExit::Run('Database', 'configuration required');
+			return $this->oExit('configuration required');
 		}
 	}
 
 
 
-	//DRIVER •
-	public static function driver($i=''){
-		if(!empty($i)){
-			if(is_array($i) && !empty($i['driver'])){$driver = $i['driver'];} else {$driver = $i;}
-			$drivers = array('iPDO', 'iMySQLi', 'iMySQL');
-			if(!in_array($driver, $drivers)){oExit::Run('Database', 'driver unavailable', $driver);}
-			return $driver;
+
+
+	//CONNECT • Initiate Connection
+	public function connect($config='',  $driver=''){
+		if($driver == 'iPDO'){
+			oFile::Inc(oBJCT.'db'.DS.'pdo.inc');
+			$db = new oPDO($config);
 		}
-		oExit::Run('Database', 'driver required');
+		elseif($driver == 'iMySQLi'){
+			oFile::Inc(oBJCT.'db'.DS.'mysqli.inc');
+			$db = new oSQLi($config);
+		}
+
+		if(!empty($db->dbo)){
+			$this->dbo = $db->dbo;
+			return true;
+		}
+		return false;
 	}
+
 
 
 } // EndOfClass - oDatabase
