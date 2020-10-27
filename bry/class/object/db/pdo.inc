@@ -5,17 +5,22 @@
  * oPDO ~ PDO Utility • DEPENDENCY»
  */
 class oPDO {
-	protected $dbo;
+	public $dbo; #connection object (mysqli)
 	private $host;
 	private $user;
-	private $password;
+	private $pw;
 	private $name;
 	private $persist;
 
 
-	//CONSTRUCT •
+
+
+
+	//CONSTRUCT • PDO Connection
 	public function __construct($i=''){
-		$this->config($i);
+		if(isset($i['name']) && $i['name'] == 'oNONE'){unset($i['name']);}
+		if(isset($i['driver'])){unset($i['driver']);}
+		$this->init($i);
 		$this->connect();
 		$this->cleanup();
 		return;
@@ -23,18 +28,20 @@ class oPDO {
 
 
 
-	//oEXIT • Report Error & Terminate Program
-	public function oExit($i='', $v=''){
-		if(!empty($i)){
-			oExit::Run('DB-PDO', $i, $v);
-		}
+
+
+	//oEXIT • Report Error & Exit Program
+	private function oExit($i='', $v=''){
+		if(!empty($i)){return oExit::Run('oPDO', $i, $v);}
 		return false;
 	}
 
 
 
-	//CONFIG • Database Configuration
-	public function config($i=''){
+
+
+	//INIT • Initialize Configuration
+	protected function init($i=''){
 		if(!empty($i) && is_array($i)){
 			foreach($i as $k => $v){$this->{$k} = $v;}
 			return true;
@@ -44,11 +51,13 @@ class oPDO {
 
 
 
-	//CLEANUP • Clean up Database Configuration
+
+
+	//CLEANUP • Clean Configuration
 	public function cleanup(){
 		unset($this->host);
 		unset($this->user);
-		unset($this->password);
+		unset($this->pw);
 		unset($this->name);
 		unset($this->persist);
 		return;
@@ -56,29 +65,32 @@ class oPDO {
 
 
 
+
+
 	//CONNECT • Initiate Database Connection
 	public function connect(){
 		try {
-			if($this->persist === true){
-				$dbc = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->password, array(PDO::ATTR_PERSISTENT => true));
-			}
-			else {
-				$dbc = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->password);
-			}
+			if($this->persist === true){$pdo = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->pw, array(PDO::ATTR_PERSISTENT => true));}
+			else {$pdo = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->pw);}
 		} catch (PDOException $e){
 			$this->oExit('connection failed', $e->getMessage());
 		}
-		$this->dbo = $dbc;
+		$this->dbo = $pdo;
 		return;
 	}
 
 
 
-	//DBO • Return Database Object [Connection]
-	public function dbo(){
-		if(!empty($this->dbo)){return $this->dbo;}
-		return false;
-	}
+
+
+
+
+
+
+
+
+
+
 
 
 
