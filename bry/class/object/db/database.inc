@@ -5,7 +5,7 @@
  * oDatabase ~ Database & SQL Utility • DEPENDENCY»
  */
 class oDatabase {
-	public $dbo; #connection object (from driver extension)
+	public $dbco; #database connection object (from driver extension)
 
 
 
@@ -78,20 +78,63 @@ class oDatabase {
 	public function connect($config='',  $driver=''){
 		if($driver == 'iPDO'){
 			oFile::Inc(oBJCT.'db'.DS.'pdo.inc');
-			$db = new oPDO($config);
+			$dbco = new oPDO($config);
 		}
 		elseif($driver == 'iMySQLi'){
 			oFile::Inc(oBJCT.'db'.DS.'mysqli.inc');
-			$db = new oSQLi($config);
+			$dbco = new oSQLi($config);
 		}
 
-		if(!empty($db->dbo)){
-			$this->dbo = $db->dbo;
+		if(!empty($dbco->dbo)){
+			$this->dbco = $dbco;
 			return true;
 		}
 		return false;
 	}
 
 
+
+
+
+	//DBO • Connection Object (from driver's $dbo)
+	public function dbo(){
+		if(!empty($this->dbco)){return $this->dbco->dbo;}
+		return false;
+	}
+
+
+
+
+
+	//SQL • Perform SQL Query
+	public function SQL($q=''){
+		return $this->dbco->SQL($q);
+	}
+
+
+
+
+
+	//CREATEDB • Create Database
+	public function createDB($name='', $engine='INNODB'){
+		return $this->dbco->createDB($name);
+	}
+
+
+
+
+
+	//ISDB • Check If Database Exists
+	public function isDB($name=''){
+		return $this->dbco->isDB($name);
+	}
+
+
+
+
+	//DELETEDB • Delete Database
+	public function deleteDB($name=''){
+		return $this->dbco->deleteDB($name);
+	}
 
 } // EndOfClass - oDatabase
