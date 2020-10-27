@@ -80,35 +80,131 @@ class oSQLi {
 
 
 
+	//DBO • Connection Object
+	public function dbo(){
+		if(!empty($this->dbo)){return $this->dbo;}
+		return false;
+	}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//ERROR • Return FALSE or MySQLi Error
+	//ERROR • Returns MySQLi Error
 	public function error($i='iMessage'){
 		if(!empty($i)){
 			if($i == 'iCode'){return $this->dbo->errno;}
 			elseif($i == 'iMessage'){return $this->dbo->error;}
 		}
+		return $this->oExit('['.__METHOD__.']','argument required - $i');
+	}
+
+
+
+
+
+	//SQL • Perform SQL Query
+	public function SQL($q='', $v='iFetchAll'){
+		$o = $this->dbo->query($q);
+		$query['syntax'] = $q;
+
+		if($o === false){
+			$query['status'] = 'failed';
+			$query['error'] = $this->error();
+			$query['code'] = $this->error('iCode');
+		}
+		elseif($o === true){$query['status'] = 'complete';}
+		else { //mysqli_result (result set)
+			$query['status'] = 'success';
+
+			if($v == 'iFetchBoth'){$record = $o->fetch_array(MYSQLI_BOTH);}
+			if($v == 'iFetchNum'){$record = $o->fetch_array(MYSQLI_NUM);}
+			if($v == 'iFetch'){$record = $o->fetch_array(MYSQLI_ASSOC);}
+
+			if($v == 'iFetchRow'){$record = $o->fetch_row();}
+			if($v == 'iFetchRows'){
+				while($row = $o->fetch_row()){$record[] = $row;}
+			}
+
+			if($v == 'iFetchAllBoth'){$record = $o->fetch_all(MYSQLI_BOTH);}
+			if($v == 'iFetchAllNum'){$record = $o->fetch_all(MYSQLI_NUM);}
+			if($v == 'iFetchAll'){$record = $o->fetch_all(MYSQLI_ASSOC);}
+
+
+		}
+		//
+			// if($v == 'iFetch'){$record = $o->fetch_array();}
+
+
+
+		$resp['query'] = $query;
+		$resp['result'] = $o;
+		if(isset($record)){$resp['record'] = $record;}
+		return $resp;
+	}
+
+
+
+
+
+	//CREATEDB • Create Database
+	public function createDB($name=''){
+		if(!empty($name)){
+			$query = "CREATE DATABASE IF NOT EXISTS `{$name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+			return $this->SQL($query);
+		}
 		return false;
 	}
+
+
+
+
+
+	//ISDB • Check If Database Exist
+	public function isDB($name=''){
+		if(!empty($name)){
+			#$query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'";
+			$query = "SHOW DATABASES LIKE '{$name}'";
+			return $this->SQL($query);
+		}
+		return false;
+	}
+
+
+
+
+	//DELETEDB • Delete Database
+	public function deleteDB($name=''){
+		if(!empty($name)){
+			$query = "DROP DATABASE IF EXISTS `{$name}`";
+			return $this->SQL($query);
+		}
+		return false;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
