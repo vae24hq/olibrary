@@ -83,6 +83,15 @@ class oPDO {
 
 
 
+	//DBO • Connection Object
+	public function dbo(){
+		if(!empty($this->dbo)){return $this->dbo;}
+		return false;
+	}
+
+
+
+
 
 
 
