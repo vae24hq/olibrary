@@ -22,6 +22,7 @@ class oSQLi {
 		if(isset($i['driver'])){unset($i['driver']);}
 		$this->init($i);
 		$this->connect();
+		$this->connected = 1;
 		$this->cleanup();
 		return;
 	}
@@ -105,7 +106,9 @@ class oSQLi {
 
 	//SQL • Perform SQL Query
 	public function SQL($q='', $v='iFetchAll', $debug=false){
-		$o = $this->dbo->query($q);
+		if(empty($this->connected)){return $this->oExit('disconnected');}
+
+		$o = $this->dbo()->query($q);
 		$query['syntax'] = $q;
 
 		if($o === false){
@@ -282,62 +285,18 @@ class oSQLi {
 	}
 
 
-	//QUERIES • Run SQL query with [custom response]
-	public function run($sql='', $return='iBool'){
-		if(!empty($sql)){
-			$query['syntax'] = $sql;
-			$stmt = $this->dbo->prepare($sql);
-			if($stmt === false){
-				$query['executed'] = false;
-				$query['message'] = $this->error($i='iMessage');
-				$query['code'] = $this->error($i='iCode');
-			}
-			else {
-				$exec = $stmt->execute();
-				if($exec === true){
-					$query['executed'] = true;
-					if($return == 'iBool'){return true;}
-					elseif($return == 'iAffected'){return $stmt->affected_rows;}
-					elseif($return == 'iFetch' || $return == 'iFetchAll'){
-
-						return $exec->fetch_all(MYSQLI_ASSOC);
-					}
-					else {
-
-
-						// $o['record'] = $stmt->affected_rows;
-						// $o['record'] = $stmt->num_rows;
-				// $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-				// if($result != false && !empty($result)){
-				// 	$o['recordset'] = $result;
-				// }
-				// else {
-				// 	$o['recordset'] = false;
-				// }
-					}
-				}
-				else {
-					$query['executed'] = false;
-					$query['message'] = $this->error($i='iMsg');
-					$query['code'] = $this->error($i='iCode');
-				}
-			}
-
-			if(!empty($query) && is_array($query)){$o['query'] = $query;}
-
-			return $o;
-		}
-		return false;
-	}
 
 
 
-	//DISCONNECT • @TODO ~ Close & Disconnect Database Connection
+
+	//DISCONNECT • @TODO ~ Close & Disconnect Connection
 	public function disconnect(){
 		$this->cleanup();
-		$this->dbo->close();
+		$this->dbo()->close();
+		$this->connected = 0;
 		return;
 	}
+
 
 
 } // EndOfClass - oMySQLi
