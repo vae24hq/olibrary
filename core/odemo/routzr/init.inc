@@ -11,11 +11,13 @@ $dbo = $db->dbo();
 
 
 
-
-// $q = "SELECT COUNT(*) FROM `harv_logs`";
-$q = "SELECT * FROM `harv_logs`";
-$v = $db->SQL($q);
+$v = '';
+// $q = "SELECT COUNT(`auid`) FROM `harv_logs`"; #TODO count function
+// $q = "SELECT * FROM `harv_logs`";
+// $q = "INSERT INTO `harv_logs` (`action`) VALUES ('runam')";
+// $v = $db->SQL($q);
 // $v = $db->isDB('aodemo');
-// $v = $db->createDB('aodemo');
+// $v = $db->createDB('ao');
+$v = $db->useDB('ao');
 
 echo oPrint::Neat($v);
