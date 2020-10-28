@@ -201,6 +201,16 @@ class oDatabase {
 
 
 
+
+	//RECORDIS • Check If Record Exists
+	public function recordIs($table, $column='', $value='', $symbol='='){
+		return $this->dbco->recordIs($table, $column, $value, $symbol);
+	}
+
+
+
+
+
 	//DISCONNECT • Terminate Connection
 	public function disconnect(){
 		return $this->dbco->disconnect();
