@@ -107,7 +107,7 @@ class oDatabase {
 
 
 	//RUNSQL • Perform SQL Query
-	public function runSQL($q='', $v='iFetchAll', $debug=false){
+	public function runSQL($q='', $v='iFetch', $debug=false){
 		return $this->dbco->runSQL($q, $v, $debug);
 	}
 
@@ -116,7 +116,7 @@ class oDatabase {
 
 
 	//RUNSQLPREP • Perform SQL Prepared Query
-	public function runSQLPrep($q='', $v='iFetchAll', $debug=false){
+	public function runSQLPrep($q='', $v='iFetch', $debug=false){
 		return $this->dbco->runSQLPrep($q, $v, $debug);
 	}
 
