@@ -18,6 +18,8 @@ $v = '';
 // $v = $db->SQL($q);
 // $v = $db->isDB('aodemo');
 // $v = $db->createDB('ao');
-$v = $db->useDB('ao');
+// $v = $db->useDB('ao');
+$q = "SELECT * FROM `harv_logs`";
+$v = $db->SQL($q);
 
 echo oPrint::Neat($v);
