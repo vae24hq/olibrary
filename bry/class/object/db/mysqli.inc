@@ -104,43 +104,57 @@ class oSQLi {
 
 
 	//SQL • Perform SQL Query
-	public function SQL($q='', $v='iFetchAll'){
+	public function SQL($q='', $v='iFetchAll', $debug=false){
 		$o = $this->dbo->query($q);
 		$query['syntax'] = $q;
 
 		if($o === false){
-			$query['status'] = 'failed';
+			$status = 'failed';
 			$query['error'] = $this->error();
 			$query['code'] = $this->error('iCode');
 		}
-		elseif($o === true){$query['status'] = 'complete';}
-		else { //mysqli_result (result set)
-			$query['status'] = 'success';
-
-			if($v == 'iFetchBoth'){$record = $o->fetch_array(MYSQLI_BOTH);}
-			if($v == 'iFetchNum'){$record = $o->fetch_array(MYSQLI_NUM);}
-			if($v == 'iFetch'){$record = $o->fetch_array(MYSQLI_ASSOC);}
-
-			if($v == 'iFetchRow'){$record = $o->fetch_row();}
-			if($v == 'iFetchRows'){
-				while($row = $o->fetch_row()){$record[] = $row;}
+		else {
+			if($o === true){
+				$status = 'complete';
 			}
+			else {
+				#mysqli_result (result set)
+				$status = 'success';
+				if($v == 'iFetchBoth'){$record = $o->fetch_array(MYSQLI_BOTH);}
+				elseif($v == 'iFetchNum'){$record = $o->fetch_array(MYSQLI_NUM);}
+				elseif($v == 'iFetch'){$record = $o->fetch_array(MYSQLI_ASSOC);}
 
-			if($v == 'iFetchAllBoth'){$record = $o->fetch_all(MYSQLI_BOTH);}
-			if($v == 'iFetchAllNum'){$record = $o->fetch_all(MYSQLI_NUM);}
-			if($v == 'iFetchAll'){$record = $o->fetch_all(MYSQLI_ASSOC);}
+				elseif($v == 'iFetchRow'){$record = $o->fetch_row();}
+				elseif($v == 'iFetchRows'){
+					while($row = $o->fetch_row()){$record[] = $row;}
+				}
 
+				elseif($v == 'iFetchAllBoth'){$record = $o->fetch_all(MYSQLI_BOTH);}
+				elseif($v == 'iFetchAllNum'){$record = $o->fetch_all(MYSQLI_NUM);}
+				elseif($v == 'iFetchAll'){$record = $o->fetch_all(MYSQLI_ASSOC);}
 
+				$resp['result'] = $o;
+				if(isset($record)){$resp['record'] = $record;}
+				#@NOTE: count returns total number of rows in result-set or affected rows [irrespective of the fetch option used]
+				if(isset($o->num_rows)){$resp['count'] = $o->num_rows;}
+				elseif(isset($this->dbo->affected_rows)){
+					$resp['count'] = $this->dbo->affected_rows;
+				}
+
+				if($v == 'iCount' && isset($resp['count'])){return $resp['count'];}
+			}
 		}
-		//
-			// if($v == 'iFetch'){$record = $o->fetch_array();}
 
+		#Boolean
+		if($status != 'failed' && $v == 'iBool'){return true;} #@NOTE: you can't request boolean (on success) and debug as well
+		if($status == 'failed' || $debug === true){$resp['query'] = $query;}
 
+		$resp['status'] = $status;
 
-		$resp['query'] = $query;
-		$resp['result'] = $o;
-		if(isset($record)){$resp['record'] = $record;}
-		return $resp;
+		if(!empty($resp)){return $resp;}
+
+		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
+		return false; #@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
 	}
 
 
@@ -151,7 +165,7 @@ class oSQLi {
 	public function createDB($name=''){
 		if(!empty($name)){
 			$query = "CREATE DATABASE IF NOT EXISTS `{$name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
-			return $this->SQL($query);
+			return $this->SQL($query, 'iBool');
 		}
 		return false;
 	}
@@ -163,12 +177,27 @@ class oSQLi {
 	//ISDB • Check If Database Exist
 	public function isDB($name=''){
 		if(!empty($name)){
-			#$query = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'";
-			$query = "SHOW DATABASES LIKE '{$name}'";
-			return $this->SQL($query);
+			$query = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'"; #$query = "SHOW DATABASES LIKE '{$name}'";
+			$o = $this->SQL($query, 'iCount');
+			if($o === 1){return true;}
 		}
 		return false;
 	}
+
+
+
+
+
+	//USEDB • Select Database For Use
+	public function useDB($name=''){
+		if(!empty($name)){
+			if($this->isDB($name)){
+				return $this->dbo()->select_db($name);
+			}
+		}
+		return false;
+	}
+
 
 
 
@@ -177,7 +206,7 @@ class oSQLi {
 	public function deleteDB($name=''){
 		if(!empty($name)){
 			$query = "DROP DATABASE IF EXISTS `{$name}`";
-			return $this->SQL($query);
+			return $this->SQL($query, 'iBool');
 		}
 		return false;
 	}
