@@ -15,7 +15,6 @@ $dbo = $db->dbo();
 
 $v = '';
 // $q = "SELECT COUNT(`auid`) FROM `harv_logs`"; #TODO count function
-// $q = "SELECT * FROM `harv_logs`";
 // $q = "INSERT INTO `harv_logs` (`action`) VALUES ('runam')";
 // $v = $db->SQL($q);
 // $v = $db->isDB('aodemo');
@@ -27,6 +26,10 @@ $v = '';
 // $v = $db->createTB('user');
 
 $var['status'] = 'success';
-$v = $db->recordIs('harv_logs', 'status', 'success');
+// $v = $db->SQL('harv_logs', 'status', 'success');
 
-echo oPrint::Neat($v);
+
+
+$qry = "SELECT * FROM `harv_logs`";
+$ans = $db->SQL($qry, 'iFetch');
+echo oPrint::Neat($ans);
