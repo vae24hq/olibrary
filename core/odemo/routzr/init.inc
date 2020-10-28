@@ -31,5 +31,6 @@ $var['status'] = 'success';
 
 
 $qry = "SELECT * FROM `harv_logs`";
-$ans = $db->SQL($qry, 'iFetch');
+$ans['SQL'] = $db->runSQL($qry, 'iFetchRow');
+$ans['SQLPrep'] = $db->runSQLPrep($qry, 'iFetchRow');
 echo oPrint::Neat($ans);
