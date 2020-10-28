@@ -104,7 +104,29 @@ class oSQLi {
 
 
 
-	//SQL • Perform SQL Query
+	//QUERY • Run SQL query using $mysqli->query()
+	public function query($q=''){
+		if(!empty($q)){
+			return $this->dbo()->query($q);
+		}
+		return false;
+	}
+
+
+
+
+	//QUERIES • Run SQL query using $mysqli->muli_query()
+	public function queries($q=''){
+		if(!empty($q)){
+			return $this->dbo->multi_query($q);
+		}
+		return false;
+	}
+
+
+
+
+	//SQL • Perform SQL Query & Prepare Result
 	public function SQL($q='', $v='iFetchAll', $debug=false){
 		if(empty($this->connected)){return $this->oExit('disconnected');}
 
@@ -265,6 +287,7 @@ class oSQLi {
 
 
 
+
 	//ISTB • Check If Table Exist
 	public function isTB($name=''){
 		if(!empty($name)){
@@ -341,34 +364,17 @@ class oSQLi {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	//COMMIT • [auto commit & commit]
 	public function commit($v='iAuto', $i=false){
 		if(!empty($v)){
-			if($v == 'iAuto'){return $this->dbo->autocommit($i);}
-			return $this->dbo->commit();
+			if($v == 'iAuto'){
+				return $this->dbo()->autocommit($i);
+			}
+			return $this->dbo()->commit();
 		}
 	}
+
+
 
 
 
@@ -376,36 +382,17 @@ class oSQLi {
 	public function transact($flag=''){
 		$flags = array(MYSQLI_TRANS_START_READ_ONLY, MYSQLI_TRANS_START_READ_WRITE, MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
 		if(!in_array($flag, $flags)){$this->oExit('invalid flag for transact', $flag);}
-		return $this->dbo->begin_transaction($flag);
+		return $this->dbo()->begin_transaction($flag);
 	}
+
+
 
 
 
 	//ROLLBACK • Returns $mysqli->rollback()
 	public function rollback(){
-		return $this->dbo->rollback();
+		return $this->dbo()->rollback();
 	}
-
-
-
-	//QUERY • Returns $mysqli->query()
-	public function queryx($sql=''){
-		if(!empty($sql)){
-			return $this->dbo->query($sql);
-		}
-		return false;
-	}
-
-
-
-	//QUERIES • Returns $mysqli->muli_query()
-	public function queries($sql=''){
-		if(!empty($sql)){
-			return $this->dbo->multi_query($sql);
-		}
-		return false;
-	}
-
 
 
 
@@ -418,6 +405,8 @@ class oSQLi {
 		$this->connected = 0;
 		return;
 	}
+
+
 
 
 
