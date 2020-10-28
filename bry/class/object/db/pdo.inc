@@ -22,6 +22,7 @@ class oPDO {
 		if(isset($i['driver'])){unset($i['driver']);}
 		$this->init($i);
 		$this->connect();
+		$this->connected = 1;
 		$this->cleanup();
 		return;
 	}
@@ -70,8 +71,9 @@ class oPDO {
 	//CONNECT • Initiate Database Connection
 	public function connect(){
 		try {
-			if($this->persist === true){$pdo = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->pw, array(PDO::ATTR_PERSISTENT => true));}
-			else {$pdo = new PDO('mysql:dbname='.$this->name.';host='.$this->host, $this->user, $this->pw);}
+			$dsn = 'mysql:dbname='.$this->name.';host='.$this->host.';charset=utf8';
+			if($this->persist === true){$pdo = new PDO($dsn, $this->user, $this->pw, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", PDO::ATTR_PERSISTENT => true));}
+			else {$pdo = new PDO($dsn, $this->user, $this->pw, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));}
 		} catch (PDOException $e){
 			$this->oExit('connection failed', $e->getMessage());
 		}
@@ -93,24 +95,22 @@ class oPDO {
 
 
 
-
-
-
-
-
-
-
-
-
-
-	//ERROR • Return FALSE or PDO Error
+	//ERROR • Returns PDO Error
 	public function error($i='iMessage'){
 		if(!empty($i)){
-			if($i == 'iCode'){return $this->dbo->errno;}
-			elseif($i == 'iMessage'){return $this->dbo->error;}
+			if($i == 'iCode'){return $this->dbo()->errno;}
+			elseif($i == 'iMessage'){return $this->dbo()->error;}
 		}
-		return false;
+		return $this->oExit('['.__METHOD__.']','argument required - $i');
 	}
+
+
+
+
+
+
+
+
 
 
 
@@ -160,12 +160,16 @@ class oPDO {
 
 
 
-	//DISCONNECT • @TODO ~ Close & Disconnect Database Connection
+	//DISCONNECT • @TODO ~ Close & Disconnect Connection
 	public function disconnect(){
 		$this->cleanup();
-		$this->dbo->close();
+		$this->dbo()->close();
+		$this->connected = 0;
 		return;
 	}
+
+
+
 
 
 } // EndOfClass - oPDO
