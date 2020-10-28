@@ -193,8 +193,8 @@ class oSQLi {
 	//CREATEDB • Create Database
 	public function createDB($name=''){
 		if(!empty($name)){
-			$query = "CREATE DATABASE IF NOT EXISTS `{$name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
-			return $this->SQL($query, 'iBool');
+			$q = "CREATE DATABASE IF NOT EXISTS `{$name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+			return $this->SQL($q, 'iBool');
 		}
 		return false;
 	}
@@ -206,9 +206,9 @@ class oSQLi {
 	//ISDB • Check If Database Exist
 	public function isDB($name=''){
 		if(!empty($name)){
-			$query = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'"; #$query = "SHOW DATABASES LIKE '{$name}'";
-			$o = $this->SQL($query, 'iCount');
-			if($o === 1){return true;}
+			$q = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'"; #$q = "SHOW DATABASES LIKE '{$name}'";
+			$o = $this->SQL($q, 'iCount');
+			if($o > 0){return true;}
 		}
 		return false;
 	}
@@ -234,8 +234,8 @@ class oSQLi {
 	//DELETEDB • Delete Database
 	public function deleteDB($name=''){
 		if(!empty($name)){
-			$query = "DROP DATABASE IF EXISTS `{$name}`";
-			return $this->SQL($query, 'iBool');
+			$q = "DROP DATABASE IF EXISTS `{$name}`";
+			return $this->SQL($q, 'iBool');
 		}
 		return false;
 	}
@@ -247,8 +247,8 @@ class oSQLi {
 	//CREATETB • Create Table
 	public function createTB($name='', $engine='INNODB'){
 		if(!empty($name) && !empty($engine)){
-			$query = "CREATE TABLE IF NOT EXISTS `{$name}` (";
-			$query .=
+			$q = "CREATE TABLE IF NOT EXISTS `{$name}` (";
+			$q .=
 			"`auid` bigint(20) NOT NULL AUTO_INCREMENT,
 			`euid` char(40) NOT NULL,
 			`suid` char(70) NOT NULL,
@@ -271,8 +271,8 @@ class oSQLi {
 			KEY `status` (`status`),
 			KEY `created` (`created`),
 			KEY `updated` (`updated`)";
-			$query .= ") ENGINE={$engine} AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;";
-			return $this->SQL($query, 'iBool');
+			$q .= ") ENGINE={$engine} AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;";
+			return $this->SQL($q, 'iBool');
 		}
 		return false;
 	}
@@ -282,10 +282,10 @@ class oSQLi {
 
 	//FKEY • Foreign Key Check (on/off)
 	public function checkFK($i=true){
-		$query = "SET FOREIGN_KEY_CHECKS = ";
-		if($i === true){$query .= 1;}
-		else {$query .= 0;}
-		return $this->SQL($query, 'iBool');
+		$q = "SET FOREIGN_KEY_CHECKS = ";
+		if($i === true){$q .= 1;}
+		else {$q .= 0;}
+		return $this->SQL($q, 'iBool');
 	}
 
 
@@ -295,9 +295,9 @@ class oSQLi {
 	//ISTB • Check If Table Exist
 	public function isTB($name=''){
 		if(!empty($name)){
-			$query = "SHOW TABLES LIKE '{$name}'";
-			$o = $this->SQL($query, 'iCount');
-			if($o === 1){return true;}
+			$q = "SHOW TABLES LIKE '{$name}'";
+			$o = $this->SQL($q, 'iCount');
+			if($o > 0){return true;}
 		}
 		return false;
 	}
@@ -309,13 +309,13 @@ class oSQLi {
 	//RESETAI • Reset Auto Increment ID
 	public function resetAI($table='', $column='auid'){
 		if(!empty($table) && !empty($column)){
-			$query = '';
-			$query .= "SET FOREIGN_KEY_CHECKS = 0;";
-			$query .="SET @NewID = 0;";
-			$query .="UPDATE `{$table}` SET `{$column}`=(@NewID := @NewID +1) ORDER BY `{$column}`;";
-			$query .="ALTER TABLE `{$table}` AUTO_INCREMENT = 1;";
-			$query .= "SET FOREIGN_KEY_CHECKS = 1;";
-			return $this->dbo->multi_query($query);
+			$q = '';
+			$q .= "SET FOREIGN_KEY_CHECKS = 0;";
+			$q .="SET @NewID = 0;";
+			$q .="UPDATE `{$table}` SET `{$column}`=(@NewID := @NewID +1) ORDER BY `{$column}`;";
+			$q .="ALTER TABLE `{$table}` AUTO_INCREMENT = 1;";
+			$q .= "SET FOREIGN_KEY_CHECKS = 1;";
+			return $this->dbo->multi_query($q);
 		}
 		return false;
 	}
@@ -329,14 +329,14 @@ class oSQLi {
 		if(!empty($name)){
 			if($this->isTB($name)){
 				if(empty($fkey)){
-					$query = "TRUNCATE `{$name}`";
-					return $this->SQL($query, 'iBool');
+					$q = "TRUNCATE `{$name}`";
+					return $this->SQL($q, 'iBool');
 				}
 				elseif($fkey == 'iSkipFK') {
-					$query = "SET FOREIGN_KEY_CHECKS = 0;";
-					$query .= "TRUNCATE `{$name}`";
-					$query .= "SET FOREIGN_KEY_CHECKS = 1;";
-					return $this->dbo->multi_query($query);
+					$q = "SET FOREIGN_KEY_CHECKS = 0;";
+					$q .= "TRUNCATE `{$name}`";
+					$q .= "SET FOREIGN_KEY_CHECKS = 1;";
+					return $this->dbo->multi_query($q);
 				}
 			}
 		}
@@ -351,19 +351,31 @@ class oSQLi {
 	public function deleteTB($name='', $fkey=''){
 		if(!empty($name)){
 			if(empty($fkey)){
-				$query = "DROP TABLE IF EXISTS `{$name}`";
-				return $this->SQL($query, 'iBool');
+				$q = "DROP TABLE IF EXISTS `{$name}`";
+				return $this->SQL($q, 'iBool');
 			}
 			elseif($fkey == 'iSkipFK') {
-				$query = "SET FOREIGN_KEY_CHECKS = 0;";
-				$query .= "DROP TABLE IF EXISTS `{$name}`";
-				$query .= "SET FOREIGN_KEY_CHECKS = 1;";
-				return $this->dbo->multi_query($query);
+				$q = "SET FOREIGN_KEY_CHECKS = 0;";
+				$q .= "DROP TABLE IF EXISTS `{$name}`";
+				$q .= "SET FOREIGN_KEY_CHECKS = 1;";
+				return $this->dbo->multi_query($q);
 			}
 		}
 		return false;
 	}
 
+
+
+
+
+	//RECORDIS • Check If Record Exists
+	public function recordIs($table='', $column='', $value='', $symbol='='){
+		#@TODO ~ validate input
+		$q = "SELECT `{$column}` FROM `{$table}` WHERE `{$column}` {$symbol} '{$value}'";
+		$o = $this->SQL($q, 'iCount');
+		if($o > 0){return true;}
+		return false;
+	}
 
 
 
