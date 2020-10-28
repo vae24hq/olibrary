@@ -147,4 +147,14 @@ class oDatabase {
 		return $this->dbco->deleteDB($name);
 	}
 
+
+
+
+
+	//DISCONNECT • Terminate Connection
+	public function disconnect(){
+		return $this->dbco->disconnect();
+	}
+
+
 } // EndOfClass - oDatabase
