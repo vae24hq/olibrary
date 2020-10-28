@@ -107,8 +107,8 @@ class oDatabase {
 
 
 	//SQL • Perform SQL Query
-	public function SQL($q=''){
-		return $this->dbco->SQL($q);
+	public function SQL($q='', $v='iFetchAll', $debug=false){
+		return $this->dbco->SQL($q, $v, $debug);
 	}
 
 
@@ -128,6 +128,16 @@ class oDatabase {
 	public function isDB($name=''){
 		return $this->dbco->isDB($name);
 	}
+
+
+
+
+
+	//USEDB • Select Database For Use
+	public function useDB($name=''){
+		return $this->dbco->useDB($name);
+	}
+
 
 
 
