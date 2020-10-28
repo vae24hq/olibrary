@@ -116,7 +116,7 @@ class oDatabase {
 
 
 	//CREATEDB • Create Database
-	public function createDB($name='', $engine='INNODB'){
+	public function createDB($name=''){
 		return $this->dbco->createDB($name);
 	}
 
@@ -147,6 +147,56 @@ class oDatabase {
 		return $this->dbco->deleteDB($name);
 	}
 
+
+
+
+
+	//CREATETB • Create Table
+	public function createTB($name='', $engine='INNODB'){
+		return $this->dbco->createTB($name, $engine);
+	}
+
+
+
+
+	//FKEY • Foreign Key Check (on/off)
+	public function checkFK($i=true){
+		return $this->dbco->checkFK($i);
+	}
+
+
+
+
+
+	//ISTB • Check If Table Exists
+	public function isTB($name=''){
+		return $this->dbco->isTB($name);
+	}
+
+
+
+
+
+	//RESETAI • Reset Auto Increment ID
+	public function resetAI($table='', $column='auid'){
+		return $this->dbco->resetAI($table, $column);
+	}
+
+
+
+	//WIPETB • Clear/Truncate Table
+	public function wipeTB($name='', $fkey=''){
+		return $this->dbco->wipeTB($name, $fkey);
+	}
+
+
+
+
+
+	//DELETETB • Delete Table
+	public function deleteTB($name='', $fkey=''){
+		return $this->dbco->deleteTB($name, $fkey);
+	}
 
 
 
