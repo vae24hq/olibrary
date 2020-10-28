@@ -1,4 +1,17 @@
 <?php
+// oTime::Zone('Africa/Lagos');
+oTime::Zone('America/Los_Angeles');
+
+
+
+
+
+
+
+
+
+
+
 oFile::Inc(oBJCT.'db'.DS.'pdo.inc');
 oFile::Inc(oBJCT.'db'.DS.'mysqli.inc');
 // $dbconfig = array('name' => "aodb", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => 'iPDO');
@@ -18,8 +31,10 @@ $v = '';
 // $v = $db->SQL($q);
 // $v = $db->isDB('aodemo');
 // $v = $db->createDB('ao');
-// $v = $db->useDB('ao');
-$q = "SELECT * FROM `harv_logs`";
-$v = $db->SQL($q);
+$v = $db->useDB('ao');
+// $q = "SELECT * FROM `harv_logs`";
+// $v = $db->deleteTB('hshs');
+$db->deleteTB('user');
+$v = $db->createTB('user');
 
 echo oPrint::Neat($v);
