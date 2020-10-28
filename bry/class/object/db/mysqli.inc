@@ -218,6 +218,128 @@ class oSQLi {
 
 
 
+	//CREATETB • Create Table
+	public function createTB($name='', $engine='INNODB'){
+		if(!empty($name) && !empty($engine)){
+			$query = "CREATE TABLE IF NOT EXISTS `{$name}` (";
+			$query .=
+			"`auid` bigint(20) NOT NULL AUTO_INCREMENT,
+			`euid` char(40) NOT NULL,
+			`suid` char(70) NOT NULL,
+			`puid` char(20) NOT NULL,
+			`logid` char(90) DEFAULT 'oNONE',
+			`author` varchar(80) DEFAULT 'oSYS',
+			`entry` varchar(10) DEFAULT NULL,
+			`status` varchar(10) DEFAULT NULL,
+			`created` datetime DEFAULT CURRENT_TIMESTAMP,
+			`updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+			`title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+			`amount` decimal(13,2) DEFAULT NULL,
+			PRIMARY KEY (`auid`),
+			UNIQUE KEY `euid` (`euid`),
+			UNIQUE KEY `suid` (`suid`),
+			KEY `puid` (`puid`),
+			KEY `logid` (`logid`),
+			KEY `author` (`author`),
+			KEY `entry` (`entry`),
+			KEY `status` (`status`),
+			KEY `created` (`created`),
+			KEY `updated` (`updated`)";
+			$query .= ") ENGINE={$engine} AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;";
+			return $this->SQL($query, 'iBool');
+		}
+		return false;
+	}
+
+
+
+
+	//FKEY • Foreign Key Check (on/off)
+	public function checkFK($i=true){
+		$query = "SET FOREIGN_KEY_CHECKS = ";
+		if($i === true){$query .= 1;}
+		else {$query .= 0;}
+		return $this->SQL($query, 'iBool');
+	}
+
+
+
+
+	//ISTB • Check If Table Exist
+	public function isTB($name=''){
+		if(!empty($name)){
+			$query = "SHOW TABLES LIKE '{$name}'";
+			$o = $this->SQL($query, 'iCount');
+			if($o === 1){return true;}
+		}
+		return false;
+	}
+
+
+
+
+
+	//RESETAI • Reset Auto Increment ID
+	public function resetAI($table='', $column='auid'){
+		if(!empty($table) && !empty($column)){
+			$query = '';
+			$query .= "SET FOREIGN_KEY_CHECKS = 0;";
+			$query .="SET @NewID = 0;";
+			$query .="UPDATE `{$table}` SET `{$column}`=(@NewID := @NewID +1) ORDER BY `{$column}`;";
+			$query .="ALTER TABLE `{$table}` AUTO_INCREMENT = 1;";
+			$query .= "SET FOREIGN_KEY_CHECKS = 1;";
+			return $this->dbo->multi_query($query);
+		}
+		return false;
+	}
+
+
+
+
+
+	//WIPETB • Clear/Truncate Table
+	public function wipeTB($name='', $fkey=''){
+		if(!empty($name)){
+			if($this->isTB($name)){
+				if(empty($fkey)){
+					$query = "TRUNCATE `{$name}`";
+					return $this->SQL($query, 'iBool');
+				}
+				elseif($fkey == 'iSkipFK') {
+					$query = "SET FOREIGN_KEY_CHECKS = 0;";
+					$query .= "TRUNCATE `{$name}`";
+					$query .= "SET FOREIGN_KEY_CHECKS = 1;";
+					return $this->dbo->multi_query($query);
+				}
+			}
+		}
+		return false;
+	}
+
+
+
+
+
+	//DELETETB • Delete Table
+	public function deleteTB($name='', $fkey=''){
+		if(!empty($name)){
+			if(empty($fkey)){
+				$query = "DROP TABLE IF EXISTS `{$name}`";
+				return $this->SQL($query, 'iBool');
+			}
+			elseif($fkey == 'iSkipFK') {
+				$query = "SET FOREIGN_KEY_CHECKS = 0;";
+				$query .= "DROP TABLE IF EXISTS `{$name}`";
+				$query .= "SET FOREIGN_KEY_CHECKS = 1;";
+				return $this->dbo->multi_query($query);
+			}
+		}
+		return false;
+	}
+
+
+
+
 
 
 
