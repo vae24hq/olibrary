@@ -149,14 +149,12 @@ class oSQLi {
 	// }
 
 
-	// private function objectset($o, $v){
-	// }
 
 
 
-
-	//SQL • Run SQL Query [mysqli_result]
-	public function SQL($q='', $v='iBool', $debug=false){
+	//RUNSQL • Perform Query & Return Custom Result (mysqli_result object)
+	public function runSQL($q='', $v='iFetch', $debug=false){
+		if(empty($this->connected)){return $this->oExit('disconnected');}
 		$o = $this->query($q);
 		$query['syntax'] = $q;
 		if($o === false){
@@ -178,11 +176,16 @@ class oSQLi {
 				elseif($v == 'iFetchNum'){$record = $o->fetch_all(MYSQLI_NUM);}
 				elseif($v == 'iFetch'){$record = $o->fetch_all(MYSQLI_ASSOC);}
 
-				#@NOTE: count returns total number of rows in result-set or affected rows [irrespective of the fetch option used]
-				if(isset($o->num_rows)){$resp['count'] = $o->num_rows;}
-				elseif(isset($this->dbo->affected_rows)){
-					$resp['count'] = $this->dbo->affected_rows;
+				#Use for SELECT
+				if($v == 'iNumRows' && isset($o->num_rows)){
+					$resp['count'] = $o->num_rows;
 				}
+
+				#Only for INSERT, UPDATE & DELETE
+				if($v == 'iAffectedRows' && isset($this->dbo()->affected_rows)){
+					$resp['count'] = $this->dbo()->affected_rows;
+				}
+
 				if(isset($record)){$resp['record'] = $record;}
 				if($v == 'iCount' && isset($resp['count'])){return $resp['count'];}
 			}
@@ -201,6 +204,57 @@ class oSQLi {
 		return false;
 	}
 
+
+
+
+
+	//RUNSQLPREP • Perform Prepared Query & Return Custom Result (statement object) #@TODO ~ NOT DONE YET
+	public function runSQLPrep($q='', $v='iFetch', $debug=false){
+		if(empty($this->connected)){return $this->oExit('disconnected');}
+
+		$query['syntax'] = $q;
+		$stmt = $this->dbo()->prepare($q);
+		if($stmt !== false && $stmt->execute()){
+			if($stmt === true){$status = 'complete';}
+			else {
+				$status = 'success';
+				// if($v == 'r'){}
+				// 	elseif($v == 'iFetchRow'){$record = $stmt->fetch;}
+				// elseif($v == 'iFetchRows'){while($row = $o->fetch()){$record[] = $row;}}
+
+
+				#Only for SELECT
+				if($v == 'iNumRows'){
+					$stmt->store_result();
+					$resp['count'] = $stmt->num_rows;
+				}
+
+				#Only for INSERT, UPDATE & DELETE
+				if($v == 'iAffectedRows'){
+					$resp['count'] = $stmt->affected_rows;
+				}
+
+				if(isset($record)){$resp['record'] = $record;}
+			}
+		}
+		else {
+			$status = 'failed';
+			$query['error'] = $this->error();
+			$query['code'] = $this->error('iCode');
+		}
+
+		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
+		if($status != 'failed' && $v == 'iBool'){return true;}
+		elseif($status == 'failed' || $debug === true){$resp['query'] = $query;}
+
+		$resp['status'] = $status;
+		$resp['result'] = $stmt;
+
+		if(!empty($resp)){return $resp;}
+		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
+		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
+		return false;
+	}
 
 
 
