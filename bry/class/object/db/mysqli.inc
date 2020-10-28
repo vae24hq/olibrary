@@ -72,7 +72,11 @@ class oSQLi {
 	public function connect(){
 		if($this->persist === true){@$mysqli = new mysqli('p:'.$this->host, $this->user, $this->pw, $this->name);}
 		else {@$mysqli = new mysqli($this->host, $this->user, $this->pw, $this->name);}
-		if($mysqli->connect_error){$this->oExit('connection failed - '.$mysqli->connect_errno, $mysqli->connect_error);}
+		if($mysqli->connect_error){
+			$this->oExit('connection failed - '.$mysqli->connect_errno, $mysqli->connect_error);
+		}
+
+		$mysqli->set_charset("utf8"); #change charset to UTF-8
 		$this->dbo = $mysqli;
 		return;
 	}
@@ -94,8 +98,8 @@ class oSQLi {
 	//ERROR • Returns MySQLi Error
 	public function error($i='iMessage'){
 		if(!empty($i)){
-			if($i == 'iCode'){return $this->dbo->errno;}
-			elseif($i == 'iMessage'){return $this->dbo->error;}
+			if($i == 'iCode'){return $this->dbo()->errno;}
+			elseif($i == 'iMessage'){return $this->dbo()->error;}
 		}
 		return $this->oExit('['.__METHOD__.']','argument required - $i');
 	}
