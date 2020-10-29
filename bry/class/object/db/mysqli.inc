@@ -127,31 +127,29 @@ class oSQLi {
 		return false;
 	}
 
-	// //SQL • Perform SQL Query & Prepare Result
-	// public function SQL($q='', $v='iFetchAll', $debug=false){
-	// 	if(empty($this->connected)){return $this->oExit('disconnected');}
-
-	// 	// $statement = self::$connection->prepare($query);
-	// 	// if($statement->execute()){
-	// 	// 	if($boolean === 'yeah'){return true;}
-	// 	// 	return $statement;
-	// 	// }
-	// 	// else {
-	// 	// 	return self::report($statement);
-	// 	// }
-	// 	// $o = $this->dbo()->query($q);
-	// 	$o = $this->dbo()->prepare($q);
-	// 	// if($o !== false){
-	// 	// 	$exec = $o->execute();
-	// 	// }
-	// 	// echo oPrint::Neat($o);
-	// 	return $this->handler($o, $q, $v, $debug);
-	// }
 
 
 
 
+	//RESPSQL • SQL Query Custom Response ~ used by other method
+	private function respSQL($stmt, $status, $v, $debug, $resp=''){
+		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
+		if($status != 'failed' && $v == 'iBool'){return true;}
+		elseif($status == 'failed' || $debug === true){$resp['query'] = $query;}
 
+		$resp['status'] = $status;
+		$resp['result'] = $stmt;
+
+		if(!empty($resp)){return $resp;}
+		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
+		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
+		return false;
+	}
+// $respSQL = $respSQL($stmt, $status, $v, $debug, $resp);
+// 		if(!empty($resp) && !empty($respSQL)){
+// 			if(is_array($resp)){$resp = array_merge($resp, $respSQL);}
+// 			else {$resp = $respSQL;}
+// 		}
 	//RUNSQL • Perform Query & Return Custom Result (mysqli_result object)
 	public function runSQL($q='', $v='iFetch', $debug=false){
 		if(empty($this->connected)){return $this->oExit('disconnected');}
@@ -191,17 +189,9 @@ class oSQLi {
 			}
 		}
 
-		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
-		if($status != 'failed' && $v == 'iBool'){return true;}
-		elseif($status == 'failed' || $debug === true){$resp['query'] = $query;}
-
-		$resp['status'] = $status;
-		$resp['result'] = $o;
-
-		if(!empty($resp)){return $resp;}
-		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
-		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
-		return false;
+		if(!empty($resp)){$resp = $this->respSQL($o, $status, $v, $debug, $resp);}
+		else {$resp = $this->respSQL($o, $status, $v, $debug);}
+		return $resp;
 	}
 
 
@@ -218,6 +208,7 @@ class oSQLi {
 			if($stmt === true){$status = 'complete';}
 			else {
 				$status = 'success';
+				// $record = $stmt->fetch();
 				// if($v == 'r'){}
 				// 	elseif($v == 'iFetchRow'){$record = $stmt->fetch;}
 				// elseif($v == 'iFetchRows'){while($row = $o->fetch()){$record[] = $row;}}
@@ -255,6 +246,7 @@ class oSQLi {
 		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
 		return false;
 	}
+
 
 
 
