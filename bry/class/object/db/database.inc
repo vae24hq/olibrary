@@ -106,6 +106,42 @@ class oDatabase {
 
 
 
+	//ISDBCOMETHOD • Check If Method Exist On $this->dbco
+	private function DBCOMethodCheck($i=''){
+		if(!empty($i)){
+			if(method_exists($this->dbco, $i)){return true;}
+			return $this->oExit('DBCO → method unavailable', $i);
+		}
+		return $this->oExit(__METHOD__.' requires argument $i');
+		#@NOTE: ~ when calling use __FUNCTION__ instead of __METHOD__ to get exact name of function
+	}
+
+
+
+
+
+	//EXEC • Native Exec Method
+	public function exec($sql='', $multi=''){
+		$this->DBCOMethodCheck(__FUNCTION__);
+		return $this->dbco->exec($sql, $multi);
+	}
+
+
+
+
+
+	//QUERY • Native Query Method
+	public function query($sql='', $multi=''){
+		$this->DBCOMethodCheck(__FUNCTION__);
+		return $this->dbco->query($sql, $multi);
+	}
+
+
+
+
+
+
+
 	//RUNSQL • Perform SQL Query
 	public function runSQL($q='', $v='iFetch', $debug=false){
 		return $this->dbco->runSQL($q, $v, $debug);
