@@ -95,6 +95,55 @@ class oPDO {
 
 
 
+	//MULTISQL • Prepare Multi-SQL Statement
+	private function multiSQL($sql=''){
+		$this->dbo()->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
+		if(is_array($sql)){
+			$multi_query = '';
+			foreach($sql as $query){
+				$multi_query .= $query.';';
+			}
+			$sql = $multi_query;
+		}
+		return $sql;
+	}
+
+
+
+
+
+	//EXEC • PDO::exec — Execute an SQL statement and return the number of affected rows
+	public function exec($sql='', $multi=false){
+		if(!empty($sql)){
+			if($multi === true){
+				$sql = $this->multiSQL($sql);
+				return $this->dbo()->exec($sql);
+			}
+			return $this->dbo()->exec($sql);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
+
+
+
+
+
+	//QUERY • PDO::query — Executes an SQL statement, returning a result set as a PDOStatement object
+	public function query($sql='', $multi=false){
+		if(!empty($sql)){
+			if($multi === true){
+				$sql = $this->multiSQL($sql);
+				return $this->prepare($sql);
+			}
+			return $this->dbo()->query($sql);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
+
+
+
+
+
 	//ERROR • Returns PDO Error
 	public function error($i='iMessage'){
 		if(!empty($i)){
@@ -140,23 +189,11 @@ class oPDO {
 
 
 
-	//QUERY • Returns $PDO->query()
-	public function query($sql=''){
-		if(!empty($sql)){
-			return $this->dbo->query($sql);
-		}
-		return false;
-	}
 
 
 
-	//QUERIES • Returns $PDO->muli_query()
-	public function queries($sql=''){
-		if(!empty($sql)){
-			return $this->dbo->multi_query($sql);
-		}
-		return false;
-	}
+
+
 
 
 
