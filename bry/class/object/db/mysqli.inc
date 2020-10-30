@@ -138,6 +138,24 @@ class oSQLi {
 
 
 
+	//IS • Check If [database|table] Exists
+	public function is($i='', $v='iDB'){
+		if(!empty($i)){
+			if($v == 'iDB'){
+				$sql = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$i}'"; #$sql = "SHOW DATABASES LIKE '{$i}'";
+				$result = $this->query($sql);
+				if($result !== false && $result !== true){
+					$row = $result->fetch_assoc();
+					if(is_array($row) && !empty($row['database']) && $row['database'] == $i){return true;}
+				}
+			}
+		}
+		return false;
+	}
+
+
+
+
 
 
 
@@ -199,15 +217,7 @@ class oSQLi {
 
 
 
-	//ISDB • Check If Database Exist
-	public function isDB($i=''){
-		if(!empty($i)){
-			$sql = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$i}'"; #$sql = "SHOW DATABASES LIKE '{$i}'";
-			$o = $this->SQL($sql, 'iCount');
-			if($o > 0){return true;}
-		}
-		return false;
-	}
+
 
 
 
