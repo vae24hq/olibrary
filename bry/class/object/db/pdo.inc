@@ -100,9 +100,7 @@ class oPDO {
 		$this->dbo()->setAttribute(PDO::ATTR_EMULATE_PREPARES, 1);
 		if(is_array($sql)){
 			$multi_query = '';
-			foreach($sql as $query){
-				$multi_query .= $query.'; ';
-			}
+			foreach($sql as $query){$multi_query .= $query.'; ';}
 			$sql = $multi_query;
 		}
 		return $sql;
@@ -112,23 +110,7 @@ class oPDO {
 
 
 
-	//EXEC • PDO::exec — Execute an SQL statement and return the number of affected rows
-	public function exec($sql='', $multi=false){
-		if(!empty($sql)){
-			if($multi === true){
-				$sql = $this->multiSQL($sql);
-				return $this->dbo()->exec($sql);
-			}
-			return $this->dbo()->exec($sql);
-		}
-		return $this->oExit(__METHOD__.' requires query');
-	}
-
-
-
-
-
-	//QUERY • PDO::query — Executes an SQL statement, returning a result set as a PDOStatement object
+	//QUERY • PDO::query — Executes an SQL statement, returns FALSE or result as a PDOStatement object
 	public function query($sql='', $multi=false){
 		if(!empty($sql)){
 			if($multi === true){
@@ -146,7 +128,17 @@ class oPDO {
 
 
 
-
+	//EXEC • PDO::exec — Execute an SQL statement and return ZERO or number of affected rows
+	public function exec($sql='', $multi=false){
+		if(!empty($sql)){
+			if($multi === true){
+				$sql = $this->multiSQL($sql);
+				return $this->dbo()->exec($sql);
+			}
+			return $this->dbo()->exec($sql);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
 
 
 

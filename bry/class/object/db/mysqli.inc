@@ -99,9 +99,7 @@ class oSQLi {
 	private function multiSQL($sql=''){
 		if(is_array($sql)){
 			$multi_query = '';
-			foreach($sql as $query){
-				$multi_query .= $query.'; ';
-			}
+			foreach($sql as $query){$multi_query .= $query.'; ';}
 			$sql = $multi_query;
 		}
 		return $sql;
@@ -111,19 +109,7 @@ class oSQLi {
 
 
 
-	//EXEC • Use Query
-	public function exec($sql='', $multi=false){
-		if(!empty($sql)){
-			return $this->query($sql, $multi);
-		}
-		return $this->oExit(__METHOD__.' requires query');
-	}
-
-
-
-
-
-	//QUERY • Run SQL query using $mysqli->query()
+	//QUERY • Performs a query on the database, returns TRUE, FALSE or result as a mysqli_result object
 	public function query($sql='', $multi=false){
 		if(!empty($sql)){
 			if($multi === true){
@@ -136,6 +122,17 @@ class oSQLi {
 	}
 
 
+
+
+
+	//EXEC • Use Query
+	public function exec($sql='', $multi=false){
+		if(!empty($sql)){
+			#@TODO ~ make result return number of rows affected or 0 (as it does in PDO)
+			return $this->query($sql, $multi);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
 
 
 

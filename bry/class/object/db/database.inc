@@ -120,22 +120,21 @@ class oDatabase {
 
 
 
-	//EXEC • Native Exec Method
-	public function exec($sql='', $multi=''){
-		$this->DBCOMethodCheck(__FUNCTION__);
-		return $this->dbco->exec($sql, $multi);
-	}
-
-
-
-
-
 	//QUERY • Native Query Method
 	public function query($sql='', $multi=''){
 		$this->DBCOMethodCheck(__FUNCTION__);
 		return $this->dbco->query($sql, $multi);
 	}
 
+
+
+
+
+	//EXEC • Native Exec Method
+	public function exec($sql='', $multi=''){
+		$this->DBCOMethodCheck(__FUNCTION__);
+		return $this->dbco->exec($sql, $multi);
+	}
 
 
 
