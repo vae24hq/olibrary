@@ -151,9 +151,17 @@ class oDatabase {
 
 	//CREATEDB • Create [database|table]
 	public function create($i='', $v='iDB'){
-		return $this->dbco->create($i, $v='iDB');
+		return $this->dbco->create($i, $v);
 	}
 
+
+
+
+
+	//USEDB • Select Database For Use
+	public function use($i=''){
+		return $this->dbco->use($i);
+	}
 
 
 
