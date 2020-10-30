@@ -149,6 +149,14 @@ class oDatabase {
 
 
 
+	//CREATEDB • Create [database|table]
+	public function create($i='', $v='iDB'){
+		return $this->dbco->create($i, $v='iDB');
+	}
+
+
+
+
 
 
 
@@ -196,10 +204,7 @@ class oDatabase {
 
 
 
-	//CREATEDB • Create Database
-	public function createDB($name=''){
-		return $this->dbco->createDB($name);
-	}
+
 
 
 
