@@ -139,6 +139,24 @@ class oSQLi {
 
 
 
+	//RESP  • SQL Query Custom Response ~ used by other method
+	private function resp($stmt, $status, $v, $debug, $resp=''){
+		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
+		if($status != 'failed' && $v == 'iBool'){return true;}
+		elseif($status == 'failed' || $debug === true){$resp['query'] = $query;}
+
+		$resp['status'] = $status;
+		$resp['result'] = $stmt;
+
+		if(!empty($resp)){return $resp;}
+		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
+		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
+		return false;
+	}
+
+
+
+
 
 
 
@@ -232,20 +250,7 @@ class oSQLi {
 
 
 
-	//RESPSQL • SQL Query Custom Response ~ used by other method
-	private function respSQL($stmt, $status, $v, $debug, $resp=''){
-		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
-		if($status != 'failed' && $v == 'iBool'){return true;}
-		elseif($status == 'failed' || $debug === true){$resp['query'] = $query;}
 
-		$resp['status'] = $status;
-		$resp['result'] = $stmt;
-
-		if(!empty($resp)){return $resp;}
-		#@NOTE: This line should never be reached in the program [It indicates an error in code logic]
-		#@TODO: log report & return information to indicate error - oExit('an unknown critical error occurred')
-		return false;
-	}
 // $respSQL = $respSQL($stmt, $status, $v, $debug, $resp);
 // 		if(!empty($resp) && !empty($respSQL)){
 // 			if(is_array($resp)){$resp = array_merge($resp, $respSQL);}
