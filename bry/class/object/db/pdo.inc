@@ -146,6 +146,50 @@ class oPDO {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//ERROR • Returns PDO Error
 	public function error($i='iMessage'){
 		if(!empty($i)){

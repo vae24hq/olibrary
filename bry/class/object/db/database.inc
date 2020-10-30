@@ -142,6 +142,35 @@ class oDatabase {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//RUNSQL • Perform SQL Query
 	public function runSQL($q='', $v='iFetch', $debug=false){
 		return $this->dbco->runSQL($q, $v, $debug);

@@ -139,6 +139,27 @@ class oSQLi {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//RESP  • SQL Query Custom Response ~ used by other method
 	private function resp($stmt, $status, $v, $debug, $resp=''){
 		#Boolean - #@NOTE: you can't request boolean (on success) and debug as well
