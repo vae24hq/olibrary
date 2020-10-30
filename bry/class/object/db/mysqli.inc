@@ -156,6 +156,19 @@ class oSQLi {
 
 
 
+	//CREATEDB • Create [database|table]
+	public function create($i='', $v='iDB'){
+		if(!empty($i)){
+			if($v == 'iDB'){
+				$sql = "CREATE DATABASE IF NOT EXISTS `{$i}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
+				$result = $this->query($sql);
+				return $result;
+			}
+		}
+		return false;
+	}
+
+
 
 
 
@@ -385,14 +398,7 @@ class oSQLi {
 
 
 
-	//CREATEDB • Create Database
-	public function createDB($name=''){
-		if(!empty($name)){
-			$q = "CREATE DATABASE IF NOT EXISTS `{$name}` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci";
-			return $this->SQL($q, 'iBool');
-		}
-		return false;
-	}
+
 
 
 
