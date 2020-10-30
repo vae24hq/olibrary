@@ -44,6 +44,8 @@ $qry = "SELECT * FROM `harv_logs`";
 
 // $rex['DB'] = $db;
 // $rex['DBCO'] = $dbco;
-$rex['DBO'] = $dbo;
-$rex['RUN'] = $db->exec($qry);
+// $rex['RUN'] = $db->exec($qry);
+$rex['DRIVER'] = $extension;
+$rex['QUERY'][] = $db->is('ao');
+$rex['QUERY'][] = $db->is('aodb');
 echo oPrint::Neat($rex);
