@@ -144,6 +144,24 @@ class oPDO {
 
 
 
+	//IS • Check If [database|table] Exists
+	public function is($i='', $v='iDB'){
+		if(!empty($i)){
+			if($v == 'iDB'){
+				$sql = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$i}'";
+				$stmt = $this->query($sql);
+				if($stmt !== false && $stmt !== true){
+					$row = $stmt->fetch(PDO::FETCH_ASSOC);
+					if(is_array($row) && !empty($row['database']) && $row['database'] == $i){return true;}
+				}
+			}
+		}
+		return false;
+	}
+
+
+
+
 
 
 
