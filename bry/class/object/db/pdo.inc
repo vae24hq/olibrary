@@ -101,7 +101,7 @@ class oPDO {
 		if(is_array($sql)){
 			$multi_query = '';
 			foreach($sql as $query){
-				$multi_query .= $query.';';
+				$multi_query .= $query.'; ';
 			}
 			$sql = $multi_query;
 		}
@@ -133,7 +133,9 @@ class oPDO {
 		if(!empty($sql)){
 			if($multi === true){
 				$sql = $this->multiSQL($sql);
-				return $this->prepare($sql);
+				$stmt = $this->dbo()->prepare($sql);
+				$stmt->execute();
+				return $stmt;
 			}
 			return $this->dbo()->query($sql);
 		}
