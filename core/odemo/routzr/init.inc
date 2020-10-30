@@ -35,7 +35,8 @@ $dbo = $db->dbo();
 
 
 $qry = "SELECT * FROM `harv_logs`";
-// $qry .= "SELECT * FROM `harv_logs`";
+// $qry[] = "SELECT * FROM `harv_logs`";
+// $qry[] = "SELECT * FROM `harv_logs`";
 // $ans['SQL'] = $db->runSQL($qry, 'iFetchRow');
 // $ans['SQLPrep'] = $db->runSQLPrep($qry, 'iFetchRow');
 // echo oPrint::Neat($ans);
@@ -44,5 +45,5 @@ $qry = "SELECT * FROM `harv_logs`";
 // $rex['DB'] = $db;
 // $rex['DBCO'] = $dbco;
 $rex['DBO'] = $dbo;
-$rex['RUN'] = $db->queries($qry);
+$rex['RUN'] = $db->exec($qry);
 echo oPrint::Neat($rex);
