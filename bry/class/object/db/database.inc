@@ -140,6 +140,14 @@ class oDatabase {
 
 
 
+	//IS • Check If [database|table] Exists
+	public function is($i='', $v='iDB'){
+		return $this->dbco->is($i, $v);
+	}
+
+
+
+
 
 
 
@@ -197,10 +205,7 @@ class oDatabase {
 
 
 
-	//ISDB • Check If Database Exists
-	public function isDB($name=''){
-		return $this->dbco->isDB($name);
-	}
+
 
 
 
