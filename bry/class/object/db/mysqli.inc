@@ -156,6 +156,7 @@ class oSQLi {
 
 
 
+
 	//CREATEDB • Create [database|table]
 	public function create($i='', $v='iDB'){
 		if(!empty($i)){
@@ -164,11 +165,59 @@ class oSQLi {
 				$result = $this->query($sql);
 				return $result;
 			}
+
+			elseif($v == 'iTable'){
+				if(!is_array($i)){$table = $i;}
+				else {
+					if(!empty($i['name'])){$table = $i['name'];}
+					if(!empty($i['engine'])){$engine = $i['engine'];}
+				}
+				if(empty($engine)){$engine = 'INNODB';}
+
+				$sql = "CREATE TABLE IF NOT EXISTS `{$table}`
+				(`auid` bigint(20) NOT NULL AUTO_INCREMENT,
+				`euid` char(40) NOT NULL,
+				`suid` char(70) NOT NULL,
+				`puid` char(20) NOT NULL,
+				`logid` char(90) DEFAULT 'oNONE',
+				`author` varchar(80) DEFAULT 'oSYS',
+				`entry` varchar(10) DEFAULT NULL,
+				`status` varchar(10) DEFAULT NULL,
+				`created` datetime DEFAULT CURRENT_TIMESTAMP,
+				`updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+				`title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+				`amount` decimal(13,2) DEFAULT NULL,
+				PRIMARY KEY (`auid`),
+				UNIQUE KEY `euid` (`euid`),
+				UNIQUE KEY `suid` (`suid`),
+				KEY `puid` (`puid`),
+				KEY `logid` (`logid`),
+				KEY `author` (`author`),
+				KEY `entry` (`entry`),
+				KEY `status` (`status`),
+				KEY `created` (`created`),
+				KEY `updated` (`updated`))
+				ENGINE={$engine} AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;";
+				$result = $this->query($sql);
+				return $result;
+			}
 		}
 		return false;
 	}
 
 
+
+
+
+	//USEDB • Select Database For Use
+	public function use($database=''){
+		if(!empty($database)){
+			if($this->is($database, 'iDB')){
+				return $this->dbo()->select_db($database);
+			}
+		}
+		return false;
+	}
 
 
 
@@ -410,15 +459,7 @@ class oSQLi {
 
 
 
-	//USEDB • Select Database For Use
-	public function useDB($name=''){
-		if(!empty($name)){
-			if($this->isDB($name)){
-				return $this->dbo()->select_db($name);
-			}
-		}
-		return false;
-	}
+
 
 
 
@@ -437,38 +478,7 @@ class oSQLi {
 
 
 
-	//CREATETB • Create Table
-	public function createTB($name='', $engine='INNODB'){
-		if(!empty($name) && !empty($engine)){
-			$q = "CREATE TABLE IF NOT EXISTS `{$name}` (";
-			$q .=
-			"`auid` bigint(20) NOT NULL AUTO_INCREMENT,
-			`euid` char(40) NOT NULL,
-			`suid` char(70) NOT NULL,
-			`puid` char(20) NOT NULL,
-			`logid` char(90) DEFAULT 'oNONE',
-			`author` varchar(80) DEFAULT 'oSYS',
-			`entry` varchar(10) DEFAULT NULL,
-			`status` varchar(10) DEFAULT NULL,
-			`created` datetime DEFAULT CURRENT_TIMESTAMP,
-			`updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-			`title` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-			`amount` decimal(13,2) DEFAULT NULL,
-			PRIMARY KEY (`auid`),
-			UNIQUE KEY `euid` (`euid`),
-			UNIQUE KEY `suid` (`suid`),
-			KEY `puid` (`puid`),
-			KEY `logid` (`logid`),
-			KEY `author` (`author`),
-			KEY `entry` (`entry`),
-			KEY `status` (`status`),
-			KEY `created` (`created`),
-			KEY `updated` (`updated`)";
-			$q .= ") ENGINE={$engine} AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;";
-			return $this->SQL($q, 'iBool');
-		}
-		return false;
-	}
+
 
 
 
