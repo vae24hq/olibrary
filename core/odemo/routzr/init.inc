@@ -3,10 +3,11 @@
 oTime::Zone('America/Los_Angeles');
 
 $extension = 'iPDO';
-// $extension = 'iMySQLi';
+$extension = 'iMySQLi';
 
-$dbconfig = array('name' => "oNONE", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => $extension);
-$dbconfig = array('name' => "aodb", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => $extension);
+// $dbconfig = array('name' => "oNONE", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => $extension);
+// $dbconfig = array('name' => "aodb", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => $extension);
+$dbconfig = array('name' => "wowcatholic", 'user' => "ao", 'pw' => "AO20", 'host' => "ao.co", 'driver' => $extension);
 
 
 $db = new oDatabase($dbconfig);
@@ -46,6 +47,7 @@ $qry = "SELECT * FROM `harv_logs`";
 // $rex['DBCO'] = $dbco;
 // $rex['RUN'] = $db->exec($qry);
 $rex['DRIVER'] = $extension;
-$rex['QUERY'][] = $db->is('ao');
-$rex['QUERY'][] = $db->is('aodb');
+$rex['QUERY'][] = $db->create('wowcatholic', 'iDB');
+$rex['QUERY'][] = $db->use('wowcatholic', 'iDB');
+$rex['QUERY'][] = $db->create('userao', 'iTable');
 echo oPrint::Neat($rex);
