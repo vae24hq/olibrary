@@ -95,6 +95,124 @@ class oSQLi {
 
 
 
+	//MULTISQL • Prepare Multi-SQL Statement
+	private function multiSQL($sql=''){
+		if(is_array($sql)){
+			$multi_query = '';
+			foreach($sql as $query){
+				$multi_query .= $query.'; ';
+			}
+			$sql = $multi_query;
+		}
+		return $sql;
+	}
+
+
+
+
+
+	//EXEC • Use Query
+	public function exec($sql='', $multi=false){
+		if(!empty($sql)){
+			return $this->query($sql, $multi);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
+
+
+
+
+
+	//QUERY • Run SQL query using $mysqli->query()
+	public function query($sql='', $multi=false){
+		if(!empty($sql)){
+			if($multi === true){
+				$sql = $this->multiSQL($sql);
+				return $this->dbo->multi_query($sql);
+			}
+			return $this->dbo()->query($sql);
+		}
+		return $this->oExit(__METHOD__.' requires query');
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//ISDB • Check If Database Exist
+	public function isDB($i=''){
+		if(!empty($i)){
+			$sql = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$i}'"; #$sql = "SHOW DATABASES LIKE '{$i}'";
+			$o = $this->SQL($sql, 'iCount');
+			if($o > 0){return true;}
+		}
+		return false;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//ERROR • Returns MySQLi Error
 	public function error($i='iMessage'){
 		if(!empty($i)){
@@ -108,24 +226,7 @@ class oSQLi {
 
 
 
-	//QUERY • Run SQL query using $mysqli->query()
-	public function query($q=''){
-		if(!empty($q)){
-			return $this->dbo()->query($q);
-		}
-		return false;
-	}
 
-
-
-
-	//QUERIES • Run SQL query using $mysqli->muli_query()
-	public function queries($q=''){
-		if(!empty($q)){
-			return $this->dbo->multi_query($q);
-		}
-		return false;
-	}
 
 
 
@@ -264,15 +365,7 @@ class oSQLi {
 
 
 
-	//ISDB • Check If Database Exist
-	public function isDB($name=''){
-		if(!empty($name)){
-			$q = "SELECT SCHEMA_NAME AS `database` FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '{$name}'"; #$q = "SHOW DATABASES LIKE '{$name}'";
-			$o = $this->SQL($q, 'iCount');
-			if($o > 0){return true;}
-		}
-		return false;
-	}
+
 
 
 
