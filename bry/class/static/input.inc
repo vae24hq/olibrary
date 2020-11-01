@@ -43,4 +43,73 @@ class oInput {
 	}
 
 
+
+
+
+	public static function Dataset($data, $set){
+		$dataset = array();
+		foreach($set as $index){
+			if(array_key_exists($index, $data)){
+				$dataset[$index] = trim($data[$index]);
+				#@TODO ~ call cleanup method
+			}
+			else {
+				$dataset[$index] = NULL;
+			}
+		}
+		if(!empty($dataset)){return $dataset;}
+		return false;
+	}
+
+
+
+
+
+	public static function clean($i){
+		if(!empty($i)){
+			if(is_array($i)){
+				foreach($i as $key => $value){
+					$o[$key] = clean($value);
+				}
+			}
+			else {
+				$s = array(
+					'@<script[^>]*?>.*?</script>@si', #Strip out Javascript
+					'@<[\/\!]*?[^<>]*?>@si',          #Strip out HTML tags
+					'@<style[^>]*?>.*?</style>@siU',  #Strip style tags properly
+					'@<![\s\S]*?--[ \t\n\r]*>@'       #Strip multi-line comments
+				);
+				$o = preg_replace($s, '', $i);
+				$o = trim($o);
+			}
+			return $o;
+		}
+		return false;
+	}
+
+
+
+
+
+	public static function sanitize($i, $v=''){
+		if(!empty($i)){
+			if(is_array($i)){
+				foreach($i as $key => $value){$o[$key] = clean($value);}
+			}
+			else {
+				$o = $i;
+				if($v == 'iEmail'){
+					$o = filter_var($o, FILTER_SANITIZE_EMAIL);
+					$o = trim(strtolower($o));
+				}
+
+				if(get_magic_quotes_gpc()){$o = stripslashes($o);}
+				$o  = self::clean($o);
+			}
+			return $o;
+		}
+		return false;
+	}
+
+
 } // EndOfClass - oInput
