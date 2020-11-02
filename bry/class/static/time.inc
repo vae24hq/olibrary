@@ -64,6 +64,7 @@ class oTime {
 			elseif(!is_int($time) && !is_numeric($time)){$time = self::Stamp($time);}
 
 			if($fmt == 'iTime'){$fmt = 'h:i:s A';}
+			elseif($fmt == 'iSQLTime'){$fmt = 'h:i:s';}
 			elseif($fmt == 'iUnix'){return $t;}
 			elseif($fmt == 'iDate'){return self::Date($fmt, $time);}
 			return date($fmt, $time);
@@ -87,6 +88,7 @@ class oTime {
 			elseif($fmt == 'iDateR2'){$fmt = 'd-m-Y';}
 			elseif($fmt == 'iDateR3'){$fmt = 'F d, Y';}
 			elseif($fmt == 'iSQLDateTime'){$fmt = 'Y-m-d H:i:s';}
+			elseif($fmt == 'iSQL'){$fmt = 'Y-m-d';}
 			elseif($fmt == 'iLetterA'){return date('M j', $date).'<sup>'.date('S', $date).'</sup> '.date('Y', $date);}
 			elseif($fmt == 'iLetterB'){return date('j', $date).'<sup>'.date('S', $date).'</sup> '.date('F, Y', $date);}
 			elseif($fmt == 'iLetterC'){return date('F j', $date).'<sup>'.date('S', $date).'</sup> '.date('Y', $date);}
