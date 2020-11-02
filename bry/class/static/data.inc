@@ -7,7 +7,7 @@
 class oData {
 
 	public static function ToObject($i=''){
-		if(!empty($i)){
+		if(!oString::IsEmpty($i)){
 			if(is_array($i)){
 				$o = new stdClass();
 				foreach($i as $key => $value){$o->$key = $value;}
@@ -27,26 +27,6 @@ class oData {
 		}
 		return false;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
