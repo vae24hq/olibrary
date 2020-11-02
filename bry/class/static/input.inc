@@ -54,19 +54,19 @@ class oInput {
 				#@TODO ~ call cleanup method
 			}
 			else {
-				$dataset[$index] = NULL;
+				$dataset[$index] = '';
 			}
 		}
 		if(!empty($dataset)){return $dataset;}
-		return false;
+		return '';
 	}
 
 
 
 
 
-	public static function clean($i){
-		if(!empty($i)){
+	public static function Clean($i){
+		if(!oString::IsEmpty($i)){
 			if(is_array($i)){
 				foreach($i as $key => $value){
 					$o[$key] = clean($value);
@@ -84,17 +84,17 @@ class oInput {
 			}
 			return $o;
 		}
-		return false;
+		return '';
 	}
 
 
 
 
 
-	public static function sanitize($i, $v=''){
-		if(!empty($i)){
+	public static function Sanitize($i, $v=''){
+		if(!oString::IsEmpty($i)){
 			if(is_array($i)){
-				foreach($i as $key => $value){$o[$key] = clean($value);}
+				foreach($i as $key => $value){$o[$key] = self::Clean($value, $v);}
 			}
 			else {
 				$o = $i;
@@ -103,8 +103,8 @@ class oInput {
 					$o = trim(strtolower($o));
 				}
 
-				if(get_magic_quotes_gpc()){$o = stripslashes($o);}
-				$o  = self::clean($o);
+				$o = addslashes($o);
+				$o  = self::Clean($o);
 			}
 			return $o;
 		}
@@ -112,4 +112,4 @@ class oInput {
 	}
 
 
-} // EndOfClass - oInput
+	} // EndOfClass - oInput
