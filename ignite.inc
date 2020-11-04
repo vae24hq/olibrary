@@ -21,33 +21,18 @@ defined('MEDIA') ? null : define('MEDIA', 'media'.PS);
 defined('AUDIO') ? null : define('AUDIO', 'audio'.PS);
 defined('DOCUMENT') ? null : define('DOCUMENT', 'document'.PS);
 defined('GRAFIX') ? null : define('GRAFIX', 'grafix'.PS);
-defined('IMAGE') ? null : define('IMAGE', 'image'.PS);
 defined('VIDEO') ? null : define('VIDEO', 'video'.PS);
 defined('FONT') ? null : define('FONT', 'font' . PS);
 
 require 'ao.lib.inc';
 
-
-
-#INITIALIZE PROJECT (based on a specific project)
-// oFile::Inc(oRoute::Path('init', true), 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
-#oFile::Inc(oRoute::Path('init'), 'iRequired');
-
-
-#REDIRECT URL ~ @TODO
-// if((!empty($_REQUEST['action'])) && $_REQUEST['action'] == 'redirect'){
-// 	$destination = quin::site_url();
-// 	$location = $_GET['location'];
-// 	if(!empty($location)){
-// 		if(in_string($location,'www.')){
-// 			redirect('http://'.$location);
-// 		}
-// 		else {
-// 			$destination .= PS.$location;
-// 			redirect($destination);
-// 		}
-// 	}
-// }
-
-
-?>
+#REDIRECT URL
+if(!empty($_REQUEST['oredirect'])){
+	$redirectTo = strtolower($_REQUEST['oredirect']);
+	if(!oString::in($redirectTo, 'http')){
+		return oRedirect::oExit(PS.$redirectTo);
+	}
+	else {
+		#@TODO ~ redirect for http://domain.co URL
+	}
+}
