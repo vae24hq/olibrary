@@ -6,7 +6,7 @@
  */
 class oSSL {
 	//HTTPs • Returns boolean on HTTPs check
-	public static function HTTPs(){
+	public static function https(){
 		$o = false; $https = 'inactive'; $port = 'default';
 		if(!empty($_SERVER['HTTPS'])){$https = $_SERVER['HTTPS'];}
 		if($https !== 'inactive'){$https == 'active';}
@@ -18,9 +18,12 @@ class oSSL {
 	}
 
 
+
+
+
 	//REDIRECT • redirect URL to use HTTPS
-	public static function Redirect($url='', $permant=false){
-		$protocol = self::HTTPs() ? 'https' : 'http';
+	public static function redirect($url='', $permant=false){
+		$protocol = self::https() ? 'https' : 'http';
 		if($protocol !== 'https'){
 			$o = 'https://';
 			if(!empty($url)){$o .= $url;}
@@ -39,10 +42,13 @@ class oSSL {
 	}
 
 
+
+
+
 	//IMPOSE • force URL to use HTTPS
-	public static function Impose($enforce=true, $url='', $permant=false){
+	public static function impose($enforce=true, $url='', $permant=false){
 		if($enforce === true){#always attempt redirect
-			return self::Redirect($url, $permant);
+			return self::redirect($url, $permant);
 		}
 		else {#ignore after first attempt to redirect
 			if(session_status() !== PHP_SESSION_ACTIVE){
@@ -50,11 +56,9 @@ class oSSL {
 			#exit('ImposeSSL Requires Session Start');
 			}
 			if(empty($_SESSION['oSSL']) || $_SESSION['oSSL'] !== 'imposed'){
-				return self::Redirect($url, $permant);
+				return self::redirect($url, $permant);
 			}
 		}
 		return false;
 	}
-
-
 } // EndOfClass - oSSL
