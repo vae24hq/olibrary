@@ -6,7 +6,7 @@
  */
 class oCurrency {
 	//DATABASE • Currency Database
-	public static function Database(){
+	public static function database(){
 		$o = array(
 			'NGN' => array('iSign' => '₦', 'iCountry' => 'Nigeria', 'iCurrency' => 'Naira'),
 			'USD' => array('iSign' => '$', 'iCountry' => 'United States', 'iCurrency' => 'Dollar'),
@@ -19,8 +19,11 @@ class oCurrency {
 	}
 
 
+
+
+
 	//TO • RETURN - CURRENCY/SYMBOL/COUNTRY
-	public static function To($code, $i='iData'){
+	public static function to($code, $i='iData'){
 		$database = self::database();
 		if(array_key_exists($code, $database)){
 			$currency = $database[$code];
@@ -32,6 +35,4 @@ class oCurrency {
 		}
 		return false;
 	}
-
-
 } // EndOfClass - oCurrency
