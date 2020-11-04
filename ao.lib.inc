@@ -3,9 +3,10 @@
 require oINSTANCE.'session.inc';
 require oSTATIC.'print.inc';
 require oSTATIC.'exit.inc';
-if(!file_exists(oSTATIC.'file.inc')){oExit::E404(oSTATIC.'file.inc');}
-// require oSTATIC.'file.inc';
-// oFile::Inc(oSTATIC.'string.inc');
+$class_file_path = oSTATIC.'file.inc';
+if(!file_exists($class_file_path)){oExit::E404($class_file_path);}
+require oSTATIC.'file.inc';
+oFile::Inc(oSTATIC.'string.inc');
 // oFile::Inc(oSTATIC.'array.inc');
 // oFile::Inc(oSTATIC.'redirect.inc');
 // oFile::Inc(oSTATIC.'ssl.inc');
