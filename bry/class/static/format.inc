@@ -6,7 +6,7 @@
 */
 class oFormat {
 //NUMBER • Format Number
-	public static function Number($input, $digit=2){
+	public static function number($input, $digit=2){
 		if(is_numeric($input)){
 			$o = $input;
 			if(!empty($digit) && is_numeric($digit)){
@@ -21,8 +21,11 @@ class oFormat {
 	}
 
 
+
+
+
 	//SIZE • Return computer-based measurement of input
-	public static function Size($byte){
+	public static function size($byte){
 		if(!empty($byte)){
 			if($byte>=1073741824){$o = number_format($byte / 1073741824 , 2) . 'GB';}
 			elseif($byte>=1048576){$o = number_format($byte / 1048576 , 2) . 'MB';}
@@ -34,6 +37,4 @@ class oFormat {
 		}
 		return false;
 	}
-
-
 } // EndOfClass - oFormat
