@@ -19,7 +19,7 @@ AddDefaultCharset utf-8
 AddType application/x-httpd-php .php .inc .phtml .html .htm .php4 .php3 .shtml
 
 #Alternate default index pages
-DirectoryIndex index.php index.html index.phtml index.htm ignite.php
+DirectoryIndex index.php index.html index.phtml index.htm index.php
 
 #Enable GZip compression
 <IfModule mod_gzip.c>
@@ -85,27 +85,27 @@ RewriteRule ^_owww\/(.*)$ /_o/ignor/www/$1 [NC,QSA,END]
 
 
 #REWRITE - for API
-#[sub.domain.com/api/ → ignite.php?oproject=sub&olink=api&oapi=index]
+#[sub.domain.com/api/ → index.php?oproject=sub&olink=api&oapi=index]
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^api\/$ /ignite.php?oproject=%1&olink=api&oapi=index [NC,QSA,END]
+RewriteRule ^api\/$ /index.php?oproject=%1&olink=api&oapi=index [NC,QSA,END]
 
-#[domain.com/api/ → ignite.php?oproject=default&olink=api&oapi=index]
-RewriteRule ^api\/$ /ignite.php?oproject=default&olink=api&oapi=index [NC,QSA,END]
+#[domain.com/api/ → index.php?oproject=default&olink=api&oapi=index]
+RewriteRule ^api\/$ /index.php?oproject=default&olink=api&oapi=index [NC,QSA,END]
 
-#[sub.domain.com/api/login → ignite.php?oproject=sub&olink=api&oapi=login]
+#[sub.domain.com/api/login → index.php?oproject=sub&olink=api&oapi=login]
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^api\/(.*)$ /ignite.php?oproject=%1&olink=api&oapi=$1 [NC,QSA,END]
+RewriteRule ^api\/(.*)$ /index.php?oproject=%1&olink=api&oapi=$1 [NC,QSA,END]
 
-#[domain.com/api/login → ignite.php?oproject=default&olink=api&oapi=login]
-RewriteRule ^api\/(.*)$ /ignite.php?oproject=default&olink=api&oapi=$1 [NC,QSA,END]
+#[domain.com/api/login → index.php?oproject=default&olink=api&oapi=login]
+RewriteRule ^api\/(.*)$ /index.php?oproject=default&olink=api&oapi=$1 [NC,QSA,END]
 
-#[api.domain.com/api/ → ignite.php?oproject=api&olink=api&oapi=index]
+#[api.domain.com/api/ → index.php?oproject=api&olink=api&oapi=index]
 RewriteCond %{HTTP_HOST} ^(api\.)(.+)$
-RewriteRule ^((?!o\/.*$))$ /ignite.php?oproject=api&olink=api&oapi=index [NC,QSA,END]
+RewriteRule ^((?!o\/.*$))$ /index.php?oproject=api&olink=api&oapi=index [NC,QSA,END]
 
-#[api.domain.com/api/login → ignite.php?oproject=api&olink=api&oapi=login]
+#[api.domain.com/api/login → index.php?oproject=api&olink=api&oapi=login]
 RewriteCond %{HTTP_HOST} ^(api\.)(.+)$
-RewriteRule ^((?!o\/.*$).*)$ /ignite.php?oproject=api&olink=api&oapi=$1 [NC,QSA,END]
+RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=api&olink=api&oapi=$1 [NC,QSA,END]
 
 
 
@@ -138,47 +138,47 @@ RewriteRule ^js\/(.*)$ /core/asset/script/$1 [NC,QSA,END]
 
 
 #REWRITE - for APP
-#[sub.domain.com/app/ → ignite.php?oproject=sub&olink=app&oapp=index]
+#[sub.domain.com/app/ → index.php?oproject=sub&olink=app&oapp=index]
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^app\/$ /ignite.php?oproject=%1&olink=app&oapp=index [NC,QSA,END]
+RewriteRule ^app\/$ /index.php?oproject=%1&olink=app&oapp=index [NC,QSA,END]
 
-#[domain.com/app/ → ignite.php?oproject=default&olink=app&oapp=index]
-RewriteRule ^app\/$ /ignite.php?oproject=default&olink=app&oapp=index [NC,QSA,END]
+#[domain.com/app/ → index.php?oproject=default&olink=app&oapp=index]
+RewriteRule ^app\/$ /index.php?oproject=default&olink=app&oapp=index [NC,QSA,END]
 
-#[sub.domain.com/app/login → ignite.php?oproject=sub&olink=app&oapp=login]
+#[sub.domain.com/app/login → index.php?oproject=sub&olink=app&oapp=login]
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^app\/(.*)$ /ignite.php?oproject=%1&olink=app&oapp=$1 [NC,QSA,END]
+RewriteRule ^app\/(.*)$ /index.php?oproject=%1&olink=app&oapp=$1 [NC,QSA,END]
 
-#[domain.com/app/login → ignite.php?oproject=default&olink=app&oapp=login]
-RewriteRule ^app\/(.*)$ /ignite.php?oproject=default&olink=app&oapp=$1 [NC,QSA,END]
+#[domain.com/app/login → index.php?oproject=default&olink=app&oapp=login]
+RewriteRule ^app\/(.*)$ /index.php?oproject=default&olink=app&oapp=$1 [NC,QSA,END]
 
-#[app.domain.com/app/ → ignite.php?oproject=app&olink=app&oapp=index]
+#[app.domain.com/app/ → index.php?oproject=app&olink=app&oapp=index]
 RewriteCond %{HTTP_HOST} ^(app\.)(.+)$
-RewriteRule ^((?!o\/.*$))$ /ignite.php?oproject=app&olink=app&oapp=index [NC,QSA,END]
+RewriteRule ^((?!o\/.*$))$ /index.php?oproject=app&olink=app&oapp=index [NC,QSA,END]
 
-#[app.domain.com/app/login → ignite.php?oproject=app&olink=app&oapp=login]
+#[app.domain.com/app/login → index.php?oproject=app&olink=app&oapp=login]
 RewriteCond %{HTTP_HOST} ^(app\.)(.+)$
-RewriteRule ^((?!o\/.*$).*)$ /ignite.php?oproject=app&olink=app&oapp=$1 [NC,QSA,END]
+RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=app&olink=app&oapp=$1 [NC,QSA,END]
 
 
 #REWRITE - for SUB DOMAIN
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=%1&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=default&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /index.php?oproject=default&olink=index [NC,QSA,END]
 
 
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=%1&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=default&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /index.php?oproject=default&olink=$1 [NC,QSA,END]
 
 
 
 
 #HTTP ERROR - error documents defined
-ErrorDocument 400 /ignite.php?olink=http&code=400
-ErrorDocument 401 /ignite.php?olink=http&code=401
-ErrorDocument 403 /ignite.php?olink=http&code=403
-ErrorDocument 404 /ignite.php?olink=http&code=404
-ErrorDocument 500 /ignite.php?olink=http&code=500
+ErrorDocument 400 /index.php?olink=http&code=400
+ErrorDocument 401 /index.php?olink=http&code=401
+ErrorDocument 403 /index.php?olink=http&code=403
+ErrorDocument 404 /index.php?olink=http&code=404
+ErrorDocument 500 /index.php?olink=http&code=500
