@@ -5,4 +5,7 @@
  * IGNITE ~ Default File • DEPENDENCY»
  */
 require 'ignite.inc';
+
+#DEVBOX FILE - for development, demo & testing
+oFile::Inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', 'isOptional');
 ?>
