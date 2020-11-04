@@ -6,16 +6,16 @@
  */
 class oInput {
 	//METHOD • Returns data from post/get/request
-	public static function Method($i='iPost', $v=''){
+	public static function method($i='iPost', $v=''){
 		if(!empty($i)){
-			if($i == 'iRequest' && oString::IsEmpty($_REQUEST)  === false){$o = $_REQUEST;}
-			elseif($i == 'iGet' && oString::IsEmpty($_GET)  === false){$o = $_GET;}
-			elseif($i == 'iPost' && oString::IsEmpty($_POST)  === false){$o = $_POST;}
-			elseif($i == 'iSession' && oString::IsEmpty($_SESSION)  === false){$o = $_SESSION;}
+			if($i == 'iRequest' && oString::is_empty($_REQUEST)  === false){$o = $_REQUEST;}
+			elseif($i == 'iGet' && oString::is_empty($_GET)  === false){$o = $_GET;}
+			elseif($i == 'iPost' && oString::is_empty($_POST)  === false){$o = $_POST;}
+			elseif($i == 'iSession' && oString::is_empty($_SESSION)  === false){$o = $_SESSION;}
 		}
 
 		if(!empty($o)){
-			if(oString::IsEmpty($v) === false){
+			if(oString::is_empty($v) === false){
 				if(isset($o[$v])){return $o[$v];}
 				return false;
 			}
@@ -26,27 +26,27 @@ class oInput {
 
 
 
-	public static function EncodeHTML($i=''){
+
+
+	public static function encodeHTML($i='', $v='iHTML', $inverse=false){
 		if(!empty($i)){
-			// return htmlentities($i, ENT_COMPAT|ENT_QUOTES,'ISO-8859-1', true);
-			return htmlentities($i);
+			if($v == 'iHTML'){
+				if($inverse === false){
+					return htmlentities($i); #return htmlentities($i, ENT_COMPAT|ENT_QUOTES,'ISO-8859-1', true);
+				}
+				else {
+					return html_entity_decode($i);
+				}
+			}
 		}
 		return false;
 	}
 
 
-	public static function DecodeHTML($i=''){
-		if(!empty($i)){
-			return html_entity_decode($i);
-		}
-		return false;
-	}
 
 
 
-
-
-	public static function Dataset($data, $set){
+	public static function dataset($data, $set){
 		$dataset = array();
 		foreach($set as $index){
 			if(array_key_exists($index, $data)){
@@ -65,36 +65,18 @@ class oInput {
 
 
 
-	public static function Clean($i){
-		if(!oString::IsEmpty($i)){
-			if(is_array($i)){
-				foreach($i as $key => $value){
-					$o[$key] = clean($value);
-				}
-			}
-			else {
-				$s = array(
-					'@<script[^>]*?>.*?</script>@si', #Strip out Javascript
-					'@<[\/\!]*?[^<>]*?>@si',          #Strip out HTML tags
-					'@<style[^>]*?>.*?</style>@siU',  #Strip style tags properly
-					'@<![\s\S]*?--[ \t\n\r]*>@'       #Strip multi-line comments
-				);
-				$o = preg_replace($s, '', $i);
-				$o = trim($o);
-			}
-			return $o;
-		}
-		return '';
+	public static function clean($i){
+		return oString::clean($i);
 	}
 
 
 
 
 
-	public static function Sanitize($i, $v=''){
-		if(!oString::IsEmpty($i)){
+	public static function sanitize($i, $v=''){
+		if(!oString::is_empty($i)){
 			if(is_array($i)){
-				foreach($i as $key => $value){$o[$key] = self::Clean($value, $v);}
+				foreach($i as $key => $value){$o[$key] = self::clean($value, $v);}
 			}
 			else {
 				$o = $i;
@@ -104,12 +86,10 @@ class oInput {
 				}
 
 				$o = addslashes($o);
-				$o  = self::Clean($o);
+				$o  = self::clean($o);
 			}
 			return $o;
 		}
 		return false;
 	}
-
-
-	} // EndOfClass - oInput
+} // EndOfClass - oInput
