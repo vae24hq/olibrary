@@ -6,27 +6,28 @@
  */
 class oURL {
 	//REF • Returns URL referrer
-	public static function Ref(){
+	public static function ref(){
 		if(!empty($_SERVER['HTTP_REFERER'])){return strtolower($_SERVER['HTTP_REFERER']);}
 		return false;
 	}
 
 
-	//TO DOMAIN • Convert URL to domain
-	public static function ToDomain($url='', $lib=''){
+
+
+
+	//TO_DOMAIN • Get Domain from URL
+	public static function domain($url='', $lib=''){
 		if(!empty($url)){
 			if(empty($lib)){
 				$lib = array('https://', 'http://', 'www.', 'api.', 'app.', 'en.', 'uk.', 'us.', 'ng.');
 			}
 
 			foreach($lib as $value){
-				$url = oString::To($url, $value, '', 'iFirst');
+				$url = oString::to($url, $value, '', 'iFirst');
 			}
-			$url = oString::To($url, '/', '', 'iLast');
+			$url = oString::to($url, '/', '', 'iLast');
 			return $url;
 		}
 		return false;
 	}
-
-
 } // EndOfClass - oURL
