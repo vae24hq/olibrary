@@ -6,15 +6,18 @@
  */
 class oRedirect {
 	//META • redirect URL using http-equiv
-	public static function Meta($link, $time=0, $exit=false){
+	public static function meta($link, $time=0, $exit=false){
 		$o = '<meta http-equiv="refresh" content="'.$time.'; url='.$link.'">';
 		if($exit !== false){exit($o);}
 		return $o;
 	}
 
 
+
+
+
 	//URL • redirect url using headers
-	public static function URL($link, $time=0, $exit=false){
+	public static function to($link, $time=0, $exit=false){
 		if(!headers_sent($filename, $linenum)){
 			if(!empty($time)){
 				header('Refresh:'.$time.';url='.$link);
@@ -32,10 +35,11 @@ class oRedirect {
 	}
 
 
-	//URL • redirect & exit
-	public static function ExitTo($link){
-		return self::URL($link, 0, true);
+
+
+
+	//EXIT • redirect & exit
+	public static function quit($link){
+		return self::to($link, 0, true);
 	}
-
-
 } // EndOfClass - oRedirect
