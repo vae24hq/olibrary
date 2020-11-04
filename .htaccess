@@ -163,15 +163,15 @@ RewriteRule ^((?!o\/.*$).*)$ /ignite.php?oproject=app&olink=app&oapp=$1 [NC,QSA,
 
 #REWRITE - for SUB DOMAIN
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=%1&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=%1&olink=index [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=default&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /ignite.php?oproject=default&olink=index [NC,QSA,END]
 
 
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=%1&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=%1&olink=$1 [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=default&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /ignite.php?oproject=default&olink=$1 [NC,QSA,END]
 
 
 
