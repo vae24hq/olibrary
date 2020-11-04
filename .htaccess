@@ -116,7 +116,7 @@ RewriteRule ^favicon\.png$ /core/asset/icon/favicon.png [NC,QSA,END]
 
 
 
-RewriteRule ^oredirect\/(.*)$ /index.php?olink=oredirect&url=$1 [NC,QSA,END]
+RewriteRule ^oredirect\/(.*)$ /index.php?oredirect=$1 [NC,QSA,END]
 
 
 
