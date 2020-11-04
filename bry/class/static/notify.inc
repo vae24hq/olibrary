@@ -6,7 +6,7 @@
  */
 class oNotify {
 	//EMAIL • send email via PHP Mail [returns true/false]
-	public static	function Email($data, $type = 'iHTML'){
+	public static	function email($data, $type = 'iHTML'){
 		if($type == 'iDEFAULT'){
 			if(mail($data['to'], $data['subject'], $data['message']) === true){
 				return true;
@@ -21,6 +21,4 @@ class oNotify {
 		}
 		return false;
 	}
-
-
 } // EndOfClass - oNotify
