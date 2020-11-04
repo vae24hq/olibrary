@@ -144,7 +144,6 @@ class oRandom {
 			#@TODO ~ create several other predefined randomization
 		}
 
-
 		if(!empty($rez)){return $rez;}
 		return false;
 	}
