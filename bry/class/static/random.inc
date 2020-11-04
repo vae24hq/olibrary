@@ -6,7 +6,7 @@
  */
 class oRandom {
 	//PREPARE • randomize a string or an array
-	public static function Prepare($input, $length){
+	public static function prepare($input, $length){
 		$rez = '';
 		if(!is_array($input)){
 			$input = str_shuffle($input);
@@ -38,8 +38,11 @@ class oRandom {
 	}
 
 
+
+
+
 	//CREATE • generate & return values
-	public static function Create($res='iRand', $length = 'iAuto', $input=''){
+	public static function create($res='iRand', $length = 'iAuto', $input=''){
 		#randomize
 		if($res == 'iRandomiz'){
 			$i = array_merge(range('A', 'Z'), range(0, 9), range('a', 'z'));
@@ -83,29 +86,29 @@ class oRandom {
 		#special character
 		elseif($res == 'iChar'){
 			$char = '(=@#$[%{&*?)}';
-			$rez = self::Prepare($char, $length);
+			$rez = self::prepare($char, $length);
 		}
 
 		#numbers
 		elseif($res == 'iNum'){
-			$rez = self::Prepare('1234567890', $length);
+			$rez = self::prepare('1234567890', $length);
 		}
 
 		#alphabet in lowercase
 		elseif($res == 'iAlpha'){
 			$alpha = range('a', 'z');
-			$rez = self::Prepare($alpha, $length);
+			$rez = self::prepare($alpha, $length);
 		}
 
 		#alphabet in caps
 		elseif($res == 'iAlphaCap'){
 			$alpha = range('A', 'Z');
-			$rez = self::Prepare($alpha, $length);
+			$rez = self::prepare($alpha, $length);
 		}
 
 		#prepare
 		elseif($res == 'iPrepare' && !empty($input)){
-			$rez = self::Prepare($input, $length);
+			$rez = self::prepare($input, $length);
 		}
 
 		else {
@@ -118,23 +121,23 @@ class oRandom {
 
 			if($res == 'iUsername'){
 				if($length == 'iAuto' || $length == 'iAll'){
-					$rez = self::Prepare($alphaL, 6).self::Prepare($number, 4);
+					$rez = self::prepare($alphaL, 6).self::prepare($number, 4);
 				} else {
-					$rez = self::Prepare($alphaL, $length);
+					$rez = self::prepare($alphaL, $length);
 				}
 			}
 			elseif($res == 'iTen'){
-				$rez = self::Prepare($number, 8).self::Prepare($alphaU, 2);
+				$rez = self::prepare($number, 8).self::prepare($alphaU, 2);
 			}
 			elseif($res == 'iPuid' || $res == 'iEuid' || $res == 'iSuid'){
 				$alphaL = implode($alphaL);
 				$alphaU = implode($alphaU);
 				$o = $alphaL.$number.$alphaU.$time;
 				$o = str_shuffle($o);
-				if($res == 'iPuid'){$rez = self::Prepare($o, 20);}
-				if($res == 'iEuid'){$rez = self::Prepare($o, 40);}
+				if($res == 'iPuid'){$rez = self::prepare($o, 20);}
+				if($res == 'iEuid'){$rez = self::prepare($o, 40);}
 				if($res == 'iSuid'){
-					$rez = self::Prepare($o, 30).self::Prepare($number, 10).$time.self::Prepare($o, 20);
+					$rez = self::prepare($o, 30).self::prepare($number, 10).$time.self::prepare($o, 20);
 				}
 			}
 
@@ -147,10 +150,11 @@ class oRandom {
 	}
 
 
+
+
+
 	//DIGIT • generate & return numbers
-	public static function Digit($length=2){
-		return self::Prepare('1234567890', $length);
+	public static function digit($length=2){
+		return self::prepare('1234567890', $length);
 	}
-
-
 } // EndOfClass - oRandom
