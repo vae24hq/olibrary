@@ -110,6 +110,33 @@ RewriteRule ^((?!o\/.*$).*)$ /ignite.php?oproject=api&olink=api&oapi=$1 [NC,QSA,
 
 
 
+#REWRITE - for favicon on base-project ([favicon.ico] → /source/asset/favicon.ico)
+RewriteRule ^favicon\.ico$ /core/asset/icon/favicon.ico [NC,QSA,END]
+RewriteRule ^favicon\.png$ /core/asset/icon/favicon.png [NC,QSA,END]
+
+
+
+
+
+#REWRITE - virtual directory
+RewriteRule ^upload$ upload/ [NC,QSA,END]
+RewriteRule ^upload\/(.*)$ /upload/$1 [NC,QSA,END]
+RewriteRule ^asset\/(.*)$ /core/asset/$1 [NC,QSA,END]
+RewriteRule ^cloud\/(.*)$ /upload/$1 [NC,QSA,END]
+RewriteRule ^media\/(.*)$ /core/asset/media/$1 [NC,QSA,END]
+		RewriteRule ^audio\/(.*)$ /core/asset/media/audio/$1 [NC,QSA,END]
+		RewriteRule ^icon\/(.*)$ /core/asset/media/icon/$1 [NC,QSA,END]
+		RewriteRule ^image\/(.*)$ /core/asset/media/image/$1 [NC,QSA,END]
+		RewriteRule ^video\/(.*)$ /core/asset/media/video/$1 [NC,QSA,END]
+		RewriteRule ^document\/(.*)$ /core/asset/media/document/$1 [NC,QSA,END]
+RewriteRule ^font\/(.*)$ /core/asset/font/$1 [NC,QSA,END]
+RewriteRule ^css\/(.*)$ /core/asset/css/$1 [NC,QSA,END]
+RewriteRule ^js\/(.*)$ /core/asset/script/$1 [NC,QSA,END]
+
+
+
+
+
 #REWRITE - for APP
 #[sub.domain.com/app/ → ignite.php?oproject=sub&olink=app&oapp=index]
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
