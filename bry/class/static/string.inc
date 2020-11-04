@@ -6,13 +6,13 @@
  */
 class oString {
 	//IS • Returns TRUE/FALSE if input is a string
-	public static function Is($i){
+	public static function is($i){
 		return is_string($i);
 	}
 
 
 	//IsEmpty • Returns TRUE/FALSE if variable is empty or not
-	public static function IsEmpty($i){
+	public static function is_empty($i){
 		if(!isset($i)){return true;}
 		else {
 			if(is_array($i)){
@@ -28,7 +28,7 @@ class oString {
 
 
 	//IN • Returns TRUE/FALSE if needle is found in string
-	public static function In($string, $needle, $case=false){
+	public static function in($string, $needle, $case=false){
 		if($case === true){#case is sensitive
 			if(strpos($string, $needle) !== false){
 				return true;
@@ -43,8 +43,8 @@ class oString {
 	}
 
 
-	//SPACE TO • Substitute space with value(s) in a string and vice-versa
-	public static function SpaceTo($string, $value, $inverse=false){
+	//SPACE • Substitute space with value(s) in a string and vice-versa
+	public static function space($string, $value, $inverse=false){
 		if($inverse === true){return str_replace($value, ' ', $string);}
 		return preg_replace('/\s+/', $value, $string);
 	}
@@ -52,8 +52,8 @@ class oString {
 
 
 	//TO • Substitute a character|string in a string and vice-versa
-	public static function To($string, $search, $substitute, $occurence='iAll', $case=false){
-		if(self::In($string, $search, $case) === false){#return STRING if search NOT found
+	public static function to($string, $search, $substitute, $occurence='iAll', $case=false){
+		if(self::in($string, $search, $case) === false){#return STRING if search NOT found
 			return $string;
 		}
 		else {#when SEARCH is found in STRING
@@ -76,7 +76,7 @@ class oString {
 
 
 	//CLEAN • Clean up STRING/ARRAY
-	public static function Clean($i, $tags=''){
+	public static function clean($i, $tags=''){
 		if(empty($tags)){
 		#To strip out javascript | HTML tags | Style tags | multi-line comments
 			$tags = array(
@@ -106,7 +106,7 @@ class oString {
 
 
 	//SLASH • Remove or add slash to string/array
-	public static function Slash($input, $r='iTrim'){
+	public static function slash($input, $r='iTrim'){
 		if($r == 'iTrim'){
 			if(!is_array($input)){
 				$o = '';
@@ -133,7 +133,7 @@ class oString {
 
 
 	//BLUR • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
-	public static function Blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
+	public static function blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
 		$o = $string;
 		$words = explode(" ", $string);
 		if(!is_array($lib)){
@@ -143,7 +143,7 @@ class oString {
 		#TODO ~ check for words with special characters - [fuck. fuck_ fuck* fuck/]
 		foreach ($words as $word){
 			if(in_array(strtolower($word), array_map('strtolower', $lib))){
-				$o = self::To($o, $word, $blur , 'iAll', $case);
+				$o = self::to($o, $word, $blur , 'iAll', $case);
 			}
 		}
 		return $o;
@@ -151,12 +151,12 @@ class oString {
 
 
 
-	//TRIM EDGE • Trim edges or character(s) from string
-	public static function TrimEdge($string='', $v=''){
+	//CROP • Trim edges or character(s) from string
+	public static function crop($string='', $v=''){
 		if(!empty($string)){
 			$o = trim($string);
 			$o = preg_replace('/\s+/', '', $o);
-			if(self::IsEmpty($v) === false){
+			if(self::is_empty($v) === false){
 				$o = trim($o, $v);
 			}
 			return $o;
@@ -167,8 +167,8 @@ class oString {
 
 
 	//NTH • Trim edges or character(s) from string
-	public static function Nth($string='', $nth=''){ #nth is position IE value has to be numeric
-		if(self::IsEmpty($string) === false && self::IsEmpty($nth) === false){
+	public static function nth($string='', $nth=''){ #nth is position IE value has to be numeric
+		if(self::is_empty($string) === false && self::is_empty($nth) === false){
 			$length = strlen($string);
 			if($nth<=$length){
 				$nth = (int)$nth -1;
@@ -181,7 +181,7 @@ class oString {
 
 
 	//BEFORE • Return false OR value before first occurrence character|string if found
-	public static function Before($string, $search, $strip=true){
+	public static function before($string, $search, $strip=true){
 		$pos = strpos($string, $search);
 		if($pos && $pos != 0){$o = substr($string, 0, $pos);}
 		if($strip !== true){$o = $o.$search;}
@@ -192,12 +192,12 @@ class oString {
 
 
 	//AFTER • Return false OR value after first character|string if found
-	public static function After($string, $search, $strip=true, $occurence='iFirst'){
+	public static function after($string, $search, $strip=true, $occurence='iFirst'){
 		$found = strstr($string, $search);
 		if($found){
 			$o = $found;
 			if($strip === true){
-				$o = self::To($o, $search, '', $occurence);
+				$o = self::to($o, $search, '', $occurence);
 			}
 		}
 		if(!empty($o)){return $o;}
@@ -206,8 +206,8 @@ class oString {
 
 
 	//MATCH •
-	public static function Match($string='', $comparison='', $absolute=false){
-		if(!self::IsEmpty($string)  && !self::IsEmpty($comparison)){
+	public static function match($string='', $comparison='', $absolute=false){
+		if(!self::is_empty($string)  && !self::is_empty($comparison)){
 			if($absolute === true){
 				if($string === $comparison){return true;}
 			}
