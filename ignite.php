@@ -74,7 +74,7 @@ oFile::Inc(oSTATIC.'server.inc');
 oFile::Inc(oSTATIC.'url.inc');
 oFile::Inc(oSTATIC.'device.inc');
 oFile::Inc(oSTATIC.'currency.inc');
-oFile::Inc(oSTATIC.'sanitize.inc');
+// oFile::Inc(oSTATIC.'sanitize.inc');
 oFile::Inc(oSTATIC.'format.inc');
 oFile::Inc(oSTATIC.'input.inc');
 oFile::Inc(oSTATIC.'crypt.inc');
