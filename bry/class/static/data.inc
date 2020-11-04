@@ -5,9 +5,18 @@
  * oData ~ Summary of Class • DEPENDENCY»
  */
 class oData {
+	//oEXIT • Report Error & Exit Program
+	private function oExit($i='', $v=''){
+		if(!empty($i)){return oExit::run('oData', $i, $v);}
+		return false;
+	}
 
-	public static function ToObject($i=''){
-		if(!oString::IsEmpty($i)){
+
+
+
+
+	public static function to_object($i=''){
+		if(!oString::is_empty($i)){
 			if(is_array($i)){
 				$o = new stdClass();
 				foreach($i as $key => $value){$o->$key = $value;}
@@ -21,9 +30,9 @@ class oData {
 
 
 
-	public static function To($i='', $v='iObject'){
+	public static function to($i='', $v='iObject'){
 		if(!empty($i)){
-			if($v == 'iObject'){return self::ToObject($i);}
+			if($v == 'iObject'){return self::to_object($i);}
 		}
 		return false;
 	}
@@ -43,4 +52,25 @@ class oData {
 	}
 
 
+
+
+	//SIMPLIFY • Interpret or Convert Data to Meaning
+	public static function simplify($i, $v=''){
+		if(!ostring::is_empty($i) && !ostring::is_empty($v)){
+			if(!is_array($i)){
+			}
+			else {
+					#SEX/GENDER
+				if($v == 'iGender' || $v == 'iSex'){
+					if($i == 1){$o = 'male';}
+					elseif($i == 'male'){$o = 1;}
+					elseif($i == 2){$o = 'female';}
+					elseif($i == 'female'){$o = 2;}
+				}
+			}
+		}
+
+		if(isset($o) && !ostring::is_empty($o)){return $o;}
+		return self::oExit(__FUNCTION__,'requires all argument');
+	}
 } // EndOfClass - oData
