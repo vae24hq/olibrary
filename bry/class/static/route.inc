@@ -53,7 +53,7 @@ class oRoute {
 
 
 	//APP •
-	public static function APP($i='iGet'){
+	public static function app($i='iGet'){
 		if(self::api() === false && self::URI() == 'app'){
 			if(!empty($_GET['oapp'])){$o = $_GET['oapp'];}
 		}
@@ -65,8 +65,8 @@ class oRoute {
 
 
 	//SITE •
-	public static function Site($i='iGet'){
-		if(!oRoute::api() && !oRoute::APP()){
+	public static function site($i='iGet'){
+		if(!oRoute::api() && !oRoute::app()){
 			if($i == 'iGet'){$o = self::source();}
 		}
 		if(!empty($o)){return strtolower($o);}
@@ -77,11 +77,11 @@ class oRoute {
 
 
 	//ROUTE • Get & Return Route
-	public static function Route(){
+	public static function route(){
 		$api = self::api();
 		if($api !== false && $api != ''){$o = $api;}
 		else {
-			$app = self::APP();
+			$app = self::app();
 			if($app !== false && $app != ''){$o = $app;}
 			else {
 				$o = self::URI();
@@ -94,7 +94,7 @@ class oRoute {
 
 
 	//KEY •
-	public static function Key($i='iGet'){
+	public static function key($i='iGet'){
 		if($i == 'iGet'){
 			if(!empty($_GET['okey'])){$o = $_GET['okey'];}
 		}
@@ -106,8 +106,8 @@ class oRoute {
 
 
 	//STATE •
-	public static function State(){
-		$o = self::Route();
+	public static function state(){
+		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
 			$o = oString::After($o, '-', true, 'iFirst');
 			if(!oString::is_empty($o)){return $o;}
@@ -119,12 +119,12 @@ class oRoute {
 
 
 	//ACTION •
-	public static function Action(){
-		$o = self::Route();
+	public static function action(){
+		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
 			$o = oString::After($o, '/', true, 'iFirst');
 			#Remove *state from $o
-			$state = self::State();
+			$state = self::state();
 			if(!oString::is_empty($state) && $state != 'default'){
 				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
@@ -137,16 +137,16 @@ class oRoute {
 
 
 	//MODEL •
-	public static function Model(){
-		$o = self::Route();
+	public static function model(){
+		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
 			#Remove *state from $o
-			$state = self::State();
+			$state = self::state();
 			if(!oString::is_empty($state) && $state != 'default'){
 				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
 			#Remove *action from $o
-			$action = self::Action();
+			$action = self::action();
 			if(!oString::is_empty($action) && $action != 'default'){
 				$o = oString::to($o, '/'.$action, '', 'iFirst');
 			}
@@ -159,9 +159,9 @@ class oRoute {
 
 
 	//PAGE • [page or view for site ONLY ~ to be used where not api/app]
-	public static function Page($i='iGet'){
+	public static function page($i='iGet'){
 		if(!empty($i)){
-			if($i == 'iGet'){$o = self::Route();}
+			if($i == 'iGet'){$o = self::route();}
 			$o = oString::to($o, '/', '-');
 			if(!oString::is_empty($o)){return $o;}
 		}
@@ -172,7 +172,7 @@ class oRoute {
 
 
 	//PATH • return path
-	public static function Path($i='init', $flex=false){
+	public static function path($i='init', $flex=false){
 		$o = oCORE.'o'.self::source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
 		if($i == 'setting'){$o .= oCONFIG.'setting.inc';}
