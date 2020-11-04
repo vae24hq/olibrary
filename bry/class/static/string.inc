@@ -11,7 +11,10 @@ class oString {
 	}
 
 
-	//IsEmpty • Returns TRUE/FALSE if variable is empty or not
+
+
+
+	//IS_EMPTY • Returns TRUE/FALSE if variable is empty or not
 	public static function is_empty($i){
 		if(!isset($i)){return true;}
 		else {
@@ -25,6 +28,9 @@ class oString {
 		}
 		return false;
 	}
+
+
+
 
 
 	//IN • Returns TRUE/FALSE if needle is found in string
@@ -43,11 +49,16 @@ class oString {
 	}
 
 
+
+
+
 	//SPACE • Substitute space with value(s) in a string and vice-versa
 	public static function space($string, $value, $inverse=false){
 		if($inverse === true){return str_replace($value, ' ', $string);}
 		return preg_replace('/\s+/', $value, $string);
 	}
+
+
 
 
 
@@ -73,6 +84,9 @@ class oString {
 			}
 		}
 	}
+
+
+
 
 
 	//CLEAN • Clean up STRING/ARRAY
@@ -105,6 +119,9 @@ class oString {
 	}
 
 
+
+
+
 	//SLASH • Remove or add slash to string/array
 	public static function slash($input, $r='iTrim'){
 		if($r == 'iTrim'){
@@ -132,6 +149,8 @@ class oString {
 
 
 
+
+
 	//BLUR • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
 	public static function blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
 		$o = $string;
@@ -151,6 +170,8 @@ class oString {
 
 
 
+
+
 	//CROP • Trim edges or character(s) from string
 	public static function crop($string='', $v=''){
 		if(!empty($string)){
@@ -163,6 +184,8 @@ class oString {
 		}
 		return false;
 	}
+
+
 
 
 
@@ -180,6 +203,8 @@ class oString {
 
 
 
+
+
 	//BEFORE • Return false OR value before first occurrence character|string if found
 	public static function before($string, $search, $strip=true){
 		$pos = strpos($string, $search);
@@ -188,6 +213,8 @@ class oString {
 		if(isset($o)){return $o;}
 		return false;
 	}
+
+
 
 
 
@@ -205,6 +232,9 @@ class oString {
 	}
 
 
+
+
+
 	//MATCH •
 	public static function match($string='', $comparison='', $absolute=false){
 		if(!self::is_empty($string)  && !self::is_empty($comparison)){
@@ -217,7 +247,4 @@ class oString {
 			return false;
 		}
 	}
-
-
-
 } // EndOfClass - oString
