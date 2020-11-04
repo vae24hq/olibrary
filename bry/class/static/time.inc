@@ -6,7 +6,7 @@
  */
 class oTime {
 	//MICRO • Set/Get Timezone
-	public static function Zone($i='iDomestic'){
+	public static function zone($i='iDomestic'){
 		if(!empty($i)){
 			if($i == 'iGet'){
 				return date_default_timezone_get();
@@ -27,8 +27,10 @@ class oTime {
 
 
 
+
+
 	//MICRO •
-	public static function Micro(){
+	public static function micro(){
 		list($usec, $sec) = explode(" ", microtime());
 		return ((float)$usec + (float)$sec);
 	}
@@ -36,15 +38,16 @@ class oTime {
 
 
 
-	public static function StampValid($timestamp){
+
+	public static function is_stamp($timestamp){
 		$check = (is_int($timestamp) OR is_float($timestamp)) ? $timestamp : (string) (int) $timestamp;
-		return  ($check === $timestamp) AND ( (int) $timestamp <=  PHP_INT_MAX) AND ( (int) $timestamp >= ~PHP_INT_MAX);
+		return($check === $timestamp) AND ((int)$timestamp <=  PHP_INT_MAX) AND ( (int) $timestamp >= ~PHP_INT_MAX);
 	}
 
 
 
 	//STAMP • Create timestamp from string
-	public static function Stamp($time='now'){
+	public static function stamp($time='now'){
 		if(!empty($time)){
 			$o = strtotime($time);
 			if(!$o){
@@ -58,15 +61,15 @@ class oTime {
 
 
 	//CREATE • Create time [Returns formated time or timestamp]
-	public static function Create($fmt='iTime', $time='now'){
+	public static function create($fmt='iTime', $time='now'){
 		if(!empty($fmt) && !empty($time)){
 			if($time == 'now'){$time = time();}
-			elseif(!is_int($time) && !is_numeric($time)){$time = self::Stamp($time);}
+			elseif(!is_int($time) && !is_numeric($time)){$time = self::stamp($time);}
 
 			if($fmt == 'iTime'){$fmt = 'h:i:s A';}
 			elseif($fmt == 'iSQLTime'){$fmt = 'h:i:s';}
 			elseif($fmt == 'iUnix'){return $t;}
-			elseif($fmt == 'iDate'){return self::Date($fmt, $time);}
+			elseif($fmt == 'iDate'){return self::date($fmt, $time);}
 			return date($fmt, $time);
 		}
 		return false;
@@ -74,14 +77,15 @@ class oTime {
 
 
 
+
 	//DATE • Create date [Returns formated date]
-	public static function Date($fmt='iDate', $date='today'){
+	public static function date($fmt='iDate', $date='today'){
 		if(!empty($fmt) && !empty($date)){
 			if($date == 'today' || $date == 'now'){$date = time();}
-			elseif(!is_int($date) && !is_numeric($date)){$date = self::Stamp($date);}
+			elseif(!is_int($date) && !is_numeric($date)){$date = self::stamp($date);}
 
 			if($fmt == 'iDate'){$fmt = 'l, F d, Y';}
-			elseif($fmt == 'iTime'){return self::Create($fmt, $date);}
+			elseif($fmt == 'iTime'){return self::create($fmt, $date);}
 			elseif($fmt == 'iDateTime'){$fmt = 'l, F d, Y h:i:s A';}
 			elseif($fmt == 'iReport'){$fmt = 'd/m/Y h:i:s A';}
 			elseif($fmt == 'iDateR1'){$fmt = 'd/m/Y';}
@@ -100,8 +104,9 @@ class oTime {
 
 
 
+
 	//AGE • Returns age from date of birth in years
-	public static function Age($i=''){
+	public static function age($i=''){
 		if(!empty($i)){
 			#@TODO ~ make sure input match format (YYYY-MM-DD)
 			$time = time(); $day = date("d", $time); $month = date("m", $time); $year = date("Y", $time);
@@ -119,8 +124,10 @@ class oTime {
 
 
 
-	//SECOND TO • Convert seconds to min, hour & day
-	public static function SecondsTo($sec, $to='iMinute'){
+
+
+	//SECONDS • Convert seconds to min, hour & day
+	public static function seconds($sec, $to='iMinute'){
 		if(!empty($sec) && !empty($to)){
 			if($to == 'iMinute'){$o = ($sec / 60);}
 			if($to == 'iHour'){$o = ($sec / 60) / 60;}
@@ -132,8 +139,9 @@ class oTime {
 
 
 
-	//MINUTE TO • Convert minutes to seconds, hour & day
-	public static function MinutesTo($min, $to='iSecond'){
+
+	//MINUTES • Convert minutes to seconds, hour & day
+	public static function minutes($min, $to='iSecond'){
 		if(!empty($min) && !empty($to)){
 			if($to == 'iSecond'){$o = ($min * 60);}
 			if($to == 'iHour'){$o = ($min / 60);}
@@ -145,8 +153,9 @@ class oTime {
 
 
 
+
 	//HOUR TO • Convert hours to sec, min & day
-	public static function HoursTo($hr, $to='iDay'){
+	public static function hours($hr, $to='iDay'){
 		if(!empty($hr) && !empty($to)){
 			if($to == 'iSecond'){$o = ($hr * 60) * 60;}
 			if($to == 'iMinute'){$o = $hr * 60;}
@@ -158,8 +167,9 @@ class oTime {
 
 
 
+
 	//DAY TO • Convert days to sec, min & hours
-	public static function DaysTo($day, $to='iHour'){
+	public static function days($day, $to='iHour'){
 		if(!empty($day) && !empty($to)){
 			if($to == 'iSecond'){$o = (($day * 24) * 60) * 60;}
 			if($to == 'iMinute'){$o = ($day * 24) * 60;}
@@ -171,21 +181,12 @@ class oTime {
 
 
 
+
 	//DIFFERENCE • Calculate time difference - TODO - upgrade and add features
-	public static function Difference($past='', $future='', $fmt='%a days'){
+	public static function difference($past='', $future='', $fmt='%a days'){
 		$past = new DateTime($past);
 		$future = new DateTime($future);
 		$date = $past->diff($future);
 		return $date->format($fmt);
 	}
-
-
-
-
-
-
-
-
-
-
 } // EndOfClass - oTime
