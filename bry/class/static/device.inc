@@ -6,7 +6,7 @@
  */
 class oDevice {
 	//ISVALID • Return TRUE/FALSE on device type
-	public static function IsValid($type=''){
+	public static function validate($type=''){
 		if(!empty($type)){
 			$types = array('iDesktop', 'iTablet', 'iPhone');
 			if(!empty($type) && in_array($type, $types)){return true;}
@@ -15,31 +15,40 @@ class oDevice {
 	}
 
 
+
+
+
 	//IDENTIFY • Identify the device
-	public static function Identify(){
+	public static function identify(){
 		$device = new Mobile_Detect;
 		return ($device->isMobile() ? ($device->isTablet() ? 'iTablet' : 'iPhone') : 'iDesktop');
 	}
 
 
+
+
+
 	//AS • Set device type
-	public static function As($to='iRequest'){
+	public static function as($to='iRequest'){
 		if($to=='iRequest'){
 			if(isset($_REQUEST['v']) && !empty($_REQUEST['v'])){
-				if(self::IsValid($_REQUEST['v'])){return $_SESSION['DeviceIsA'] = $_REQUEST['v'];}
+				if(self::validate($_REQUEST['v'])){return $_SESSION['DeviceIsA'] = $_REQUEST['v'];}
 				elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
-				else {return $_SESSION['DeviceIsA'] = self::Identify();}
+				else {return $_SESSION['DeviceIsA'] = self::identify();}
 			}
 			elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
-			else {return $_SESSION['DeviceIsA'] = self::Identify();}
+			else {return $_SESSION['DeviceIsA'] = self::identify();}
 		}
-		elseif(self::IsValid($to)){return $_SESSION['DeviceIsA'] = $to;}
+		elseif(self::validate($to)){return $_SESSION['DeviceIsA'] = $to;}
 		else {return false;}
 	}
 
 
+
+
+
 	//IS • Get device type
-	public static function Is(){return self::As();}
-
-
+	public static function is(){
+		return self::as();
+	}
 } // EndOfClass - oDevice
