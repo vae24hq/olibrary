@@ -6,7 +6,7 @@
  */
 class oServer {
 	//IP VALIDATION • Get user IP
-	public static function IsIP($i=''){
+	public static function validateIP($i=''){
 		if(!empty($i)){
 			$o = ip2long($i);
 			if($o !== false && $o !== -1){
@@ -27,16 +27,18 @@ class oServer {
 
 
 
+
+
 	//REMOTE • Get user IP
-	public static function RemoteIP(){
+	public static function remoteIP(){
 		if(!empty($_SERVER['HTTP_CLIENT_IP'])){$o = $_SERVER['HTTP_CLIENT_IP'];} #IP from share Internet
 		elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){$o = $_SERVER['HTTP_X_FORWARDED_FOR'];} #IP pass from proxy
 		else {$o = $_SERVER['REMOTE_ADDR'];} #IP from remote server
 		return $o;
 	}
 
-	public static function RemoteIP2(){
-		if(!empty($_SERVER['HTTP_CLIENT_IP']) && Self::IsIP($_SERVER['HTTP_CLIENT_IP'])){
+	public static function remoteIP2(){
+		if(!empty($_SERVER['HTTP_CLIENT_IP']) && Self::validateIP($_SERVER['HTTP_CLIENT_IP'])){
 			return $_SERVER['HTTP_CLIENT_IP'];
 		}
 
@@ -44,25 +46,25 @@ class oServer {
 			if(strpos($_SERVER['HTTP_X_FORWARDED_FOR'], ',') !== FALSE){
 				$IPs = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
 				foreach($IPs as $IP){
-					if(Self::IsIP($IP)){return $IP;}
+					if(Self::validateIP($IP)){return $IP;}
 				}
 			} else {
-				if(Self::IsIP($_SERVER['HTTP_X_FORWARDED_FOR'])){
+				if(Self::validateIP($_SERVER['HTTP_X_FORWARDED_FOR'])){
 					return $_SERVER['HTTP_X_FORWARDED_FOR'];
 				}
 			}
 		}
 
-		if(!empty($_SERVER['HTTP_X_FORWARDED']) && Self::IsIP($_SERVER['HTTP_X_FORWARDED'])){
+		if(!empty($_SERVER['HTTP_X_FORWARDED']) && Self::validateIP($_SERVER['HTTP_X_FORWARDED'])){
 			return $_SERVER['HTTP_X_FORWARDED'];
 		}
-		if(!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && Self::IsIP($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'])){
+		if(!empty($_SERVER['HTTP_X_CLUSTER_CLIENT_IP']) && Self::validateIP($_SERVER['HTTP_X_CLUSTER_CLIENT_IP'])){
 			return $_SERVER['HTTP_X_CLUSTER_CLIENT_IP'];
 		}
-		if(!empty($_SERVER['HTTP_FORWARDED_FOR']) && Self::IsIP($_SERVER['HTTP_FORWARDED_FOR'])){
+		if(!empty($_SERVER['HTTP_FORWARDED_FOR']) && Self::validateIP($_SERVER['HTTP_FORWARDED_FOR'])){
 			return $_SERVER['HTTP_FORWARDED_FOR'];
 		}
-		if(!empty($_SERVER['HTTP_FORWARDED']) && Self::IsIP($_SERVER['HTTP_FORWARDED'])){
+		if(!empty($_SERVER['HTTP_FORWARDED']) && Self::validateIP($_SERVER['HTTP_FORWARDED'])){
 			return $_SERVER['HTTP_FORWARDED'];
 		}
 
@@ -71,23 +73,23 @@ class oServer {
 
 
 
+
+
 	//INFO •
-	public static function Info($i='', $r='DomainIP'){
+	public static function info($i='', $r='DomainIP'){
 		if(!empty($i)){
 			$i = strtolower($i);
 			if($i == 'php_ver'){return phpversion();}
 			elseif($i == 'apache_ver'){return apache_get_version();}
-			elseif($i == 'ip'){return self::RemoteIP();}
+			elseif($i == 'ip'){return self::remoteIP();}
 			else {
 				if(!empty($r)){
 					if($r == 'DomainIPs'){return gethostbynamel($i);}
 					elseif($r == 'DomainIP'){return gethostbyname($i);}
 					elseif($r == 'IPDomain'){return gethostbyaddr($i);}
-					elseif($r == 'IsIP'){return self::IsIP($i);}
+					elseif($r == 'IsIP'){return self::validateIP($i);}
 				}
 			}
 		}
 	}
-
-
 } // EndOfClass - oServer
