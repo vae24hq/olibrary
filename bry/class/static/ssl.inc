@@ -36,7 +36,7 @@ class oSSL {
 				if($permant === true){
 					header('HTTP/1.1 301 Moved Permanently');
 				}
-				return oRedirect::ExitTo($o);
+				return oRedirect::oExit($o);
 			}
 		}
 	}
