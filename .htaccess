@@ -116,6 +116,9 @@ RewriteRule ^favicon\.png$ /core/asset/icon/favicon.png [NC,QSA,END]
 
 
 
+RewriteRule ^oredirect\/(.*)$ /index.php?olink=oredirect&url=$1 [NC,QSA,END]
+
+
 
 
 #REWRITE - virtual directory
@@ -126,7 +129,7 @@ RewriteRule ^cloud\/(.*)$ /upload/$1 [NC,QSA,END]
 RewriteRule ^media\/(.*)$ /core/asset/media/$1 [NC,QSA,END]
 		RewriteRule ^audio\/(.*)$ /core/asset/media/audio/$1 [NC,QSA,END]
 		RewriteRule ^icon\/(.*)$ /core/asset/media/icon/$1 [NC,QSA,END]
-		RewriteRule ^image\/(.*)$ /core/asset/media/image/$1 [NC,QSA,END]
+		RewriteRule ^grafix\/(.*)$ /core/asset/media/grafix/$1 [NC,QSA,END]
 		RewriteRule ^video\/(.*)$ /core/asset/media/video/$1 [NC,QSA,END]
 		RewriteRule ^document\/(.*)$ /core/asset/media/document/$1 [NC,QSA,END]
 RewriteRule ^font\/(.*)$ /core/asset/font/$1 [NC,QSA,END]
@@ -163,15 +166,15 @@ RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=app&olink=app&oapp=$1 [NC,QSA,E
 
 #REWRITE - for SUB DOMAIN
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$))$ /index.php?oproject=default&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=default&olink=index [NC,QSA,END]
 
 
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!image\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$).*)$ /index.php?oproject=default&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=default&olink=$1 [NC,QSA,END]
 
 
 
