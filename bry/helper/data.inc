@@ -5,24 +5,14 @@
  * oData ~ Summary of Class • DEPENDENCY»
  */
 class oData {
-	private static $Instance;
-
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
+	//oEXIT • Report Error & Exit Program
+	private function oExit($i='', $v=''){
+		if(!empty($i)){return oExit::run('oData', $i, $v);}
+		return false;
 	}
+
+
+
 
 
 	//GUID • Auto populate queryset with puid|euid|suid
@@ -36,4 +26,26 @@ class oData {
 	}
 
 
+
+
+
+	//SIMPLIFY • Interpret or Convert Data to Meaning
+	public static function simplify($i, $v=''){
+		if(!ostring::is_empty($i) && !ostring::is_empty($v)){
+			if(!is_array($i)){
+			}
+			else {
+					#SEX/GENDER
+				if($v == 'iGender' || $v == 'iSex'){
+					if($i == 1){$o = 'male';}
+					elseif($i == 'male'){$o = 1;}
+					elseif($i == 2){$o = 'female';}
+					elseif($i == 'female'){$o = 2;}
+				}
+			}
+		}
+
+		if(isset($o) && !ostring::is_empty($o)){return $o;}
+		return self::oExit(__FUNCTION__,'requires all argument');
+	}
 } // EndOfClass - oData
