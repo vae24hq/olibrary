@@ -31,7 +31,7 @@ require 'ao.lib.inc';
 
 #INITIALIZE PROJECT (based on a specific project)
 // oFile::Inc(oRoute::Path('init', true), 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
-oFile::Inc(oRoute::Path('init'), 'iRequired');
+#oFile::Inc(oRoute::Path('init'), 'iRequired');
 
 
 #REDIRECT URL ~ @TODO
@@ -50,6 +50,4 @@ oFile::Inc(oRoute::Path('init'), 'iRequired');
 // }
 
 
-#DEVBOX FILE - for development, demo & testing
-oFile::Inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.php', 'isOptional');
 ?>
