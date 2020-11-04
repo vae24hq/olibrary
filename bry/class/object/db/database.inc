@@ -149,7 +149,7 @@ class oDatabase {
 
 
 
-	//CREATEDB • Create [database|table]
+	//CREATE • Create [database|table]
 	public function create($i='', $v='iDB'){
 		return $this->dbco->create($i, $v);
 	}
@@ -158,7 +158,7 @@ class oDatabase {
 
 
 
-	//USEDB • Select Database For Use
+	//USE • Select Database For Use
 	public function use($i=''){
 		return $this->dbco->use($i);
 	}
@@ -167,36 +167,44 @@ class oDatabase {
 
 
 
+	//DELETE • Delete [database|table]
+	public function delete($i='', $v='iDB'){
+		return $this->dbco->delete($i, $v);
+	}
 
 
 
 
 
+	//FKEY • Foreign Key Check (on/off)
+	public function FK($i=true){
+		return $this->dbco->FK($i);
+	}
+
+
+
+
+	//RESETAI • Reset Auto Increment ID
+	public function reset($table='', $column='auid'){
+		return $this->dbco->reset($table, $column);
+	}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+	//WIPETB • Clear/Truncate Table
+	public function wipe($name='', $fkey=''){
+		return $this->dbco->wipe($name, $fkey);
+	}
 
 
 
 
 
 	//RUNSQL • Perform SQL Query
-	public function runSQL($q='', $v='iFetch', $debug=false){
-		return $this->dbco->runSQL($q, $v, $debug);
+	public function SQL($q='', $v='iFetch', $debug=false){
+		return $this->dbco->SQL($q, $v, $debug);
 	}
 
 
@@ -204,98 +212,16 @@ class oDatabase {
 
 
 	//RUNSQLPREP • Perform SQL Prepared Query
-	public function runSQLPrep($q='', $v='iFetch', $debug=false){
-		return $this->dbco->runSQLPrep($q, $v, $debug);
+	public function SQLPrep($q='', $v='iFetch', $debug=false){
+		return $this->dbco->SQLPrep($q, $v, $debug);
 	}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//USEDB • Select Database For Use
-	public function useDB($name=''){
-		return $this->dbco->useDB($name);
-	}
-
-
-
-
-
-	//DELETEDB • Delete Database
-	public function deleteDB($name=''){
-		return $this->dbco->deleteDB($name);
-	}
-
-
-
-
-
-	//CREATETB • Create Table
-	public function createTB($name='', $engine='INNODB'){
-		return $this->dbco->createTB($name, $engine);
-	}
-
-
-
-
-	//FKEY • Foreign Key Check (on/off)
-	public function checkFK($i=true){
-		return $this->dbco->checkFK($i);
-	}
-
-
-
-
-
-	//ISTB • Check If Table Exists
-	public function isTB($name=''){
-		return $this->dbco->isTB($name);
-	}
-
-
-
-
-
-	//RESETAI • Reset Auto Increment ID
-	public function resetAI($table='', $column='auid'){
-		return $this->dbco->resetAI($table, $column);
-	}
-
-
-
-	//WIPETB • Clear/Truncate Table
-	public function wipeTB($name='', $fkey=''){
-		return $this->dbco->wipeTB($name, $fkey);
-	}
-
-
-
-
-
-	//DELETETB • Delete Table
-	public function deleteTB($name='', $fkey=''){
-		return $this->dbco->deleteTB($name, $fkey);
-	}
-
-
-
-
-
-	//RECORDIS • Check If Record Exists
-	public function recordIs($table, $column='', $value='', $symbol='='){
-		return $this->dbco->recordIs($table, $column, $value, $symbol);
+	//RECORD • Check If Record Exists and return TRUE/FALSE or Record
+	public function record($table, $column='', $value='', $symbol='=', $return='iBool', $debug=false){
+		return $this->dbco->record($table, $column, $value, $symbol, $return='iBool', $debug);
 	}
 
 
@@ -306,6 +232,4 @@ class oDatabase {
 	public function disconnect(){
 		return $this->dbco->disconnect();
 	}
-
-
 } // EndOfClass - oDatabase
