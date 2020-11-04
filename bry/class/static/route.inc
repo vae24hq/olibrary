@@ -5,9 +5,8 @@
  * oRoute ~ Routing utility • DEPENDENCY»
  */
 class oRoute {
-
 	//SOURCE • handling project's source
-	public static function Source($i='iGet'){
+	public static function source($i='iGet'){
 		if(!empty($i)){
 			if($i == 'iGet'){
 				if(!empty($_GET['oproject'])){$o = $_GET['oproject'];}
@@ -27,8 +26,9 @@ class oRoute {
 
 
 
+
 	//URI •
-	public static function URI($i='iGet'){
+	public static function uri($i='iGet'){
 		if($i == 'iGet'){
 			if(!empty($_GET['olink'])){$o = $_GET['olink'];}
 			else {$o = 'index';}
@@ -39,8 +39,9 @@ class oRoute {
 
 
 
+
 	//API •
-	public static function API($i='iGet'){
+	public static function api($i='iGet'){
 		if(self::URI() == 'api'){
 			if(!empty($_GET['oapi'])){$o = $_GET['oapi'];}
 		}
@@ -50,9 +51,10 @@ class oRoute {
 
 
 
+
 	//APP •
 	public static function APP($i='iGet'){
-		if(self::API() === false && self::URI() == 'app'){
+		if(self::api() === false && self::URI() == 'app'){
 			if(!empty($_GET['oapp'])){$o = $_GET['oapp'];}
 		}
 		if(!empty($o)){return strtolower($o);}
@@ -61,10 +63,11 @@ class oRoute {
 
 
 
+
 	//SITE •
 	public static function Site($i='iGet'){
-		if(!oRoute::API() && !oRoute::APP()){
-			if($i == 'iGet'){$o = self::Source();}
+		if(!oRoute::api() && !oRoute::APP()){
+			if($i == 'iGet'){$o = self::source();}
 		}
 		if(!empty($o)){return strtolower($o);}
 		return false;
@@ -72,9 +75,10 @@ class oRoute {
 
 
 
+
 	//ROUTE • Get & Return Route
 	public static function Route(){
-		$api = self::API();
+		$api = self::api();
 		if($api !== false && $api != ''){$o = $api;}
 		else {
 			$app = self::APP();
@@ -85,6 +89,7 @@ class oRoute {
 		}
 		return $o;
 	}
+
 
 
 
@@ -99,53 +104,57 @@ class oRoute {
 
 
 
+
 	//STATE •
 	public static function State(){
 		$o = self::Route();
-		if(!oString::IsEmpty($o) && $o != 'index'){
+		if(!oString::is_empty($o) && $o != 'index'){
 			$o = oString::After($o, '-', true, 'iFirst');
-			if(!oString::IsEmpty($o)){return $o;}
+			if(!oString::is_empty($o)){return $o;}
 		}
 		return 'default';
 	}
+
 
 
 
 	//ACTION •
 	public static function Action(){
 		$o = self::Route();
-		if(!oString::IsEmpty($o) && $o != 'index'){
+		if(!oString::is_empty($o) && $o != 'index'){
 			$o = oString::After($o, '/', true, 'iFirst');
 			#Remove *state from $o
 			$state = self::State();
-			if(!oString::IsEmpty($state) && $state != 'default'){
+			if(!oString::is_empty($state) && $state != 'default'){
 				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
-			if(!oString::IsEmpty($o)){return $o;}
+			if(!oString::is_empty($o)){return $o;}
 		}
 		return 'default';
 	}
 
 
 
+
 	//MODEL •
 	public static function Model(){
 		$o = self::Route();
-		if(!oString::IsEmpty($o) && $o != 'index'){
+		if(!oString::is_empty($o) && $o != 'index'){
 			#Remove *state from $o
 			$state = self::State();
-			if(!oString::IsEmpty($state) && $state != 'default'){
+			if(!oString::is_empty($state) && $state != 'default'){
 				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
 			#Remove *action from $o
 			$action = self::Action();
-			if(!oString::IsEmpty($action) && $action != 'default'){
+			if(!oString::is_empty($action) && $action != 'default'){
 				$o = oString::to($o, '/'.$action, '', 'iFirst');
 			}
-			if(!oString::IsEmpty($o)){return $o;}
+			if(!oString::is_empty($o)){return $o;}
 		}
 		return 'index';
 	}
+
 
 
 
@@ -154,7 +163,7 @@ class oRoute {
 		if(!empty($i)){
 			if($i == 'iGet'){$o = self::Route();}
 			$o = oString::to($o, '/', '-');
-			if(!oString::IsEmpty($o)){return $o;}
+			if(!oString::is_empty($o)){return $o;}
 		}
 		return false;
 	}
@@ -164,7 +173,7 @@ class oRoute {
 
 	//PATH • return path
 	public static function Path($i='init', $flex=false){
-		$o = oCORE.'o'.self::Source().DS;
+		$o = oCORE.'o'.self::source().DS;
 		if($i == 'init'){$o .= oROUTZR.'init.inc';}
 		if($i == 'setting'){$o .= oCONFIG.'setting.inc';}
 		if($i == 'utilizr'){$o .= oUTILIZR;}
@@ -174,19 +183,10 @@ class oRoute {
 			$o = strtolower($o);
 			#Default to main when file (resource) is unavailable
 			if($flex === true){
-				if(!oFile::Is($o)){$o = oString::to($o, 'o'.self::Source(), 'omain');}
+				if(!oFile::Is($o)){$o = oString::to($o, 'o'.self::source(), 'omain');}
 			}
 			return $o;
 		}
 		return false;
 	}
-
-
-
-	//REDIRECT • @TODO ~
-	public static function Redirect(){
-
-	}
-
-
 } // EndOfClass - oRoute
