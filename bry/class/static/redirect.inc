@@ -39,7 +39,7 @@ class oRedirect {
 
 
 	//EXIT • redirect & exit
-	public static function quit($link){
+	public static function oExit($link){
 		return self::to($link, 0, true);
 	}
 } // EndOfClass - oRedirect
