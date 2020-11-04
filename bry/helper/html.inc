@@ -2,40 +2,29 @@
 /**AO™ Library is a vanilla and evolving framework for developing websites, applications, and APIs using web technology.
  * Originator: Anthony O. Osawere - @iamodao - www.osawere.com  © 2020 | Apache License
  * ============================================================================================
- * oHTML ~ Summary of Class • DEPENDENCY»
+ * oHTML ~ HTML Helper • DEPENDENCY»
  */
 class oHTML {
-	private static $Instance;
-
-	//CONSTRUCT • Prevents multiple instantiation
-	private function __construct(){return;}
-
-	//CLONE • Prevent duplicate
-	private function __clone(){return;}
-
-	//INSTANTIATE • Return fresh instance
-	public static function Instantiate(){
-		if(is_null(self::$Instance)){
-			self::$Instance = new self();
-		}
-		return self::$Instance;
-	}
-
-	//METHOD • Describe method
-	public static function FuncName(){return;}
-
-	public static function Charset(){
+	public static function charset(){
 		if(device::is()=='desktop' && validate_ie('<', 9)){
-			$o ='<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+			$o ='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 		} else {$o ='<meta charset="utf-8">';}
 		echo $o."\n";
 	}
 
+
+
+
+
 	public static function xua_compatible(){
 		$o ='';
-		if(DEVELOPMENT_STAGE !='yeah'){$o ='<meta http-eqbaseuiv="X-UA-Compatible" content="IE=edge,chrome=1">'."\n";}
+		if(DEVELOPMENT_STAGE !='yeah'){$o ='<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">'."\n";}
 		echo $o;
 	}
+
+
+
+
 
 	public static function viewport(){
 		$o ='';
@@ -44,6 +33,4 @@ class oHTML {
 		}
 		echo $o;
 	}
-
-
 } // EndOfClass - oHTML
