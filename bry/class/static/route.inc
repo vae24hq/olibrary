@@ -119,7 +119,7 @@ class oRoute {
 			#Remove *state from $o
 			$state = self::State();
 			if(!oString::IsEmpty($state) && $state != 'default'){
-				$o = oString::To($o, '-'.$state, '', 'iFirst');
+				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
 			if(!oString::IsEmpty($o)){return $o;}
 		}
@@ -135,12 +135,12 @@ class oRoute {
 			#Remove *state from $o
 			$state = self::State();
 			if(!oString::IsEmpty($state) && $state != 'default'){
-				$o = oString::To($o, '-'.$state, '', 'iFirst');
+				$o = oString::to($o, '-'.$state, '', 'iFirst');
 			}
 			#Remove *action from $o
 			$action = self::Action();
 			if(!oString::IsEmpty($action) && $action != 'default'){
-				$o = oString::To($o, '/'.$action, '', 'iFirst');
+				$o = oString::to($o, '/'.$action, '', 'iFirst');
 			}
 			if(!oString::IsEmpty($o)){return $o;}
 		}
@@ -153,7 +153,7 @@ class oRoute {
 	public static function Page($i='iGet'){
 		if(!empty($i)){
 			if($i == 'iGet'){$o = self::Route();}
-			$o = oString::To($o, '/', '-');
+			$o = oString::to($o, '/', '-');
 			if(!oString::IsEmpty($o)){return $o;}
 		}
 		return false;
@@ -174,7 +174,7 @@ class oRoute {
 			$o = strtolower($o);
 			#Default to main when file (resource) is unavailable
 			if($flex === true){
-				if(!oFile::Is($o)){$o = oString::To($o, 'o'.self::Source(), 'omain');}
+				if(!oFile::Is($o)){$o = oString::to($o, 'o'.self::Source(), 'omain');}
 			}
 			return $o;
 		}
