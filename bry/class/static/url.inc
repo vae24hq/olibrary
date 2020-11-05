@@ -15,6 +15,35 @@ class oURL {
 
 
 
+	public static function name($link){
+		if(!empty($link)){
+			$o = $link;
+			$o = parse_url($o, PHP_URL_PATH);
+			$o = basename($o);
+			$o = oString::to($o, '.php', '', 'iLast');
+			$o = oString::to($o, '.inc', '', 'iLast');
+			$o = oString::to($o, '.html', '', 'iLast');
+			if(!oString::is_empty($o)){return strtolower(trim($o));}
+		}
+		return false;
+	}
+
+
+
+
+
+	//URI • Returns URI
+	public static function uri(){
+		if(!empty($_SERVER['REQUEST_URI'])){
+			return $_SERVER['REQUEST_URI'];
+		}
+		return false;
+	}
+
+
+
+
+
 	//TO_DOMAIN • Get Domain from URL
 	public static function domain($url='', $lib=''){
 		if(!empty($url)){
