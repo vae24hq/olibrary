@@ -77,11 +77,11 @@ class oDatabase {
 	//CONNECT • Initiate Connection
 	public function connect($config='',  $driver=''){
 		if($driver == 'iPDO'){
-			oFile::Inc(oBJCT.'db'.DS.'pdo.inc');
+			oFile::inc(oBJCT.'db'.DS.'pdo.inc');
 			$dbco = new oPDO($config);
 		}
 		elseif($driver == 'iMySQLi'){
-			oFile::Inc(oBJCT.'db'.DS.'mysqli.inc');
+			oFile::inc(oBJCT.'db'.DS.'mysqli.inc');
 			$dbco = new oSQLi($config);
 		}
 
