@@ -5,7 +5,7 @@
  * oDevice ~ Detect User Device • DEPENDENCY» detect
  */
 class oDevice {
-	//ISVALID • Return TRUE/FALSE on device type
+	//VALIDATE • Return TRUE/FALSE on device type
 	public static function validate($type=''){
 		if(!empty($type)){
 			$types = array('iDesktop', 'iTablet', 'iPhone');
