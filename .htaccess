@@ -111,8 +111,8 @@ RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=api&olink=api&oapi=$1 [NC,QSA,E
 
 
 #REWRITE - for favicon on base-project ([favicon.ico] → /source/asset/favicon.ico)
-RewriteRule ^favicon\.ico$ /core/asset/icon/favicon.ico [NC,QSA,END]
-RewriteRule ^favicon\.png$ /core/asset/icon/favicon.png [NC,QSA,END]
+RewriteRule ^favicon\.ico$ /core/asset/media/icon/favicon.ico [NC,QSA,END]
+RewriteRule ^favicon\.png$ /core/asset/media/icon/favicon.png [NC,QSA,END]
 
 
 
@@ -133,6 +133,7 @@ RewriteRule ^media\/(.*)$ /core/asset/media/$1 [NC,QSA,END]
 		RewriteRule ^video\/(.*)$ /core/asset/media/video/$1 [NC,QSA,END]
 		RewriteRule ^document\/(.*)$ /core/asset/media/document/$1 [NC,QSA,END]
 RewriteRule ^font\/(.*)$ /core/asset/font/$1 [NC,QSA,END]
+RewriteRule ^plugin\/(.*)$ /core/asset/plugin/$1 [NC,QSA,END]
 RewriteRule ^css\/(.*)$ /core/asset/css/$1 [NC,QSA,END]
 RewriteRule ^js\/(.*)$ /core/asset/script/$1 [NC,QSA,END]
 
@@ -166,15 +167,15 @@ RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=app&olink=app&oapp=$1 [NC,QSA,E
 
 #REWRITE - for SUB DOMAIN
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!plugin\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=default&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!plugin\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$))$ /index.php?oproject=default&olink=index [NC,QSA,END]
 
 
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!plugin\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
 
-RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=default&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!_owww\/.*$)(?!api\/.*$)(?!app\/.*$)(?!favicon.ico$)(?!favicon.png$)(?!upload\/.*$)(?!asset\/.*$)(?!cloud\/.*$)(?!media\/.*$)(?!icon\/.*$)(?!audio\/.*$)(?!video\/.*$)(?!document\/.*$)(?!grafix\/.*$)(?!plugin\/.*$)(?!font\/.*$)(?!plugin\/.*$)(?!css\/.*$)(?!js\/.*$)(?!ajax\/.*$)(?!go\/.*$)(?!redirect\/.*$).*)$ /index.php?oproject=default&olink=$1 [NC,QSA,END]
 
 
 
