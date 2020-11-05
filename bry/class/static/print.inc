@@ -6,25 +6,32 @@
  */
 class oPrint {
 	//EXPORT • var_export
-	public static function Export($i, $capture=true){
+	public static function export($i, $capture=true){
 		return '<pre><tt>'.var_export($i, $capture).'</tt></pre>';
 	}
 
 
-	//PRINT • print_r
-	public static function Human($i, $capture=true){
+
+
+	//PRINTR • print_r
+	public static function human($i, $capture=true){
 		return print_r($i, $capture);
 	}
 
 
-	//PRINT • var_dump
-	public static function Dump($i){
+
+
+	//DUMP • var_dump
+	public static function dump($i){
 		return var_dump($i);
 	}
 
 
+
+
+
 	//NEAT • Describe method
-	public static function Neat($i){
+	public static function neat($i){
 		$o = '';
 		if(is_array($i)){$label = 'array';}
 		elseif(is_bool($i) === true){$label = 'boolean';}
@@ -41,10 +48,10 @@ class oPrint {
 				}
 
 				elseif(is_array($value)){
-					$o .= self::Neat($value);
+					$o .= self::neat($value);
 				}
 				elseif(is_object($value)){
-					$o .= self::Export($value);
+					$o .= self::export($value);
 				}
 				else {
 					$o .= $value.'<span><br>';
@@ -58,14 +65,12 @@ class oPrint {
 			elseif($i === false){$o .= ' → oFALSE<span><br>';}
 		}
 		elseif(is_object($i)){
-			$o .= self::Export($i);
+			$o .= self::export($i);
 		}
 		else {
-			$o .= self::Human($i);
+			$o .= self::human($i);
 		}
 
 		return $o;
 	}
-
-
 } // EndOfClass - oPrint
