@@ -182,6 +182,7 @@ class oRoute {
 		if($i == 'viewzr'){$o .= oVIEWZR;}
 		if($i == 'bitzr'){$o .= oBITZR;}
 		if($i == 'slicezr'){$o .= oSLICEZR;}
+		if($i == 'organizr'){$o .= oRGANIZR;}
 
 		if(!empty($o)){
 			$o = strtolower($o);
