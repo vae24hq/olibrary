@@ -16,6 +16,7 @@ defined('oCORE') ? null : define('oCORE', oROOT.'core'.DS);
 defined('oCONFIG') ? null : define('oCONFIG', 'config'.DS);
 defined('oLAYOUT') ? null : define('oLAYOUT', 'layoutzr'.DS);
 defined('oBITZR') ? null : define('oBITZR', oLAYOUT.'bitzr'.DS);
+defined('oSLICEZR') ? null : define('oSLICEZR', oLAYOUT.'slicezr'.DS);
 defined('oFORMZR') ? null : define('oFORMZR', oLAYOUT.'formzr'.DS);
 defined('oTHEMEZR') ? null : define('oTHEMEZR', oLAYOUT.'themezr'.DS);
 defined('oVIEWZR') ? null : define('oVIEWZR', oLAYOUT.'viewzr'.DS);
