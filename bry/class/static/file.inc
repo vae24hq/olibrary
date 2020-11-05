@@ -6,7 +6,7 @@
  */
 class oFile {
 	//Is • Returns TRUE/FALSE if file or directory is valid & exist
-	public static function Is($path='', $type='iFile'){
+	public static function is($path='', $type='iFile'){
 		if($type === 'iFile'){
 			if(is_dir($path)){return false;}
 			elseif(is_file($path) === false){return false;}
@@ -19,8 +19,11 @@ class oFile {
 	}
 
 
+
+
+
 	//InCheck • Check file existence before include/require
-	public static function InCheck($path){
+	public static function in_check($path){
 		if(self::Is($path, 'iFile') === false){
 			return oExit::E404($path);
 		}
@@ -28,8 +31,11 @@ class oFile {
 	}
 
 
+
+
+
 	//In • RETURNS required -file when its valid & exist
-	public static function Inc($path, $i='iRequired', $single=true){
+	public static function inc($path, $i='iRequired', $single=true){
 		if($i == 'iRequired'){
 			self::InCheck($path);
 			if($single === true){require_once $path;} else {require $path;}
@@ -44,8 +50,11 @@ class oFile {
 	}
 
 
+
+
+
 	//INFO • returns file information
-	public static function Info($res='iData', $file='iSelf'){
+	public static function info($res='iData', $file='iSelf'){
 		if($file == 'iSelf'){$file = $_SERVER['PHP_SELF'];}
 		$path = pathinfo($file);
 
@@ -60,8 +69,11 @@ class oFile {
 	}
 
 
+
+
+
 	//DOWNLOAD • force file download
-	public static function Download($file, $save=''){
+	public static function download($file, $save=''){
 		if(self::Is($file, 'iFile')){
 			$name = self::info('iName', $file);
 			$ext = self::info('iExt', $file);
@@ -76,11 +88,12 @@ class oFile {
 	}
 
 
+
+
+
 	//@TODO ~ Test & code file UPLOAD
-	public static function Upload($field='upload', $return = '', $config=''){
-		// if(!empty($_FILES[$field])){
+	public static function upload($field='upload', $return = '', $config=''){
 		$file = $field;
-			// $file = $_FILES[$field];
 		if(!empty($config['fileDir'])){$fileDir = $config['fileDir'];} else {$fileDir = "odrive/";}
 		if(!empty($config['fileName'])){$fileName = $config['fileName'];} else {$fileName = mt_rand().'_'.basename($file["name"]);}
 		if(!empty($config['filesAllowed'])){$filesAllowed = $config['filesAllowed'];} else {$filesAllowed = array('jpg','png','jpeg','gif','pdf', 'md');}
@@ -99,8 +112,5 @@ class oFile {
 				}
 			}
 		}
-		// }
 	}
-
-
 } // EndOfClass - oFile
