@@ -25,7 +25,6 @@ class oCrypt {
 
 
 
-
 	//PASSWORD • Password Encryption
 	public static function password($input, $cost=''){
 		if(!empty($cost) && is_int($cost) && $cost > 4){
