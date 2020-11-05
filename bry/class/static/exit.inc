@@ -6,7 +6,7 @@
  */
 class oExit {
 	//RUN • exit with message
-	public static function Run($obj, $msg, $extra=''){
+	public static function run($obj, $msg, $extra=''){
 		$o = strtoupper($obj).'::';
 		if(!empty($msg)){$o .=' <strong>'.ucfirst($msg).'</strong>';}
 		if(!empty($extra)){
@@ -27,9 +27,9 @@ class oExit {
 
 
 	//NOT FOUND • 404 exit with error message
-	public static function E404 ($i='', $msg = '',  $obj=''){
+	public static function e404 ($i='', $msg = '',  $obj=''){
 		if(empty($obj)){$obj = 'Resource';}
 		if(empty($msg)){$msg = 'Not Available';}
-		return self::Run($obj, $msg, $i);
+		return self::run($obj, $msg, $i);
 	}
 } // EndOfClass - oExit
