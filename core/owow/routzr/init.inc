@@ -1,11 +1,15 @@
 <?php
-// echo $path;
+#REQUIRED TO UNSET INC METHOD
+if(isset($inc_path)){unset($inc_path);}
+if(isset($inc_required)){unset($inc_required);}
+if(isset($inc_once)){unset($inc_once);}
 
-// // $session = new oSession;
-// // $session->start();
-// // oSSL::Impose(true);
-// // oFile::Inc(oRoute::Path('setting'));
-// // $model = oRoute::model();
+#INITIALIZE
+$session = new oSession;
+$session->start();
+oSSL::impose(true);
+oFile::Inc(oRoute::path('setting'));
+$model = oRoute::model();
 // // $pathz['organizr'] = oRoute::path('organizr');
 // // $state = oRoute::state();
 // // $action = oRoute::action();
