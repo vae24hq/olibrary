@@ -23,12 +23,13 @@ class oExit {
 	}
 
 
+
+
+
 	//NOT FOUND • 404 exit with error message
-	public static function E404 ($path='', $msg = '',  $obj=''){
+	public static function E404 ($i='', $msg = '',  $obj=''){
 		if(empty($obj)){$obj = 'Resource';}
-		if(empty($msg)){$msg = 'Not available';}
-		return self::Run($obj, $msg, $path);
+		if(empty($msg)){$msg = 'Not Available';}
+		return self::Run($obj, $msg, $i);
 	}
-
-
 } // EndOfClass - oExit
