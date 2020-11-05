@@ -5,14 +5,14 @@
 * oBrowser ~ Browser Utility • DEPENDENCY»
 */
 class oBrowser {
-
-	//METHOD •
-	public static function Is(){
+	public static function is(){
 		return strtolower($_SERVER['HTTP_USER_AGENT']);
 	}
 
 
-	public static function IE($operator=false, $ver=NULL){
+
+
+	public static function ie($operator=false, $ver=NULL){
 		if(!preg_match('/MSIE (.*?);/', $_SERVER['HTTP_USER_AGENT'], $matches)
 			|| preg_match('#Opera#', $_SERVER['HTTP_USER_AGENT'])){
 			return false === $operator ? false : NULL;
@@ -28,11 +28,12 @@ class oBrowser {
 
 
 
-	public static function IsIE($operator='', $ver=''){
+
+	public static function is_ie($operator='', $ver=''){
 		if(!empty($operator) && !empty($ver)){
 			$o = ie($operator, $ver);
 		} else {
-			$o = self::IE();
+			$o = self::ie();
 		}
 
 		if(!$o){return false;}
@@ -41,24 +42,28 @@ class oBrowser {
 	}
 
 
-	public static function IsOpera($i='iMobi'){
+
+
+
+	public static function is_opera($i='iMobi'){
 		if($i == 'iMobi'){
-			if(oString::In(self::Is(), 'opera mobi')){return true;}
+			if(oString::In(self::is(), 'opera mobi')){return true;}
 		}
 		elseif($i == 'iMini'){
-			if(oString::In(self::Is(), 'opera mini')){return true;}
+			if(oString::In(self::is(), 'opera mini')){return true;}
 		}
 		return false;
 	}
 
 
-	public static function Info(){
-		if(self::IsIE()){$o = 'ie';}
-		elseif(IsOpera('iMobi')){$o = 'operamobi';}
-		elseif(IsOpera('iMini')){$o = 'operamini';}
-		else {$o = self::Is();}
+
+
+
+	public static function info(){
+		if(self::is_ie()){$o = 'ie';}
+		elseif(self::is_opera('iMobi')){$o = 'operamobi';}
+		elseif(self::is_opera('iMini')){$o = 'operamini';}
+		else {$o = self::is();}
 		return strtolower($o);
 	}
-
-
 } // EndOfClass - oBrowser
