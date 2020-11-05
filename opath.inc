@@ -14,7 +14,7 @@ defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
 defined('oCORE') ? null : define('oCORE', oROOT.'core'.DS);
 
 defined('oCONFIG') ? null : define('oCONFIG', 'config'.DS);
-defined('oLAYOUT') ? null : define('oLAYOUT', 'layoutzr'.DS);
+defined('oLAYOUT') ? null : define('oLAYOUT', 'layout'.DS);
 defined('oBITZR') ? null : define('oBITZR', oLAYOUT.'bitzr'.DS);
 defined('oSLICEZR') ? null : define('oSLICEZR', oLAYOUT.'slicezr'.DS);
 defined('oFORMZR') ? null : define('oFORMZR', oLAYOUT.'formzr'.DS);

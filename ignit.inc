@@ -9,7 +9,7 @@
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 defined('PS') ? null : define('PS', '/');
 
-require 'ao.path.inc';
+require 'opath.inc';
 
 #Using HTACCESS for PATH
 defined('CLOUD') ? null : define('CLOUD', 'cloud'.PS);
@@ -24,7 +24,7 @@ defined('GRAFIX') ? null : define('GRAFIX', 'grafix'.PS);
 defined('VIDEO') ? null : define('VIDEO', 'video'.PS);
 defined('FONT') ? null : define('FONT', 'font' . PS);
 
-require 'ao.lib.inc';
+require 'olib.inc';
 
 #REDIRECT URL
 if(!empty($_REQUEST['oredirect'])){

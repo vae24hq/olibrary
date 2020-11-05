@@ -4,7 +4,7 @@
  * ============================================================================================
  * IGNITE ~ Default File • DEPENDENCY»
  */
-require 'ignite.inc';
+require 'ignit.inc';
 
 #INITIALIZE PROJECT (based on a specific project)
 $initpath = oRoute::Path('init', true); #@NOTE ~ when set to TRUE, omain is used if source directory is not found
