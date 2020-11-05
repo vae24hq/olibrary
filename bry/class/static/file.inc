@@ -24,7 +24,7 @@ class oFile {
 
 	//InCheck • Check file existence before include/require
 	public static function in_check($path){
-		if(self::Is($path, 'iFile') === false){
+		if(self::is($path, 'iFile') === false){
 			return oExit::E404($path);
 		}
 		return true;
@@ -37,12 +37,12 @@ class oFile {
 	//In • RETURNS required -file when its valid & exist
 	public static function inc($path, $i='iRequired', $single=true){
 		if($i == 'iRequired'){
-			self::InCheck($path);
+			self::in_check($path);
 			if($single === true){require_once $path;} else {require $path;}
 			return;
 		}
 		else {
-			if(self::Is($path, 'iFile') !== false){
+			if(self::is($path, 'iFile') !== false){
 				if($single === true){require_once $path;} else {require $path;}
 				return;
 			}
@@ -57,13 +57,11 @@ class oFile {
 	public static function info($res='iData', $file='iSelf'){
 		if($file == 'iSelf'){$file = $_SERVER['PHP_SELF'];}
 		$path = pathinfo($file);
-
 		if($res == 'iDir' && !empty($path['dirname'])){$o = $path['dirname'];}
 		elseif($res == 'iBase' && !empty($path['basename'])){$o = $path['basename'];}
 		elseif($res == 'iExt' && !empty($path['extension'])){$o = $path['extension'];}
 		elseif($res == 'iName' && !empty($path['filename'])){$o = $path['filename'];}
 		elseif($res == 'iData'){$o = $path;}
-
 		if(!empty($o)){return $o;}
 		return false;
 	}
@@ -74,7 +72,7 @@ class oFile {
 
 	//DOWNLOAD • force file download
 	public static function download($file, $save=''){
-		if(self::Is($file, 'iFile')){
+		if(self::is($file, 'iFile')){
 			$name = self::info('iName', $file);
 			$ext = self::info('iExt', $file);
 			if(!empty($save)){$save = time().mt_rand();}
