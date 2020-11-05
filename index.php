@@ -7,7 +7,8 @@
 require 'ignite.inc';
 
 #INITIALIZE PROJECT (based on a specific project)
-oFile::Inc(oRoute::Path('init', true), 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
+$initpath = oRoute::Path('init', true); #@NOTE ~ if TRUE - omain is used when source directory is not found
+oFile::Inc($$initpath, 'iOptional'); #@TODO ~ do full testing ON route's methods using this option
 
 
 #DEVBOX FILE - for development, demo & testing

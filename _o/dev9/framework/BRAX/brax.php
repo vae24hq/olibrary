@@ -1,6 +1,6 @@
 <?php
 /* Brax™ ~ a micro framework for quick website development © 2016 [alpha]
- * Program -> brax.php - 
+ * Program -> brax.php -
  * ===================================================================================
  */
 
@@ -86,32 +86,32 @@ function stringSwap($subject='', $search='', $replace='', $occurence='all'){
 			else {$task = $subject;}
 		}
 	}
- 	
+
  	#return task
- 	return $task;
+	return $task;
 }
 
 // trim edges or character(s) from string
 function trimEdge($string='', $character=''){
  	#perform validation
- 	if(isEmpty($string) || is_null($character)){return false;}
+	if(isEmpty($string) || is_null($character)){return false;}
 
  	#prepare & return result
- 	$task = trim($string);
+	$task = trim($string);
 	$task = preg_replace('/\s+/', '', $task);
- 	if(!isEmpty($character)){$task = trim($task, $character);}
- 	return $task;
+	if(!isEmpty($character)){$task = trim($task, $character);}
+	return $task;
 }
 
 // return words capitalized
 function capitalizeWords($string='', $words='library'){
- 	if(isEmpty($string) || isEmpty($words) || ($words!='library' && !is_array($words))){return false;}
- 	if($words=='library'){
- 		$words = array(
- 			'sms', 'faq', 'cms',
- 			'Sms', 'Faq', 'Cms'
- 			);
- 	}
+	if(isEmpty($string) || isEmpty($words) || ($words!='library' && !is_array($words))){return false;}
+	if($words=='library'){
+		$words = array(
+			'sms', 'faq', 'cms',
+			'Sms', 'Faq', 'Cms'
+		);
+	}
 	$stringBit = preg_split('/\s+/', $string);
 	foreach ($stringBit as $bit){
 		if(in_array($bit, $words)){
@@ -119,7 +119,7 @@ function capitalizeWords($string='', $words='library'){
 			$string = str_replace($bit, $capBit, $string);
 		}
 	}
-	
+
 	#return task
 	return $string;
 }
@@ -127,17 +127,17 @@ function capitalizeWords($string='', $words='library'){
 // returns cleaned up string
 function cleanUp($string=''){
 	if(isEmpty($string)){return FALSE;}
- 	$string = trim($string);
+	$string = trim($string);
 	$string = stringSwap($string, ' and', ' &');
 	$string = stringSwap($string, '-', ' ');
-	
+
 	#return task
 	return $string;
 }
 
 function rewriteRH($string=''){
 	if(isEmpty($string)){return FALSE;}
- 	$string = trim($string);
+	$string = trim($string);
 	$string = stringSwap($string, ' bank', '_bank');
 	$string = stringSwap($string, ' Bank', '_Bank');
 	$string = stringSwap($string, ' banking', '_banking');
@@ -178,13 +178,13 @@ function refererURL(){
 function doLink($input=''){
 	#perform validation
 	if(isEmpty($input)){return FALSE;}
-	
+
 	#prepare & return result
 	$input = stringSwap($input, '_', '-');
 	$task = '';
 	if(defined('URL_REWRITE') && constant('URL_REWRITE') == 'yeah'){}
-	$task = '?page='.trim(strtolower($input));
- 	return $task;
+		$task = '?page='.trim(strtolower($input));
+	return $task;
 }
 
 // returns link information
@@ -204,7 +204,7 @@ function grabLink(){
 // return current page link
 function selfLink(){
 	#prepare & return result
- 	return grabLink();
+	return grabLink();
 }
 
 // check for active link
@@ -233,7 +233,7 @@ function cssActive($page=''){
 function markupLink($link='', $name='', $tag='', $target='self', $style='link', $activate='', $link_as='relative'){
 	#perform validation
 	if(isEmpty($link)){return FALSE;}
-	
+
 	# ~link
 	$link = strtolower($link);
 	$prepLink = '';
@@ -242,21 +242,21 @@ function markupLink($link='', $name='', $tag='', $target='self', $style='link', 
 		$prepLink .= doLink($link);
 	}
 	else {$prepLink .= getSiteURL();}
-	
+
 	# ~name
 	if(isEmpty($name)){$name = stringSwap($link, '_', ' ');}
 	$prepName = capitalizeWords($name, 'library'); //make words if found in library, uppercase
-	
+
 	# ~tag
 	if(empty($tag)){$tag = $prepName;}
 	else {$tag = capitalizeWords($tag, 'library');}
 	$prepTag = ucfirst($tag);
-	
+
 	# ~style
 	$prepStyle = '';
 	$linkIsActive = isLinkActive($link);
 	$stayActive = 'no';
-	
+
 	if(is_array($activate)){
 		if(in_array(grabLink(), $activate)){$stayActive = 'yeah';}
 	} else {
@@ -320,8 +320,8 @@ function getRD(){
 // convert url to domain
 function url2domain($url=''){
 	#perform validation
- 	if(empty($url)){return FALSE;}
-	
+	if(empty($url)){return FALSE;}
+
 	#prepare & return result
 	$task = $url;
 	$task = stringSwap($task, 'https://', '', 'first');
@@ -358,26 +358,26 @@ function getDomain(){
 function getDomainURL(){
 	#collect required data
 	$task = getDomain();
-	
+
 	#prepare & return result
 	$protocol ='';
 	if(inString(getBaseURL(), 'https')){$protocol .='https://';}
-	elseif(inString(getBaseURL(), 'http')){$protocol .='http://';}
-	else {
-		if(isset($_SERVER['HTTPS'])){$protocol .='https://';} else {$protocol .='http://';}
-	}
+elseif(inString(getBaseURL(), 'http')){$protocol .='http://';}
+else {
+	if(isset($_SERVER['HTTPS'])){$protocol .='https://';} else {$protocol .='http://';}
+}
 
-	if(inString(getBaseURL(), 'www.')){$protocol .='www.';}
+if(inString(getBaseURL(), 'www.')){$protocol .='www.';}
 
 	#return result
-	return strtolower($protocol.$task);
+return strtolower($protocol.$task);
 }
 
 // return domain name with protocol
 function getDomainBase($subdomain=''){
 	#collect required data
 	$domain = getDomain();
-	
+
 	#prepare
 	if(!empty($subdomain)){$domainbase = stringSwap($domain, $subdomain.'.', '', 'first');}
 	else {
@@ -466,7 +466,7 @@ function showTitle(){
 	else {
 		$task .= site('name');
 	}
-	
+
 	if($page == 'index' || $page == 'home'){$task .= ' - '.site('slogan');}
 
 	return $task;
@@ -490,7 +490,7 @@ function showBreadcrumb(){
 	#collect required data
 	$page = getPage();
 
-	
+
 	#prepare & return result
 	$task = '<a href="'.getSiteURL().'" title="'.site('name').'" class="brand">'.site('brand').'</a>';
 	if($page != 'index'){$task .= ' » <span class="location">'.ucwords(cleanUp($page)).'</span>';}
@@ -519,7 +519,7 @@ function showGreeting($remark='nope'){
 		$add_remark = '';
 		if($hour>2 && $hour<7){$add_remark = "You're up early";}
 		elseif($hour>21 || $hour<3){$add_remark = "You're up late";}
-		if(!empty($add_remark)){$task = $add_remark.' - <em>'.$task.'</em>';}			
+		if(!empty($add_remark)){$task = $add_remark.' - <em>'.$task.'</em>';}
 	}
 
 	#return result
@@ -536,14 +536,14 @@ function showCopyright($from='none', $reserved='nope', $to='now'){
 
 	$copy ='&copy;';
 	$task['link'] ='';
-	
+
 	$task['link'] ='<a href="'.getSiteURL().'" class="brand"';
 	$task['link'] .=' title="'.site('name');
 	$slogan = site('slogan');
 	if(!empty($slogan)){$task['link'] .=' - '.site('slogan');}
 	$task['link'] .='">';
 
-	
+
 	$Brand ='';
 	$device = Device::is();
 	if($device=='phone'){
@@ -559,7 +559,7 @@ function showCopyright($from='none', $reserved='nope', $to='now'){
 	if(empty($from)){$task = $copy.' <small>'.$to.'</small> '.$Brand;}
 	else {$task = $copy.' '.$Brand.' <small>'.$from.' - '.$to.'</small>';}
 	if(!empty($reserved) && $reserved !='nope'){$task .= '&nbsp; All rights reserved';}
-	
+
 	#return result
 	return $task;
 }
@@ -577,176 +577,6 @@ function makeLinkGroup($activate, $style, $link, $name='', $tag='', $target='sel
 // markup absolute url
 function makeLinkAbsolute($style, $link, $name='', $tag='',  $target='_blank', $link_as='absolute'){
 	return markupLink($link, $name, $tag, $target, $style, $activate, $link_as);
-}
-
-
-
-
-
-/**================================================================================================
-* Class: SESSION
-* Objective: Manage PHP session
-* Dependency: 
-*/
-class Session {
-	private static $instance;
-	public static $status;
-
-	private function __construct(){self::$status = 'offline';}
-
-
-	//Returns an intantiate of class
-	public static function instantiate(){
-		if(is_null(self::$instance)){
-			self::$instance = new self();
-		}
-
-		return self::$instance;
-	}
-
-
-	//Start session
-	public static function start(){
-		if(self::$status != 'alive'){
-			if(!isset($_SESSION)){session_start();}
-			self::$status = 'alive';
-		}
-
-		return;
-	}
-
-
-	//Check if session is online
-	public static function online(){
-		if(self::$status == 'alive'){return TRUE;}
-
-		return FALSE;
-	}
-
-
-	//Stop session
-	public static function stop(){
-		if(self::online()){
-			self::$status = 'dead';
-			session_destroy();
-		}
-
-		return;
-	}
-
-
-	//Terminate session
-	public static function terminate(){
-		if(self::online()){
-			$_SESSION = array();
-			if(ini_get("session.use_cookies")){
-				$params = session_get_cookie_params();
-				setcookie(session_name(), '', time() - 42000,
-					$params["path"], $params["domain"],
-					$params["secure"], $params["httponly"]
-				);
-			}
-			self::$status = 'dead';
-			session_unset();
-			session_destroy();
-		}
-
-		return;
-	}
-
-
-	//Reset session
-	public static function reset(){
-		self::terminate();
-		self::start();
-
-		return;
-	}
-}
-/** End of Class ================================================================================== */
-
-
-/**================================================================================================
-* Class: DEVICE
-* Objective: Manage device detection and rendition settings
-* Dependency: Mobile_Detect
-*/
-loadFile('detect', 'plug');
-class Device {
-	private static $instance;
-
-	//Returns an instantiate of class
-	public static function instantiate(){
-		if(is_null(self::$instance)){
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
-
-
-	//Validate device type
-	public static function validate($device=''){
-		$devices = array('desktop', 'tablet', 'phone');
-		if(!empty($device) && in_array($device, $devices)){return TRUE;}
-		return FALSE;
-	}
-
-	
-	//Returns device type
-	public static function identify(){
-		$device = new Mobile_Detect;
-		return ($device->isMobile() ? ($device->isTablet() ? 'tablet' : 'phone') : 'desktop');
-	}
-
-	
-	//Set device type
-	public static function setAs($to='request'){
-		Session::Start();
-		if($to=='request'){
-			if(isset($_REQUEST['v']) && !empty($_REQUEST['v'])){
-				if(self::validate($_REQUEST['v'])){return $_SESSION['DeviceIsA'] = $_REQUEST['v'];}
-				elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
-				else { return $_SESSION['DeviceIsA'] = self::identify();}
-			}
-			elseif(!empty($_SESSION['DeviceIsA'])){return $_SESSION['DeviceIsA'];}
-			else {return $_SESSION['DeviceIsA'] = self::identify();}
-		}
-		elseif(self::validate($to)){return $_SESSION['DeviceIsA'] = $to;}
-		else {return FALSE;}
-	}
-
-	public static function is(){return self::setAs();}
-}
-/** End of Class ================================================================================== */
-
-
-
-function isSecure($answer='detect'){
-	$resolve = false;
-	if($answer == 'yeah'){$resolve = true;}
-	elseif($answer == 'nope'){$resolve = false;}
-	else {//detect from server			
-		$https = 'off';
-		if(isset($_SERVER['HTTPS']) && !empty($_SERVER['HTTPS'])){$https = $_SERVER['HTTPS'];}
-		if($https !== 'off'){$https == 'on';}
-
-		$port = 'default';
-		if(isset($_SERVER['SERVER_PORT']) && !empty($_SERVER['SERVER_PORT'])){$port = $_SERVER['SERVER_PORT'];}
-
-		if($https == 'on' || $port == 443){$resolve = true;}
-		elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on'){$resolve = true;}
-	}
-	return $resolve;
-}
-
-function imposeSSL($as=''){
-	$protocol = isSecure() ? 'https' : 'http';
-	if($protocol != 'https'){
-		$url = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
-		if($as == 'permanent'){header('HTTP/1.1 301 Moved Permanently');}
-		header('Location: ' . $url);
-		exit();
-	}
 }
 
 
