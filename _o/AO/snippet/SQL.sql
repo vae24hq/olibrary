@@ -14,3 +14,13 @@ CREATE TABLE `table` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     `words` VARCHAR( 200 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE = InnoDB;
+
+
+
+
+ALTER TABLE `firm`
+CHANGE COLUMN `sendmail` `sendmail` CHAR(50) NULL DEFAULT 'no' AFTER `lang`;
+
+
+ALTER TABLE `firm`
+ADD COLUMN `sendmail` CHAR(50) NULL DEFAULT 'no' AFTER `lang`;
