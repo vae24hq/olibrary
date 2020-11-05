@@ -4,7 +4,6 @@ require oINSTANCE.'session.inc';
 require oSTATIC.'print.inc';
 require oSTATIC.'exit.inc';
 require oSTATIC.'file.inc';
-
 oFile::Inc(oBOND.'mobile.inc');
 oFile::Inc(oSTATIC.'string.inc');
 oFile::Inc(oSTATIC.'array.inc');
