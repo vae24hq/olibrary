@@ -178,6 +178,10 @@ class oRoute {
 		if($i == 'setting'){$o .= oCONFIG.'setting.inc';}
 		if($i == 'utilizr'){$o .= oUTILIZR;}
 		if($i == 'modelizr'){$o .= oMODELIZR;}
+		if($i == 'themezr'){$o .= oTHEMEZR;}
+		if($i == 'viewzr'){$o .= oVIEWZR;}
+		if($i == 'bitzr'){$o .= oBITZR;}
+		if($i == 'slicezr'){$o .= oSLICEZR;}
 
 		if(!empty($o)){
 			$o = strtolower($o);
