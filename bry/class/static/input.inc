@@ -28,7 +28,7 @@ class oInput {
 
 
 
-	public static function encodeHTML($i='', $v='iHTML', $inverse=false){
+	public static function encode($i='', $v='iHTML', $inverse=false){
 		if(!empty($i)){
 			if($v == 'iHTML'){
 				if($inverse === false){
