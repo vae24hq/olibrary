@@ -188,7 +188,7 @@ class oRoute {
 			$o = strtolower($o);
 			#Default to main when file (resource) is unavailable
 			if($flex === true){
-				if(!oFile::Is($o)){$o = oString::to($o, 'o'.self::source(), 'omain');}
+				if(!oFile::is($o)){$o = oString::to($o, 'o'.self::source(), 'omain');}
 			}
 			return $o;
 		}
