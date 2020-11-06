@@ -9,38 +9,40 @@ $session = new oSession;
 $session->start();
 oSSL::impose(true);
 oFile::Inc(oRoute::path('setting'));
-$model = oRoute::model();
-// // $pathz['organizr'] = oRoute::path('organizr');
-// // $state = oRoute::state();
-// // $action = oRoute::action();
-// // $source = oRoute::path('source');
+$routa['source'] = oRoute::path('source');
+$routa['model'] = oRoute::model();
+$routa['api'] = $routa['source'].oROUTZR.'api.inc';
+$routa['app'] = $routa['source'].oROUTZR.'app.inc';
+$routa['site'] = $routa['source'].oROUTZR.'site.inc';
+// echo $routa['organizr'] = oRoute::path('organizr').$routa['model'];
+// $state = oRoute::state();
+// $action = oRoute::action();
 
-// #BEGIN API CODEBASE
-// if(oRoute::api() != false){
-// }
-// #END API CODEBASE
-
-
-
-
-
-// #BEGIN APP CODEBASE
-// if(oRoute::app() != false){
-// 	// require ($pathz['organizr'].'app'.DS.oRoute::model().'.inc');
-// }
-// #END APP CODEBASE
+#BEGIN API CODE
+if(oRoute::api() != false){
+	oFile::exist($routa['api']);
+	require $routa['api'];
+}
+#END API CODE
 
 
 
 
 
-// #BEGIN SITE CODEBASE
-// if(oRoute::site() != false){
-// }
-// #END SITE CODEBASE
+#BEGIN APP CODE
+elseif(oRoute::app() != false){
+	oFile::exist($routa['app']);
+	require $routa['app'];
+}
+#END APP CODE
 
-// // if(oRoute::site() != false){
-// 	// oFile::Inc(oRoute::path('themezr').'site.inc');
-// 	// $page = oRoute::page();
-// 	// echo oPrint::Neat(CONFIG);
-// // }
+
+
+
+
+#BEGIN SITE CODE
+elseif(oRoute::site() != false){
+	oFile::exist($routa['site']);
+	require $routa['site'];
+}
+#END SITE CODE
