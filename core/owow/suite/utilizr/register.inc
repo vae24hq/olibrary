@@ -8,8 +8,15 @@ function uRegister($wow){
 	if(isset($input['olink'])){unset($input['olink']);}
 	if(isset($input['oapi'])){unset($input['oapi']);}
 
+	#@TODO: check for required input
+	$required = ['username', 'email', 'phone', 'password', 'religion'];
+	$isrequired = oInput::required($input, $required);
+	if(!empty($isrequired)){
+		$resp['status'] = 'F9';
+		$resp['reason'] = array('summary' => 'required input', 'details' => $isrequired);
+		return $resp;
+	}
 
-	#@TODO: check for required input [username, email, phone, password, religion] ~ https://api.olibry.co/register?
 
 
 	#sanitize data
@@ -30,8 +37,21 @@ function uRegister($wow){
 
 
 	#process input & return result
-	$result = $wow->signup($input);
-	if(isset($result['bind'])){return $result;}
-	echo oPrint::neat($result); #TODO: fix & remove
+	$signupInput = $input;
+	if(isset($signupInput['okey'])){unset($signupInput['okey']);}
+	if(isset($signupInput['oplatform'])){unset($signupInput['oplatform']);}
+
+	$result = $wow->signup($signupInput);
+	if(isset($result['bind'])){
+		$resp['status'] = 'OK';
+		$resp['response'] = $result;
+		return $resp;
+	}
+	else {
+		#TODO: fix & remove
+		$resp['status'] = 'F9';
+		$resp['reason'] = array('summary' => 'error occurred', 'details' => $result);
+		return $resp;
+	}
 	return false;
 }
