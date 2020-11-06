@@ -2,6 +2,8 @@
 <?php
 class WOWCa {
 	public function __construct($config){
+		$this->project = $config['project'];
+
 		#initiate database
 		$this->db = new oDatabase($config['database']);
 		$this->dbo = $this->db->dbo();
