@@ -14,7 +14,6 @@ $routa['model'] = oRoute::model();
 $routa['api'] = $routa['source'].oROUTZR.'api.inc';
 $routa['app'] = $routa['source'].oROUTZR.'app.inc';
 $routa['site'] = $routa['source'].oROUTZR.'site.inc';
-// echo $routa['organizr'] = oRoute::path('organizr').$routa['model'];
 // $state = oRoute::state();
 // $action = oRoute::action();
 
