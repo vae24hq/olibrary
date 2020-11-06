@@ -73,6 +73,7 @@ oFile::inc(oSTATIC.'input.inc');
 oFile::inc(oSTATIC.'crypt.inc');
 oFile::inc(oSTATIC.'time.inc');
 oFile::inc(oSTATIC.'route.inc');
+oFile::inc(oBJCT.'db'.DS.'sql.inc');
 oFile::inc(oBJCT.'db'.DS.'database.inc');
 oFile::inc(oHELPER.'html.inc');
 
