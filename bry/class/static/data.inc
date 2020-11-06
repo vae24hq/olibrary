@@ -41,15 +41,7 @@ class oData {
 
 
 
-	//GUID • Auto populate queryset with puid|euid|suid
-	public static function guid($queryset=''){
-		$data = array();
-		if(empty($queryset)){$queryset = array();}
-		if(!array_key_exists('puid', $queryset)){$data['puid'] = oRandom::Create('iPuid');}
-		if(!array_key_exists('euid', $queryset)){$data['euid'] = oRandom::Create('iEuid');}
-		if(!array_key_exists('suid', $queryset)){$data['suid'] = oRandom::Create('iSuid');}
-		return array_merge($data, $queryset);
-	}
+
 
 
 
