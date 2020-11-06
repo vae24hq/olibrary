@@ -23,7 +23,7 @@ class oFile {
 
 
 	//InCheck • Check file existence before include/require
-	public static function exits($path){
+	public static function exist($path){
 		if(self::is($path, 'iFile') === false){
 			return oExit::E404($path);
 		}
@@ -37,7 +37,7 @@ class oFile {
 	//In • RETURNS required -file when its valid & exist
 	public static function inc($inc_path, $inc_required=true, $inc_once=true){
 		if($inc_required === true){
-			self::exits($inc_path);
+			self::exist($inc_path);
 			if($inc_once === true){
 				require_once $inc_path;
 			} else {
