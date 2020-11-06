@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               10.5.5-MariaDB-log - mariadb.org binary distribution
+-- Host:                         127.0.0.1
+-- Server version:               5.7.24 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             10.2.0.5599
+-- HeidiSQL Version:             11.0.0.5919
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS `logao` (
   `author` varchar(80) DEFAULT 'oSYS',
   `entry` varchar(10) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `created` datetime DEFAULT current_timestamp(),
-  `updated` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `user` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `action` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `report` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `userao` (
   `author` varchar(80) DEFAULT 'oSYS',
   `entry` varchar(10) DEFAULT NULL,
   `status` varchar(10) DEFAULT NULL,
-  `created` datetime DEFAULT current_timestamp(),
-  `updated` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   `activity` varchar(100) DEFAULT NULL,
   `step` varchar(100) DEFAULT NULL,
   `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
