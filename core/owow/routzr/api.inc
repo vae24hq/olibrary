@@ -1,28 +1,55 @@
 <?php
 $response = array();
+$response['terminus'] = $routa['model'];
+$response['status'] = 'F9';
+oFile::Inc(oRoute::path('utilizr').'api.inc');
 
-#INDEX ~
-if($routa['model'] == 'index'){
+#API Security Checks [Keys, Platform & Request]
+$iskey = utilAPI::isKey();
+$isplatform = utilAPI::isPlatform();
+$requests = ['ping', 'register'];
+if($iskey !== true){
+	$response = array_merge($response, $iskey);
 }
 
+elseif($isplatform !== true){
+	$response = array_merge($response, $isplatform);
+}
+elseif(!in_array($routa['model'], $requests)){
+	$response['reason'] = array('summary' => 'Request Unknown', 'details' => 'Your request is unrecognized [request: '.$routa['model'].']');
+	// $response['reason'] = array('summary' => 'Forbidden Request', 'details' => 'A forbidden request was made to the API');
 
+}
+else {
 
-#REGISTER
-if($routa['model'] == 'register'){
-	oFile::exist($routa['utilizr']);
-	require $routa['utilizr'];
-	if(!empty($_REQUEST)){ #TODO: change to POST
-		$resp = uRegister($wow);
+	#PING
+	if($routa['model'] == 'ping'){
+		oFile::exist($routa['utilizr']);
+		require $routa['utilizr'];
+		$resp = uPing($wow, $routa['state']);
 	}
-}
+
+
+
+	#REGISTER
+	if($routa['model'] == 'register'){
+		oFile::exist($routa['utilizr']);
+		require $routa['utilizr'];
+		if(!empty($_REQUEST)){
+			#TODO: change to POST
+			$resp = uRegister($wow);
+		}
+	}
 
 
 
 #PREPARE RESPONSE
-if(isset($resp)){
-	if(is_array($resp)){$response = array_merge($response, $resp);}
+	if(isset($resp)){
+		if(is_array($resp)){
+			$response = array_merge($response, $resp);
+		}
+	}
 }
-
 
 
 #OUTPUT RESPONSE
