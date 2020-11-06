@@ -19,6 +19,6 @@ class WOWCatholic {
 		}
 
 		#SUCCESSFUL at this point (return SUID as BIND)
-		return array('bind' => $input['suid']); #return $execute;
+		return array('bind' => $input['suid'], 'step' => 1, 'activity' => 'signup'); #return $execute;
 	}
 }
