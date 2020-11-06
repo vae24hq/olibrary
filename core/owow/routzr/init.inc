@@ -8,12 +8,15 @@ if(isset($inc_once)){unset($inc_once);}
 $session = new oSession;
 $session->start();
 oSSL::impose(true);
+oTime::Zone('Africa/Lagos');
 oFile::Inc(oRoute::path('setting'));
 $routa['source'] = oRoute::path('source');
 $routa['model'] = oRoute::model();
 $routa['api'] = $routa['source'].oROUTZR.'api.inc';
 $routa['app'] = $routa['source'].oROUTZR.'app.inc';
 $routa['site'] = $routa['source'].oROUTZR.'site.inc';
+oFile::Inc($routa['source'].oUTILIZR.'wowcatholic.inc');
+$wow = new WOWCatholic(CONFIG);
 // $state = oRoute::state();
 // $action = oRoute::action();
 
