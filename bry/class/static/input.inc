@@ -105,4 +105,23 @@ class oInput {
 		}
 		return false;
 	}
+
+
+
+
+	public static function required($input, $fields){
+		$o = '';
+		if(is_array($fields)){
+			foreach ($fields as $field){
+				if(!isset($input[$field]) || oString::is_empty($input[$field])){$o = $field.' is required';}
+
+				// if(is_array($input)){
+				// 	if(isset($input[$field]) && oString::is_empty($input[$field])){
+				// 		return $field.' is required';
+				// 	}
+				// }
+			}
+		}
+		return $o;
+	}
 } // EndOfClass - oInput
