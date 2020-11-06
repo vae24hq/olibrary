@@ -76,13 +76,26 @@ class oInput {
 	public static function sanitize($i, $v=''){
 		if(!oString::is_empty($i)){
 			if(is_array($i)){
-				foreach($i as $key => $value){$o[$key] = self::clean($value, $v);}
+				$sanitizers = ['email', 'password'];
+				foreach($i as $key => $value){
+					if(in_array($key, $sanitizers)){
+						$o[$key] = self::sanitize($value, 'i'.ucfirst($key));
+					}
+					else {
+						$o[$key] = self::sanitize($value, $v);
+					}
+				}
 			}
 			else {
 				$o = $i;
+
 				if($v == 'iEmail'){
 					$o = filter_var($o, FILTER_SANITIZE_EMAIL);
 					$o = trim(strtolower($o));
+				}
+
+				if($v == 'iPassword'){
+					$o = oCrypt::password($o);
 				}
 
 				$o = addslashes($o);
