@@ -15,8 +15,9 @@ $routa['model'] = oRoute::model();
 $routa['api'] = $routa['source'].oROUTZR.'api.inc';
 $routa['app'] = $routa['source'].oROUTZR.'app.inc';
 $routa['site'] = $routa['source'].oROUTZR.'site.inc';
-oFile::inc($routa['source'].oUTILIZR.'wowcatholic.inc');
-$wow = new WOWCatholic(CONFIG);
+$routa['utilizr'] = oRoute::path('utilizr').$routa['model'].'.inc';
+oFile::inc($routa['source'].oMODELIZR.'wow.inc');
+$wow = new WOWCa(CONFIG);
 // $state = oRoute::state();
 // $action = oRoute::action();
 
