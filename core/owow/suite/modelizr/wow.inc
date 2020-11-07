@@ -64,4 +64,19 @@ class WOWCa {
 		#FAILED - because user id is required
 		return array('report' => 'failed - no user id input');
 	}
+
+
+
+	public function finduserid($input){
+		$input = oSQL::prep($input);
+		if(isset($input['id'])){
+			$id = $input['id'];
+			unset($input['id']);
+
+			$where['suid'] = $id;
+		}
+
+		#FAILED - because user id is required
+		return array('report' => 'failed - no user id input');
+	}
 }
