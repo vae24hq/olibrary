@@ -6,7 +6,7 @@
 */
 class oSQL {
 
-		//GUID • Auto populate queryset with puid|euid|suid
+	//GUID • Auto populate queryset with puid|euid|suid
 	public static function guid($queryset=''){
 		$data = array();
 		if(empty($queryset)){$queryset = array();}
@@ -53,6 +53,33 @@ class oSQL {
 		if(!empty($columns)){$columns = oString::to($columns, ', ', '', 'iLast');}
 		if(!empty($values)){$values = oString::to($values, ', ', '', 'iLast');}
 		$sql = "INSERT INTO `{$table}` ({$columns}) VALUES ({$values});";
+		return $sql;
+	}
+
+
+
+
+	public static function update($table, $data, $filter, $use='iParam'){
+		$query_path = ''; $query_filter = '';
+
+		#using named parameters
+		if($use == 'iParam'){
+			foreach($data as $column => $value){
+				$query_path .= "{$column}=:{$column}, ";
+			}
+
+			foreach($filter as $label => $val){
+				$query_filter .= "{$label}=:{$label} AND ";
+			}
+		}
+
+		#using named values
+		else {
+		}
+
+		if(!empty($query_path)){$query_path = oString::to($query_path, ', ', '', 'iLast');}
+		if(!empty($query_filter)){$query_filter = oString::to($query_filter, 'AND ', '', 'iLast');}
+		$sql = "UPDATE `{$table}` SET {$query_path} WHERE {$query_filter}";
 		return $sql;
 	}
 } // EndOfClass - oSQL
