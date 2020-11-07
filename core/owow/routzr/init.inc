@@ -12,6 +12,7 @@ oTime::zone('Africa/Lagos');
 oFile::inc(oRoute::path('setting'));
 $routa['source'] = oRoute::path('source');
 $routa['model'] = oRoute::model();
+$routa['action'] = oRoute::action();
 $routa['state'] = oRoute::state();
 $routa['api'] = $routa['source'].oROUTZR.'api.inc';
 $routa['app'] = $routa['source'].oROUTZR.'app.inc';
