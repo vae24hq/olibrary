@@ -7,7 +7,7 @@ oFile::Inc(oRoute::path('utilizr').'api.inc');
 #API Security Checks [Keys, Platform & Request]
 $iskey = utilAPI::isKey();
 $isplatform = utilAPI::isPlatform();
-$requests = ['ping', 'register'];
+$requests = ['ping', 'register', 'profile'];
 if($iskey !== true){
 	$response = array_merge($response, $iskey);
 }
@@ -18,7 +18,6 @@ elseif($isplatform !== true){
 elseif(!in_array($routa['model'], $requests)){
 	$response['reason'] = array('summary' => 'Request Unknown', 'details' => 'Your request is unrecognized [request: '.$routa['model'].']');
 	// $response['reason'] = array('summary' => 'Forbidden Request', 'details' => 'A forbidden request was made to the API');
-
 }
 else {
 
@@ -42,8 +41,22 @@ else {
 	}
 
 
+	#PROFILE
+	if($routa['model'] == 'profile'){
+		oFile::exist($routa['utilizr']);
+		require $routa['utilizr'];
 
-#PREPARE RESPONSE
+		#UPDATE
+		if($routa['action'] == 'update'){
+			if(!empty($_REQUEST)){
+				$resp = uProfileUpdate($wow);
+			}
+		}
+	}
+
+
+
+	#PREPARE RESPONSE
 	if(isset($resp)){
 		if(is_array($resp)){
 			$response = array_merge($response, $resp);
