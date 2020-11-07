@@ -11,9 +11,6 @@ class oString {
 	}
 
 
-
-
-
 	//IS_EMPTY • Returns TRUE/FALSE if variable is empty or not
 	public static function is_empty($i){
 		if(!isset($i)){return true;}
@@ -28,9 +25,6 @@ class oString {
 		}
 		return false;
 	}
-
-
-
 
 
 	//IN • Returns TRUE/FALSE if needle is found in string
@@ -49,17 +43,11 @@ class oString {
 	}
 
 
-
-
-
 	//SPACE • Substitute space with value(s) in a string and vice-versa
 	public static function space($string, $value, $inverse=false){
 		if($inverse === true){return str_replace($value, ' ', $string);}
 		return preg_replace('/\s+/', $value, $string);
 	}
-
-
-
 
 
 	//TO • Substitute a character|string in a string and vice-versa
@@ -86,9 +74,6 @@ class oString {
 	}
 
 
-
-
-
 	//CLEAN • Clean up STRING/ARRAY
 	public static function clean($i, $tags=''){
 		if(empty($tags)){
@@ -100,7 +85,6 @@ class oString {
 				'@<![\s\S]*?--[ \t\n\r]*>@'
 			);
 		}
-
 		if(!is_array($i)){
 			$o = '';
 			$o = preg_replace($tags, '', $i);
@@ -114,12 +98,8 @@ class oString {
 				$o[$key] = $clean;
 			}
 		}
-
 		return trim($o);
 	}
-
-
-
 
 
 	//SLASH • Remove or add slash to string/array
@@ -148,9 +128,6 @@ class oString {
 	}
 
 
-
-
-
 	//BLUR • Substitute censored word from a string (using library as DB) @TODO ~ improve on it
 	public static function blur($string, $lib, $symbol = ', ', $blur='***', $case=false){
 		$o = $string;
@@ -158,7 +135,6 @@ class oString {
 		if(!is_array($lib)){
 			$lib = explode($symbol, $lib);
 		}
-
 		#TODO ~ check for words with special characters - [fuck. fuck_ fuck* fuck/]
 		foreach ($words as $word){
 			if(in_array(strtolower($word), array_map('strtolower', $lib))){
@@ -167,9 +143,6 @@ class oString {
 		}
 		return $o;
 	}
-
-
-
 
 
 	//CROP • Trim edges or character(s) from string
@@ -186,9 +159,6 @@ class oString {
 	}
 
 
-
-
-
 	//NTH • Trim edges or character(s) from string
 	public static function nth($string='', $nth=''){ #nth is position IE value has to be numeric
 		if(self::is_empty($string) === false && self::is_empty($nth) === false){
@@ -202,9 +172,6 @@ class oString {
 	}
 
 
-
-
-
 	//BEFORE • Return false OR value before first occurrence character|string if found
 	public static function before($string, $search, $strip=true){
 		$pos = strpos($string, $search);
@@ -213,9 +180,6 @@ class oString {
 		if(isset($o)){return $o;}
 		return false;
 	}
-
-
-
 
 
 	//AFTER • Return false OR value after first character|string if found
@@ -230,9 +194,6 @@ class oString {
 		if(!empty($o)){return $o;}
 		return false;
 	}
-
-
-
 
 
 	//MATCH •
