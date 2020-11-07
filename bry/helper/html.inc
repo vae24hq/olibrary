@@ -9,21 +9,15 @@ class oHTML {
 		if(device::is()=='desktop' && validate_ie('<', 9)){
 			$o ='<meta http-equiv="Content-Type" content="text/html; charset=utf-8">';
 		} else {$o ='<meta charset="utf-8">';}
-		echo $o."\n";
+		return $o."\n";
 	}
-
-
-
 
 
 	public static function xua_compatible(){
 		$o ='';
 		if(DEVELOPMENT_STAGE !='yeah'){$o ='<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">'."\n";}
-		echo $o;
+		return $o;
 	}
-
-
-
 
 
 	public static function viewport(){
@@ -31,6 +25,6 @@ class oHTML {
 		if(device::is() !='desktop'){
 			$o ='<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">'."\n";
 		}
-		echo $o;
+		return $o;
 	}
 } // EndOfClass - oHTML
