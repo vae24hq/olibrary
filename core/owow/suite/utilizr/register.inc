@@ -3,10 +3,7 @@ function uRegister($wow){
 	#get input data
 	$input = oInput::method('iRequest');
 
-	#remove url link from input if it exist
-	if(isset($input['oproject'])){unset($input['oproject']);}
-	if(isset($input['olink'])){unset($input['olink']);}
-	if(isset($input['oapi'])){unset($input['oapi']);}
+
 
 	#@TODO: check for required input
 	$required = ['username', 'email', 'phone', 'password', 'religion'];
