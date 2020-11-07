@@ -6,11 +6,9 @@
  */
 require 'ignit.inc';
 
-#INITIALIZE PROJECT (based on a specific project)
-#@NOTE ~ when set to TRUE, omain is used if source directory is not found
-oFile::inc(oRoute::path('init', true), 'iRequired'); #@TODO ~ do full testing ON route's methods using sub domain
+#INITIALIZE (based on a specific project)
+oFile::inc(oRoute::path('init', false), true);
 
-
-#DEVBOX FILE - for development, demo & testing
-oFile::inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', 'iOptional');
+#DEVBOX - for development, demo & testing
+oFile::inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', false);
 ?>
