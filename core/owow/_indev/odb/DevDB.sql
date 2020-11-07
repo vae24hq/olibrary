@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Host:                         127.0.0.1
+-- Host:                         localhost
 -- Server version:               5.7.24 - MySQL Community Server (GPL)
 -- Server OS:                    Win64
--- HeidiSQL Version:             11.0.0.5919
+-- HeidiSQL Version:             11.0.0.6013
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -10,12 +10,6 @@
 /*!50503 SET NAMES utf8mb4 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
-
--- Dumping database structure for wowcatholic
-DROP DATABASE IF EXISTS `wowcatholic`;
-CREATE DATABASE IF NOT EXISTS `wowcatholic` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `wowcatholic`;
 
 -- Dumping structure for table wowcatholic.logao
 DROP TABLE IF EXISTS `logao`;
@@ -67,6 +61,8 @@ CREATE TABLE IF NOT EXISTS `userao` (
   `status` varchar(10) DEFAULT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `okey` varchar(100) DEFAULT NULL,
+  `oplatform` varchar(100) DEFAULT NULL,
   `activity` varchar(100) DEFAULT NULL,
   `step` varchar(100) DEFAULT NULL,
   `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
