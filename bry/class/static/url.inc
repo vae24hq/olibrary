@@ -5,14 +5,11 @@
  * oURL ~ URL utility • DEPENDENCY» string
  */
 class oURL {
-	//REF • Returns URL referrer
+	//REF • Returns referrer
 	public static function ref(){
 		if(!empty($_SERVER['HTTP_REFERER'])){return strtolower($_SERVER['HTTP_REFERER']);}
 		return false;
 	}
-
-
-
 
 
 	public static function name($link){
@@ -29,9 +26,6 @@ class oURL {
 	}
 
 
-
-
-
 	//URI • Returns URI
 	public static function uri(){
 		if(!empty($_SERVER['REQUEST_URI'])){
@@ -41,16 +35,12 @@ class oURL {
 	}
 
 
-
-
-
 	//TO_DOMAIN • Get Domain from URL
 	public static function domain($url='', $lib=''){
 		if(!empty($url)){
 			if(empty($lib)){
 				$lib = array('https://', 'http://', 'www.', 'api.', 'app.', 'en.', 'uk.', 'us.', 'ng.');
 			}
-
 			foreach($lib as $value){
 				$url = oString::to($url, $value, '', 'iFirst');
 			}
