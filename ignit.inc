@@ -85,6 +85,6 @@ if(!empty($_REQUEST['oredirect'])){
 		return oRedirect::oExit(PS.$redirectTo);
 	}
 	else {
-		#@TODO ~ redirect for http://domain.co URL
+		#@TODO ~ redirect for whole url - http://domain.co
 	}
 }
