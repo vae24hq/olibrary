@@ -15,6 +15,12 @@ class oInput {
 		}
 
 		if(!empty($o)){
+
+			#remove url link from input if it exist
+			if(isset($o['oproject'])){unset($o['oproject']);}
+			if(isset($o['olink'])){unset($o['olink']);}
+			if(isset($o['oapi'])){unset($o['oapi']);}
+
 			if(oString::is_empty($v) === false){
 				if(isset($o[$v])){return $o[$v];}
 				return false;
@@ -67,6 +73,14 @@ class oInput {
 
 	public static function clean($i){
 		return oString::clean($i);
+	}
+
+
+
+
+	public function removal($input, $key=''){
+		if(isset($input[$key])){unset($input[$key]);}
+		return $input;
 	}
 
 
