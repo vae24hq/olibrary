@@ -79,7 +79,7 @@ RewriteRule ^_o$ o_/ [NC,QSA,END]
 RewriteRule ^bry$ bry/ [NC,QSA,END]
 RewriteRule ^core$ core/ [NC,QSA,END]
 
-#REWRITE - for favicon on base-project ([favicon.ico] → /source/asset/favicon.ico)
+#REWRITE - for demo host directory
 RewriteRule ^_owww\/$ /_o/ignor/www/ [NC,QSA,END]
 RewriteRule ^_owww\/(.*)$ /_o/ignor/www/$1 [NC,QSA,END]
 
@@ -109,7 +109,6 @@ RewriteRule ^((?!o\/.*$).*)$ /index.php?oproject=api&olink=api&oapi=$1 [NC,QSA,E
 
 
 
-
 #REWRITE - for favicon on base-project ([favicon.ico] → /source/asset/favicon.ico)
 RewriteRule ^favicon\.ico$ /core/asset/media/icon/favicon.ico [NC,QSA,END]
 RewriteRule ^favicon\.png$ /core/asset/media/icon/favicon.png [NC,QSA,END]
@@ -117,7 +116,6 @@ RewriteRule ^favicon\.png$ /core/asset/media/icon/favicon.png [NC,QSA,END]
 
 
 RewriteRule ^oredirect\/(.*)$ /index.php?oredirect=$1 [NC,QSA,END]
-
 
 
 
