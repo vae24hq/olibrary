@@ -18,9 +18,6 @@ class oSSL {
 	}
 
 
-
-
-
 	//REDIRECT • redirect URL to use HTTPS
 	public static function redirect($url='', $permant=false){
 		$protocol = self::https() ? 'https' : 'http';
@@ -40,9 +37,6 @@ class oSSL {
 			}
 		}
 	}
-
-
-
 
 
 	//IMPOSE • force URL to use HTTPS
