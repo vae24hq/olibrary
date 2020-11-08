@@ -33,6 +33,7 @@ defined('oSUITE') ? null : define('oSUITE', 'suite'.DS);
 defined('oMODELIZR') ? null : define('oMODELIZR', oSUITE.'modelizr'.DS);
 defined('oRGANIZR') ? null : define('oRGANIZR', oSUITE.'organizr'.DS);
 defined('oUTILIZR') ? null : define('oUTILIZR', oSUITE.'utilizr'.DS);
+defined('oCLOUD') ? null : define('oCLOUD', oCORE.'cloud'.DS);
 
 
 #Using HTACCESS for PATH
