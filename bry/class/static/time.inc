@@ -17,16 +17,13 @@ class oTime {
 			else {
 				$zones = in_array($i, timezone_identifiers_list());
 				if(!$zones){
-					return oExit::Run(__METHOD__, 'Invalid', $i);
+					return oExit::run(__METHOD__, 'Invalid', $i);
 				}
 				return date_default_timezone_set($i);
 			}
 		}
 		return false;
 	}
-
-
-
 
 
 	//MICRO •
@@ -36,14 +33,11 @@ class oTime {
 	}
 
 
-
-
-
+	//IS_STAMP •
 	public static function is_stamp($timestamp){
 		$check = (is_int($timestamp) OR is_float($timestamp)) ? $timestamp : (string) (int) $timestamp;
 		return($check === $timestamp) AND ((int)$timestamp <=  PHP_INT_MAX) AND ( (int) $timestamp >= ~PHP_INT_MAX);
 	}
-
 
 
 	//STAMP • Create timestamp from string
@@ -51,13 +45,12 @@ class oTime {
 		if(!empty($time)){
 			$o = strtotime($time);
 			if(!$o){
-				return oExit::Run(__METHOD__, 'not controverted', $time);
+				return oExit::run(__METHOD__, 'not controverted', $time);
 			}
 			return $o;
 		}
 		return false;
 	}
-
 
 
 	//CREATE • Create time [Returns formated time or timestamp]
@@ -76,14 +69,11 @@ class oTime {
 	}
 
 
-
-
 	//DATE • Create date [Returns formated date]
 	public static function date($fmt='iDate', $date='today'){
 		if(!empty($fmt) && !empty($date)){
 			if($date == 'today' || $date == 'now'){$date = time();}
 			elseif(!is_int($date) && !is_numeric($date)){$date = self::stamp($date);}
-
 			if($fmt == 'iDate'){$fmt = 'l, F d, Y';}
 			elseif($fmt == 'iTime'){return self::create($fmt, $date);}
 			elseif($fmt == 'iDateTime'){$fmt = 'l, F d, Y h:i:s A';}
@@ -101,8 +91,6 @@ class oTime {
 		}
 		return false;
 	}
-
-
 
 
 	//AGE • Returns age from date of birth in years
@@ -123,9 +111,6 @@ class oTime {
 	}
 
 
-
-
-
 	//SECONDS • Convert seconds to min, hour & day
 	public static function seconds($sec, $to='iMinute'){
 		if(!empty($sec) && !empty($to)){
@@ -136,8 +121,6 @@ class oTime {
 		}
 		return false;
 	}
-
-
 
 
 	//MINUTES • Convert minutes to seconds, hour & day
@@ -152,8 +135,6 @@ class oTime {
 	}
 
 
-
-
 	//HOUR TO • Convert hours to sec, min & day
 	public static function hours($hr, $to='iDay'){
 		if(!empty($hr) && !empty($to)){
@@ -166,8 +147,6 @@ class oTime {
 	}
 
 
-
-
 	//DAY TO • Convert days to sec, min & hours
 	public static function days($day, $to='iHour'){
 		if(!empty($day) && !empty($to)){
@@ -178,8 +157,6 @@ class oTime {
 		}
 		return false;
 	}
-
-
 
 
 	//DIFFERENCE • Calculate time difference - TODO - upgrade and add features
