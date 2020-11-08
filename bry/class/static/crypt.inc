@@ -64,7 +64,7 @@ class oCrypt {
 		if($method){
 			if(in_array(strtolower($method), openssl_get_cipher_methods())){self::$method = $method;}
 			else {
-				oExit::Run(__METHOD__, "unrecognized cipher method: [{$method}]", __CLASS__);
+				oExit::run(__METHOD__, "unrecognized cipher method: [{$method}]", __CLASS__);
 			}
 		}
 	}
