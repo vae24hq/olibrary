@@ -49,7 +49,13 @@ else {
 		#UPDATE
 		if($routa['action'] == 'update'){
 			if(!empty($_REQUEST)){
-				$resp = uProfileUpdate($wow);
+				#check if its upload
+				if(isset($_REQUEST['oupload'])){
+					$resp = uProfileUpdateDP($wow);
+				}
+				else {
+					$resp = uProfileUpdate($wow);
+				}
 			}
 		}
 	}
