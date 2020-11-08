@@ -96,25 +96,33 @@ class oFile {
 
 
 	//@TODO ~ Test & code file UPLOAD
-	public static function upload($field='upload', $return = '', $config=''){
+	public static function upload($field='upload', $config='', $return = ''){
 		$file = $field;
 		if(!empty($config['fileDir'])){$fileDir = $config['fileDir'];} else {$fileDir = "odrive/";}
 		if(!empty($config['fileName'])){$fileName = $config['fileName'];} else {$fileName = mt_rand().'_'.basename($file["name"]);}
-		if(!empty($config['filesAllowed'])){$filesAllowed = $config['filesAllowed'];} else {$filesAllowed = array('jpg','png','jpeg','gif','pdf', 'md');}
+		#if(!empty($config['filesAllowed'])){$filesAllowed = $config['filesAllowed'];} else {$filesAllowed = array('jpg','png','jpeg','gif','pdf', 'md');}
 
 		$fileTemp = $file["tmp_name"];
 		$filePath = $fileDir.$fileName;
-		$fileType = pathinfo($filePath, PATHINFO_EXTENSION);
+		$fileType = pathinfo($fileTemp);
+		$rez = array();
 
 		if($file['error'] < 1){
-			if(in_array($fileType, $filesAllowed)){
+			// if(in_array($fileType, $filesAllowed)){
 					#check if a file exists on the destination
-				if(oFile::is($filePath)){$rez['error'] = array('msg' => 'File name already exists');}
-				else {
-					$uploadFile = move_uploaded_file($fileTemp, $filePath);
-					if($uploadFile === true){$rez['fileName'] = $fileName;}
-				}
+			if(oFile::is($filePath)){$rez['error'] = array('message' => 'File name already exists');}
+			else {
+				$uploadFile = move_uploaded_file($fileTemp, $filePath);
+				if($uploadFile === true){$rez['fileName'] = $fileName;}
 			}
+			// }
+			// else {
+			// 	$rez['error'] = array('message' => 'File type not allowed', 'type_uploaded' => $fileType);
+			// }
 		}
+		else {
+			$rez['error'] = $file['error'];
+		}
+		return $rez;
 	}
 } // EndOfClass - oFile
