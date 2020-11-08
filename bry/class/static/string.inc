@@ -98,6 +98,7 @@ class oString {
 				$o[$key] = $clean;
 			}
 		}
+		$o = preg_replace("/&#?[a-z0-9]+;/i","", $o);
 		return trim($o);
 	}
 
