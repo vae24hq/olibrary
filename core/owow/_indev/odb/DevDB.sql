@@ -1,17 +1,3 @@
--- --------------------------------------------------------
--- Host:                         localhost
--- Server version:               5.7.24 - MySQL Community Server (GPL)
--- Server OS:                    Win64
--- HeidiSQL Version:             11.0.0.6013
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
--- Dumping structure for table wowcatholic.logao
 DROP TABLE IF EXISTS `logao`;
 CREATE TABLE IF NOT EXISTS `logao` (
   `auid` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -44,11 +30,7 @@ CREATE TABLE IF NOT EXISTS `logao` (
   KEY `updated` (`updated`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table wowcatholic.logao: ~0 rows (approximately)
-/*!40000 ALTER TABLE `logao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `logao` ENABLE KEYS */;
 
--- Dumping structure for table wowcatholic.userao
 DROP TABLE IF EXISTS `userao`;
 CREATE TABLE IF NOT EXISTS `userao` (
   `auid` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -77,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `userao` (
   `marital` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `location` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `religon` varchar(100) DEFAULT NULL,
   `country` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `interest` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `bio` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -98,10 +79,3 @@ CREATE TABLE IF NOT EXISTS `userao` (
   KEY `updated` (`updated`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table wowcatholic.userao: ~0 rows (approximately)
-/*!40000 ALTER TABLE `userao` DISABLE KEYS */;
-/*!40000 ALTER TABLE `userao` ENABLE KEYS */;
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
