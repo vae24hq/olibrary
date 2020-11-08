@@ -25,8 +25,6 @@ class oRoute {
 	}
 
 
-
-
 	//URI •
 	public static function uri($i='iGet'){
 		if($i == 'iGet'){
@@ -36,8 +34,6 @@ class oRoute {
 		if(!empty($o)){return strtolower(trim($o));}
 		return false;
 	}
-
-
 
 
 	//API •
@@ -50,8 +46,6 @@ class oRoute {
 	}
 
 
-
-
 	//APP •
 	public static function app($i='iGet'){
 		if(self::api() === false && self::URI() == 'app'){
@@ -62,8 +56,6 @@ class oRoute {
 	}
 
 
-
-
 	//SITE •
 	public static function site($i='iGet'){
 		if(!oRoute::api() && !oRoute::app()){
@@ -72,8 +64,6 @@ class oRoute {
 		if(!empty($o)){return strtolower($o);}
 		return false;
 	}
-
-
 
 
 	//ROUTE • Get & Return Route
@@ -91,8 +81,6 @@ class oRoute {
 	}
 
 
-
-
 	//KEY •
 	public static function key($i='iGet'){
 		if($i == 'iGet'){
@@ -101,8 +89,6 @@ class oRoute {
 		if(!empty($o)){return strtolower($o);}
 		return false;
 	}
-
-
 
 
 	//STATE •
@@ -114,8 +100,6 @@ class oRoute {
 		}
 		return 'default';
 	}
-
-
 
 
 	//ACTION •
@@ -132,8 +116,6 @@ class oRoute {
 		}
 		return 'default';
 	}
-
-
 
 
 	//MODEL •
@@ -156,8 +138,6 @@ class oRoute {
 	}
 
 
-
-
 	//PAGE • [page or view for site ONLY ~ to be used where not api/app]
 	public static function page($i='iGet'){
 		if(!empty($i)){
@@ -167,8 +147,6 @@ class oRoute {
 		}
 		return false;
 	}
-
-
 
 
 	//PATH • return path
@@ -183,7 +161,6 @@ class oRoute {
 		if($i == 'bitzr'){$o .= oBITZR;}
 		if($i == 'slicezr'){$o .= oSLICEZR;}
 		if($i == 'organizr'){$o .= oRGANIZR;}
-
 		if(!empty($o)){
 			$o = strtolower($o);
 			#Default to main when file (resource) is unavailable
