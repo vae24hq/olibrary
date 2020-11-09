@@ -20,6 +20,7 @@ class oInput {
 			if(isset($o['oproject'])){unset($o['oproject']);}
 			if(isset($o['olink'])){unset($o['olink']);}
 			if(isset($o['oapi'])){unset($o['oapi']);}
+			if(isset($o['oapp'])){unset($o['oapp']);}
 
 			if(oString::is_empty($v) === false){
 				if(isset($o[$v])){return $o[$v];}
