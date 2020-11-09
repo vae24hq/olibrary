@@ -24,7 +24,7 @@ $wow = new WOWCa(CONFIG);
 // $action = oRoute::action();
 
 #BEGIN API CODE
-if(oRoute::api() != false){
+if(oRoute::api() !== false){
 	oFile::exist($routa['api']);
 	require $routa['api'];
 }
@@ -33,9 +33,8 @@ if(oRoute::api() != false){
 
 
 
-
 #BEGIN APP CODE
-elseif(oRoute::app() != false){
+elseif(oRoute::app() !== false){
 	oFile::exist($routa['app']);
 	require $routa['app'];
 }
@@ -46,7 +45,7 @@ elseif(oRoute::app() != false){
 
 
 #BEGIN SITE CODE
-elseif(oRoute::site() != false){
+elseif(oRoute::site() !== false){
 	oFile::exist($routa['site']);
 	require $routa['site'];
 }
