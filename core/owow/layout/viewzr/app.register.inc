@@ -9,13 +9,21 @@
 	<link href="/asset/wow/ao.css" type="text/css" rel="stylesheet" media="all">
 </head>
 <body>
+	<div class="container-fluid" id="page-header">
+		<div class="row">
+			HEADER
+		</div>
+	</div>
 
 
+
+	<?php if(!empty($isError)){echo oPrint::neat(array('error' => $isError));}?>
 	<form name="registration" id="registration" action="" method="post">
 		<div class="container-lg">
+
 			<div class="row">
 				<div class="col">
-					<input name="name" type="text" id="input" placeholder="name">
+					<input name="username" type="text" id="input" placeholder="username">
 				</div>
 			</div>
 
@@ -23,15 +31,11 @@
 				<div class="col">
 					<input name="email" type="email" id="input" placeholder="email">
 				</div>
-
-				<div class="col">
-					<input name="phone" type="text" id="input" placeholder="phone">
-				</div>
 			</div>
 
 			<div class="row">
 				<div class="col">
-					<input name="username" type="text" id="input" placeholder="username">
+					<input name="phone" type="text" id="input" placeholder="phone">
 				</div>
 			</div>
 
