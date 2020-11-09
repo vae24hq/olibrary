@@ -7,7 +7,13 @@ class WOWCa {
 		#initiate database
 		$this->db = new oDatabase($config['database']);
 		$this->dbo = $this->db->dbo();
+
+		#initiate ODL database
+		$this->OldDB = new oDatabase($config['old_database']);
+		$this->OldDBO = $this->OldDB->dbo();
 	}
+
+
 
 
 
@@ -37,15 +43,16 @@ class WOWCa {
 	}
 
 	public function signupOnOld($input){
+		unset($input['religion']);
 		$input['language']  = 'english';
 		$input['joined'] = time();
-		$input['phone_number'] = $input['phone'];
+		$input['active'] = 1;
+		$input['phone_number'] = $input['phone']; unset($input['phone']);
 		$input['type'] = 'user';
 		$input['registered'] = date('n').'/'. date("Y");
 		$input['lastseen'] = time();
 		$input['ip_address'] = oServer::IP();
-		$input['src'] = 'AO';
-		// src = [AO_Web|AO_iOS|AO_Android]
+		$input['src'] = 'AO';// src = [AO_Web|AO_iOS|AO_Android]
 		$input['email_code'] = md5(rand(1111, 9999) . time());
 		// country_id = 159
 		// $input['birthday'] = $input['dob'];
@@ -60,8 +67,17 @@ class WOWCa {
 		#suid
 
 
-		#$sql = oSQL::insert('Wo_Users', $input, 'iParam');
-		echo oPrint::Neat($input);
+		$sql = oSQL::insert('Wo_Users', $input, 'iParam');
+		$stmt = $this->OldDBO->prepare($sql);
+		$execute = $stmt->execute($input);
+		// if($execute === false){
+		// 	$PDOError = $stmt->errorInfo();
+		// 	return $PDOError[2];
+		// }
+
+		#SUCCESSFUL at this point (return SUID as BIND)
+		#return array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']); #return $execute;
+		return true;
 	}
 
 
