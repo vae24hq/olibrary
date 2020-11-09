@@ -42,6 +42,10 @@ function uRegister($wow){
 	if(isset($result['bind'])){
 		$resp['status'] = 'OK';
 		$resp['response'] = $result;
+
+		$signupInput['suid'] = $result['bind'];
+		#REGISTER ON OLD WOWCATHOLIC
+		$wow->signupOnOld($signupInput);
 		return $resp;
 	}
 	else {
