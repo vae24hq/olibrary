@@ -1,3 +1,31 @@
 div {
-	background: gold;
+	/*background: gold;*/
+	/*border: 1px solid pink;*/
+}
+body {
+	line-height: 1.7;
+	background: #F9F9F9;
+}
+
+#header {
+	background: #E62020;
+	color: #FFF;
+	border-bottom: 4px solid #D11616;
+	padding: 4px 0;
+}
+
+img#logo {
+	max-height: 20px;
+	vertical-align: middle;
+}
+#header a.login {
+	color: #FFF;
+	font-weight: 600;
+	border: 1px solid #E62020;
+	background: #B91313;
+}
+
+#header a.login:hover {
+	border: 1px solid #B91313;
+	background: #D11616;
 }

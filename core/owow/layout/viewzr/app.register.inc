@@ -5,27 +5,62 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>Register on WOWCatholic.com</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/asset/wow/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/asset/wow/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/asset/wow/favicon-16x16.png">
+	<link rel="shortcut icon" type="image/x-icon" href="/asset/wow/favicon.ico">
+	<link rel="manifest" href="/site.webmanifest">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link href="/asset/wow/ao.css" type="text/css" rel="stylesheet" media="all">
 </head>
 <body>
-	<div class="container-fluid" id="page-header">
-		<div class="row">
-			HEADER
+	<div id="header" class="container-fluid">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<a href="https://www.wowcatholic.com/" title="WOWCatholic"><img src="/asset/wow/logo-white.png" alt="WOWCatholic.com" id="logo"></a>
+				</div>
+				<div class="float-right">
+					<a href="https://www.wowcatholic.com/" class="btn btn-sm login">Login</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
 
-
 	<?php if(!empty($isError)){echo oPrint::neat(array('error' => $isError));}?>
 	<form name="registration" id="registration" action="" method="post">
-		<div class="container-lg">
-
+		<div class="container">
 			<div class="row">
-				<div class="col">
-					<input name="username" type="text" id="input" placeholder="username">
+				<div class="col-md-6">
+
+					<div class="form-group">
+						<label for="username">Username</label>
+						<input name="username" type="text" class="form-control" id="username" placeholder="iamodao">
+						<!-- <small id="usernameHelp" class="form-text text-muted">Please enter a unique username</small> -->
+					</div>
+
+
+					<div class="form-group">
+						<label for="email">Email Address</label>
+						<input name="email" type="email" class="form-control" id="email" placeholder="odao@woca.ng">
+					</div>
+
+					<div class="form-group">
+						<label for="phone">Phone Number</label>
+						<input name="phone" type="text" class="form-control" id="phone" placeholder="2349026636728">
+					</div>
+
+
+					<div class="form-group">
+						<label for="password">Password</label>
+						<input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
+					</div>
+
 				</div>
 			</div>
+
+				<!--
 
 			<div class="row">
 				<div class="col">
@@ -61,7 +96,7 @@
 				<div class="col">
 					<input type="submit" value="Continue">
 				</div>
-			</div>
+			</div> -->
 
 
 
