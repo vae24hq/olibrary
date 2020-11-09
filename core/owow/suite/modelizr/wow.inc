@@ -36,6 +36,34 @@ class WOWCa {
 		return array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']); #return $execute;
 	}
 
+	public function signupOnOld($input){
+		$input['language']  = 'english';
+		$input['joined'] = time();
+		$input['phone_number'] = $input['phone'];
+		$input['type'] = 'user';
+		$input['registered'] = date('n').'/'. date("Y");
+		$input['lastseen'] = time();
+		$input['ip_address'] = oServer::IP();
+		$input['src'] = 'AO';
+		// src = [AO_Web|AO_iOS|AO_Android]
+		$input['email_code'] = md5(rand(1111, 9999) . time());
+		// country_id = 159
+		// $input['birthday'] = $input['dob'];
+		// $input['gender']
+		// cover = 'upload/photos/d-cover.jpg'
+		// avatar = 'upload/photos/d-avatar.jpg'  OR upload/photos/f-avatar.jpg
+		// first_name
+		// last_name
+		#email
+		#username
+		#password   =  Wo_Secure(password_hash($registration_data['password'], PASSWORD_DEFAULT));
+		#suid
+
+
+		#$sql = oSQL::insert('Wo_Users', $input, 'iParam');
+		echo oPrint::Neat($input);
+	}
+
 
 
 	public function update($input){
