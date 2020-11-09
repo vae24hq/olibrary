@@ -45,7 +45,7 @@ function uRegister($wow){
 
 		$signupInput['suid'] = $result['bind'];
 		#REGISTER ON OLD WOWCATHOLIC
-		$wow->signupOnOld($signupInput);
+		$signupOnOld = $wow->signupOnOld($signupInput);
 		return $resp;
 	}
 	else {
