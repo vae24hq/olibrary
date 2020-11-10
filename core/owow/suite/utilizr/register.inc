@@ -48,8 +48,9 @@ function uRegister($wow){
 	// }
 	$testIT = 1;
 	if($testIT == 1){
-		$signupOnOld = $wow->signupOnOld($signupInput);
-		return $signupOnOld;
+		echo
+		// $signupOnOld = $wow->signupOnOld($signupInput);
+		// return $signupOnOld;
 
 	}
 	else {
