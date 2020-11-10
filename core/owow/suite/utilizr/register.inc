@@ -3,8 +3,6 @@ function uRegister($wow){
 	#get input data
 	$input = oInput::method('iRequest');
 
-
-
 	#@TODO: check for required input
 	$required = ['username', 'email', 'phone', 'password', 'religion'];
 	$isrequired = oInput::required($input, $required);
@@ -13,7 +11,6 @@ function uRegister($wow){
 		$resp['reason'] = array('summary' => 'required input', 'details' => $isrequired);
 		return $resp;
 	}
-
 
 
 	#sanitize data
@@ -34,19 +31,26 @@ function uRegister($wow){
 
 
 	#process input & return result
-	$signupInput = $input;
-	if(isset($signupInput['okey'])){unset($signupInput['okey']);}
-	if(isset($signupInput['oplatform'])){unset($signupInput['oplatform']);}
+	// $signupInput = $input;
+	// if(isset($signupInput['okey'])){unset($signupInput['okey']);}
+	// if(isset($signupInput['oplatform'])){unset($signupInput['oplatform']);}
 
-	$result = $wow->signup($signupInput);
-	if(isset($result['bind'])){
-		$resp['status'] = 'OK';
-		$resp['response'] = $result;
+	// $result = $wow->signup($signupInput);
+	// if(isset($result['bind'])){
+	// 	$resp['status'] = 'OK';
+	// 	$resp['response'] = $result;
 
-		$signupInput['suid'] = $result['bind'];
-		#REGISTER ON OLD WOWCATHOLIC
+	// 	$signupInput['suid'] = $result['bind'];
+	// 	#REGISTER ON OLD WOWCATHOLIC
+	// 	$signupOnOld = $wow->signupOnOld($signupInput);
+
+	// 	return $resp;
+	// }
+	$testIT = 1;
+	if($testIT == 1){
 		$signupOnOld = $wow->signupOnOld($signupInput);
-		return $resp;
+		return $signupOnOld;
+
 	}
 	else {
 		#TODO: fix & remove

@@ -70,10 +70,13 @@ class WOWCa {
 		$sql = oSQL::insert('Wo_Users', $input, 'iParam');
 		$stmt = $this->OldDBO->prepare($sql);
 		$execute = $stmt->execute($input);
-		// if($execute === false){
-		// 	$PDOError = $stmt->errorInfo();
-		// 	return $PDOError[2];
-		// }
+		if($execute === false){
+			$PDOError = $stmt->errorInfo();
+			// return $PDOError[2];
+		}
+		$ORAX['executed'] = $execute;
+		$ORAX['Error'] = $PDOError;
+		return $ORAX;
 
 		#SUCCESSFUL at this point (return SUID as BIND)
 		#return array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']); #return $execute;
