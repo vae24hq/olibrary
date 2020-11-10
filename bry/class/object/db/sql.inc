@@ -31,6 +31,20 @@ class oSQL {
 
 
 
+	//PARAM • Prepare BIND PARAMETERs VALUE_LABEL (turns $input['user'] = 'tony'  TO $input[':user'] = 'tony')
+	public static function param_input($input){
+		$param = array();
+		foreach ($input as $key => $value){
+			$index = ':'.$key;
+			$param[$index] = $value;
+		}
+		return $param;
+	}
+
+
+
+
+
 	//INSERT_QUERY • Build SQL Insert Query
 	public static function insert($table, $data, $use='iParam'){
 		$columns = ''; $values = '';
