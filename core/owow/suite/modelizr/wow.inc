@@ -70,16 +70,13 @@ class WOWCa {
 			$execute = $stmt->execute($param);
 			if($execute === false){
 				$PDOError = $stmt->errorInfo();
-				$error['inputo'] = $input;
+				$error['input'] = $input;
 				$error['sql'] = $sql;
-				$error['error'] = 'Query failed to execute';
+				$error['error'] = 'query failed';
 				$error['message'] = $PDOError[2];
 				return $error;
 			}
 			elseif($execute === true){
-				// #SUCCESSFUL at this point (return SUID as BIND)
-				// $response = array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']);
-				// return $response;
 				return true;
 			}
 		}
@@ -90,7 +87,65 @@ class WOWCa {
 
 
 
+	public function update_new($input, $filter){
+		$input = oSQL::prep($input);
+		$filter = oSQL::prep($filter);
+		$param = oSQL::param_input($input);
+		$suid = oSQL::param_input($filter);
+		$sql = oSQL::update('userao', $input, $filter, 'iParam');
+		$stmt = $this->dbo_new->prepare($sql);
+		if($stmt === false){
+			#Cannot prepare SQL statement::@TODO
+		}
+		else {
+			$execute = $stmt->execute(array_merge($param, $suid));
+			if($execute === false){
+				$PDOError = $stmt->errorInfo();
+				$error['input'] = $input;
+				$error['sql'] = $sql;
+				$error['error'] = 'query failed';
+				$error['message'] = $PDOError[2];
+				return $error;
+			}
+			elseif($execute === true || $execute > 0){
+				#Successful Update at this point (return SUID as BIND)
+				$response = array('bind' => $filter['suid'], 'activity' => $input['activity'], 'step' => $input['step']);
+				return $response;
+			}
+		}
+		return false;
+	}
 
+
+
+
+
+	public function update_old($input, $filter){
+		$input = oSQL::prep($input);
+		$filter = oSQL::prep($filter);
+		$param = oSQL::param_input($input);
+		$suid = oSQL::param_input($filter);
+		$sql = oSQL::update('Wo_Users', $input, $filter, 'iParam');
+		$stmt = $this->dbo_old->prepare($sql);
+		if($stmt === false){
+			#Cannot prepare SQL statement::@TODO
+		}
+		else {
+			$execute = $stmt->execute(array_merge($param, $suid));
+			if($execute === false){
+				$PDOError = $stmt->errorInfo();
+				$error['input'] = $input;
+				$error['sql'] = $sql;
+				$error['error'] = 'query failed';
+				$error['message'] = $PDOError[2];
+				return $error;
+			}
+			elseif($execute === true || $execute > 0){
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 
@@ -184,32 +239,7 @@ class WOWCa {
 
 
 
-	public function update($input){
-		$input = oSQL::prep($input);
-		if(isset($input['id'])){
-			$id = $input['id'];
-			unset($input['id']);
 
-			$where['suid'] = $id;
-
-			$sql = oSQL::update('userao', $input, $where, 'iParam');
-			$stmt = $this->dbo->prepare($sql);
-			$execute = $stmt->execute(array_merge($input, $where));
-			if($execute === false){
-				$PDOError = $stmt->errorInfo();
-				return $PDOError[2];
-			}
-			elseif($execute === true){
-				$count = $stmt->rowCount();
-			}
-
-			#UPDATE IS SUCCESSFUL
-			return array('bind' => $id, 'activity' => $input['activity'], 'step' => $input['step']); #return $execute;
-		}
-
-		#FAILED - because user id is required
-		return array('report' => 'failed - no user id input');
-	}
 
 
 
