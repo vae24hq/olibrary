@@ -30,31 +30,39 @@
 
 	<?php if(!empty($isError)){echo oPrint::neat(array('error' => $isError));}?>
 	<form name="registration" id="registration" action="" method="post">
-		<div class="container">
-			<div class="row">
+		<div id="maincontent" class="container">
+			<div class="row d-flex justify-content-center">
 				<div class="col-md-6">
 
-					<div class="form-group">
-						<label for="username">Username</label>
-						<input name="username" type="text" class="form-control" id="username" placeholder="iamodao">
-						<!-- <small id="usernameHelp" class="form-text text-muted">Please enter a unique username</small> -->
+					<div class="form-group row">
+						<label for="username" class="col-sm-3 col-form-label label">Username</label>
+						<div class="col-sm-9">
+							<input name="username" type="text" class="form-control form-control-md" id="username" placeholder="iamodao">
+							<!-- <small id="usernameHelp" class="form-text text-muted hint">Please enter a unique username</small> -->
+						</div>
 					</div>
 
 
-					<div class="form-group">
-						<label for="email">Email Address</label>
-						<input name="email" type="email" class="form-control" id="email" placeholder="odao@woca.ng">
+					<div class="form-group row">
+						<label for="email" class="col-sm-3 col-form-label label">Email Address</label>
+						<div class="col-sm-9">
+							<input name="email" type="email" class="form-control" id="email" placeholder="odao@woca.ng">
+						</div>
 					</div>
 
-					<div class="form-group">
-						<label for="phone">Phone Number</label>
-						<input name="phone" type="text" class="form-control" id="phone" placeholder="2349026636728">
+					<div class="form-group row">
+						<label for="phone" class="col-sm-3 col-form-label label">Phone Number</label>
+						<div class="col-sm-9">
+							<input name="phone" type="text" class="form-control" id="phone" placeholder="2349026636728">
+						</div>
 					</div>
 
 
-					<div class="form-group">
-						<label for="password">Password</label>
-						<input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
+					<div class="form-group row">
+						<label for="password" class="col-sm-3 col-form-label label">Password</label>
+						<div class="col-sm-9">
+							<input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
+						</div>
 					</div>
 
 				</div>
