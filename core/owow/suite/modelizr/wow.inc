@@ -11,7 +11,106 @@ class WOWCa {
 		#initiate ODL database
 		$this->OldDB = new oDatabase($config['old_database']);
 		$this->OldDBO = $this->OldDB->dbo();
+
+
+		#new database connection
+		$this->db_new = new oDatabase($config['database']);
+		$this->dbo_new = $this->db_new->dbo();
+
+		#current database connection
+		$this->db_old = new oDatabase($config['old_database']);
+		$this->dbo_old = $this->db_old->dbo();
+
 	}
+
+
+
+
+	public function signup_new($input){
+		$input = oSQL::prep($input);
+		$input = oSQL::guid($input);
+		$param = oSQL::param_input($input);
+		$sql = oSQL::insert('userao', $input, 'iParam');
+		$stmt = $this->dbo_new->prepare($sql);
+		if($stmt === false){
+			#Cannot prepare SQL statement::@TODO
+		}
+		else {
+			$execute = $stmt->execute($param);
+			if($execute === false){
+				$PDOError = $stmt->errorInfo();
+				$error['input'] = $input;
+				$error['sql'] = $sql;
+				$error['error'] = 'Query failed to execute';
+				$error['message'] = $PDOError[2];
+				#@TODO: log Error
+				return $error;
+			}
+			elseif($execute === true){
+				#SUCCESSFUL at this point (return SUID as BIND)
+				$response = array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']);
+				return $response;
+			}
+		}
+		return false;
+	}
+
+
+
+
+	public function signup_old($input){
+		$input = oSQL::prep($input);
+		$param = oSQL::param_input($input);
+		$sql = oSQL::insert('Wo_Users', $input, 'iParam');
+		$stmt = $this->dbo_old->prepare($sql);
+		if($stmt === false){
+			#cannot prepare SQL statement::@TODO
+		}
+		else {
+			$execute = $stmt->execute($param);
+			if($execute === false){
+				$PDOError = $stmt->errorInfo();
+				$error['inputo'] = $input;
+				$error['sql'] = $sql;
+				$error['error'] = 'Query failed to execute';
+				$error['message'] = $PDOError[2];
+				return $error;
+			}
+			elseif($execute === true){
+				// #SUCCESSFUL at this point (return SUID as BIND)
+				// $response = array('bind' => $input['suid'], 'activity' => $input['activity'], 'step' => $input['step']);
+				// return $response;
+				return true;
+			}
+		}
+		return false;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
