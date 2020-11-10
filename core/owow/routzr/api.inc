@@ -53,7 +53,8 @@ else {
 					$resp = uProfileUpdateDP($wow);
 				}
 				else {
-					$resp = uProfileUpdate($wow);
+					$resp = ao_profileupdate($wow);
+					// $resp = uProfileUpdate($wow);
 				}
 			}
 		}
