@@ -54,6 +54,7 @@ function ao_profileupdate($WOWApp, $input=''){
 		if(!empty($input['activity'])){unset($input['activity']);}
 		if(!empty($input['marital'])){unset($input['marital']);}
 		if(!empty($input['religion'])){unset($input['religion']);}
+		if(!empty($input['db'])){$input['avatar'] = $input['db']; unset($input['db']);}
 
 		#send data to current DB
 		$update_old = $WOWApp->update_old($input, array('suid' => $update_new['bind']));
