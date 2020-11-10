@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `logao` (
   KEY `updated` (`updated`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
-
 DROP TABLE IF EXISTS `userao`;
 CREATE TABLE IF NOT EXISTS `userao` (
   `auid` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -43,10 +42,11 @@ CREATE TABLE IF NOT EXISTS `userao` (
   `status` varchar(10) DEFAULT NULL,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `okey` varchar(100) DEFAULT NULL,
-  `oplatform` varchar(100) DEFAULT NULL,
-  `activity` varchar(100) DEFAULT NULL,
-  `step` varchar(100) DEFAULT NULL,
+  `okey` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `oplatform` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ip` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `activity` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `step` varchar(100) CHARACTER SET utf32 COLLATE utf32_unicode_ci DEFAULT NULL,
   `username` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `phone` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `userao` (
   `marital` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `location` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `religon` varchar(100) DEFAULT NULL,
   `country` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `interest` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `bio` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -78,4 +79,3 @@ CREATE TABLE IF NOT EXISTS `userao` (
   KEY `created` (`created`),
   KEY `updated` (`updated`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
