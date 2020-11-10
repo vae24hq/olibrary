@@ -35,8 +35,7 @@ else {
 		oFile::exist($routa['utilizr']);
 		require $routa['utilizr'];
 		if(!empty($_REQUEST)){
-			#TODO: change to POST
-			$resp = uRegister($wow);
+			$resp = ao_signup($wow);
 		}
 	}
 
