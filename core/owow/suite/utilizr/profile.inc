@@ -1,39 +1,82 @@
 <?php
-function uProfileUpdate($wow, $input=''){
+function ao_profileupdate($WOWApp, $input=''){
 	if(empty($input)){$input = oInput::method('iRequest');}
-	if(isset($input['oupload'])){unset($input['oupload']);}
 
-	$required = ['id', 'activity', 'step'];
-	$isrequired = oInput::required($input, $required);
-	if(!empty($isrequired)){
+	$required_fields = ['id', 'activity', 'step'];
+	$is_required = oInput::required($input, $required_fields);
+	if(!empty($is_required)){
 		$resp['status'] = 'F9';
-		$resp['reason'] = array('summary' => 'required input', 'details' => $isrequired);
+		$resp['reason'] = array('summary' => 'required input', 'details' => $is_required);
 		return $resp;
 	}
 
-	#sanitize data
 	$input = oInput::sanitize($input);
 
-	#Clean Date Of Birth
+	#prepare data for new DB
+	if(!empty($input['email'])){$input['email'] = strtolower($input['email']);}
+	if(!empty($input['username'])){$input['username'] = strtolower($input['username']);}
+	if(!empty($input['firstname'])){$input['firstname'] = ucwords($input['firstname']);}
+	if(!empty($input['lastname'])){$input['lastname'] = ucwords($input['lastname']);}
+	if(!empty($input['gender'])){$input['gender'] = ucfirst($input['gender']);}
+	if(!empty($input['marital'])){$input['marital'] = ucwords($input['marital']);}
 	if(!empty($input['dob'])){$input['dob'] = oTime::date('iSQL', $input['dob']);}
+	if(!empty($input['location'])){$input['location'] = ucwords($input['location']);}
+	if(!empty($input['interest'])){$input['interest'] = ucwords($input['interest']);}
+	if(!empty($input['id'])){$filta['suid'] = $input['id']; unset($input['id']);}
 
-	#@TODO: check that user's id [id] is valid  - user exist
+	#@TODO: make sure user BIND exist
 
-	#process input & return result
-	$result = $wow->update($input);
-	if(isset($result['bind'])){
-		$resp['status'] = 'OK';
-		$resp['response'] = $result;
+	#send data to new DB
+	$update_new = $WOWApp->update_new($input, $filta);
+	if(isset($update_new['error'])){
+		#when error occurs in db operation
+		$resp['status'] = 'F9';
+		$resp['reason'] = array('summary' => 'error occurred', 'details' => $update_new);
 		return $resp;
 	}
-	else {
-		#TODO: fix & remove
-		$resp['status'] = 'F9';
-		$resp['reason'] = array('summary' => 'error occurred', 'details' => $result);
+
+	elseif(isset($update_new['bind'])){
+		$resp['status'] = 'OK';
+		$resp['response'] = $update_new;
+
+		#prepare data for current DB
+		if(!empty($input['firstname'])){$input['first_name'] = $input['firstname']; unset($input['firstname']);}
+		if(!empty($input['lastname'])){$input['last_name'] = $input['lastname']; unset($input['lastname']);}
+		if(!empty($input['location'])){$input['address'] = $input['location']; unset($input['location']);}
+		if(!empty($input['bio'])){$input['about'] = $input['bio']; unset($input['bio']);}
+		if(!empty($input['dob'])){$input['birthday'] = $input['dob']; unset($input['dob']);}
+		if(!empty($input['phone'])){$input['phone_number'] = $input['phone']; unset($input['phone']);}
+
+		if(!empty($input['interest'])){unset($input['interest']);}
+		if(!empty($input['okey'])){unset($input['okey']);}
+		if(!empty($input['oplatform'])){unset($input['oplatform']);}
+		if(!empty($input['step'])){unset($input['step']);}
+		if(!empty($input['activity'])){unset($input['activity']);}
+		if(!empty($input['marital'])){unset($input['marital']);}
+		if(!empty($input['religion'])){unset($input['religion']);}
+
+		#send data to current DB
+		$update_old = $WOWApp->update_old($input, array('suid' => $update_new['bind']));
+		if($update_old === false){
+			#failed to copy data to old DB
+		}
 		return $resp;
 	}
 	return false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
