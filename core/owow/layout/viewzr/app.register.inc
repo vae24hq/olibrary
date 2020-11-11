@@ -76,7 +76,7 @@
 					<div class="form-group row omargin-top">
 						<label for="religion" class="col-sm-3 col-form-label label"></label>
 						<div class="col-sm-9">
-							<input type="submit" placeholder="Continue" class="btn btn-primary">
+							<input type="submit" value="Continue" class="btn btn-primary">
 						</div>
 					</div>
 					<div class="row">
