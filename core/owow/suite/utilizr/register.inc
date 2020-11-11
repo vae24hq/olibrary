@@ -27,8 +27,6 @@ function ao_signup($WOWApp){
 	$input_new['step'] = 1;
 	$input_new['ip'] = oServer::IP();
 
-
-
 	#send data to new DB
 	$signup_new = $WOWApp->signup_new($input_new);
 	if(isset($signup_new['error'])){
