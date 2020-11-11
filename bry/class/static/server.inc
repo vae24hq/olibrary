@@ -72,6 +72,18 @@ class oServer {
 
 
 
+
+
+
+	public static function ref(){
+		if(!empty($_SERVER['HTTP_REFERER'])){
+			return strtolower($_SERVER['HTTP_REFERER']);
+		}
+		return false;
+	}
+
+
+
 	public static function domain(){
 		if(!empty($_SERVER['HTTP_HOST'])){
 			return strtolower($_SERVER['HTTP_HOST']);
@@ -95,6 +107,7 @@ class oServer {
 		}
 		return false;
 	}
+
 
 
 
