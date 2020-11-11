@@ -9,7 +9,7 @@ $session = new oSession;
 $session->start();
 oTime::zone('Africa/Lagos');
 oFile::inc(oRoute::path('setting'));
-if(CONFIG['project']['mode'] == 'development'){
+if(CONFIG['project']['mode'] != 'production'){
 	oSSL::impose(false);
 }
 else {
