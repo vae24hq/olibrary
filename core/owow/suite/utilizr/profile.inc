@@ -1,5 +1,5 @@
 <?php
-function ao_profileupdate($WOWApp, $input=''){
+function ao_profileupdate($WOWApp, $input='', $upload=''){
 	if(empty($input)){$input = oInput::method('iRequest');}
 
 	$required_fields = ['id', 'activity', 'step'];
@@ -11,6 +11,30 @@ function ao_profileupdate($WOWApp, $input=''){
 	}
 
 	$input = oInput::sanitize($input);
+
+
+	if(!empty($upload)){
+		if($upload == 'dp'){
+			if(empty($_FILES['dp'])){
+				$resp['status'] = 'F9';
+				$resp['reason'] = array('summary' => 'no file', 'details' => 'no file sent for upload');
+				return $resp;
+			}
+
+			$conFigUpload = array('fileName' => oRandom::Create('iFile').oRandom::Create('iFile'), 'filesAllowed' => array('jpg', 'jpeg', 'png', 'gif'), 'fileDir' => oCLOUD);
+			$ofileupload = oFile::upload($_FILES['dp'], $conFigUpload);
+			if(!empty($ofileupload['fileName'])){
+				$input['dp'] = $ofileupload['fileName'];
+				// $resp = uProfileUpdate($wow, $input);
+			}
+			else {
+				$resp['status'] = 'F9';
+				$resp['reason'] = array('summary' => 'DP upload error occurred', 'details' => $ofileupload);
+				return $resp;
+			}
+		}
+	}
+
 
 	#prepare data for new DB
 	if(!empty($input['email'])){$input['email'] = strtolower($input['email']);}
