@@ -1,3 +1,4 @@
+
 # WOWCatholic
 
 ## API Documentation
@@ -45,7 +46,7 @@ The object for user signup/registration
 
 **SAMPLE:**
 
-    https://new.wowcatholic.com/api/register?username=jon&email=jon@doe.com&phone=2349012345678&password=Jon20&religion=Catholic&okey=5tMmoDgiJ301edHRj2T5&oplatform=webapi
+    https://new.wowcatholic.com/api/register?okey=5tMmoDgiJ301edHRj2T5&oplatform=webapi&username=john&password=JDoE20&email=john@doe.co&phone=2349016756234&religion=catholic
 
 ### UPDATE PROFILE
 The object for user profile update. It requires the user's id
