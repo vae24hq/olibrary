@@ -37,6 +37,7 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 				$resp['reason'] = array('summary' => 'DP upload error occurred', 'details' => $ofileupload);
 				return $resp;
 			}
+			if(isset($input['oupload'])){unset($input['oupload']);}
 		}
 	}
 
@@ -78,7 +79,6 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 
 
 
-		if(isset($input['oupload'])){unset($input['oupload']);}
 		if(!empty($input['interest'])){unset($input['interest']);}
 		if(!empty($input['okey'])){unset($input['okey']);}
 		if(!empty($input['oplatform'])){unset($input['oplatform']);}
