@@ -19,6 +19,9 @@ if($routa['model'] == 'register'){
 	require $routa['organizr'];
 }
 
+
+
+
 	#PROFILE
 if($routa['model'] == 'profile'){
 	oFile::exist($routa['utilizr']);

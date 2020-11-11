@@ -1,7 +1,7 @@
 <?php
 class utilAPI {
 	public static function isKey($i=''){
-		$keys = array('5tMmoDgiJ301edHRj2T5', '40zqD0deYpGQIHumiXsn');
+		$keys = array('5tMmoDgiJ301edHRj2T5', '40zqD0deYpGQIHumiXsn', '2020AOWP');
 		if(empty($i) && !empty($_REQUEST['okey'])){$i = $_REQUEST['okey'];}
 		if(empty($i)){
 			$resp['status'] = 'F9';

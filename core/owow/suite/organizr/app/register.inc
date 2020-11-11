@@ -1,12 +1,15 @@
 <?php
 if(!empty($_POST)){
-	$resp = uRegister($wow);
+	$_POST['oplatform'] = 'AOWeb';
+	$_POST['okey'] = '2020AOWP';
+	$resp = ao_signup($wow, $_POST);
 	if(isset($resp['status']) && $resp['status'] == 'F9'){
 		$isError = $resp['reason']['details'];
 	}
 	elseif($resp['status'] == 'OK'){
 		$_SESSION['UserInReg'] = $resp['response'];
-		oRedirect::oExit('profile/update-2');
+		oRedirect::oExit('https://www.wowcatholic.com/');
+		// oRedirect::oExit('profile/update-2');
 	}
 }
 
