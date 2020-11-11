@@ -50,7 +50,7 @@ else {
 			if(!empty($_REQUEST)){
 				#check if its upload
 				if(isset($_REQUEST['oupload'])){
-					$resp = ao_profileupdate($wow, '', 'dp');
+					$resp = ao_profileupdate($wow, '', $_REQUEST['oupload']);
 				}
 				else {
 					$resp = ao_profileupdate($wow);
