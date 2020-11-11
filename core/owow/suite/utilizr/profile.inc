@@ -21,11 +21,16 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 				return $resp;
 			}
 
-			$conFigUpload = array('fileName' => oRandom::Create('iFile').oRandom::Create('iFile'), 'filesAllowed' => array('jpg', 'jpeg', 'png', 'gif'), 'fileDir' => oCLOUD);
+			$conFigUpload = array('fileName' => oRandom::Create('iFile').oRandom::Create('iFile').'.jpg', 'filesAllowed' => array('jpg', 'jpeg', 'png', 'gif'), 'fileDir' => oCLOUD);
 			$ofileupload = oFile::upload($_FILES['dp'], $conFigUpload);
+
+			$uploadedFilePath = $conFigUpload['fileDir'].$ofileupload['fileName'];
+			#compress
+			oFile::compress_image($uploadedFilePath, $conFigUpload['fileDir'].'md-'.$ofileupload['fileName'], 70);
+			oFile::compress_image($uploadedFilePath, $conFigUpload['fileDir'].'sm-'.$ofileupload['fileName'], 40);
+
 			if(!empty($ofileupload['fileName'])){
 				$input['dp'] = $ofileupload['fileName'];
-				// $resp = uProfileUpdate($wow, $input);
 			}
 			else {
 				$resp['status'] = 'F9';
@@ -71,6 +76,9 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 		if(!empty($input['dob'])){$input['birthday'] = $input['dob']; unset($input['dob']);}
 		if(!empty($input['phone'])){$input['phone_number'] = $input['phone']; unset($input['phone']);}
 
+
+
+		if(isset($input['oupload'])){unset($input['oupload']);}
 		if(!empty($input['interest'])){unset($input['interest']);}
 		if(!empty($input['okey'])){unset($input['okey']);}
 		if(!empty($input['oplatform'])){unset($input['oplatform']);}
@@ -78,7 +86,8 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 		if(!empty($input['activity'])){unset($input['activity']);}
 		if(!empty($input['marital'])){unset($input['marital']);}
 		if(!empty($input['religion'])){unset($input['religion']);}
-		if(!empty($input['db'])){$input['avatar'] = $input['db']; unset($input['db']);}
+		if(!empty($input['dp'])){$input['avatar'] = $input['dp']; unset($input['dp']);}
+
 
 		#send data to current DB
 		$update_old = $WOWApp->update_old($input, array('suid' => $update_new['bind']));
@@ -88,49 +97,4 @@ function ao_profileupdate($WOWApp, $input='', $upload=''){
 		return $resp;
 	}
 	return false;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function uProfileUpdateDP($wow){
-	$input = oInput::method('iRequest');
-	$required = ['id', 'activity', 'step'];
-	$isrequired = oInput::required($input, $required);
-	if(!empty($isrequired)){
-		$resp['status'] = 'F9';
-		$resp['reason'] = array('summary' => 'required input', 'details' => $isrequired);
-		return $resp;
-	}
-
-	if(empty($_FILES['dp'])){
-		$resp['status'] = 'F9';
-		$resp['reason'] = array('summary' => 'no file', 'details' => 'no file sent for upload');
-		return $resp;
-	}
-
-	$conFigUpload = array('fileName' => oRandom::Create('iFile').oRandom::Create('iFile'), 'filesAllowed' => array('jpg', 'jpeg', 'png', 'gif'), 'fileDir' => oCLOUD);
-	$ofileupload = oFile::upload($_FILES['dp'], $conFigUpload);
-	if(!empty($ofileupload['fileName'])){
-		$input['dp'] = $ofileupload['fileName'];
-		$resp = uProfileUpdate($wow, $input);
-	}
-	else {
-		$resp['status'] = 'F9';
-		$resp['reason'] = array('summary' => 'dp upload error occurred', 'details' => $ofileupload);
-	}
-	return $resp;
 }
