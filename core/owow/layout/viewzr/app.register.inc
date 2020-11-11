@@ -57,12 +57,6 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="password" class="col-sm-3 col-form-label label">Password</label>
-						<div class="col-sm-9">
-							<input name="password" type="password" class="form-control" id="password" placeholder="Enter your password">
-						</div>
-					</div>
-					<div class="form-group row">
 						<label for="religion" class="col-sm-3 col-form-label label">Religion</label>
 						<div class="col-sm-9">
 							<select name="religion" class="form-control" id="religion">
