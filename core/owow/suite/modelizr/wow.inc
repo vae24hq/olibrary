@@ -25,6 +25,37 @@ class WOWCa {
 
 
 
+	public function execute_failed($stmt){
+		$dbo_error = $stmt->errorInfo();
+		$e['input'] = $input;
+		$e['sql'] = $sql;
+		$e['error'] = 'query failed';
+		$e['message'] = $dbo_error[2];
+		#@TODO: log Error
+		return $e;
+	}
+
+
+
+	public function user_exist($value, $check){
+		if($check == 'username'){
+			#check old db
+			$sql = "SELECT `username` FROM `Wo_Users` WHERE `username` = '{$value}' LIMIT 1";
+		}
+		$stmt = $this->dbo_old->prepare($sql);
+		if($stmt === false){
+				#Cannot prepare SQL statement::@TODO
+		}
+		else {
+			$execute = $stmt->execute();
+			if($execute === false){
+				return $this->execute_failed($stmt);
+			}
+			return $execute;
+		}
+	}
+
+
 
 	public function signup_new($input){
 		$input = oSQL::prep($input);
