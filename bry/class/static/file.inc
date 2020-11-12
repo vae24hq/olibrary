@@ -94,6 +94,18 @@ class oFile {
 
 
 
+	public static function compress_image($source, $destination, $quality=80){
+		$info = getimagesize($source);
+		if ($info['mime'] == 'image/jpeg') $image = imagecreatefromjpeg($source);
+		elseif ($info['mime'] == 'image/gif') $image = imagecreatefromgif($source);
+		elseif ($info['mime'] == 'image/png') $image = imagecreatefrompng($source);
+		imagejpeg($image, $destination, $quality);
+		// echo "Image uploaded successfully.";
+	}
+
+
+
+
 
 	//@TODO ~ Test & code file UPLOAD
 	public static function upload($field='upload', $config='', $return = ''){

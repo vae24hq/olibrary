@@ -7,9 +7,14 @@ if(isset($inc_once)){unset($inc_once);}
 #INITIALIZE
 $session = new oSession;
 $session->start();
-oSSL::impose(true);
 oTime::zone('Africa/Lagos');
 oFile::inc(oRoute::path('setting'));
+if(CONFIG['project']['mode'] != 'production'){
+	oSSL::impose(false);
+}
+else {
+	oSSL::impose(true);
+}
 $routa['source'] = oRoute::path('source');
 $routa['model'] = oRoute::model();
 $routa['action'] = oRoute::action();

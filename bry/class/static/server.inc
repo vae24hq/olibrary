@@ -71,6 +71,46 @@ class oServer {
 	}
 
 
+
+
+
+
+	public static function ref(){
+		if(!empty($_SERVER['HTTP_REFERER'])){
+			return strtolower($_SERVER['HTTP_REFERER']);
+		}
+		return false;
+	}
+
+
+
+	public static function domain(){
+		if(!empty($_SERVER['HTTP_HOST'])){
+			return strtolower($_SERVER['HTTP_HOST']);
+		}
+		return false;
+	}
+
+
+
+	public static function uri(){
+		if(!empty($_SERVER['REQUEST_URI'])){
+			return strtolower($_SERVER['REQUEST_URI']);
+		}
+		return false;
+	}
+
+
+	public static function page(){
+		if(!empty($_SERVER['PHP_SELF'])){
+			return strtolower($_SERVER['PHP_SELF']);
+		}
+		return false;
+	}
+
+
+
+
 	//INFO •
 	public static function info($i='', $r='domainIP'){
 		if(!empty($i)){

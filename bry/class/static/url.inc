@@ -7,8 +7,7 @@
 class oURL {
 	//REF • Returns referrer
 	public static function ref(){
-		if(!empty($_SERVER['HTTP_REFERER'])){return strtolower($_SERVER['HTTP_REFERER']);}
-		return false;
+		oServer::ref();
 	}
 
 
@@ -28,10 +27,7 @@ class oURL {
 
 	//URI • Returns URI
 	public static function uri(){
-		if(!empty($_SERVER['REQUEST_URI'])){
-			return $_SERVER['REQUEST_URI'];
-		}
-		return false;
+		oServer::uri();
 	}
 
 

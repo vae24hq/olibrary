@@ -1,6 +1,6 @@
 <?php
-function ao_signup($WOWApp){
-	$input = oInput::method('iRequest');
+function ao_signup($WOWApp, $input=''){
+	if(empty($input)){$input = oInput::method('iRequest');}
 
 	$required_fields = ['username', 'email', 'phone', 'password', 'religion'];
 	$is_required = oInput::required($input, $required_fields);
@@ -26,8 +26,6 @@ function ao_signup($WOWApp){
 	$input_new['activity'] = 'signup';
 	$input_new['step'] = 1;
 	$input_new['ip'] = oServer::IP();
-
-
 
 	#send data to new DB
 	$signup_new = $WOWApp->signup_new($input_new);
