@@ -13,6 +13,9 @@ defined('PS') ? null : define('PS', '/');
 #DEFINE DIRECTORY
 defined('oROOT') ? null : define('oROOT', __DIR__.DS);
 defined('oLIBRY') ? null : define('oLIBRY', oROOT.'bry'.DS);
+
+defined('AO') ? null : define('AO', oROOT.'bry'.DS.'ao'.DS);
+
 defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
 defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
 defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
@@ -75,7 +78,8 @@ oFile::inc(oSTATIC.'crypt.inc');
 oFile::inc(oSTATIC.'time.inc');
 oFile::inc(oSTATIC.'route.inc');
 oFile::inc(oBJCT.'db'.DS.'sql.inc');
-oFile::inc(oBJCT.'db'.DS.'database.inc');
+// oFile::inc(oBJCT.'db'.DS.'database.inc');
+oFile::inc(AO.'database.inc');
 oFile::inc(oHELPER.'html.inc');
 
 
