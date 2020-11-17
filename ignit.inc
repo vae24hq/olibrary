@@ -42,7 +42,7 @@ if(isset($AO)){unset($AO);}
 
 #require library
 require AO['BRY'].'session.inc';
-// require oSTATIC.'print.inc';
+require AO['BRY'].'print.inc';
 // require oSTATIC.'exit.inc';
 // require oSTATIC.'file.inc';
 // require oBOND.'mobile.inc';
