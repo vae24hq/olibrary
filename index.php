@@ -13,7 +13,7 @@ require 'ignit.inc';
 // oFile::inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', false);
 
 $var['variables'] = get_defined_vars();
-$var['constants'] = get_defined_constants();
+// $var['constants'] = get_defined_constants();
 // echo '<pre>'.print_r($var, true).'</pre>';
 echo oPrint::Neat($var);
 ?>
