@@ -4,83 +4,71 @@
  * ============================================================================================
  * IGNITE ~ Ignition • DEPENDENCY»
  */
+#directory, path & separators
+$AO['PS'] = '/';
+$AO['DS'] = DIRECTORY_SEPARATOR;
 
-#DEFINE SEPARATOR
-defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
-defined('PS') ? null : define('PS', '/');
+$AO['ROOT'] = __DIR__.$AO['DS'];
 
+$AO['BRY'] = $AO['ROOT'].'bry'.$AO['DS'];
+$AO['3RD'] = $AO['ROOT'].'3rd'.$AO['DS'];
+$AO['FUNC'] = $AO['ROOT'].'func'.$AO['DS'];
 
-#DEFINE DIRECTORY
-defined('oROOT') ? null : define('oROOT', __DIR__.DS);
-defined('oLIBRY') ? null : define('oLIBRY', oROOT.'bry'.DS);
+$AO['CORE'] = $AO['ROOT'].'core'.$AO['DS'];
 
-defined('AO') ? null : define('AO', oROOT.'bry'.DS.'ao'.DS);
+$AO['INIT'] = 'init'.$AO['DS'];
+$AO['BIT'] = 'layout'.$AO['DS'].'bitzr'.$AO['DS'];
+$AO['VIEW'] = 'layout'.$AO['DS'].'viewzr'.$AO['DS'];
 
-defined('oBOND') ? null : define('oBOND', oLIBRY.'bond'.DS);
-defined('oCLASS') ? null : define('oCLASS', oLIBRY.'class'.DS);
-defined('oINSTANCE') ? null : define('oINSTANCE', oCLASS.'instance'.DS);
-defined('oBJCT') ? null : define('oBJCT', oCLASS.'object'.DS);
-defined('oHELPER') ? null : define('oHELPER', oLIBRY.'helper'.DS);
-defined('oSTATIC') ? null : define('oSTATIC', oCLASS.'static'.DS);
-defined('oFUNC') ? null : define('oFUNC', oLIBRY.'func'.DS);
-defined('oCORE') ? null : define('oCORE', oROOT.'core'.DS);
-defined('oCONFIG') ? null : define('oCONFIG', 'config'.DS);
-defined('oLAYOUT') ? null : define('oLAYOUT', 'layout'.DS);
-defined('oBITZR') ? null : define('oBITZR', oLAYOUT.'bitzr'.DS);
-defined('oSLICEZR') ? null : define('oSLICEZR', oLAYOUT.'slicezr'.DS);
-defined('oFORMZR') ? null : define('oFORMZR', oLAYOUT.'formzr'.DS);
-defined('oTHEMEZR') ? null : define('oTHEMEZR', oLAYOUT.'themezr'.DS);
-defined('oVIEWZR') ? null : define('oVIEWZR', oLAYOUT.'viewzr'.DS);
-defined('oROUTZR') ? null : define('oROUTZR', 'routzr'.DS);
-defined('oSUITE') ? null : define('oSUITE', 'suite'.DS);
-defined('oMODELIZR') ? null : define('oMODELIZR', oSUITE.'modelizr'.DS);
-defined('oRGANIZR') ? null : define('oRGANIZR', oSUITE.'organizr'.DS);
-defined('oUTILIZR') ? null : define('oUTILIZR', oSUITE.'utilizr'.DS);
-defined('oCLOUD') ? null : define('oCLOUD', oCORE.'cloud'.DS);
+$AO['MODELIZR'] = 'program'.$AO['DS'].'modelizr'.$AO['DS'];
+$AO['ORGANIZR'] = 'program'.$AO['DS'].'organizr'.$AO['DS'];
+$AO['ROUTZR'] = 'program'.$AO['DS'].'routzr'.$AO['DS'];
+$AO['UTILIZR'] = 'program'.$AO['DS'].'utilizr'.$AO['DS'];
+
+$AO['DRIVE'] = $AO['ROOT'].'drive'.$AO['DS'];
 
 
-#Using HTACCESS for PATH
-defined('CLOUD') ? null : define('CLOUD', 'cloud'.PS);
-defined('ASSET') ? null : define('ASSET', 'asset'.PS);
-defined('CSS') ? null : define('CSS', 'css'.PS);
-defined('ICON') ? null : define('ICON', 'icon'.PS);
-defined('JS') ? null : define('JS', 'js'.PS);
-defined('MEDIA') ? null : define('MEDIA', 'media'.PS);
-defined('AUDIO') ? null : define('AUDIO', 'audio'.PS);
-defined('DOCUMENT') ? null : define('DOCUMENT', 'document'.PS);
-defined('GRAFIX') ? null : define('GRAFIX', 'grafix'.PS);
-defined('VIDEO') ? null : define('VIDEO', 'video'.PS);
-defined('FONT') ? null : define('FONT', 'font' . PS);
+#using htaccess for path
+$AO['ASSET'] = $AO['PS'].'asset'.$AO['PS'];
+$AO['CSS'] = $AO['PS'].'css'.$AO['PS'];
+$AO['FONT'] = $AO['PS'].'font'.$AO['PS'];
+$AO['ICON'] = $AO['PS'].'icon'.$AO['PS'];
+$AO['MEDIA'] = $AO['PS'].'media'.$AO['PS'];
+$AO['JS'] = $AO['PS'].'js'.$AO['PS'];
+
+defined('AO') ? null : define('AO', $AO);
+if(isset($AO)){unset($AO);}
 
 
-#REQUIRE LIBRARY
-require oINSTANCE.'session.inc';
-require oSTATIC.'print.inc';
-require oSTATIC.'exit.inc';
-require oSTATIC.'file.inc';
-oFile::inc(oBOND.'mobile.inc');
-oFile::inc(oSTATIC.'string.inc');
-oFile::inc(oSTATIC.'array.inc');
-oFile::inc(oSTATIC.'redirect.inc');
-oFile::inc(oSTATIC.'ssl.inc');
-oFile::inc(oSTATIC.'json.inc');
-oFile::inc(oSTATIC.'notify.inc');
-oFile::inc(oSTATIC.'random.inc');
-oFile::inc(oSTATIC.'server.inc');
-oFile::inc(oSTATIC.'url.inc');
-oFile::inc(oSTATIC.'device.inc');
-oFile::inc(oSTATIC.'browser.inc');
-oFile::inc(oSTATIC.'currency.inc');
-oFile::inc(oSTATIC.'data.inc');
-oFile::inc(oSTATIC.'format.inc');
-oFile::inc(oSTATIC.'input.inc');
-oFile::inc(oSTATIC.'crypt.inc');
-oFile::inc(oSTATIC.'time.inc');
-oFile::inc(oSTATIC.'route.inc');
-oFile::inc(oBJCT.'db'.DS.'sql.inc');
-// oFile::inc(oBJCT.'db'.DS.'database.inc');
-oFile::inc(AO.'database.inc');
-oFile::inc(oHELPER.'html.inc');
+#require library
+require AO['BRY'].'session.inc';
+// require oSTATIC.'print.inc';
+// require oSTATIC.'exit.inc';
+// require oSTATIC.'file.inc';
+// require oBOND.'mobile.inc';
+// require oSTATIC.'string.inc';
+// require oSTATIC.'array.inc';
+// require oSTATIC.'redirect.inc';
+// require oSTATIC.'ssl.inc';
+// require oSTATIC.'json.inc';
+// require oSTATIC.'notify.inc';
+// require oSTATIC.'random.inc';
+// require oSTATIC.'server.inc';
+// require oSTATIC.'url.inc';
+// require oSTATIC.'device.inc';
+// require oSTATIC.'browser.inc';
+// require oSTATIC.'currency.inc';
+// require oSTATIC.'data.inc';
+// require oSTATIC.'format.inc';
+// require oSTATIC.'input.inc';
+// require oSTATIC.'crypt.inc';
+// require oSTATIC.'time.inc';
+// require oSTATIC.'route.inc';
+// require oBJCT.'db'.DS.'sql.inc';
+// require oBJCT.'db'.DS.'database.inc';
+// // requireAO.'database.inc';
+// // require oHELPER.'html.inc';
+
 
 
 #REDIRECT URL
@@ -93,3 +81,4 @@ if(!empty($_REQUEST['oredirect'])){
 		#@TODO ~ redirect for whole url - http://domain.co
 	}
 }
+
