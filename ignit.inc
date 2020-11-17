@@ -11,8 +11,8 @@ $AO['DS'] = DIRECTORY_SEPARATOR;
 $AO['ROOT'] = __DIR__.$AO['DS'];
 
 $AO['BRY'] = $AO['ROOT'].'bry'.$AO['DS'];
-$AO['3RD'] = $AO['ROOT'].'3rd'.$AO['DS'];
-$AO['FUNC'] = $AO['ROOT'].'func'.$AO['DS'];
+$AO['3RD'] = $AO['BRY'].'3rd'.$AO['DS'];
+$AO['FUNC'] = $AO['BRY'].'func'.$AO['DS'];
 
 $AO['CORE'] = $AO['ROOT'].'core'.$AO['DS'];
 
@@ -41,16 +41,16 @@ if(isset($AO)){unset($AO);}
 
 
 #require library
+require AO['3RD'].'mobile.inc';
 require AO['BRY'].'session.inc';
 require AO['BRY'].'print.inc';
-// require oSTATIC.'exit.inc';
+require AO['BRY'].'exit.inc';
 // require oSTATIC.'file.inc';
-// require oBOND.'mobile.inc';
-// require oSTATIC.'string.inc';
-// require oSTATIC.'array.inc';
-// require oSTATIC.'redirect.inc';
-// require oSTATIC.'ssl.inc';
-// require oSTATIC.'json.inc';
+require AO['BRY'].'string.inc';
+require AO['BRY'].'array.inc';
+require AO['BRY'].'redirect.inc';
+require AO['BRY'].'ssl.inc';
+require AO['BRY'].'json.inc';
 // require oSTATIC.'notify.inc';
 // require oSTATIC.'random.inc';
 // require oSTATIC.'server.inc';
