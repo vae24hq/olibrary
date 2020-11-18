@@ -45,7 +45,7 @@ require AO['3RD'].'mobile.inc';
 require AO['BRY'].'session.inc';
 require AO['BRY'].'print.inc';
 require AO['BRY'].'exit.inc';
-// require oSTATIC.'file.inc';
+require oSTATIC.'file.inc';
 require AO['BRY'].'string.inc';
 require AO['BRY'].'array.inc';
 require AO['BRY'].'redirect.inc';
