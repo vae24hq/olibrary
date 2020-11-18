@@ -41,34 +41,51 @@ if(isset($AO)){unset($AO);}
 
 
 #require library
-require AO['3RD'].'mobile.inc';
-require AO['BRY'].'session.inc';
-require AO['BRY'].'print.inc';
-require AO['BRY'].'exit.inc';
+spl_autoload_register('AOAutoLoadClass');
+// require AO['3RD'].'mobile.inc';
+
+
+#auto load library
+function AOAutoLoadClass($i){
+	$i = ltrim($i, $i[0]);
+	$file = AO['BRY'].strtolower($i).'.inc';
+	if(!file_exists($file)){$file = AO['3RD'].strtolower($i).'.inc';}
+	if(file_exists($file)){require $file;}
+	else {
+		exit('Class ['.$i.'] not found');
+	}
+}
+	// require AO['BRY'].strtolower($i).'.inc';
+	// require AO['BRY'].strtolower($i).'.inc';
+
+// require AO['BRY'].'session.inc';
+// require AO['BRY'].'print.inc';
+// require AO['BRY'].'exit.inc';
+// require AO['BRY'].'string.inc';
+// require AO['BRY'].'array.inc';
+// require AO['BRY'].'redirect.inc';
+// require AO['BRY'].'ssl.inc';
+// require AO['BRY'].'json.inc';
+// require AO['BRY'].'random.inc';
+// require AO['BRY'].'server.inc';
+// require AO['BRY'].'format.inc';
+// require AO['BRY'].'input.inc';
+// require AO['BRY'].'crypt.inc';
+// require AO['BRY'].'time.inc';
+// require AO['BRY'].'util.inc';
+/**
 require oSTATIC.'file.inc';
-require AO['BRY'].'string.inc';
-require AO['BRY'].'array.inc';
-require AO['BRY'].'redirect.inc';
-require AO['BRY'].'ssl.inc';
-require AO['BRY'].'json.inc';
-// require oSTATIC.'notify.inc';
-// require oSTATIC.'random.inc';
-// require oSTATIC.'server.inc';
-// require oSTATIC.'url.inc';
-// require oSTATIC.'device.inc';
-// require oSTATIC.'browser.inc';
-// require oSTATIC.'currency.inc';
-// require oSTATIC.'data.inc';
-// require oSTATIC.'format.inc';
-// require oSTATIC.'input.inc';
-// require oSTATIC.'crypt.inc';
-// require oSTATIC.'time.inc';
+require oSTATIC.'notify.inc';
+require oSTATIC.'device.inc';
+require oSTATIC.'browser.inc';
+require oSTATIC.'data.inc';
+*/
+
 // require oSTATIC.'route.inc';
 // require oBJCT.'db'.DS.'sql.inc';
 // require oBJCT.'db'.DS.'database.inc';
-// // requireAO.'database.inc';
-// // require oHELPER.'html.inc';
-
+// requireAO.'database.inc';
+// require oHELPER.'html.inc';
 
 
 #REDIRECT URL

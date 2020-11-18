@@ -4,6 +4,7 @@
  * ============================================================================================
  * INDEX ~ Default File • DEPENDENCY»
  */
+declare(strict_types = 1);
 require 'ignit.inc';
 
 #INITIALIZE (based on a specific project)

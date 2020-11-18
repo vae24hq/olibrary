@@ -5,7 +5,7 @@
  * oJSON ~ JSON Utility • DEPENDENCY»
  */
 class oJSON {
-	//ERROR • JSON error interpreter
+	#ERROR • JSON error interpreter
 	public static function error($e, $i=''){
 		$o['oINPUT'] = $i; $o['oERROR'] = $e;
 		if($e == 4){$o['oMSG'] = 'Syntax error';}
@@ -17,7 +17,7 @@ class oJSON {
 
 
 
-	//RUN • Perform json operations (encode, decode & print)
+	#RUN • Perform json operations (encode, decode & print)
 	public static function run($input, $i='iEncode'){
 		if(!empty($input)){
 			if($i == 'iEncode'){$o = json_encode($input);}
@@ -38,7 +38,7 @@ class oJSON {
 
 
 
-	//ENCODE • encode json input
+	#ENCODE • encode json input
 	public static function encode($input){
 		return self::run($input, $i='iEncode');
 	}
@@ -47,7 +47,7 @@ class oJSON {
 
 
 
-	//DECODE • decode json input
+	#DECODE • decode json input
 	public static function decode($input){
 		return self::run($input, $i='iDecode');
 	}
@@ -56,8 +56,14 @@ class oJSON {
 
 
 
-	//DISPLAY • display/run json input
+	#DISPLAY • display/run json input
 	public static function display($input){
 		return self::run($input, $i='iPrint');
 	}
-} // EndOfClass - oJSON
+
+
+
+
+
+
+} # EndOfClass - oJSON

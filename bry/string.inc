@@ -250,4 +250,84 @@ class oString {
 
 
 
+
+	#DOMAIN • Get Domain from URL
+	public static function domain($url='', $lib=''){
+		if(!empty($url)){
+			if(empty($lib)){
+				$lib = array('https://', 'http://', 'www.', 'api.', 'app.', 'en.', 'uk.', 'us.', 'ng.');
+			}
+			foreach($lib as $value){
+				$url = self::to($url, $value, '', 'iFirst');
+			}
+			$url = self::to($url, '/', '', 'iLast');
+			return $url;
+		}
+		return false;
+	}
+
+
+
+
+
+	#LINK TO NAME • Get name from URL/Link
+	public static function linkToName($link){
+		if(!empty($link)){
+			$o = $link;
+			$o = parse_url($o, PHP_URL_PATH);
+			$o = basename($o);
+			$o = self::to($o, '.php', '', 'iLast');
+			$o = self::to($o, '.inc', '', 'iLast');
+			$o = self::to($o, '.html', '', 'iLast');
+			if(!self::isEmpty($o)){return strtolower(trim($o));}
+		}
+		return false;
+	}
+
+
+
+
+
+	#CURRENCY TO • RETURN - currency/symbol/country
+	public static function currencyTo($code, $i='iData'){
+		$currencies = oUtil::currencyDB();
+		if(array_key_exists($code, $currencies)){
+			$currency = $currencies[$code];
+			if(!empty($currency[$i])){return $currency[$i];}
+			elseif($i == 'iData'){
+				$currency['iCode'] = $code;
+				return $currency;
+			}
+		}
+		return false;
+	}
+
+
+
+
+
+
+	#SIMPLIFY • Interpret or Convert Data to Meaning
+	public static function simplify($i, $v=''){
+		if(!ostring::isEmpty($i) && !ostring::isEmpty($v)){
+			if(!is_array($i)){
+			}
+			else {
+					#SEX/GENDER
+				if($v == 'iGender' || $v == 'iSex'){
+					if($i == 1){$o = 'male';}
+					elseif($i == 'male'){$o = 1;}
+					elseif($i == 2){$o = 'female';}
+					elseif($i == 'female'){$o = 2;}
+				}
+			}
+		}
+
+		if(isset($o) && !ostring::isEmpty($o)){return $o;}
+		return self::oExit(__FUNCTION__,'requires all argument');
+	}
+
+
+
+
 } #EndOfClass - oString
