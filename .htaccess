@@ -72,10 +72,14 @@ RewriteCond %{DOCUMENT_ROOT}%{REQUEST_FILENAME} !-d
 
 #Forbid access to directory
 RedirectMatch 403 ^/_o/?$
-RedirectMatch 403 ^/asset/?$
+RedirectMatch 403 ^/arc/?$
 RedirectMatch 403 ^/bry/?$
 RedirectMatch 403 ^/core/?$
 RedirectMatch 403 ^/drive/?$
+RedirectMatch 403 ^/asset/?$
+RedirectMatch 403 ^/cloud/?$
+RedirectMatch 403 ^/upload/?$
+RedirectMatch 403 ^/oredirect/?$
 
 
 #REWRITE - for template directory [domain.com/aowww/]
@@ -112,22 +116,20 @@ RewriteRule ^favicon\.png$ /asset/icon/favicon.png [NC,QSA,END]
 
 
 #REWRITE - virtual directory
-# RewriteRule ^oredirect\/(.*)$ /index.php?oredirect=$1 [NC,QSA,END]
-# RewriteRule ^upload$ upload/ [NC,QSA,END]
-# RewriteRule ^upload\/(.*)$ /upload/$1 [NC,QSA,END]
-# RewriteRule ^asset\/(.*)$ /core/asset/$1 [NC,QSA,END]
-# RewriteRule ^cloud\/(.*)$ /core/cloud/$1 [NC,QSA,END]
-# RewriteRule ^media\/(.*)$ /core/asset/media/$1 [NC,QSA,END]
-# 		RewriteRule ^audio\/(.*)$ /core/asset/media/audio/$1 [NC,QSA,END]
-# 		RewriteRule ^grafix\/(.*)$ /core/asset/media/grafix/$1 [NC,QSA,END]
-# 		RewriteRule ^video\/(.*)$ /core/asset/media/video/$1 [NC,QSA,END]
-# 		RewriteRule ^document\/(.*)$ /core/asset/media/document/$1 [NC,QSA,END]
-# RewriteRule ^plugin\/(.*)$ /core/asset/plugin/$1 [NC,QSA,END]
-RewriteRule ^css\/(.*)$ /asset/css/$1 [NC,QSA,END]
-RewriteRule ^font\/(.*)$ /asset/font/$1 [NC,QSA,END]
-RewriteRule ^icon\/(.*)$ /asset/icon/$1 [NC,QSA,END]
-RewriteRule ^media\/(.*)$ /asset/media/$1 [NC,QSA,END]
-RewriteRule ^js\/(.*)$ /asset/script/$1 [NC,QSA,END]
+RewriteRule ^oredirect\/(.*)$ /index.php?oredirect=$1 [NC,QSA,END]
+RewriteRule ^asset\/(.*)$ /arc/$1 [NC,QSA,END]
+RewriteRule ^css\/(.*)$ /arc/css/$1 [NC,QSA,END]
+RewriteRule ^font\/(.*)$ /arc/font/$1 [NC,QSA,END]
+RewriteRule ^icon\/(.*)$ /arc/icon/$1 [NC,QSA,END]
+RewriteRule ^js\/(.*)$ /arc/script/$1 [NC,QSA,END]
+RewriteRule ^media\/(.*)$ /arc/media/$1 [NC,QSA,END]
+	RewriteRule ^audio\/(.*)$ /arc/media/audio/$1 [NC,QSA,END]
+	RewriteRule ^document\/(.*)$ /arc/media/document/$1 [NC,QSA,END]
+	RewriteRule ^image\/(.*)$ /arc/media/image/$1 [NC,QSA,END]
+	RewriteRule ^video\/(.*)$ /arc/media/video/$1 [NC,QSA,END]
+RewriteRule ^plugin\/(.*)$ /arc/plugin/$1 [NC,QSA,END]
+RewriteRule ^cloud\/(.*)$ /drive/$1 [NC,QSA,END]
+RewriteRule ^upload\/(.*)$ /drive/upload/$1 [NC,QSA,END]
 
 
 #REWRITE - for APP
