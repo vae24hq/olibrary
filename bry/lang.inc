@@ -5,6 +5,16 @@
  * oLang ~ Language Utility • DEPENDENCY» <session>
  */
 class oLang {
+	#CONSTRUCT • Auto Set Language
+	public function __construct(){
+		$this->set();
+		return true;
+	}
+
+
+
+
+
 	#SET • Set Language
 	public function set($i=''){
 		if(!empty($i)){
