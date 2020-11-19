@@ -5,9 +5,8 @@
  * oLang ~ Language Utility • DEPENDENCY» <session>
  */
 class oLang {
-
-	//SET • Set Language
-	public function set($i){
+	#SET • Set Language
+	public function set($i=''){
 		if(!empty($i)){
 			$_SESSION['oLang'] = $i;
 		}
@@ -27,7 +26,10 @@ class oLang {
 	}
 
 
-	//GET • Get Language
+
+
+
+	#GET • Get Language
 	public function get(){
 		if(!empty($_SESSION['oLang'])){
 			return $_SESSION['oLang'];
@@ -36,7 +38,10 @@ class oLang {
 	}
 
 
-	//IS • Get/Set Language
+
+
+
+	#IS • Get/Set Language
 	public function is($i=''){
 		if(empty($i)){
 			return $this->get();
@@ -45,4 +50,7 @@ class oLang {
 	}
 
 
-} // EndOfClass - oLang
+
+
+
+} #EndOfClass - oLang
