@@ -185,7 +185,6 @@ class oRoute {
 	#PATH • return path
 	public static function path($i='init', $flex=false){
 		$o = AO['CORE'].'o'.self::project().AO['DS'];
-		if($i == 'config' || $i == 'init'){$o .= AO['INIT'];}
 		if($i == 'config'){$o .= 'config.inc';}
 		if($i == 'init'){$o .= 'initzr.inc';}
 		// if($i == 'routzr'){$o .= AO['ROUTZR'];}
