@@ -55,47 +55,17 @@ function AOAutoLoadClass($i){
 		exit('Class ['.$i.'] not found');
 	}
 }
-	// require AO['BRY'].strtolower($i).'.inc';
-	// require AO['BRY'].strtolower($i).'.inc';
-
-// require AO['BRY'].'session.inc';
-// require AO['BRY'].'print.inc';
-// require AO['BRY'].'exit.inc';
-// require AO['BRY'].'string.inc';
-// require AO['BRY'].'array.inc';
-// require AO['BRY'].'redirect.inc';
-// require AO['BRY'].'ssl.inc';
-// require AO['BRY'].'json.inc';
-// require AO['BRY'].'random.inc';
-// require AO['BRY'].'server.inc';
-// require AO['BRY'].'format.inc';
-// require AO['BRY'].'input.inc';
-// require AO['BRY'].'crypt.inc';
-// require AO['BRY'].'time.inc';
-// require AO['BRY'].'util.inc';
-/**
-require oSTATIC.'file.inc';
-require oSTATIC.'notify.inc';
-require oSTATIC.'device.inc';
-require oSTATIC.'browser.inc';
-require oSTATIC.'data.inc';
-*/
-
-// require oSTATIC.'route.inc';
-// require oBJCT.'db'.DS.'sql.inc';
-// require oBJCT.'db'.DS.'database.inc';
-// requireAO.'database.inc';
-// require oHELPER.'html.inc';
 
 
 #REDIRECT URL
 if(!empty($_REQUEST['oredirect'])){
 	$redirectTo = strtolower($_REQUEST['oredirect']);
 	if(!oString::in($redirectTo, 'http')){
-		return oRedirect::oExit(PS.$redirectTo);
+		return oRedirect::oExit(AO['PS'].$redirectTo);
 	}
 	else {
 		#@TODO ~ redirect for whole url - http://domain.co
+		header('Location: '.$redirectTo);
+		exit;
 	}
 }
-
