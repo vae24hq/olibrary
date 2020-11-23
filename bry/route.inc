@@ -5,8 +5,8 @@
  * oRoute ~ Routing utility • DEPENDENCY»
  */
 class oRoute {
-	//SOURCE • handling project's source
-	public static function source($i='iGet'){
+	#SOURCE • handling project's source
+	public static function project($i='iGet'){
 		if(!empty($i)){
 			if($i == 'iGet'){
 				if(!empty($_GET['oproject'])){$o = $_GET['oproject'];}
@@ -25,7 +25,10 @@ class oRoute {
 	}
 
 
-	//URI •
+
+
+
+	#URI •
 	public static function uri($i='iGet'){
 		if($i == 'iGet'){
 			if(!empty($_GET['olink'])){$o = $_GET['olink'];}
@@ -36,7 +39,10 @@ class oRoute {
 	}
 
 
-	//API •
+
+
+
+	#API •
 	public static function api($i='iGet'){
 		if(self::URI() == 'api'){
 			if(!empty($_GET['oapi'])){$o = $_GET['oapi'];}
@@ -46,7 +52,10 @@ class oRoute {
 	}
 
 
-	//APP •
+
+
+
+	#APP •
 	public static function app($i='iGet'){
 		if(self::api() === false && self::URI() == 'app'){
 			if(!empty($_GET['oapp'])){$o = $_GET['oapp'];}
@@ -56,17 +65,23 @@ class oRoute {
 	}
 
 
-	//SITE •
+
+
+
+	#SITE •
 	public static function site($i='iGet'){
 		if(!oRoute::api() && !oRoute::app()){
-			if($i == 'iGet'){$o = self::source();}
+			if($i == 'iGet'){$o = self::project();}
 		}
 		if(!empty($o)){return strtolower($o);}
 		return false;
 	}
 
 
-	//ROUTE • Get & Return Route
+
+
+
+	#ROUTE • Get & Return Route
 	public static function route(){
 		$api = self::api();
 		if($api !== false && $api != ''){$o = $api;}
@@ -81,7 +96,10 @@ class oRoute {
 	}
 
 
-	//KEY •
+
+
+
+	#KEY •
 	public static function key($i='iGet'){
 		if($i == 'iGet'){
 			if(!empty($_GET['okey'])){$o = $_GET['okey'];}
@@ -91,7 +109,10 @@ class oRoute {
 	}
 
 
-	//STATE •
+
+
+
+	#STATE •
 	public static function state(){
 		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
@@ -102,7 +123,10 @@ class oRoute {
 	}
 
 
-	//ACTION •
+
+
+
+	#ACTION •
 	public static function action(){
 		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
@@ -118,7 +142,10 @@ class oRoute {
 	}
 
 
-	//MODEL •
+
+
+
+	#MODEL •
 	public static function model(){
 		$o = self::route();
 		if(!oString::is_empty($o) && $o != 'index'){
@@ -138,7 +165,10 @@ class oRoute {
 	}
 
 
-	//PAGE • [page or view for site ONLY ~ to be used where not api/app]
+
+
+
+	#PAGE • [page or view for site ONLY ~ to be used where not api/app]
 	public static function page($i='iGet'){
 		if(!empty($i)){
 			if($i == 'iGet'){$o = self::route();}
@@ -149,26 +179,36 @@ class oRoute {
 	}
 
 
-	//PATH • return path
+
+
+
+	#PATH • return path
 	public static function path($i='init', $flex=false){
-		$o = oCORE.'o'.self::source().DS;
-		if($i == 'init'){$o .= oROUTZR.'init.inc';}
-		if($i == 'setting'){$o .= oCONFIG.'setting.inc';}
-		if($i == 'utilizr'){$o .= oUTILIZR;}
-		if($i == 'modelizr'){$o .= oMODELIZR;}
-		if($i == 'themezr'){$o .= oTHEMEZR;}
-		if($i == 'viewzr'){$o .= oVIEWZR;}
-		if($i == 'bitzr'){$o .= oBITZR;}
-		if($i == 'slicezr'){$o .= oSLICEZR;}
-		if($i == 'organizr'){$o .= oRGANIZR;}
+		$o = AO['CORE'].'o'.self::project().AO['DS'];
+		if($i == 'config' || $i == 'init'){$o .= AO['INIT'];}
+		if($i == 'config'){$o .= 'config.inc';}
+		if($i == 'init'){$o .= 'initzr.inc';}
+		// if($i == 'routzr'){$o .= AO['ROUTZR'];}
+		// if($i == 'utilizr'){$o .= oUTILIZR;}
+		// if($i == 'modelizr'){$o .= oMODELIZR;}
+		// if($i == 'themezr'){$o .= oTHEMEZR;}
+		// if($i == 'viewzr'){$o .= oVIEWZR;}
+		// if($i == 'bitzr'){$o .= oBITZR;}
+		// if($i == 'slicezr'){$o .= oSLICEZR;}
+		// if($i == 'organizr'){$o .= oRGANIZR;}
 		if(!empty($o)){
 			$o = strtolower($o);
 			#Default to main when file (resource) is unavailable
-			if($flex === true){
-				if(!oFile::is($o)){$o = oString::to($o, 'o'.self::source(), 'omain');}
+			if($flex === true && !oFile::is($o)){
+				$o = oString::to($o, 'o'.self::project(), 'omain');
 			}
 			return $o;
 		}
 		return false;
 	}
-} // EndOfClass - oRoute
+
+
+
+
+
+} #EndOfClass - oRoute
