@@ -25,7 +25,7 @@ class oSSL {
 	public static function redirect($url='', $permant=false){
 		$protocol = self::https() ? 'https' : 'http';
 		if($protocol !== 'https'){
-			$o = 'https:#';
+			$o = 'https://';
 			if(!empty($url)){$o .= $url;}
 			else {
 				if(!empty($_SERVER['HTTP_HOST'])){$o .= $_SERVER['HTTP_HOST'];}
