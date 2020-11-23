@@ -8,7 +8,7 @@ declare(strict_types = 1);
 require 'ignit.inc';
 
 #INITIALIZE (based on a specific project)
-// require oRoute::path('init', false);
+require oRoute::path('init', true);
 
 #DEVBOX - for development, demo & testing
 // oFile::inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', false);
