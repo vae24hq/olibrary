@@ -81,6 +81,9 @@ RedirectMatch 403 ^/cloud/?$
 RedirectMatch 403 ^/upload/?$
 RedirectMatch 403 ^/oredirect/?$
 
+RedirectMatch 403 ^/bry/(.*)?$
+RedirectMatch 403 ^/core/(.*)?$
+
 
 #REWRITE - for template directory [domain.com/aowww/]
 RewriteRule ^aowww\/$ /_o/www/ [NC,QSA,END]
@@ -99,6 +102,7 @@ RewriteRule ^oajax\/(.*)$ /index.php?oajax=$1 [NC,QSA,END]
 RewriteRule ^ojsv\/(.*)$ /index.php?ojsv=$1 [NC,QSA,END]
 RewriteRule ^odata\/(.*)$ /index.php?odata=$1 [NC,QSA,END]
 
+RewriteRule ^source\/(.*)$ /arc/$1 [NC,QSA,END]
 RewriteRule ^asset\/(.*)$ /arc/$1 [NC,QSA,END]
 RewriteRule ^css\/(.*)$ /arc/css/$1 [NC,QSA,END]
 RewriteRule ^font\/(.*)$ /arc/font/$1 [NC,QSA,END]
@@ -110,8 +114,7 @@ RewriteRule ^media\/(.*)$ /arc/media/$1 [NC,QSA,END]
 	RewriteRule ^image\/(.*)$ /arc/media/image/$1 [NC,QSA,END]
 	RewriteRule ^video\/(.*)$ /arc/media/video/$1 [NC,QSA,END]
 RewriteRule ^plugin\/(.*)$ /arc/plugin/$1 [NC,QSA,END]
-RewriteRule ^cloud\/(.*)$ /drive/$1 [NC,QSA,END]
-RewriteRule ^upload\/(.*)$ /drive/upload/$1 [NC,QSA,END]
+RewriteRule ^cloud\/(.*)$ /arc/upload/$1 [NC,QSA,END]
 
 #REWRITE - for API
 #[sub.domain.com/api/ → index.php?oproject=sub&olink=api&oapi=index]
@@ -130,10 +133,10 @@ RewriteRule ^api\/(.*)$ /index.php?oproject=main&olink=api&oapi=$1 [NC,QSA,END]
 
 #[api.domain.com/api/ → index.php?oproject=api&olink=api&oapi=index]
 RewriteCond %{HTTP_HOST} ^(api\.)(.+)$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=api&olink=api&oapi=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=api&olink=api&oapi=index [NC,QSA,END]
 #[api.domain.com/api/login → index.php?oproject=api&olink=api&oapi=login]
 RewriteCond %{HTTP_HOST} ^(api\.)(.+)$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=api&olink=api&oapi=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=api&olink=api&oapi=$1 [NC,QSA,END]
 
 
 
@@ -156,20 +159,20 @@ RewriteRule ^app\/(.*)$ /index.php?oproject=main&olink=app&oapp=$1 [NC,QSA,END]
 
 #[app.domain.com/app/ → index.php?oproject=app&olink=app&oapp=index]
 RewriteCond %{HTTP_HOST} ^(app\.)(.+)$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=app&olink=app&oapp=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=app&olink=app&oapp=index [NC,QSA,END]
 #[app.domain.com/app/login → index.php?oproject=app&olink=app&oapp=login]
 RewriteCond %{HTTP_HOST} ^(app\.)(.+)$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=app&olink=app&oapp=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=app&olink=app&oapp=$1 [NC,QSA,END]
 
 
 #REWRITE - all other requests [sub.domain.com] AND [domain.com] to index.php
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$))(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=main&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$))(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=%1&olink=index [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$))$ /index.php?oproject=main&olink=index [NC,QSA,END]
 
 RewriteCond %{HTTP_HOST} ^(.+?)(\.(.+)\.(.+))$
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
-RewriteRule ^((?!_o\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=main&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=%1&olink=$1 [NC,QSA,END]
+RewriteRule ^((?!_o\/.*$)(?!source\/.*$)(?!asset\/.*$)(?!bry\/.*$)(?!core\/.*$)(?!drive\/.*$)(?!aowww\/.*$)(?!css\/.*$)(?!font\/.*$)(?!icon\/.*$)(?!media\/.*$)(?!js\/.*$)(?!favicon.ico$)(?!favicon.png$).*)$ /index.php?oproject=main&olink=$1 [NC,QSA,END]
 
 
 #HTTP ERROR - error documents defined
