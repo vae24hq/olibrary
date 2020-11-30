@@ -9,3 +9,6 @@ oTime::zone('Africa/Lagos');
 $config['database']['name'] = 'AODB.db3';
 $config['database']['host'] = oRoute::path('cloudzr');
 $db = new oSQLite($config['database']);
+
+$backup = new SQLite3('backup.sqlite');
+$db->backup($backup);

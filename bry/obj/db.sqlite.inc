@@ -76,4 +76,14 @@ class oSQLite {
 	}
 
 
+	#BACKUP • Backup one database to another database
+	public function backup($l){
+
+
+
+
+		$backup = new SQLite3('backup.sqlite');
+		$conn->backup($backup);
+	}
+
 } #EndOfClass - oSQLite
