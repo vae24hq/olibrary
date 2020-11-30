@@ -1,7 +1,7 @@
 <?php
 $config = array(
 	'project' => array(
-		'name' => "oClock",
+		'name' => "WOCA",
 		'version' => "Alpha-0.0.1",
 		'publisher' => 'WOCA Software'
 	),
@@ -9,6 +9,6 @@ $config = array(
 		'user' => "ao",
 		'password' => "AO20",
 		'host' => "ao.co",
-		'driver' => 'iMySQLi'
+		'driver' => 'iSQLite'
 	),
 );
