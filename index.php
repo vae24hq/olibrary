@@ -16,5 +16,8 @@ require oRoute::path('init', true);
 $var['variables'] = get_defined_vars();
 // $var['constants'] = get_defined_constants();
 // echo '<pre>'.print_r($var, true).'</pre>';
-echo oPrint::Neat($_REQUEST);
+// echo oPrint::Neat($_REQUEST);
+echo oPrint::Neat($config);
+// echo oPrint::Neat($var);
+		// echo oPrint::neat(['class' => $class, 'file' => $file]);
 ?>
