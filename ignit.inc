@@ -13,19 +13,23 @@ $AO['ROOT'] = __DIR__.$AO['DS'];
 $AO['BRY'] = $AO['ROOT'].'bry'.$AO['DS'];
 $AO['3RD'] = $AO['BRY'].'3rd'.$AO['DS'];
 $AO['FUNC'] = $AO['BRY'].'func'.$AO['DS'];
+$AO['OBJ'] = $AO['BRY'].'obj'.$AO['DS'];
 
 $AO['CORE'] = $AO['ROOT'].'core'.$AO['DS'];
 
-$AO['INIT'] = 'init'.$AO['DS'];
-$AO['BIT'] = 'layout'.$AO['DS'].'bitzr'.$AO['DS'];
-$AO['VIEW'] = 'layout'.$AO['DS'].'viewzr'.$AO['DS'];
+$AO['CLOUDZR'] = 'cloudzr'.$AO['DS'];
 
-$AO['MODELIZR'] = 'program'.$AO['DS'].'modelizr'.$AO['DS'];
-$AO['ORGANIZR'] = 'program'.$AO['DS'].'organizr'.$AO['DS'];
-$AO['ROUTZR'] = 'program'.$AO['DS'].'routzr'.$AO['DS'];
-$AO['UTILIZR'] = 'program'.$AO['DS'].'utilizr'.$AO['DS'];
 
-$AO['DRIVE'] = $AO['ROOT'].'drive'.$AO['DS'];
+// $AO['INIT'] = 'init'.$AO['DS'];
+// $AO['BIT'] = 'bitzr'.$AO['DS'];
+// $AO['VIEW'] = 'viewzr'.$AO['DS'];
+
+// $AO['MODELIZR'] = $AO['DS'].'modelizr'.$AO['DS'];
+// $AO['ORGANIZR'] = $AO['DS'].'organizr'.$AO['DS'];
+// $AO['ROUTZR'] = $AO['DS'].'routzr'.$AO['DS'];
+// $AO['UTILIZR'] = $AO['DS'].'utilizr'.$AO['DS'];
+
+// $AO['DRIVE'] = $AO['ROOT'].'drive'.$AO['DS'];
 
 
 #using htaccess for path
@@ -46,13 +50,17 @@ spl_autoload_register('AOAutoLoadClass');
 
 
 #auto load library
-function AOAutoLoadClass($i){
-	$i = ltrim($i, $i[0]);
-	$file = AO['BRY'].strtolower($i).'.inc';
-	if(!file_exists($file)){$file = AO['3RD'].strtolower($i).'.inc';}
-	if(file_exists($file)){require $file;}
-	else {
-		exit('Class ['.$i.'] not found');
+function AOAutoLoadClass($class){
+	if(!class_exists($class)){
+		$i = ltrim($class, $class[0]);
+		$file = AO['3RD'].strtolower($i).'.inc';
+		if(!file_exists($file)){$file = AO['BRY'].strtolower($i).'.inc';}
+		if(!file_exists($file)){$file = AO['OBJ'].strtolower($i).'.inc';}
+		if(!file_exists($file)){$file = AO['OBJ'].'db.'.strtolower($i).'.inc';}
+		if(file_exists($file)){require $file;}
+		else {
+			exit('Class ['.$class.'] not found');
+		}
 	}
 }
 
