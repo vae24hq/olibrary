@@ -183,10 +183,12 @@ class oRoute {
 
 
 	#PATH • return path
-	public static function path($i='init', $flex=false){
+	public static function path($i='', $flex=false){
 		$o = AO['CORE'].'o'.self::project().AO['DS'];
 		if($i == 'config'){$o .= 'config.inc';}
 		if($i == 'init'){$o .= 'initzr.inc';}
+
+		if($i == 'cloudzr'){$o .= AO['CLOUDZR'];}
 		// if($i == 'routzr'){$o .= AO['ROUTZR'];}
 		// if($i == 'utilizr'){$o .= oUTILIZR;}
 		// if($i == 'modelizr'){$o .= oMODELIZR;}
