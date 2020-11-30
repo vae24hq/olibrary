@@ -56,10 +56,23 @@ class oSQLite {
 
 
 
+	public function report($stmt, $type=''){
+		if($type == 'lastInsertID'){
+			return $stmt->lastInsertRowID();
+		}
+	}
+
+
+
+
+
 	#CONNECT • Initiate connection
 	public function connect(){
 		$stmt = new SQLite3($this->database);
-		var_dump($db->lastErrorCode());
+		if($this->error($stmt) === false){
+			$this->connection = $stmt;
+			return true;
+		}
 	}
 
 
