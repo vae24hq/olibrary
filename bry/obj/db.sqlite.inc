@@ -123,9 +123,15 @@ class oSQLite {
 		if($type == 'iLastID'){
 			return $stmt->lastInsertRowID();
 		}
+
 		if($type == 'iRowsAffected'){
 			return $stmt->lastInsertRowID();
 		}
+	}
+
+
+	public function prep(){
+
 	}
 
 
@@ -152,6 +158,22 @@ class oSQLite {
 		if($this->error($stmt) === false){
 			$this->conn = $stmt;
 			return true;
+		}
+	}
+
+
+
+
+	public function query($sql){
+		#single query
+		if(!is_array($sql)){
+			$stmt = $this->conn->querySingle($sql, true);
+			if($this->error($stmt) === true){
+				$o['error'] = $this->error($stmt);
+				return $o;
+			}
+
+
 		}
 	}
 
