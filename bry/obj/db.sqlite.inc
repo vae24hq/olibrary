@@ -120,7 +120,10 @@ class oSQLite {
 
 
 	public function report($stmt, $type=''){
-		if($type == 'lastInsertID'){
+		if($type == 'iLastID'){
+			return $stmt->lastInsertRowID();
+		}
+		if($type == 'iRowsAffected'){
 			return $stmt->lastInsertRowID();
 		}
 	}
