@@ -22,6 +22,7 @@ class oSQLite {
 
 
 
+
 	#oEXIT • Report error & exit program
 	public function oExit($i='', $v=''){
 		if(!empty($i)){
@@ -30,47 +31,6 @@ class oSQLite {
 		return;
 	}
 
-
-
-
-
-	#CONNECT • Initiate connection
-	public function connect($data=''){
-		if(!empty($data)){
-			$name = ''; $host = '';
-			if(is_array($data)){
-				if(!empty($setting['name'])){$name = $setting['name'];}
-				if(!empty($setting['host'])){$host = $setting['host'];}
-			}
-			else {
-				$name = $data;
-			}
-			$this->useDB($name, $host);
-		}
-		if(!isset($this->database)){
-			return $this->oExit('connection failed', 'database required');
-		}
-		$stmt = new SQLite3($this->database);
-		if($this->error($stmt) === false){
-			$this->connection = $stmt;
-			return true;
-		}
-	}
-
-
-
-
-
-	#CONNECTION • Set connection for particular query
-	public function connection($connection=''){
-		if(!empty($connection)){
-			//@TODO - check if connection is valid SQLITE3 object
-		}
-		elseif(isset($this->connection)){
-			return $this->connection;
-		}
-		return $this->oExit('connection error', 'no valid database connection');
-	}
 
 
 
@@ -88,27 +48,6 @@ class oSQLite {
 		}
 		return true;
 	}
-
-
-
-
-
-	#CREATE DB • Create database
-	public function createDB($name='', $host=''){
-		if(empty($name)){return $this->oExit('database required');}
-		$db = $host.strtolower($name);
-		#make sure database does not exist to avoid overwriting
-		if($this->isDB($db, true) === false){
-			$this->database = $db;
-			$stmt = new SQLite3($this->database);
-			if($this->error($stmt) === false){
-				$this->connection = $stmt;
-				return true;
-			}
-		}
-		return $this->oExit('database already exist', $db);
-	}
-
 
 
 
@@ -143,6 +82,52 @@ class oSQLite {
 
 
 
+	#CONNECT • Initiate connection
+	public function connect($data=''){
+		if(!empty($data)){
+			$name = ''; $host = '';
+			if(is_array($data)){
+				if(!empty($setting['name'])){$name = $setting['name'];}
+				if(!empty($setting['host'])){$host = $setting['host'];}
+			}
+			else {
+				$name = $data;
+			}
+			$this->useDB($name, $host);
+		}
+		if(!isset($this->database)){
+			return $this->oExit('connection failed', 'database required');
+		}
+
+		$dbo = new SQLite3($this->database);
+		if($dbo === false){
+			return $this->reportDBO('iError', $dbo, $sql);
+		}
+
+		$this->connection = $dbo;
+		return true;
+	}
+
+
+
+
+
+	#CONNECTION • Set connection for particular query
+	public function connection($connection=''){
+		if(!empty($connection)){
+			//@TODO - check if connection is valid SQLITE3 object
+		}
+		elseif(isset($this->connection)){
+			return $this->connection;
+		}
+		return $this->oExit('connection error', 'no valid database connection');
+	}
+
+
+
+
+
+
 	#ERROR • Report error
 	public function error($dbo, $type='iError'){
 		if($dbo->lastErrorCode() !== 0){
@@ -172,30 +157,40 @@ class oSQLite {
 		$error = $this->error($dbo);
 		$e = array();
 		if($error !== false){
+			$e['status'] = 'ERROR';
 			if(!empty($sql)){$e['query'] = $sql;}
 			if(is_array($error)){$e = array_merge($e, $error);}
 			else {$e['message'] = $error;}
-			if(!empty($e)){return array('SQL_ERROR' => $e);}
+			if(!empty($e)){return array('SQL_REPORT' => $e);}
 		}
 		/**NO DATABASE QUERY ERROR, CONTINUE**/
 
-			#Returns the number of rows modified (inserted/deleted) by the most recent SQL statement
+		#Returns the number of rows modified (inserted/deleted) by the most recent SQL statement
 		elseif($type == 'iRowsAffected'){
 			return $dbo->changes();
 		}
 
-			#Returns the row ID of the most recent INSERT into the database
+		#Returns the row ID of the most recent INSERT into the database
 		elseif($type == 'iLastID'){
 			return $dbo->lastInsertRowID();
 		}
 
-			#Returns the row ID of the most recent INSERT into the database
+		#Returns the row ID of the most recent INSERT into the database
 		elseif($type == 'iVersion'){
 			return $dbo->version();
 		}
 		return false;
 	}
 
+
+
+
+
+
+	#REPORT SUCCESS • Prepare & Return result
+	public function reportOK($status='OKAY', $message=''){
+		return ['SQL_REPORT' => ['status' => $status, 'message' => $message]];
+	}
 
 
 
@@ -214,11 +209,11 @@ class oSQLite {
 	#EXEC • Executes a result-less query against a given database [INSERT|UPDATE|DELETE]
 	public function exec($sql, $dbo=''){
 		$dbo = $this->connection($dbo);
-		$res = $dbo->exec($sql);
-		if($res === false){
+		$result = $dbo->exec($sql);
+		if($result === false){
 			return $this->reportDBO('iError', $dbo, $sql);
 		}
-		return $res;
+		return $result;
 	}
 
 
@@ -226,7 +221,7 @@ class oSQLite {
 
 
 	#QUERY • Run SQL query
-	public function query($sql, $ret='iPrepare', $dbo=''){
+	public function query($sql, $ret='', $dbo=''){
 		$dbo = $this->connection($dbo);
 
 		#check if query is
@@ -237,16 +232,7 @@ class oSQLite {
 		if($ret == 'iSingleRow'){
 			$res = $dbo->querySingle($sql, true);
 		}
-		elseif($ret == 'iQuery'){
-			$res = $dbo->query($sql);
-		}
-		elseif($ret == 'iPrepare'){
-			$stmt = $db->prepare('SELECT bar FROM foo WHERE id=:id');
-			$stmt->bindValue(':id', 1, SQLITE3_INTEGER);
-
-			$stmt = $db->prepare("INSERT INTO foo VALUES (:bar)");
-			$stmt->bindParam(':bar', $bar, SQLITE3_TEXT);
-
+		else {
 			$res = $dbo->query($sql);
 		}
 
@@ -264,7 +250,7 @@ class oSQLite {
 
 
 	#RUN • Run prepared query
-	public function run($sql, $param, $dbo=''){
+	public function runOOO($sql, $param, $dbo=''){
 		$dbo = $this->connection($dbo);
 		if(!is_array($sql)){
 		}
@@ -292,6 +278,52 @@ class oSQLite {
 	public function backup($i){
 		$backup = new SQLite3($i);
 		return $this->connection->backup($backup);
+	}
+
+
+
+
+
+	#CREATE DB • Create database
+	public function createDB($name='', $host=''){
+		if(empty($name)){return $this->oExit('database required');}
+		$db = $host.strtolower($name);
+		#make sure database does not exist to avoid overwriting
+		if($this->isDB($db, true) === false){
+			$this->database = $db;
+			$stmt = new SQLite3($this->database);
+			if($this->error($stmt) === false){
+				$this->connection = $stmt;
+				return true;
+			}
+		}
+		return $this->oExit('database already exist', $db);
+	}
+
+
+
+
+
+	#CREATE TB • Create table
+	public function createTB($table, $column='', $dbo=''){
+		$dbo = $this->connection($dbo);
+		$sql = "CREATE TABLE IF NOT EXISTS `{$table}` (`auid`	INTEGER NOT NULL UNIQUE, `puid`	TEXT UNIQUE, `euid`	TEXT UNIQUE, `suid`	TEXT UNIQUE, `logid` TEXT DEFAULT 'NONE', `author`	TEXT DEFAULT 'SYST', `created`	TEXT, `modified` TEXT,	`status` TEXT, ";
+		if(!empty($column)){
+			if(is_array($column)){
+				foreach($column as $label => $value){$sql .="`{$label}` {$value}, ";}
+			}
+			else {
+				$sql .= $column;
+			}
+		}
+		$sql .=" PRIMARY KEY(`auid` AUTOINCREMENT))";
+		@$result = $dbo->exec($sql);
+		if($result === false){
+			return $this->reportDBO('iError', $result, $sql);
+		}
+		else {
+			return $this->reportOK();
+		}
 	}
 
 } #EndOfClass - oSQLite
