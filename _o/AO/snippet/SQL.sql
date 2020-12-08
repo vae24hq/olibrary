@@ -24,3 +24,20 @@ CHANGE COLUMN `sendmail` `sendmail` CHAR(50) NULL DEFAULT 'no' AFTER `lang`;
 
 ALTER TABLE `firm`
 ADD COLUMN `sendmail` CHAR(50) NULL DEFAULT 'no' AFTER `lang`;
+
+
+
+-- SQLITE3
+CREATE TABLE IF NOT EXISTS `sample` (
+	"auid"	INTEGER NOT NULL UNIQUE,
+	"puid"	TEXT UNIQUE,
+	"euid"	TEXT UNIQUE,
+	"suid"	TEXT UNIQUE,
+	"logid"	TEXT DEFAULT 'NONE',
+	"author"	TEXT DEFAULT 'SYST',
+	"created"	TEXT,
+	"modified"	TEXT,
+	"status"	TEXT,
+	"column"	TEXT,
+	PRIMARY KEY("auid" AUTOINCREMENT)
+);
