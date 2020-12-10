@@ -9,3 +9,5 @@ $config['database']['name'] = $config['database']['name'].'.db3';
 $db = new oSQLite($config['database'], true);
 $dbug['CREATE_TABLE'] = $db->createTB('ao', ['name' => 'TEXT', 'email' => 'UNIQUE',]);
 $config['debug'] = $dbug;
+
+// $config['REQUEST'] = $_REQUEST;
