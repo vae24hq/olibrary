@@ -21,5 +21,6 @@ require oRoute::path('init', true);
 // echo oPrint::Neat($var);
 // echo oPrint::neat(['class' => $class, 'file' => $file]);
 $device = new oMobile;
+$config['DEVICE'] = $device;
 echo oPrint::neat($config);
 ?>
