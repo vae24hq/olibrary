@@ -4,6 +4,7 @@
  * ============================================================================================
  * INDEX ~ Default File • DEPENDENCY»
  */
+#error_reporting(0);
 declare(strict_types = 1);
 require 'ignit.inc';
 
@@ -13,11 +14,11 @@ require oRoute::path('init', true);
 #DEVBOX - for development, demo & testing
 // oFile::inc(oROOT.'_o'.DS.'ignor'.DS.'_debug.inc', false);
 
-$var['variables'] = get_defined_vars();
+// $var['variables'] = get_defined_vars();
 // $var['constants'] = get_defined_constants();
 // echo '<pre>'.print_r($var, true).'</pre>';
 // echo oPrint::Neat($_REQUEST);
-echo oPrint::Neat($config);
 // echo oPrint::Neat($var);
-		// echo oPrint::neat(['class' => $class, 'file' => $file]);
+// echo oPrint::neat(['class' => $class, 'file' => $file]);
+echo oPrint::neat($config);
 ?>
